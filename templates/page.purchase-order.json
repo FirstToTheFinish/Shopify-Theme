@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": true,
+        "heading_align": "text-center"
+      }
+    },
+    "custom_liquid_DhzfiQ": {
+      "type": "custom-liquid",
+      "name": "Custom HTML/Liquid",
+      "settings": {
+        "custom_liquid": "<script>\ndocument.addEventListener('DOMContentLoaded', function () {\n  const waitForCheckbox = setInterval(function () {\n    const checkbox = document.querySelector('input[type=\"checkbox\"][value=\"Same shipping address?\"]');\n    if (!checkbox) {\n      console.warn('Waiting for checkbox to load...');\n      return;\n    }\n\n    console.log('Checkbox found. Setting up shipping sync.');\n\n    clearInterval(waitForCheckbox); // Stop checking\n\n    const fieldPairs = [\n      { billing: '98224-text-1', shipping: '98224-text-9', label: 'Name' },\n      { billing: '98224-text', shipping: '98224-text-10', label: 'Attention' },\n      { billing: '98224-text-4', shipping: '98224-text-11', label: 'Street Address' },\n      { billing: '98224-text-5', shipping: '98224-text-12', label: 'City' },\n      { billing: '98224-text-7', shipping: '98224-text-13', label: 'State' },\n      { billing: '98224-text-6', shipping: '98224-text-14', label: 'Zip Code' },\n      { billing: '98224-email', shipping: '98224-email-1', label: 'Email' },\n      { billing: '98224-phone-1', shipping: '98224-phone-2', label: 'Phone' }\n    ];\n\n    const syncHandlers = [];\n\n    function syncFields() {\n      fieldPairs.forEach(({ billing, shipping, label }) => {\n        const billingInput = document.getElementById(billing);\n        const shippingInput = document.getElementById(shipping);\n\n        if (!billingInput) {\n          console.warn(`Missing billing input for ${label} (ID: ${billing})`);\n          return;\n        }\n        if (!shippingInput) {\n          console.warn(`Missing shipping input for ${label} (ID: ${shipping})`);\n          return;\n        }\n\n        shippingInput.value = billingInput.value;\n\n        const handler = () => {\n          shippingInput.value = billingInput.value;\n        };\n\n        billingInput.addEventListener('input', handler);\n        syncHandlers.push({ billingInput, handler });\n      });\n    }\n\n    function removeSyncing() {\n      syncHandlers.forEach(({ billingInput, handler }) => {\n        billingInput.removeEventListener('input', handler);\n      });\n      syncHandlers.length = 0;\n    }\n\n    function clearShippingFields() {\n      fieldPairs.forEach(({ shipping }) => {\n        const input = document.getElementById(shipping);\n        if (input) input.value = '';\n      });\n    }\n\n    checkbox.addEventListener('change', function () {\n      if (checkbox.checked) {\n        syncFields();\n      } else {\n        removeSyncing();\n        clearShippingFields();\n      }\n    });\n  }, 100); // Check every 100ms until checkbox is found\n});\n</script>",
+        "section_height": "tight",
+        "full_width": false,
+        "dividers": "none",
+        "prevent_animation": false
+      }
+    },
+    "custom_liquid_NNALUd": {
+      "type": "custom-liquid",
+      "name": "Custom HTML/Liquid",
+      "settings": {
+        "custom_liquid": "<script>\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const waitForFields = setInterval(function () {\n      const observer = new MutationObserver(() => {\n      const footer = document.querySelector(\".gfb__footer\");\n      const resetButton = footer?.querySelector('button.reset');\n      const previousButton = footer?.querySelector('button.previous');\n\n      if (footer && resetButton && previousButton && previousButton.previousSibling !== resetButton) {\n        footer.insertBefore(resetButton, previousButton);\n      }\n    });\n\n    const footerContainer = document.querySelector(\".gfb__footer\");\n\n    if (footerContainer) {\n      observer.observe(footerContainer, {\n        childList: true,\n        subtree: true\n      });\n\n      // Also move it immediately if already rendered\n      const resetButton = footerContainer.querySelector('button.reset');\n      const previousButton = footerContainer.querySelector('button.previous');\n      if (resetButton && previousButton && previousButton.previousSibling !== resetButton) {\n        footerContainer.insertBefore(resetButton, previousButton);\n      }\n    }\n    }, 100); // checks every 100ms\n  });\n</script>",
+        "section_height": "tight",
+        "full_width": false,
+        "dividers": "none",
+        "prevent_animation": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_DhzfiQ",
+    "custom_liquid_NNALUd"
+  ]
+}

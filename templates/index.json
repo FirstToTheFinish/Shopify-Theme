@@ -1,0 +1,603 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "promo_strip_zbeYF9": {
+      "type": "promo-strip",
+      "blocks": {
+        "heading_jA9BJY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Trusted by 1,000+ Programs Across All Sports Since 1987.",
+            "heading_size": "h6",
+            "show_on_mobile": true,
+            "show_on_desktop": true
+          }
+        },
+        "text_x7RmwD": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Trusted by 1,000+ Programs Across All Sports. FTTF Delivers for Every Team.</p>",
+            "enlarge_text": false,
+            "show_on_mobile": true,
+            "show_on_desktop": true
+          }
+        },
+        "discount_rdtqBT": {
+          "type": "discount",
+          "disabled": true,
+          "settings": {
+            "discount_code": "DISCOUNTCODE"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jA9BJY",
+        "text_x7RmwD",
+        "discount_rdtqBT"
+      ],
+      "name": "Mini Announcement",
+      "settings": {
+        "section_height": "xsmall",
+        "color_scheme": "none",
+        "full_width": true,
+        "dividers": "border-top",
+        "prevent_animation": false
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_eXUtzE": {
+          "type": "slide",
+          "name": "Tent Banner",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Tent_Specials_-_Large_Banner_1_d9caedec-2070-4585-b97a-6e2c1f234a48.svg",
+            "image_mobile": "shopify://shop_images/fully_custom_360_x_120_px_400_x_400_px.png",
+            "url": "shopify://collections/custom-tents",
+            "enable_scheduling": false,
+            "start_time": "",
+            "end_time": "",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": true,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "name": "Football Banner",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Untitled_design.svg",
+            "image_mobile": "shopify://shop_images/NORDITALIA_BANNER_05.29.2025_40695b1d-1a80-4b77-b171-45cf51afaa54.png",
+            "url": "",
+            "enable_scheduling": false,
+            "start_time": "",
+            "end_time": "",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": true,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
+        "slide-1": {
+          "type": "slide",
+          "name": "Prestige Jersey Banner",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Copy_of_Prestige_Ad_1080_x_1350_px.svg",
+            "image_mobile": "shopify://shop_images/FTTF_Graphics_8.jpg",
+            "url": "",
+            "enable_scheduling": false,
+            "start_time": "",
+            "end_time": "",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": true,
+            "button_1_label": "",
+            "button_1_link": "/",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "/",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_eXUtzE",
+        "slide-2",
+        "slide-1"
+      ],
+      "name": "Homepage Slideshow",
+      "settings": {
+        "height_mode": "auto",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "mobile_stacked": false,
+        "nav_style": "slideshow_nav_lines",
+        "pagination_color": "#ffffff",
+        "nav_position": "justify-center",
+        "transition": "slide-fade",
+        "autoplay": true,
+        "slider_pause": true,
+        "autoplay_speed": 5,
+        "color_scheme": "default",
+        "full_width": true,
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "accessibility_info": "",
+        "prevent_animation": true
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "name": "Trending Now",
+      "settings": {
+        "title": "Trending Now",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "trending-now",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 8,
+        "show_highlight_products": true,
+        "show_promo_info": false,
+        "image_ratio": "fill",
+        "promo_title": "A headline to grab attention",
+        "content": "<p>Use this card with an image to highlight your collections or introduce a promotion.</p>",
+        "link_url": "/",
+        "button_label": "Optional Button",
+        "color_scheme": "3",
+        "button_style": "btn btn--primary"
+      }
+    },
+    "promo-grid": {
+      "type": "promo-grid",
+      "blocks": {
+        "promo-media-0": {
+          "type": "media",
+          "name": "Baseball Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/46.jpg",
+            "link_url": "shopify://collections/baseball-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h0",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Inning.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "promo-media-3": {
+          "type": "media",
+          "name": "Basketball Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/42.jpg",
+            "link_url": "shopify://collections/basketball-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h1",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Possession.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "promo-media-1": {
+          "type": "media",
+          "name": "Football Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/47_1339b405-26b2-43d4-8f41-64f52cf35969.jpg",
+            "link_url": "shopify://collections/football-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h2",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Snap.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "media_PrPiNB": {
+          "type": "media",
+          "name": "Soccer Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/44.jpg",
+            "link_url": "shopify://collections/soccer-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h2",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Kickoff.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "promo-media-2": {
+          "type": "media",
+          "name": "Softball Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/47.jpg",
+            "link_url": "shopify://collections/softball-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h2",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Pitch.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "media_RXfxec": {
+          "type": "media",
+          "name": "Track/XC Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/FTTF_Graphics_65_2d4fb153-45f1-4a6c-b9a1-28ea582b1288.jpg",
+            "link_url": "shopify://collections/track-xc-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h2",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Race.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "media_khL7Yt": {
+          "type": "media",
+          "name": "Volleyball Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/43.jpg",
+            "link_url": "shopify://collections/volleyball-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h1",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Rally.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "media_r87aVf": {
+          "type": "media",
+          "name": "Wrestling Uniforms",
+          "settings": {
+            "image": "shopify://shop_images/45.jpg",
+            "link_url": "shopify://collections/wrestling-uniforms",
+            "columns": 1,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h0",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": true,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Ready for Every Takedown.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#eae9e9",
+            "tint_opacity": 5
+          }
+        },
+        "media_YiM8rB": {
+          "type": "media",
+          "name": "Warmups ",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "link_url": "shopify://collections/warmup-jackets",
+            "columns": 2,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h0",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Your Look Before the Whistle.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_RtTfCa": {
+          "type": "media",
+          "name": "Tents",
+          "settings": {
+            "image": "shopify://shop_images/2.jpg",
+            "link_url": "shopify://collections/custom-tents",
+            "columns": 2,
+            "rows": 1,
+            "line1_text": "",
+            "line1_text_type_scale": "text-h6",
+            "line2_text": "",
+            "line2_text_type_scale": "text-h0",
+            "line3_text": "",
+            "line3_text_type_scale": "text-h6",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-center",
+            "promo_circle": false,
+            "background_color": "#e32b2b",
+            "text_color": "#ffffff",
+            "subheading": "Your Basecamp. Your Brand.",
+            "link_text": "",
+            "text_type_scale": "h6",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "promo-media-0",
+        "promo-media-3",
+        "promo-media-1",
+        "media_PrPiNB",
+        "promo-media-2",
+        "media_RXfxec",
+        "media_khL7Yt",
+        "media_r87aVf",
+        "media_YiM8rB",
+        "media_RtTfCa"
+      ],
+      "name": "Custom Uniform Collections",
+      "settings": {
+        "title": "Shop Uniforms Today!",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "mobile_carousel": true,
+        "gallery_cols_min": "1",
+        "fixed_height_desktop": 200,
+        "fixed_height_mobile": 280,
+        "text_overlay_font": "body",
+        "color_scheme": "default"
+      }
+    },
+    "media-with-text": {
+      "type": "media-with-text",
+      "blocks": {
+        "media-with-text-heading-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Norditalia  Legend Singlet",
+            "heading_size": "h1",
+            "heading_h1": false
+          }
+        },
+        "media-with-text-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em style=\"color: #3b53eb;\">“We ordered the Norditalia Legend singlets for our National qualifiers and they were great! They're comfortable and the team loved them! We'll keep coming back for more”</em></p>\n<p><em>- Dimitri Dimizas, Head Cross Country Coach <br>Moraine Valley Community College</em></p>",
+            "enlarge_text": false
+          }
+        },
+        "media-with-text-button-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/norditalia-full-custom-legend-singlet-858195",
+            "button_style": "btn btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "media-with-text-heading-0",
+        "media-with-text-text-1",
+        "media-with-text-button-2"
+      ],
+      "name": "Norditalia Banner",
+      "settings": {
+        "image": "shopify://shop_images/LEGEND_SITE_POST.svg",
+        "video_external": "",
+        "video_description": "",
+        "video_autoplay": false,
+        "layout": "right",
+        "image_fit": "contain",
+        "media_width": 50,
+        "media_scale": 100,
+        "text_align": "text-end",
+        "color_scheme": "1",
+        "only_content_color_scheme": false
+      }
+    },
+    "custom_liquid_pxCaiT": {
+      "type": "custom-liquid",
+      "name": "Senja Review Code",
+      "settings": {
+        "custom_liquid": "<script src=\"https://widget.senja.io/widget/dc82b467-2370-4bf5-a3e0-7f2eb052dd31/platform.js\" type=\"text/javascript\" async></script>\n<div class=\"senja-embed\" data-id=\"dc82b467-2370-4bf5-a3e0-7f2eb052dd31\" data-mode=\"shadow\" data-lazyload=\"false\" style=\"display: block; width: 100%;\"></div>",
+        "section_height": "xsmall",
+        "full_width": true,
+        "dividers": "none",
+        "prevent_animation": false
+      }
+    },
+    "image-banner": {
+      "type": "image-banner",
+      "name": "Team Store Banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/TEAM_STORE_GIF_450_x_400_px_33980302-8a3c-4c2e-ba61-8edd53294507.svg",
+        "url": "shopify://pages/start-your-team-store",
+        "height_mode": "auto",
+        "fixed_height_desktop": 400,
+        "fixed_height_mobile": 250,
+        "overlay_position": "justify-center items-center",
+        "overlay_text_align": "text-center",
+        "mob_center_text": false,
+        "mobile_stacked": false,
+        "color_scheme": "white",
+        "full_width": true,
+        "transparent_content_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "prevent_animation": false
+      }
+    }
+  },
+  "order": [
+    "promo_strip_zbeYF9",
+    "slideshow",
+    "featured-collection",
+    "promo-grid",
+    "media-with-text",
+    "custom_liquid_pxCaiT",
+    "image-banner"
+  ]
+}

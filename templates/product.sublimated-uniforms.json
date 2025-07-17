@@ -1,0 +1,249 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor-sku": {
+          "type": "vendor-sku",
+          "settings": {
+            "show_vendor": true,
+            "show_sku": true,
+            "show_barcode": false
+          }
+        },
+        "product-labels": {
+          "type": "product-labels",
+          "settings": {
+            "show_variant_icon": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_weight": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_tax_and_shipping": true
+          }
+        },
+        "inventory_status_zGUVdg": {
+          "type": "inventory-status",
+          "settings": {
+            "show_indicator_bar": true,
+            "show_urgency_message": true,
+            "text_very_low": "<p>- Almost gone!</p>",
+            "text_low": "<p>- Hurry while stocks last!</p>",
+            "text_normal": "",
+            "text_no_stock": "<p>- Sorry! Out of stock!</p>",
+            "text_no_stock_backordered": "<p>Backordered</p>"
+          }
+        },
+        "divider-0": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "spacing": "mt-8 mb-8"
+          }
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {
+            "selector_style": "buttons",
+            "enable_dynamic_availability": true,
+            "dynamic_availability_downwards": false,
+            "show_backorder_text": true,
+            "enable_size_chart": false,
+            "size_chart_variant": "Size",
+            "size_chart_page": ""
+          }
+        },
+        "custom_liquid_xJRH4m": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{% if product.metafields.custom.size_chart != blank %}\n  <modal-opener class=\"no-js-hidden\" data-modal=\"size-chart\">\n    <button type=\"button\" class=\"link\" aria-haspopup=\"dialog\">Size Chart</button>\n  </modal-opener>\n{% endif %}"
+          }
+        },
+        "divider-1": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "spacing": "mt-8 mb-8"
+          }
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "show_qty_selector": true,
+            "enable_dynamic_checkout": false,
+            "show_pickup_availability": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_A8Pxtq": {
+          "type": "custom-liquid",
+          "name": "Request Pricing",
+          "settings": {
+            "custom_liquid": "{% if product.metafields.custom.request_pricing %}\n  <modal-opener class=\"no-js-hidden\" data-modal=\"globo-form-modal\">\n    <button type=\"button\" class=\"btn btn--primary w-full\" aria-haspopup=\"dialog\" style=\"--btn-bg-color: 228 29 39; --btn-bg-hover-color: 183 21 29;\">\n      Request Team Pricing!\n    </button>\n  </modal-opener>\n{% endif %}"
+          }
+        },
+        "description_bwt46e": {
+          "type": "description",
+          "settings": {
+            "show_as_collapsible_content": true,
+            "icon": "none",
+            "open": false,
+            "mobile": true
+          }
+        },
+        "collapsible-content-2": {
+          "type": "collapsible-content",
+          "settings": {
+            "heading": "Delivery and Shipping",
+            "icon": "truck",
+            "text": "<p>Add some general information about your delivery and shipping policies.</p>",
+            "page": "",
+            "open": true
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor-sku",
+        "product-labels",
+        "title",
+        "price",
+        "inventory_status_zGUVdg",
+        "divider-0",
+        "variant-picker",
+        "custom_liquid_xJRH4m",
+        "divider-1",
+        "buy-buttons",
+        "custom_liquid_A8Pxtq",
+        "description_bwt46e",
+        "collapsible-content-2",
+        "share"
+      ],
+      "settings": {
+        "stick_on_scroll": true,
+        "select_first_variant": true,
+        "sticky_atc_panel": true,
+        "sticky_atc_position": "end",
+        "sticky_atc_mobile": true,
+        "media_layout": "slider",
+        "media_size": "default",
+        "media_ratio": "1",
+        "media_crop": "none",
+        "enable_video_looping": false,
+        "enable_zoom": true,
+        "zoom_mode": "hover",
+        "enable_lightbox_mobile": false,
+        "hover_zoom": "large",
+        "stacked_scroll": "always",
+        "underline_active": true,
+        "media_arrows": "desktop",
+        "show_slide_count": true,
+        "media_thumbs": "desktop",
+        "lightbox_thumbnails": true,
+        "thumb_ratio": "1",
+        "thumb_crop": "none",
+        "border_color": "#eeeeee",
+        "bg_color": "#ffffff",
+        "enable_media_grouping": false,
+        "media_grouping_option": "Color,Colour,Couleur,Farbe"
+      }
+    },
+    "details": {
+      "type": "product-details",
+      "blocks": {
+        "tabs": {
+          "type": "tabs",
+          "settings": {
+            "style": "collapsible",
+            "open_first": true,
+            "show_description": true,
+            "desktop": true,
+            "show_reviews": false,
+            "custom_reviews": "",
+            "show_specification": false,
+            "spec_metafields": "",
+            "spec_right_align": false,
+            "spec_show_empty_metafields": true,
+            "spec_empty_field_text": "-",
+            "tab_1_title": "",
+            "tab_1_text": "",
+            "tab_1_page": "",
+            "tab_2_title": "",
+            "tab_2_text": "",
+            "tab_2_page": "",
+            "tab_3_title": "",
+            "tab_3_text": "",
+            "tab_3_page": ""
+          }
+        },
+        "payment-methods": {
+          "type": "payment-methods",
+          "settings": {
+            "title": "Payment & Security",
+            "title1": "Payment methods",
+            "show_payment_icons": true,
+            "text1": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.</p>",
+            "title2": "",
+            "text2": ""
+          }
+        }
+      },
+      "block_order": [
+        "tabs",
+        "payment-methods"
+      ],
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "heading_align": "text-start",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 8
+      }
+    },
+    "1750712154afeeb619": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_8YXLcK": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_8YXLcK"
+      ],
+      "settings": {
+        "full_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "details",
+    "recommendations",
+    "1750712154afeeb619"
+  ]
+}

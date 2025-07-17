@@ -1,0 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection-banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_title": true,
+        "show_product_count": true,
+        "show_collection_description": true,
+        "text_align": "text-start",
+        "collection_image": "natural",
+        "use_product_image": false,
+        "text_width": "standard",
+        "color_scheme": "default"
+      }
+    },
+    "collection-products": {
+      "type": "main-collection-products",
+      "blocks": {
+        "image_promotion_YrTHTA": {
+          "type": "image-promotion",
+          "settings": {
+            "position": 4,
+            "view": "grid_list",
+            "hide_on_filter": true,
+            "min_height": 120,
+            "image": "shopify://shop_images/Best_Tent_Pricing_In_the_USA_1_9c229d2d-5161-448f-857b-fb3b7308ccd9.jpg",
+            "link_url": "",
+            "content": "",
+            "text_type_scale": "1em",
+            "text_width": 400,
+            "text_alignment": "justify-center items-center text-center",
+            "button_label": "",
+            "button_style": "btn btn--secondary",
+            "text_color": "#ffffff",
+            "tint_color": "#000000",
+            "tint_opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "image_promotion_YrTHTA"
+      ],
+      "settings": {
+        "products_per_page": 16,
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "show_layout_toggle": true,
+        "enable_filtering": true,
+        "filters_open_lg": true,
+        "stick_on_scroll": true,
+        "show_filter_counts": true,
+        "expand_filters": false,
+        "max_filter_options": 7,
+        "enable_sorting": true,
+        "show_feat_sort_opt": true,
+        "sort_first": true
+      }
+    }
+  },
+  "order": [
+    "collection-banner",
+    "collection-products"
+  ]
+}

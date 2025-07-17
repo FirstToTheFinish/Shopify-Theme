@@ -1,0 +1,22 @@
+{% assign chart_type = product.metafields.custom.sizing_chart | downcase %}
+
+{% case chart_type %}
+  {% when 'shoes' %}
+    {% render 'sizing-chart-shoes' %}
+  {% when 'apparel' %}
+    {% render 'sizing-chart-apparel' %}
+  {% when 'compression singlet' %}
+    {% render 'sizing-chart-compression-singlet' %}
+  {% when 'loose fit singlet' %}
+    {% render 'sizing-chart-loose-fit-singlet' %}
+  {% else %}
+    <p>No sizing chart available for this product.</p>
+{% endcase %}
+
+
+{% schema %}
+  {
+    "name": "Sizing Chart",
+    "settings": []
+  }
+{% endschema %}

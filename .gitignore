@@ -1,0 +1,7 @@
+# Shopify CLI
+.shopify
+.env
+node_modules/
+.DS_Store
+*.log
+
