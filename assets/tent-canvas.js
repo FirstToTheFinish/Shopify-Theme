@@ -165,7 +165,7 @@ function initialize10x20PeakCanvas(canvasId, context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor1;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 
     const overlayId = canvasId.replace('Canvas', 'TextOverlay');
@@ -192,7 +192,7 @@ function initialize10x20ValanceCanvas(context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor1;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 }
 
@@ -212,7 +212,7 @@ function initialize10x20WallCanvas(context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor1;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 }
 
@@ -236,7 +236,7 @@ function initialize10x10PeakCanvas(canvasId, context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor2;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 
     const overlayId = canvasId.replace('Canvas', 'TextOverlay');
@@ -263,7 +263,7 @@ function initialize10x10ValanceCanvas(context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor2;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 }
 
@@ -283,7 +283,7 @@ function initialize10x10WallCanvas(context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor2;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 }
 
@@ -310,7 +310,7 @@ function initialize10x15PeakCanvas(canvasId, context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor3;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 
     const overlayId = canvasId.replace('Canvas', 'TextOverlay');
@@ -338,7 +338,7 @@ function initialize10x15ValanceCanvas(context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor3;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 }
 
@@ -358,7 +358,7 @@ function initialize10x15WallCanvas(context) {
     context.fillStyle = "white";
     context.fill();
     context.lineWidth = 1 * tentScaleFactor3;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#D0D0D0";
     context.stroke();
 }
 
