@@ -1,0 +1,10 @@
+{
+    "name": "Tent Builder",
+    "sections": {
+      "main": {
+        "type": "tent-builder"
+      }
+    },
+    "order": ["main"]
+  }
+  
