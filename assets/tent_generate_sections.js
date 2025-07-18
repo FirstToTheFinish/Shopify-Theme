@@ -464,7 +464,7 @@ function generateSections(sectionsConfig) {
                     const context = canvas.getContext('2d');
                     context.fillStyle = colorClassMap[selectedRadio.value];
                     context.fill();
-                    context.strokeStyle = '#000000';
+                    context.strokeStyle = '#D0D0D0';
                     context.stroke();
                     if (section.title === "Front Valance") {
                         updateValanceLogo(selectedRadio.value);
@@ -483,7 +483,7 @@ function updateCanvasColor(color) {
                 const context = canvas.getContext('2d');
                 context.fillStyle = color;
                 context.fill();
-                context.strokeStyle = '#000000';
+                context.strokeStyle = '#D0D0D0';
                 context.stroke();
                 if (section.title === "Front Valance") {
                     updateValanceLogo(color);
