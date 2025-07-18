@@ -117,7 +117,7 @@ function generateSections(sectionsConfig) {
 
                             <!-- Upload Label -->
                             <label class="add-art-button" for="upload-${section.id}" style="font-size:10px; color:#575757; display: flex; align-items: center;">
-                                <img alt="Upload Icon" style="width: 30px; height: 30px; margin-right: 5px;">
+                                <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" style="width: 30px; height: 30px; margin-right: 5px;">
                                 UPLOAD YOUR ART
                             </label>
 
