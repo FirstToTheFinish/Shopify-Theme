@@ -1,0 +1,300 @@
+{% layout none %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FTTF Tent Builder</title>
+</head>
+<body>
+<div class="bodywrap">
+    <div class="fws_content_wrap bgcolW">
+        <div class="fws_content">
+        <div class="wdth100 txtcenter mart5">
+        <span class="inblock txtcenter" style="width:955px;">
+            <div class="padb10">
+                <span class="itemtd1 inblock txtleft valignT">
+                    <div class="imagewrap gallery" style="position:relative;">
+                        <div id="tent-canvases" class="item-image block" style="margin-top:20px; position:relative;">
+                            <div style="margin-left: 550px; display: flex; flex-direction: column; gap: 10px;">
+                                <button id="toggleSnapGrid" class="snap-button" style="padding-top: 2px;">
+                                    <img id="snapGrid" alt="Overlay Image" style="width: 25px; height: auto;">
+                                    <div class="description" style="visibility: hidden;">Toggle Snap Grid</div>
+                                </button>
+                                <button id="horizontalCenter" class="center-button1 hidden" style="top: 35px;">
+                                    <img id="horizCenter" alt="Overlay Image" style="width: 25px; height: auto;">
+                                    <div class="description" style="visibility: hidden;">Horizontal Center</div>
+                                </button>
+                                <button id="verticalCenter" class="center-button2 hidden" style="top: 69px;">
+                                    <img id="vertCenter" alt="Overlay Image" style="width: 25px; height: auto;">
+                                    <div class="description" style="visibility: hidden;">Vertical Center</div>
+                                </button>
+                            </div>
+                            <canvas id="FrontPeakCanvas" class="canvas2" style="display:block;"></canvas>
+                            <div id="FrontPeakTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="FrontValanceCanvas" class="canvas2" style="display:block;"></canvas>
+                            <div id="FrontValanceTextOverlay" class="text-overlay"></div>
+                            <img id="ValanceLogo" alt="Overlay Image">
+
+                            <canvas id="BackPeakCanvas" class="canvas2" style="display:none;"></canvas>
+                            <div id="BackPeakTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="BackValanceCanvas" class="canvas2" style="display:none;"></canvas>
+                            <div id="BackValanceTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="BackWallCanvas" class="canvas2" style="display:none;"></canvas>
+                            <div id="BackWallTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="RightPeakCanvas" class="canvas2" style="display:none; margin-left: 90px;"></canvas>
+                            <div id="RightPeakTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="RightValanceCanvas" class="canvas2" style="display:none; margin-left: 90px;"></canvas>
+                            <div id="RightValanceTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="RightWallCanvas" class="canvas2" style="display:none; margin-left: 90px;"></canvas>
+                            <div id="RightWallTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="LeftPeakCanvas" class="canvas2" style="display:none; margin-left: 90px;"></canvas>
+                            <div id="LeftPeakTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="LeftValanceCanvas" class="canvas2" style="display:none; margin-left: 90px;"></canvas>
+                            <div id="LeftValanceTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="LeftWallCanvas" class="canvas2" style="display:none; margin-left: 90px;"></canvas>
+                            <div id="LeftWallTextOverlay" class="text-overlay"></div>
+
+                            <canvas id="tentPreviewCanvas" width="650" height="400" style="display: none; margin-left: -60px;"></canvas>
+                            <img id="tentPreviewImage" style="display: none; margin-left: -60px;" />
+                            <img id="ValanceLogo2" alt="Overlay Image" style="display:none; visibility: hidden;">
+                            <div id="loadingOverlay" class="loading-overlay">
+                                <div class="loading-message">Generating preview, please wait...</div>
+                            </div>
+                            <div id="loadingOverlay2" class="loading-overlay">
+                                <div id="loading-message2" class="loading-message">Submitting Design, please wait...</div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="itemtd2 inblock txtleft valingT" style="position:relative; left:100px;">
+                    <div class="txtleft">
+                        <h1 class="fws_ftaquiB ">
+                            <script>
+                                const itDescript = "10x10";
+                                const higherPrice = "$1,299.99";
+                                const itType = true;
+                            </script>
+                        </h1>
+                    </div>
+                    <div>                      
+                        <div class="itemBuywrap shdw radi5 bgcolLG" style="position:relative">
+                            <div class="itemBuywrapper">
+                                <div class="itemInfoTitle">
+                                    <span id="infoTitle" class="fws_ftaquiB ftcolG2 fs18">Select Options</span>
+                                </div>
+                            </div>
+                            <div id="file-upload-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close-button" onclick="closeUploadModal()">&times;</span>
+                                    <div class="modal-header">
+                                        <h2>CHOOSE ANOTHER FILE</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>File extension error. Only jpeg, jpg, png, and svg images are allowed.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="ok-button" onclick="closeUploadModal()">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="required-fields-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close-button" onclick="closeRequiredFieldsModal()">&times;</span>
+                                    <div class="modal-header">
+                                        <h2>REQUIRED FIELDS</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Please complete all required fields presented with a red outline and/or says *REQUIRED.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="ok-button" onclick="closeRequiredFieldsModal()">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="sections-container"></div>                       
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="wdth98 shdw radi5 bgcolLG pad10 marb10" style="z-index: 15;">
+                <div class="TentHeader" style="text-align: left; line-height: 1.3;">
+                    <h1>Welcome to the Official FTTF Tent Builder!</h1>
+                    <p style="margin-left: 900px; margin-top: -20px;">v1.1.1</p>
+                    <p>From here you will be able to design your tent in many ways. Please see below for the instructions and frequently asked questions:</p>
+                    <p>For best functionality, use Google Chrome or Microsoft Edge as your browser. Other browsers may not work as expected. </p>
+                </div>
+
+                <div class="tentContainer" style="display: flex; justify-content: space-between; line-height: 1.2;">
+                    <div class="tentLeft" style="flex: 1; padding-right: 20px; text-align: left;">
+                        <h2 style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 10px;">How Everything Works</h2>
+                        <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 5px;">
+                                <p>You will begin at the front side of the tent then work your way to the back, right, and left sides of the tent.</p>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <p>When you are finished with the current section, click the next button to go to the next section. You can always go back to the previous section(s) for later editing using the prev button.</p>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <p>After you have completed all sections, a Preview Now button will show, which will generate the preview of your tent. This can take a couple of minutes to load the more customized the tent becomes.</p>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <p>With the preview finished, you now have the option to go back and edit more or submit your design.</p>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <p>If you are ready to submit, please fill out all the contact information and press submit. This will generate a PDF for you and automatically download it to your computer.</p>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <p>On the right side of the screen, you will see a box labeled SELECT OPTIONS, which is where most of your customization takes place. There are five subsections labeled accordingly:</p>
+                            </li>
+                        </ul>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Current Section:</strong>
+                                <ul style="list-style-type: disc; padding-left: 20px;">
+                                    <li>Tells you what part of the tent you are customizing.</li>
+                                    <li style="margin-bottom: 5px;">Button for copying from opposite side are on the following sections: Back Peak, Back Valance, Left Peak, Left Valance, Left Wall.</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>Choose Color:</strong>
+                                <ul style="list-style-type: disc; padding-left: 20px;">
+                                    <li>Click any of the colored dots to change the color of the section or pick a custom color by clicking on the colored square.</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>Add Text:</strong>
+                                <ul style="list-style-type: disc; padding-left: 20px;">
+                                    <li style="margin-bottom: 5px;">Type whatever message you would like on this section of the tent.</li>
+                                    <li style="margin-bottom: 5px;">You then must choose the Font Style.</li>
+                                    <li style="margin-bottom: 5px;">You then can change the color of the text and color of the outline of the text to any color just like for choosing the tent color. If you are not wanting any outline color, click clear.</li>
+                                    <li style="margin-bottom: 5px;">Once you click on the text on the tent, you can move the text around by dragging it, and you can resize it by dragging the bottom-right corner of the text box.</li>
+                                    <li>Only text that is within the current section will show.</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>Add Your Art:</strong>
+                                <ul style="list-style-type: disc; padding-left: 20px;">
+                                    <li style="margin-bottom: 5px;">Upload your art here. The file's format must be one of the following: .jpg, .jpeg, .png, .svg.</li>
+                                    <li style="margin-bottom: 5px;">Art will appear on the right hand side to show you which art is on the current section. There is a dropdown for additional base sizing options.</li>
+                                    <li style="margin-bottom: 5px;">You can upload as many as you would like; however, the more you upload, the longer it may take for you to get the final art approval.</li>
+                                    <li style="margin-bottom: 5px;">You may be asked to send your artwork to our art department after the design has been submitted, so please keep your files until after the art approval has been finished.</li>
+                                    <li>Just like for text, you will be able to move around and resize the art the same way.</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 10px;"><strong>Notes:</strong> 
+                                <ul style="list-style-type: disc; padding-left: 20px;">
+                                    <li style="margin-bottom: 5px;">This is the place to put any notes, changes, questions, or issues that you want addressed with your design for this section. (Ex. Size to fit the text for the front valance to the height of the section.)</li>
+                                    <li style="margin-bottom: 5px;">Every section has this, so please write about the current section only.</li>
+                                    <li>It is limited to 200 characters only, but keep it clear and specific about what you would like done.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tentRight" style="flex: 1; padding-left: 20px; text-align: left;">
+                        <h2 style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 10px;">What's New!</h2>
+                        <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 5px;">We have introduced a new custom color choice for you tent where you can choose whatever color you can imagine!</li>
+                            <li style="margin-bottom: 5px;">Removed the dropdown color choice from the text section and replaced it with a custom color picker!</li>
+                            <li style="margin-bottom: 5px;">Added Copy and Paste for artwork already on the tent. Use CTRL + C and CTRL + V for copy and pasting.</li>
+                            <li style="margin-bottom: 5px;">Dropdown option for additional art sizing in the art section.</li>
+                            <li style="margin-bottom: 5px;">Added the ability to copy from opposite side for the following: Back Peak, Back Valance, Left Peak, Left Valance, Left Wall.</li>
+                            <li style="margin-bottom: 5px;">Minor bug fixes and improvements have been made!</li>
+                        </ul>
+
+                        <h2 style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 10px;">What to Expect</h2>
+                        <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 5px;">Start by customizing your tent via our tent-builder.</li>
+                            <li style="margin-bottom: 5px;">When finished, submit your tent, and a PDF will be generated and downloaded to your computer.</li>
+                            <li style="margin-bottom: 5px;">If you choose either &quot;Yes&quot; option to the Ready to Order dropdown, then an email will also be sent over to you and to our team to begin the process of putting your tent into production.</li>
+                            <li style="margin-bottom: 5px;">From here, a representative will reach out to you within 1-2 business days regarding your tent design. This will entail gathering more information from you, including payment options, tax-exemption, etc.</li>
+                            <li style="margin-bottom: 5px;">At this point, you will wait to hear from our art department for you to approve the custom design that you mocked up that we bring to life. This process does take time, so please be patient.</li>
+                            <li style="margin-bottom: 5px;">After the artwork has been approved, we will proceed with handling payment.</li>
+                            <li style="margin-bottom: 5px;">Now that we have payment handled, your tent will be pushed into production. Expect to receive your tent within 2-3 weeks (starting after artwork approval and payment dealt with).</li>
+                            <li>Finally, enjoy your tent!</li>
+                        </ul>
+
+                        <h2 style="text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 10px;">Helpful Tips</h2>
+                        <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+                            <li style="margin-bottom: 5px;">If you are wanting to shrink the textbox to fit the text, change the color of the tent, and the textbox will size to fit the text within it.</li>
+                            <li style="margin-bottom: 5px;">Press the delete key after selecting an item on the tent to delete it.</li>
+                            <li style="margin-bottom: 5px;">There are three icons to the right of the displayed tent:</li>
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                <li style="margin-bottom: 5px;"><strong>Toggle Snap Grid:</strong> Turns on/off the horizontal and vertical center lines for snapping.</li>
+                                <li style="margin-bottom: 5px;"><strong>Horizontal Center:</strong> For items that have been selected (box showing around them), this will center the item to the horizontal center.</li>
+                                <li style="margin-bottom: 5px;"><strong>Vertical Center:</strong> For items that have been selected (box showing around them), this will center the item to the vertical center.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+</div>
+</div>
+</div>
+    <script>
+        window.shopifyAssetPaths = {
+            logos: {
+                blackValance: "{{ 'fttf black logo for valnce TENT.svg' | asset_url }}",
+                whiteValance: "{{ 'fttf white logo for valnce TENT.svg' | asset_url }}"
+              },
+            grid: {
+                horizontalCenter: "{{ 'horizontal-center.png' | asset_url }}",
+                horizontalCenterWhite: "{{ 'horizontal_center_white.png' | asset_url }}",
+                verticalCenter: "{{ 'vertical-center.png' | asset_url }}",
+                verticalCenterWhite: "{{ 'vertical-center_white.png' | asset_url }}",
+                snapGrid: "{{ 'snap-grid.png' | asset_url }}",
+                snapGridWhite: "{{ 'snap-grid_white.png' | asset_url }}"
+              },
+            tools: {
+                tentCanvas: "{{ 'tent-canvas.png' | asset_url }}",
+                uploadIcon: "{{ 'upload.png' | asset_url }}",
+                eyeDropper: "{{ 'OIP.jfif' | asset_url }}"
+              },
+            tentColors: {
+                "Black": "{{ 'BLACK.svg' | asset_url }}",
+                "Cardinal": "{{ 'CARDINAL.svg' | asset_url }}",
+                "Columbia Blue": "{{ 'COLUMBIA BLUE.svg' | asset_url }}",
+                "Forest Green": "{{ 'FOREST GREEN.svg' | asset_url }}",
+                "Grey": "{{ 'GREY.svg' | asset_url }}",
+                "Kelly Green": "{{ 'KELLY GREEN.svg' | asset_url }}",
+                "Maroon": "{{ 'MAROON.svg' | asset_url }}",
+                "Navy Blue": "{{ 'NAVY BLUE.svg' | asset_url }}",
+                "Orange": "{{ 'ORANGE.svg' | asset_url }}",
+                "Purple": "{{ 'PURPLE.svg' | asset_url }}",
+                "Red": "{{ 'RED.svg' | asset_url }}",
+                "Royal Blue": "{{ 'ROYAL BLUE.svg' | asset_url }}",
+                "Silver": "{{ 'SILVER.svg' | asset_url }}",
+                "Vegas Gold": "{{ 'VEGAS GOLD.svg' | asset_url }}",
+                "White": "{{ 'WHITE.svg' | asset_url }}",
+                "Yellow Gold": "{{ 'YELLOW GOLD.svg' | asset_url }}",
+                "Yellow": "{{ 'YELLOW.svg' | asset_url }}",
+            }
+
+        };
+        document.getElementById('snapGrid').src = window.shopifyAssetPaths.grid.snapGrid;
+        document.getElementById('horizCenter').src = window.shopifyAssetPaths.grid.horizontalCenter;
+        document.getElementById('vertCenter').src = window.shopifyAssetPaths.grid.verticalCenter;
+        document.getElementById('ValanceLogo').src = window.shopifyAssetPaths.grid.blackValance;
+        document.getElementById('ValanceLogo2').src = window.shopifyAssetPaths.grid.blackValance;
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="{{ 'tent-canvas.js' | asset_url }}"></script>
+    <script src="{{ 'tent_sections_config.js' | asset_url }}"></script>
+    <script src="{{ 'tent_generate_sections.js' | asset_url }}"></script>
+    <script src="{{ 'tent_update_section.js' | asset_url }}"></script>
+    <script src="{{ 'tent-preview.js' | asset_url }}"></script>
+    <script src="{{ 'tent_update_text.js' | asset_url }}"></script>
+    <script src="{{ 'tent_update_art.js' | asset_url }}"></script>
+    <script src="{{ 'tent_generate_pdf.js' | asset_url }}"></script>
+    <script src="{{ 'test.css' | asset_url }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
+</body>
+</html>
