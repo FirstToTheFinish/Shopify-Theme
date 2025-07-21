@@ -8,7 +8,7 @@ function showSection(section) {
         document.getElementById(sectionsConfig[i].id).style.display = 'none';
     }
 
-    document.getElementById(sectionsConfig[section - 1].id).style.display = 'block';
+    document.getElementById(sectionsConfig[section - 1].id).style.display = 'inline';
     updateCurrentSectionText(section);
     updateButtonVisibility(section);
     currentSection = section;

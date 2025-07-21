@@ -1616,7 +1616,7 @@ h2 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
-  flex-wrap: wrap; /* for mobile responsiveness */
+  flex-wrap: nowrap; /* for mobile responsiveness */
 }
 
 .tent-preview {
