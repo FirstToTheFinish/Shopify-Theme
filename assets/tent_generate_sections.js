@@ -209,7 +209,7 @@ function generateSections(sectionsConfig) {
         // Add the event listener for the 'Enter' key on the color input
         pickr.on('init', instance => {
             const el = instance.getRoot();
-            const appElement = el?.app; // This is the actual .pcr-app DOM node
+            const appElement = el.button; // This is the actual .pcr-app DOM node
 
             if (appElement) {
             appElement.style.marginTop = '-37px';
@@ -217,7 +217,6 @@ function generateSections(sectionsConfig) {
             } else {
             console.error('Pickr root.app element not found');
             }
-            console.log('Pickr root:', instance.getRoot());
 
             el.button.addEventListener('keydown', e => {
                 if (e.key === 'Enter' && instance === pickrInstances[currentSection]) {
