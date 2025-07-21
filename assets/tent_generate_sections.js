@@ -209,8 +209,7 @@ function generateSections(sectionsConfig) {
         // Add the event listener for the 'Enter' key on the color input
         pickr.on('init', instance => {
             const el = instance.getRoot();
-            el.style.marginTop = '-37px';
-            el.style.marginLeft = '137px';
+            console.log(el.parentElement);
 
 
             el.button.addEventListener('keydown', e => {
