@@ -24,11 +24,11 @@ function generateSections(sectionsConfig) {
                     ${section.title === 'Left Valance' ? '<button id="copy-left-valance" class="btn btn--primary w-full" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button><br><br>' : ''}
                     ${section.title === 'Left Wall' ? '<button id="copy-left-wall" class="btn btn--primary w-full" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button><br><br>' : ''}
                 </div>
-                <div style="min-height:35px;">
+                <div style="min-height:35px; padding-top:10px">
                     <h5>
                         2. Choose Color: <span id="selected-color-${section.id}" style="font-weight:initial">White</span>
                     </h5>
-                    <div style="position: relative;">
+                    <div style="position: relative; margin-top:-10px;">
                         ${section.colorOptions.map(color => `
                             <input type="radio" id="${section.id}-${color.toLowerCase().replace(' ', '-')}" name="color-${section.id}" value="${color}" class="color-radio" ${color === 'White' ? 'checked' : ''}>
                             <label for="${section.id}-${color.toLowerCase().replace(' ', '-')}">
