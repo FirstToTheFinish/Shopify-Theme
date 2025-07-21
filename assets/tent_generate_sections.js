@@ -40,7 +40,7 @@ function generateSections(sectionsConfig) {
                                 </div>
                             </label>
                         `).join('')}
-                        <div id="color-picker-${section.id}" class="color-picker" style="margin-top: -37px; margin-left: 137px;"></div>
+                        <label id="color-picker-${section.id}" class="color-picker"></label>
                     </div>
                 </div>
                 <div style="min-height:35px; padding-top:10px;">
