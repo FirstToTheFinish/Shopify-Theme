@@ -78,20 +78,34 @@
                 </span>
                 <span>
                     <div>
-                        <h1>
                             <script>
-                                const itDescript = "10x20";
-                                const higherPrice = "$1,299.99";
-                                const itType = true;
+                                var itDescript = "10x20";
+                                var higherPrice = "$1,299.99";
+                                var itType = true;
+                                var tentTitle;
+                                var pricing = `Starting at $${higherPrice}`;
+
+                                if(itType){
+                                    tentTile = `Custom ${itDescript} Tent Value Pack`;
+                                }
+                                else{
+                                    tentTitle = `Fully Custom ${itDescript} Tent`;
+                                }
+
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    document.getElementById("tentTitle").textContent = tentTitle;
+                                });
+
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    document.getElementById("pricing").textContent = tentTitle;
+                                });
                             </script>
-                        </h1>
                     </div>
                     <div class="tent-controls">                      
                         <div style="position:relative">
                             <div>
-                                <div>
-                                    <span id="infoTitle">Select Options</span>
-                                </div>
+                                <h1 id="tentTitle"></h1>
+                                <p id ="pricing"></p>
                             </div>
                             <div id="file-upload-modal" class="modal">
                                 <div class="modal-content">
