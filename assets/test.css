@@ -1606,3 +1606,42 @@ h2 {
   text-orientation: upright;
   /* Ensures characters are upright */
 }
+
+.tent-builder-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  flex-wrap: wrap; /* for mobile responsiveness */
+}
+
+.tent-preview {
+  flex: 1 1 50%;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.tent-controls {
+  flex: 1 1 350px;
+  max-width: 400px;
+  background: #f9f9f9;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+  .tent-builder-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tent-preview, .tent-controls {
+    max-width: 100%;
+  }
+}
+
