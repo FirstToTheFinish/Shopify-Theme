@@ -83,10 +83,10 @@
                                 var higherPrice = "$1,299.99";
                                 var itType = true;
                                 var tentTitle;
-                                var pricing = `Starting at $${higherPrice}`;
+                                var pricing = `Starting at ${higherPrice}`;
 
                                 if(itType){
-                                    tentTile = `Custom ${itDescript} Tent Value Pack`;
+                                    tentTitle = `Custom ${itDescript} Tent Value Pack`;
                                 }
                                 else{
                                     tentTitle = `Fully Custom ${itDescript} Tent`;
@@ -104,7 +104,7 @@
                     <div class="tent-controls">                      
                         <div style="position:relative">
                             <h1 id="tentTitle"></h1>
-                            <p id ="pricing"></p>
+                            <p id ="pricing" style="font-size: 18px;"></p>
                             <div id="file-upload-modal" class="modal">
                                 <div class="modal-content">
                                     <span class="close-button" onclick="closeUploadModal()">&times;</span>
