@@ -19,10 +19,10 @@ function generateSections(sectionsConfig) {
                         1. Current Section: <span id="current-section" style="font-weight:initial">${section.title}</span>
                     </h5>
                     ${section.title === 'Back Peak' ? '<button id="copy-back-peak" class="copy-button" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button>' : ''}
-                    ${section.title === 'Back Valance' ? '<br><br><button id="copy-back-valance" class="copy-button" onclick="copyOppositeSection(\'back-valance\')">Copy Front Valance</button>' : ''}
-                    ${section.title === 'Left Peak' ? '<br><br><button id="copy-left-peak" class="copy-button" onclick="copyOppositeSection(\'left-peak\')">Copy Right Peak</button>' : ''}
-                    ${section.title === 'Left Valance' ? '<br><br><button id="copy-left-valance" class="copy-button" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button>' : ''}
-                    ${section.title === 'Left Wall' ? '<br><br><button id="copy-left-wall" class="copy-button" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button>' : ''}
+                    ${section.title === 'Back Valance' ? '<button id="copy-back-valance" class="copy-button" onclick="copyOppositeSection(\'back-valance\')">Copy Front Valance</button>' : ''}
+                    ${section.title === 'Left Peak' ? '<button id="copy-left-peak" class="copy-button" onclick="copyOppositeSection(\'left-peak\')">Copy Right Peak</button>' : ''}
+                    ${section.title === 'Left Valance' ? '<button id="copy-left-valance" class="copy-button" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button>' : ''}
+                    ${section.title === 'Left Wall' ? '<button id="copy-left-wall" class="copy-button" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button>' : ''}
                 </div>
                 <div style="min-height:35px;">
                     <h5>

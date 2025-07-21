@@ -1202,32 +1202,27 @@ h2 {
 }
 
 .copy-button {
-  background-color: #f11919;
-  /* Green background */
+  background-color: #e53935;     
   color: white;
-  /* White text */
   border: none;
-  /* No borders */
-  padding: 5px;
-  /* Padding */
-  text-align: center;
-  /* Center text */
-  text-decoration: none;
-  /* No underline */
+  padding: 6px 14px;
+  border-radius: 6px;
   font-size: 14px;
-  /* Text size */
-  border-radius: 5px;
-  /* Rounded corners */
+  font-weight: 500;
   cursor: pointer;
-  /* Pointer cursor on hover */
-  margin-left: 10px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 6px;
+  margin-left: 8px;
 }
 
 .copy-button:hover {
-  background-color: #be0b0b;
-  /* Darker green background on hover */
-  transform: scale(1.05);
-  /* Slightly increase size on hover */
+  background-color: #d32f2f;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.copy-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.3);
 }
 
 /* Container to hold all three dropdowns side by side */
