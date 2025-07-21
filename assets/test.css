@@ -640,8 +640,6 @@ input:focus-visible, button:focus-visible, .custom-dropdown-button:focus-visible
   width: 25px;
   height: auto;
   z-index: 9;
-  right: 5px;
-  display: block
 }
 
 #ValanceLogo2 {
