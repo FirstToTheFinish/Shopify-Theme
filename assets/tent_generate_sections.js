@@ -121,14 +121,11 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div id="art-preview-${section.id}" class="art-preview" style="padding-top: 8px; padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>5</span>
-                    </span>
-                    <span style="padding-left:2px">
-                        NOTES:
-                    </span>
+                    <h5 style="padding-left:2px">
+                        5. Notes to Artist:
+                    </h5>
                     <div>
-                        <textarea id="notes-${section.id}" maxlength="200" class="notes-textarea placeholder-grey" style="width:75%; height:100px; margin-top: 10px; border-radius:3px; border: 1px solid #838383; overflow: auto; resize: none;" placeholder="Enter any notes about this section"></textarea>
+                        <textarea id="notes-${section.id}" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none;" placeholder="Enter any notes here..."></textarea>
                         <div><span id="char-count-${section.id}">200 characters remaining</span></div>
                     </div>
                 </div>
