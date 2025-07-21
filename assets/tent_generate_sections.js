@@ -18,11 +18,11 @@ function generateSections(sectionsConfig) {
                     <h5>
                         1. Current Section: <span id="current-section" style="font-weight:initial">${section.title}</span>
                     </h5>
-                    ${section.title === 'Back Peak' ? '<button id="copy-back-peak" class="copy-button" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button>' : ''}
-                    ${section.title === 'Back Valance' ? '<button id="copy-back-valance" class="copy-button" onclick="copyOppositeSection(\'back-valance\')">Copy Front Valance</button>' : ''}
-                    ${section.title === 'Left Peak' ? '<button id="copy-left-peak" class="copy-button" onclick="copyOppositeSection(\'left-peak\')">Copy Right Peak</button>' : ''}
-                    ${section.title === 'Left Valance' ? '<button id="copy-left-valance" class="copy-button" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button>' : ''}
-                    ${section.title === 'Left Wall' ? '<button id="copy-left-wall" class="copy-button" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button>' : ''}
+                    ${section.title === 'Back Peak' ? '<button id="copy-back-peak" class="btn btn--primary w-full" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button><br><br>' : ''}
+                    ${section.title === 'Back Valance' ? '<button id="copy-back-valance" class="btn btn--primary w-full" onclick="copyOppositeSection(\'back-valance\')">Copy Front Valance</button><br><br>' : ''}
+                    ${section.title === 'Left Peak' ? '<button id="copy-left-peak" class="btn btn--primary w-full" onclick="copyOppositeSection(\'left-peak\')">Copy Right Peak</button><br><br>' : ''}
+                    ${section.title === 'Left Valance' ? '<button id="copy-left-valance" class="btn btn--primary w-full" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button><br><br>' : ''}
+                    ${section.title === 'Left Wall' ? '<button id="copy-left-wall" class="btn btn--primary w-full" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button><br><br>' : ''}
                 </div>
                 <div style="min-height:35px;">
                     <h5>
