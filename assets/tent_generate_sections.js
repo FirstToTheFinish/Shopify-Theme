@@ -15,26 +15,19 @@ function generateSections(sectionsConfig) {
         sectionDiv.innerHTML = `
             <div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>1</span>
-                    </span>
-                    <span>
-                        CURRENT SECTION: <span id="current-section">${section.title}</span>
-                    </span>
+                    <h5>
+                        1. Current Section: <span id="current-section"><p>${section.title}</p></span>
+                    </h5>
                     ${section.title === 'Back Peak' ? '<br><br><button id="copy-back-peak" class="copy-button" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button>' : ''}
                     ${section.title === 'Back Valance' ? '<br><br><button id="copy-back-valance" class="copy-button" onclick="copyOppositeSection(\'back-valance\')">Copy Front Valance</button>' : ''}
                     ${section.title === 'Left Peak' ? '<br><br><button id="copy-left-peak" class="copy-button" onclick="copyOppositeSection(\'left-peak\')">Copy Right Peak</button>' : ''}
                     ${section.title === 'Left Valance' ? '<br><br><button id="copy-left-valance" class="copy-button" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button>' : ''}
                     ${section.title === 'Left Wall' ? '<br><br><button id="copy-left-wall" class="copy-button" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button>' : ''}
-                    <br><br>
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>2</span>
-                    </span>
-                    <span >
+                    <h5>
                         CHOOSE COLOR: <span id="selected-color-${section.id}">White</span>
-                    </span>
+                    </h5>
                     <div style="position: relative;">
                         ${section.colorOptions.map(color => `
                             <input type="radio" id="${section.id}-${color.toLowerCase().replace(' ', '-')}" name="color-${section.id}" value="${color}" class="color-radio" ${color === 'White' ? 'checked' : ''}>
