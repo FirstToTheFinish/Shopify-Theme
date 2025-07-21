@@ -28,55 +28,55 @@
 }
 
 .color-swatch2.vegas-gold {
-  background-color: #c0c494
+  background-color: #bec694
 }
 
 .color-swatch2.maroon {
-  background-color: #552132
+  background-color: #522033
 }
 
 .color-swatch2.cardinal {
-  background-color: #862838
+  background-color: #80283a
 }
 
 .color-swatch2.red {
-  background-color: #c52c2c
+  background-color: #bc2e31
 }
 
 .color-swatch2.orange {
-  background-color: #da4b12
+  background-color: #d04e1d
 }
 
 .color-swatch2.yellow-gold {
-  background-color: #ffbd0d
+  background-color: #f5c219
 }
 
 .color-swatch2.yellow {
-  background-color: #fce60d
+  background-color: #f3ec15
 }
 
 .color-swatch2.kelly-green {
-  background-color: #44b15c
+  background-color: #4db45b
 }
 
 .color-swatch2.forest-green {
-  background-color: #344e30
+  background-color: #354f30
 }
 
 .color-swatch2.navy-blue {
-  background-color: #1b234b
+  background-color: #211f4b
 }
 
 .color-swatch2.royal-blue {
-  background-color: #2f5fa7
+  background-color: #4358a7
 }
 
 .color-swatch2.columbia-blue {
-  background-color: #8fa9dd
+  background-color: #97a5dd
 }
 
 .color-swatch2.purple {
-  background-color: #73519e
+  background-color: #76499e
 }
 
 .hover-box {
@@ -119,7 +119,8 @@
 
 .hover-box span {
   display: block;
-  margin-top: 10px
+  margin-top: 5px;
+  font-size: 14px
 }
 
 .color-radio {

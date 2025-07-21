@@ -16,9 +16,9 @@ function generateSections(sectionsConfig) {
             <div>
                 <div style="min-height:35px;">
                     <h5>
-                        1. Current Section: <span id="current-section"><p>${section.title}</p></span>
+                        1. Current Section: <span id="current-section" style="font-weight:initial">${section.title}</span>
                     </h5>
-                    ${section.title === 'Back Peak' ? '<br><br><button id="copy-back-peak" class="copy-button" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button>' : ''}
+                    ${section.title === 'Back Peak' ? '<button id="copy-back-peak" class="copy-button" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button>' : ''}
                     ${section.title === 'Back Valance' ? '<br><br><button id="copy-back-valance" class="copy-button" onclick="copyOppositeSection(\'back-valance\')">Copy Front Valance</button>' : ''}
                     ${section.title === 'Left Peak' ? '<br><br><button id="copy-left-peak" class="copy-button" onclick="copyOppositeSection(\'left-peak\')">Copy Right Peak</button>' : ''}
                     ${section.title === 'Left Valance' ? '<br><br><button id="copy-left-valance" class="copy-button" onclick="copyOppositeSection(\'left-valance\')">Copy Right Valance</button>' : ''}
@@ -26,7 +26,7 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div style="min-height:35px;">
                     <h5>
-                        CHOOSE COLOR: <span id="selected-color-${section.id}">White</span>
+                        2. Choose Color: <span id="selected-color-${section.id}" style="font-weight:initial">White</span>
                     </h5>
                     <div style="position: relative;">
                         ${section.colorOptions.map(color => `
