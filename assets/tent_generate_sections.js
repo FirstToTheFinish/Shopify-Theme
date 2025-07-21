@@ -13,12 +13,12 @@ function generateSections(sectionsConfig) {
         }
 
         sectionDiv.innerHTML = `
-            <div class="itemBuywrapper">
-                <div class="" style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+            <div>
+                <div style="min-height:35px;">
+                    <span>
                         <span>1</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16">
+                    <span>
                         CURRENT SECTION: <span id="current-section">${section.title}</span>
                     </span>
                     ${section.title === 'Back Peak' ? '<br><br><button id="copy-back-peak" class="copy-button" onclick="copyOppositeSection(\'back-peak\')">Copy Front Peak</button>' : ''}
@@ -28,11 +28,11 @@ function generateSections(sectionsConfig) {
                     ${section.title === 'Left Wall' ? '<br><br><button id="copy-left-wall" class="copy-button" onclick="copyOppositeSection(\'left-wall\')">Copy Right Wall</button>' : ''}
                     <br><br>
                 </div>
-                <div class="" style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                <div style="min-height:35px;">
+                    <span>
                         <span>2</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16">
+                    <span >
                         CHOOSE COLOR: <span id="selected-color-${section.id}">White</span>
                     </span>
                     <div style="position: relative;">
@@ -49,20 +49,20 @@ function generateSections(sectionsConfig) {
                         `).join('')}
                     </div>
                     <div style="margin-top: 10px; margin-left: 10px">
-                        <span class="fws_ftaquiB ftcolG2 fs16">Custom Color:</span>
+                        <span>Custom Color:</span>
                         <div id="color-picker-${section.id}" class="color-picker"></div>
                     </div>
                 </div>
-                <div class="" style="min-height:35px; padding-top:10px;">
-                    <span class="itemStep inblock valignM">
+                <div style="min-height:35px; padding-top:10px;">
+                    <span>
                         <span>3</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:2px">
+                    <span style="padding-left:2px">
                         ADD TEXT:
                         <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:196px; border-radius:3px; border: 1px solid #838383; height: auto; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here" oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
                     </span>
                     <div style="margin-top:10px; padding-left:16px; display:none">
-                        <label class="fws_ftaquiB ftcolG1 fs14" for="font-style-${section.id}">Font Style:</label>
+                        <label for="font-style-${section.id}">Font Style:</label>
                         <div class="custom-dropdown" style="">
                             <button class="custom-dropdown-button" style="width:202px" onclick="toggleDropdown('font-style-${section.id}')">Select a font style</button>
                             <div id="font-style-${section.id}" class="custom-dropdown-content">
@@ -87,26 +87,26 @@ function generateSections(sectionsConfig) {
                         <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span>
                     </div>
                     <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
-                        <label class="fws_ftaquiB ftcolG1 fs14" for="font-color-${section.id}">Font Color:</label>
+                        <label for="font-color-${section.id}">Font Color:</label>
                         <div class="custom-dropdown">
                             <input type="color" id="font-color-picker-${section.id}" style="margin-left: 10px;" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
                         </div>
-                        <label class="fws_ftaquiB ftcolG1 fs14" id="font-color-${section.id}" style="margin-left: -168px;" value="">Black</label>
+                        <label id="font-color-${section.id}" style="margin-left: -168px;" value="">Black</label>
                     </div>
                     <div id="outline-color-div-${section.id}" style="display:none">
-                        <label class="fws_ftaquiB ftcolG1 fs14" for="outline-color-${section.id}">Outline Color:</label>
+                        <label for="outline-color-${section.id}">Outline Color:</label>
                         <div class="custom-dropdown">
                             <input type="color" id="outline-color-picker-${section.id}" style="margin-left: 10px;" />
                         </div>
-                        <label class="fws_ftaquiB ftcolG1 fs14" id="outline-color-${section.id}" style="margin-left: -175px;"value="">None</label>
+                        <label id="outline-color-${section.id}" style="margin-left: -175px;"value="">None</label>
                     </div>
                 </div>
-                <div class="" style="min-height:35px; padding-top:7px;">
+                <div style="min-height:35px; padding-top:7px;">
                     <div style="display: flex; align-items: center;">
-                        <span class="itemStep inblock valignM">
+                        <span>
                             <span>4</span>
                         </span>
-                        <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:6px">
+                        <span style="padding-left:6px">
                             ADD YOUR ART:
                         </span>
                         <!-- Drag and Drop Area -->
@@ -130,11 +130,11 @@ function generateSections(sectionsConfig) {
                     </div>
                 </div>
                 <div id="art-preview-${section.id}" class="art-preview" style="padding-top: 8px; padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
-                <div class="" style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                <div style="min-height:35px;">
+                    <span>
                         <span>5</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:2px">
+                    <span style="padding-left:2px">
                         NOTES:
                     </span>
                     <div>
@@ -583,61 +583,61 @@ function updateCanvasColor(color) {
     previewSection.style.display = 'none'; // Initially hidden
 
     previewSection.innerHTML = `
-    <div class="itemBuywrapper">
+    <div>
         <div class="preview-container">
             <form id="contactForm">
                 <div style="min-height:35px; padding-top:5px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>1</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="email">Email Address:</label>
+                    <label for="email">Email Address:</label>
                     <input type="email" id="email" name="email" class="text-input placeholder-grey" style="width:250px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
                     <span id="email-error" style="color: red; display: none;">Emails do not match</span>
                 </div>
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>2</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="confirmEmail">Confirm Email:</label>
+                    <label for="confirmEmail">Confirm Email:</label>
                     <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" style="width:250px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Retype email address" oninput="validateEmail()">
                     <span id="email-error" style="color: red; display: none;">Emails do not match</span>
                 </div>
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>3</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="name">Customer Name:</label>
+                    <label for="name">Customer Name:</label>
                     <input type="text" id="userName" name="name" class="text-input placeholder-grey" style="width:194px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. John Doe">
                 </div>
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>4</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="phone">Phone Number:</label>
+                    <label for="phone">Phone Number:</label>
                     <input type="text" id="phone" name="phone" class="text-input placeholder-grey" style="width:202px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
                     <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone number.</span>
                 </div>
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>5</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="schoolClub">School/Club:</label>
+                    <label for="schoolClub">School/Club:</label>
                     <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" style="width:212px; border-radius:3px; border: 1px solid #838383; height: auto;" placeholder="Optional">
                 </div>
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>6</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="street">Street Address:</label>
+                    <label for="street">Street Address:</label>
                     <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width:196px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. 2341 Plum St.">
                 </div>
                 <div class="input-row">
                 <div style="min-height:35px; margin-right: 10px;">
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="city">City:</label>
+                    <label for="city">City:</label>
                     <input type="text" id="city" name="city" class="text-input placeholder-grey" style="width:125px; border-radius:3px; border: 1px solid #838383; height: 21px;" required placeholder="Ex. Edwardsville">
                 </div>
                 <div style="min-height:35px; margin-right: 10px;">
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="state">State:</label>
+                    <label for="state">State:</label>
                     <div class="custom-dropdown">
                         <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 60px;">Ex.</button>
                         <div id="state-dropdown" class="custom-dropdown-content" style="width: 50px;">
@@ -696,17 +696,17 @@ function updateCanvasColor(color) {
                     </div>
                 </div>
                 <div style="min-height:35px;">
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="zip">Zip Code:</label>
+                    <label for="zip">Zip Code:</label>
                     <input type="text" id="zip" name="zip" class="text-input placeholder-grey" style="width:110px; border-radius:3px; border: 1px solid #838383; height: 21px;" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">                
                     <span id="zip-error" style="color: red; display: none;">Please enter a valid zip code.</span>
                 </div>
             </div>
             
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>7</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="priority">Ready to order:</label>
+                    <label for="priority">Ready to order:</label>
                     <div class="custom-dropdown">
                         <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
                         <div id="priority-dropdown" class="custom-dropdown-content">
@@ -718,10 +718,10 @@ function updateCanvasColor(color) {
                     </div>
                 </div>
                 <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>8</span>
                     </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="name">Design Name:</label>
+                    <label for="name">Design Name:</label>
                     <input type="text" id="Tent-Name" name="design" class="text-input placeholder-grey" style="width:194px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. Design 1">
                 </div>
                 <div class="arrow-container" style="padding-top:20px;">

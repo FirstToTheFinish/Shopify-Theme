@@ -7,15 +7,15 @@
   <link href="{{ 'test.css' | asset_url }}" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
 <body>
-<div class="bodywrap" style>
-    <div style="background: #F4F4F4">
-        <div class="fws_content">
-        <div class="wdth100 txtcenter mart5">
-        <span class="inblock txtcenter" style="width:955px;">
-            <div class="padb10">
-                <span class="itemtd1 inblock txtleft valignT">
-                    <div class="imagewrap gallery" style="position:relative;">
-                        <div id="tent-canvases" class="item-image block" style="margin-top:20px; position:relative;">
+<div>
+    <div>
+        <div>
+        <div>
+        <span style="width:955px;">
+            <div>
+                <span>
+                    <div style="position:relative;">
+                        <div id="tent-canvases" style="margin-top:20px; position:relative;">
                             <div style="margin-left: 550px; display: flex; flex-direction: column; gap: 10px;">
                                 <button id="toggleSnapGrid" class="snap-button" style="padding-top: 2px;">
                                     <img id="snapGrid" alt="Overlay Image" width="25" height="25" style="width: 25px; height: auto;">
@@ -76,9 +76,9 @@
                         </div>
                     </div>
                 </span>
-                <span class="itemtd2 inblock txtleft valingT" style="position:relative; left:100px;">
-                    <div class="txtleft">
-                        <h1 class="fws_ftaquiB ">
+                <span style="position:relative; left:100px;">
+                    <div>
+                        <h1>
                             <script>
                                 const itDescript = "10x10";
                                 const higherPrice = "$1,299.99";
@@ -87,10 +87,10 @@
                         </h1>
                     </div>
                     <div>                      
-                        <div class="itemBuywrap shdw radi5 bgcolLG" style="position:relative">
-                            <div class="itemBuywrapper">
-                                <div class="itemInfoTitle">
-                                    <span id="infoTitle" class="fws_ftaquiB ftcolG2 fs18">Select Options</span>
+                        <div style="position:relative">
+                            <div>
+                                <div>
+                                    <span id="infoTitle">Select Options</span>
                                 </div>
                             </div>
                             <div id="file-upload-modal" class="modal">
@@ -126,7 +126,7 @@
                     </div>
                 </span>
             </div>
-            <div class="wdth98 shdw radi5 bgcolLG pad10 marb10" style="z-index: 15;">
+            <div style="z-index: 15;">
                 <div class="TentHeader" style="text-align: left; line-height: 1.3;">
                     <h1>Welcome to the Official FTTF Tent Builder!</h1>
                     <p style="margin-left: 900px; margin-top: -20px;">v1.1.1</p>
@@ -254,7 +254,6 @@
                 snapGridWhite: "{{ 'snap-grid_white.png' | asset_url }}"
               },
             tools: {
-                tentCanvas: "{{ 'tent-canvas.png' | asset_url }}",
                 uploadIcon: "{{ 'upload.png' | asset_url }}",
                 eyeDropper: "{{ 'OIP.jfif' | asset_url }}"
               },
