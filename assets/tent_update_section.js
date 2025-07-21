@@ -442,7 +442,7 @@ function copyTentCanvasColor(sourceTitle, targetTitle, source, target) {
     const contextTarget = targetCanvas.getContext('2d');
     contextTarget.fillStyle = contextSrc.fillStyle;
     contextTarget.fill();
-    contextTarget.strokeStyle = '#F4F4F4';
+    contextTarget.strokeStyle = '#5A5A5A';
     contextTarget.stroke();
 
     // Find the selected radio button in the source section
