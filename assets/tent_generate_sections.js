@@ -209,7 +209,7 @@ function generateSections(sectionsConfig) {
         // Add the event listener for the 'Enter' key on the color input
         pickr.on('init', instance => {
             const el = instance.getRoot();
-            const appElement = el.button; // This is the actual .pcr-app DOM node
+            const appElement = el.button.parentElement; // This is the actual .pcr-app DOM node
 
             if (appElement) {
             appElement.style.marginTop = '-37px';
