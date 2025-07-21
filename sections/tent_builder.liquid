@@ -5,6 +5,7 @@
   <title>FTTF Tent Builder</title>
 </head>
   <link href="{{ 'test.css' | asset_url }}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
 <body>
 <div class="bodywrap" style>
     <div style="background: #F4F4F4">
@@ -285,16 +286,16 @@
         document.getElementById('ValanceLogo2').src = window.shopifyAssetPaths.grid.blackValance;
 
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-    <script src="{{ 'tent-canvas.js' | asset_url }}"></script>
-    <script src="{{ 'tent_sections_config.js' | asset_url }}"></script>
-    <script src="{{ 'tent_generate_sections.js' | asset_url }}"></script>
-    <script src="{{ 'tent_update_section.js' | asset_url }}"></script>
-    <script src="{{ 'tent-preview.js' | asset_url }}"></script>
-    <script src="{{ 'tent_update_text.js' | asset_url }}"></script>
-    <script src="{{ 'tent_update_art.js' | asset_url }}"></script>
-    <script src="{{ 'tent_generate_pdf.js' | asset_url }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js" defer></script>
+    <script src="{{ 'tent-canvas.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent_sections_config.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent_generate_sections.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent_update_section.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent-preview.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent_update_text.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent_update_art.js' | asset_url }}" defer></script>
+    <script src="{{ 'tent_generate_pdf.js' | asset_url }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js" defer></script>
 </body>
 </html>
