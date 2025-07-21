@@ -40,9 +40,6 @@ function generateSections(sectionsConfig) {
                                 </div>
                             </label>
                         `).join('')}
-                    </div>
-                    <div style="margin-top: 10px; margin-left: 10px">
-                        <span>Custom Color:</span>
                         <div id="color-picker-${section.id}" class="color-picker"></div>
                     </div>
                 </div>
