@@ -44,13 +44,10 @@ function generateSections(sectionsConfig) {
                     </div>
                 </div>
                 <div style="min-height:35px; padding-top:10px;">
-                    <span>
-                        <span>3</span>
-                    </span>
-                    <span style="padding-left:2px">
-                        ADD TEXT:
-                        <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:196px; border-radius:3px; border: 1px solid #838383; height: auto; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here" oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
-                    </span>
+                    <h5>
+                        3. Add Text:
+                    </h5>
+                    <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:100%; border-radius:3px; border: 1px solid #838383; height: auto; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here" oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
                     <div style="margin-top:10px; padding-left:16px; display:none">
                         <label for="font-style-${section.id}">Font Style:</label>
                         <div class="custom-dropdown" style="">
@@ -93,12 +90,9 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div style="min-height:35px; padding-top:7px;">
                     <div style="display: flex; align-items: center;">
-                        <span>
-                            <span>4</span>
-                        </span>
-                        <span style="padding-left:6px">
-                            ADD YOUR ART:
-                        </span>
+                        <h5>
+                           4. Add Your Art:
+                        </h5>
                         <!-- Drag and Drop Area -->
                         <div class="drop-zone" id="drop-zone-${section.id}" 
                             style="min-height: 50px; padding-right: 50px; margin-left: 10px; border: 2px dashed #aaa; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center;"
@@ -121,11 +115,11 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div id="art-preview-${section.id}" class="art-preview" style="padding-top: 8px; padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
                 <div style="min-height:35px;">
-                    <h5 style="padding-left:2px">
+                    <h5>
                         5. Notes to Artist:
                     </h5>
                     <div>
-                        <textarea id="notes-${section.id}" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none;" placeholder="Enter any notes here..."></textarea>
+                        <textarea id="notes-${section.id}" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
                         <div><span id="char-count-${section.id}">200 characters remaining</span></div>
                     </div>
                 </div>
