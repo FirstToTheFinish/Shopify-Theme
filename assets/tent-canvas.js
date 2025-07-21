@@ -48,7 +48,7 @@ function initializeAllCanvases() {
             document.getElementById('BackPeakCanvas').style.marginLeft = '15px';
             document.getElementById('BackValanceCanvas').style.marginLeft = '15px';
             document.getElementById('BackWallCanvas').style.marginLeft = '15px';
-            document.getElementById('ValanceLogo').style.right = '10px';
+            document.getElementById('ValanceLogo').style.right = '60px';
             size = 15;
         }
         else{
@@ -94,7 +94,7 @@ function initializeAllCanvases() {
             document.getElementById('FrontValanceCanvas').style.marginLeft = '-60px';
             document.getElementById('BackPeakCanvas').style.marginLeft = '-60px';
             document.getElementById('BackValanceCanvas').style.marginLeft = '-60px';
-            document.getElementById('ValanceLogo').style.right = '-75px';
+            document.getElementById('ValanceLogo').style.right = '5px';
             size = 20;
             
         }
@@ -115,7 +115,7 @@ function initializeAllCanvases() {
             document.getElementById('FrontValanceCanvas').style.marginLeft = '15px';
             document.getElementById('BackPeakCanvas').style.marginLeft = '15px';
             document.getElementById('BackValanceCanvas').style.marginLeft = '15px';
-            document.getElementById('ValanceLogo').style.right = '10px';
+            document.getElementById('ValanceLogo').style.right = '60px';
             size = 15;
         }
         else{
