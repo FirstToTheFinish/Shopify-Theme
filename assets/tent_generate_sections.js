@@ -209,6 +209,10 @@ function generateSections(sectionsConfig) {
         // Add the event listener for the 'Enter' key on the color input
         pickr.on('init', instance => {
             const el = instance.getRoot();
+            const elApp = el.app;
+            elApp.style.marginTop = '-37px';
+            elApp.style.marginLeft = '137px';
+
 
             el.button.addEventListener('keydown', e => {
                 if (e.key === 'Enter' && instance === pickrInstances[currentSection]) {
