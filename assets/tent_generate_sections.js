@@ -47,7 +47,7 @@ function generateSections(sectionsConfig) {
                     <h5>
                         3. Add Text:
                     </h5>
-                    <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:100%; border-radius:3px; border: 1px solid #838383; height: auto; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here" oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
+                    <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:75%; border-radius:3px; border: 1px solid #838383; height: 40px; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here..." oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
                     <div style="margin-top:10px; padding-left:16px; display:none">
                         <label for="font-style-${section.id}">Font Style:</label>
                         <div class="custom-dropdown" style="">
