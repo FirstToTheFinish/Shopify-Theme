@@ -48,44 +48,44 @@ function generateSections(sectionsConfig) {
                         3. Add Text:
                     </h5>
                     <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:75%; border-radius:3px; border: 1px solid #838383; height: 40px; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here..." oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
-                    <div class="font-style-wrapper" style="margin-top: 10px; display: none;">
-                        <label for="font-style-${section.id}" class="font-style-label">Font: <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
-                        
-                        <div class="custom-dropdown">
-                            <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('font-style-${section.id}')">
-                            Select a font style
-                            <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                            </button>
-                            <div id="font-style-${section.id}" class="custom-dropdown-content">
-                                <!-- Font options -->
-                                <div style="font-family: benguiat-bk" onclick="selectDropdownOption('font-style-${section.id}', 'Benguiat BK', '${section.id}')">Benguiat BK</div>
-                                <div style="font-family: cityd-bold" onclick="selectDropdownOption('font-style-${section.id}', 'Cityd Bold', '${section.id}')">Cityd Bold</div>
-                                <div style="font-family: Deadknight" onclick="selectDropdownOption('font-style-${section.id}', 'Deadknight', '${section.id}')">Deadknight</div>
-                                <div style="font-family: demonized" onclick="selectDropdownOption('font-style-${section.id}', 'Demonized', '${section.id}')">Demonized</div>
-                                <div style="font-family: eurostile" onclick="selectDropdownOption('font-style-${section.id}', 'Eurostile', '${section.id}')">Eurostile</div>
-                                <div style="font-family: evogria" onclick="selectDropdownOption('font-style-${section.id}', 'Evogria', '${section.id}')">Evogria</div>
-                                <div style="font-family: evogria-italic" onclick="selectDropdownOption('font-style-${section.id}', 'Evogria Italic', '${section.id}')">Evogria Italic</div>
-                                <div style="font-family: Famous-College" onclick="selectDropdownOption('font-style-${section.id}', 'Famous College', '${section.id}')">Famous College</div>
-                                <div style="font-family: Keylock-Fighter" onclick="selectDropdownOption('font-style-${section.id}', 'Keylock Fighter', '${section.id}')">Keylock Fighter</div>
-                                <div style="font-family: magnolia-script" onclick="selectDropdownOption('font-style-${section.id}', 'Magnolia Script', '${section.id}')">Magnolia Script</div>
-                                <div style="font-family: Rock-Road" onclick="selectDropdownOption('font-style-${section.id}', 'Rock Road', '${section.id}')">Rock Road</div>
-                                <div style="font-family: srabi-script" onclick="selectDropdownOption('font-style-${section.id}', 'Srabi Script', '${section.id}')">Srabi Script</div>
-                                <div style="font-family: Steel-City" onclick="selectDropdownOption('font-style-${section.id}', 'Steel City', '${section.id}')">Steel City</div>
-                                <div style="font-family: superstar-m54" onclick="selectDropdownOption('font-style-${section.id}', 'Superstar', '${section.id}')">Superstar</div>
-                                <div style="font-family: swzconbi" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond Italic', '${section.id}')">SwitzerlandCond Italic</div>
-                                <div style="font-family: swzconbn" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond', '${section.id}')">SwitzerlandCond</div>
+                    <div style="display: flex; gap: 20px; margin-top: 10px; padding-left:14px; display:none;" id="color-options-wrapper-${section.id}">
+                        <div class="font-style-wrapper" style="margin-top: 10px; display: none;">
+                            <label for="font-style-${section.id}" class="font-style-label">Font: <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
+                            
+                            <div class="custom-dropdown">
+                                <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('font-style-${section.id}')">
+                                Select a font style
+                                <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                                </button>
+                                <div id="font-style-${section.id}" class="custom-dropdown-content">
+                                    <!-- Font options -->
+                                    <div style="font-family: benguiat-bk" onclick="selectDropdownOption('font-style-${section.id}', 'Benguiat BK', '${section.id}')">Benguiat BK</div>
+                                    <div style="font-family: cityd-bold" onclick="selectDropdownOption('font-style-${section.id}', 'Cityd Bold', '${section.id}')">Cityd Bold</div>
+                                    <div style="font-family: Deadknight" onclick="selectDropdownOption('font-style-${section.id}', 'Deadknight', '${section.id}')">Deadknight</div>
+                                    <div style="font-family: demonized" onclick="selectDropdownOption('font-style-${section.id}', 'Demonized', '${section.id}')">Demonized</div>
+                                    <div style="font-family: eurostile" onclick="selectDropdownOption('font-style-${section.id}', 'Eurostile', '${section.id}')">Eurostile</div>
+                                    <div style="font-family: evogria" onclick="selectDropdownOption('font-style-${section.id}', 'Evogria', '${section.id}')">Evogria</div>
+                                    <div style="font-family: evogria-italic" onclick="selectDropdownOption('font-style-${section.id}', 'Evogria Italic', '${section.id}')">Evogria Italic</div>
+                                    <div style="font-family: Famous-College" onclick="selectDropdownOption('font-style-${section.id}', 'Famous College', '${section.id}')">Famous College</div>
+                                    <div style="font-family: Keylock-Fighter" onclick="selectDropdownOption('font-style-${section.id}', 'Keylock Fighter', '${section.id}')">Keylock Fighter</div>
+                                    <div style="font-family: magnolia-script" onclick="selectDropdownOption('font-style-${section.id}', 'Magnolia Script', '${section.id}')">Magnolia Script</div>
+                                    <div style="font-family: Rock-Road" onclick="selectDropdownOption('font-style-${section.id}', 'Rock Road', '${section.id}')">Rock Road</div>
+                                    <div style="font-family: srabi-script" onclick="selectDropdownOption('font-style-${section.id}', 'Srabi Script', '${section.id}')">Srabi Script</div>
+                                    <div style="font-family: Steel-City" onclick="selectDropdownOption('font-style-${section.id}', 'Steel City', '${section.id}')">Steel City</div>
+                                    <div style="font-family: superstar-m54" onclick="selectDropdownOption('font-style-${section.id}', 'Superstar', '${section.id}')">Superstar</div>
+                                    <div style="font-family: swzconbi" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond Italic', '${section.id}')">SwitzerlandCond Italic</div>
+                                    <div style="font-family: swzconbn" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond', '${section.id}')">SwitzerlandCond</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div style="display: flex; gap: 20px; margin-top: 10px; padding-left:14px; display:none;" id="color-options-wrapper-${section.id}">
                         <!-- Font Color -->
                         <div id="font-color-div-${section.id}">
                             <label for="font-color-${section.id}" class="font-style-label">Text Color:</label>
                             <div style="display: flex; align-items: center;">
                                 <input type="color" id="font-color-picker-${section.id}" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
-                                <label id="font-color-${section.id}" class="font-style-label" style="margin-left: 10px;">Black</label>
+                                <label id="font-color-${section.id}" class="font-style-label">Black</label>
                             </div>
                         </div>
 
