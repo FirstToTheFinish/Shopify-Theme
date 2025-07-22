@@ -561,7 +561,7 @@ function copyTextProperties(source, target) {
         newTargetTextElement.style.overflow = 'hidden'; // Ensure overflow is hidden
         newTargetTextElement.style.textOverflow = 'ellipsis'; // Ensure text is cut off, not wrapped
 
-        newTargetTextElement.innerHTML = sanitizeInput(sourceText.toUpperCase()).replace(/\n/g, '<br>');
+        newTargetTextElement.innerHTML = sanitizeInput(sourceText).replace(/\n/g, '<br>');
     }
 
     validateTextInput(target.id);
