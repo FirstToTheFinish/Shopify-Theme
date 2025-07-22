@@ -82,13 +82,13 @@ function validateTextInput(sectionId) {
 
         
         // Show the controls
-        fontStyleButton.parentElement.parentElement.parentElement.style.display = 'block';
+        fontStyleButton.parentElement.parentElement.parentElement.style.display = 'flex';
         fontColorPicker.style.display = 'block';
         outlineColorPicker.style.display = 'block';
         toggleCenterButtons(true);
     } else {
         // Hide the controls if no text is entered
-        fontStyleButton.parentElement.parentElement.style.display = 'none';
+        fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
         fontColorPicker.style.display = 'none';
         outlineColorPicker.style.display = 'none';
         toggleCenterButtons(false);
