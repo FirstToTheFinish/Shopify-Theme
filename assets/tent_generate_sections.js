@@ -78,19 +78,24 @@ function generateSections(sectionsConfig) {
                                 <div style="font-family: swzconbn" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond', '${section.id}')">SwitzerlandCond</div>
                             </div>
                         </div>
-                        <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
-                            <label for="font-color-${section.id}">Text Color:</label>
-                            <div class="custom-dropdown">
-                                <input type="color" id="font-color-picker-${section.id}" style="margin-left: 10px;" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
+                    </div>
+                    <div style="display: flex; gap: 20px; margin-top: 10px; padding-left:14px; display:none;" id="color-options-wrapper-${section.id}">
+                        <!-- Font Color -->
+                        <div id="font-color-div-${section.id}">
+                            <label for="font-color-${section.id}" class="font-style-label">Text Color:</label>
+                            <div style="display: flex; align-items: center;">
+                                <input type="color" id="font-color-picker-${section.id}" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
+                                <label id="font-color-${section.id}" class="font-style-label" style="margin-left: 10px;">Black</label>
                             </div>
-                            <label id="font-color-${section.id}" style="margin-left: -168px;" value="">Black</label>
                         </div>
-                        <div id="outline-color-div-${section.id}" style="display:none">
-                            <label for="outline-color-${section.id}">Outline Color:</label>
-                            <div class="custom-dropdown">
-                                <input type="color" id="outline-color-picker-${section.id}" style="margin-left: 10px;" />
+
+                        <!-- Outline Color -->
+                        <div id="outline-color-div-${section.id}">
+                            <label for="outline-color-${section.id}" class="font-style-label">Outline Color:</label>
+                            <div style="display: flex; align-items: center;">
+                                <input type="color" id="outline-color-picker-${section.id}" />
+                                <label id="outline-color-${section.id}" class="font-style-label">None</label>
                             </div>
-                            <label id="outline-color-${section.id}" style="margin-left: -175px;"value="">None</label>
                         </div>
                     </div>
                 </div>
