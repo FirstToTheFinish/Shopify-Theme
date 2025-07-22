@@ -48,10 +48,9 @@ function generateSections(sectionsConfig) {
                         3. Add Text:
                     </h5>
                     <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:75%; border-radius:3px; border: 1px solid #838383; height: 40px; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here..." oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
-                    <div style="display: flex; gap: 20px; margin-top: 10px; padding-left:14px; display:none;" id="color-options-wrapper-${section.id}">
-                        <div class="font-style-wrapper" style="margin-top: 10px; display: none;">
+                    <div style="display: flex; gap: 20px; margin-top: 10px; padding-left:14px; id="color-options-wrapper-${section.id}">
+                        <div class="font-style-wrapper" display: none;">
                             <label for="font-style-${section.id}" class="font-style-label">Font: <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
-                            
                             <div class="custom-dropdown">
                                 <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('font-style-${section.id}')">
                                 Select a font style
