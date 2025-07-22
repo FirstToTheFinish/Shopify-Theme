@@ -78,20 +78,20 @@ function generateSections(sectionsConfig) {
                                 <div style="font-family: swzconbn" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond', '${section.id}')">SwitzerlandCond</div>
                             </div>
                         </div>
-                    </div>
-                    <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
-                        <label for="font-color-${section.id}">Font Color:</label>
-                        <div class="custom-dropdown">
-                            <input type="color" id="font-color-picker-${section.id}" style="margin-left: 10px;" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
+                        <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
+                            <label for="font-color-${section.id}">Text Color:</label>
+                            <div class="custom-dropdown">
+                                <input type="color" id="font-color-picker-${section.id}" style="margin-left: 10px;" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
+                            </div>
+                            <label id="font-color-${section.id}" style="margin-left: -168px;" value="">Black</label>
                         </div>
-                        <label id="font-color-${section.id}" style="margin-left: -168px;" value="">Black</label>
-                    </div>
-                    <div id="outline-color-div-${section.id}" style="display:none">
-                        <label for="outline-color-${section.id}">Outline Color:</label>
-                        <div class="custom-dropdown">
-                            <input type="color" id="outline-color-picker-${section.id}" style="margin-left: 10px;" />
+                        <div id="outline-color-div-${section.id}" style="display:none">
+                            <label for="outline-color-${section.id}">Outline Color:</label>
+                            <div class="custom-dropdown">
+                                <input type="color" id="outline-color-picker-${section.id}" style="margin-left: 10px;" />
+                            </div>
+                            <label id="outline-color-${section.id}" style="margin-left: -175px;"value="">None</label>
                         </div>
-                        <label id="outline-color-${section.id}" style="margin-left: -175px;"value="">None</label>
                     </div>
                 </div>
                 <div style="min-height:35px; padding-top:7px;">
