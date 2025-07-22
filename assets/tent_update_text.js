@@ -352,7 +352,7 @@ function updateCanvasText(section) {
     newEditableText.style.fontSize = currentFontSize || '16px'; // default font size if not set
 
     // Apply text styling
-    const fontStyle = document.querySelector(`#font-style-${section.id}`).previousElementSibling.textContent.trim() || 'Arial';
+    const fontStyle = document.querySelector(`#font-style-${section.id}`).previousElementSibling.value.trim() || 'Arial';
     const fontColor = document.getElementById(`font-color-${section.id}`).textContent.trim() || 'Black';
     const outlineColor = document.getElementById(`outline-color-${section.id}`).textContent.trim() || null;
 
