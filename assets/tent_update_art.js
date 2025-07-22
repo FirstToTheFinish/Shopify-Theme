@@ -105,27 +105,58 @@ function addArt(sectionId, sectionTitle) {
 }
 
 let draggedElement = null;
+let dropIndicator = null;
 
 function onDragStart(event) {
     draggedElement = event.currentTarget;
     event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', ''); // for Firefox
 }
 
 function onDragOver(event) {
-    event.preventDefault(); // Necessary to allow drop
-    event.dataTransfer.dropEffect = 'move';
+    event.preventDefault();
+
+    const target = event.currentTarget;
+    const container = target.parentNode;
+    const targetRect = target.getBoundingClientRect();
+    const mouseX = event.clientX;
+
+    removeDropIndicator(); // Remove previous
+
+    dropIndicator = document.createElement('div');
+    dropIndicator.className = 'drop-indicator';
+
+    if (mouseX < targetRect.left + targetRect.width / 2) {
+        // Insert before
+        container.insertBefore(dropIndicator, target);
+    } else {
+        // Insert after
+        container.insertBefore(dropIndicator, target.nextSibling);
+    }
 }
 
 function onDrop(event) {
     event.preventDefault();
-    const dropTarget = event.currentTarget;
 
-    if (dropTarget !== draggedElement && dropTarget.parentNode === draggedElement.parentNode) {
-        const container = dropTarget.parentNode;
-        container.insertBefore(draggedElement, dropTarget.nextSibling);
+    const container = event.currentTarget.parentNode;
+
+    if (dropIndicator && draggedElement) {
+        container.insertBefore(draggedElement, dropIndicator);
     }
+
+    removeDropIndicator();
 }
 
+function onDragLeave(event) {
+    removeDropIndicator();
+}
+
+function removeDropIndicator() {
+    if (dropIndicator && dropIndicator.parentNode) {
+        dropIndicator.parentNode.removeChild(dropIndicator);
+        dropIndicator = null;
+    }
+}
 
 function makeElementResizable(element, container) {
     let isResizing = false;
