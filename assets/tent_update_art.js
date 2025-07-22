@@ -121,19 +121,24 @@ function onDragOver(event) {
     const targetRect = target.getBoundingClientRect();
     const mouseX = event.clientX;
 
-    removeDropIndicator(); // Remove previous
+    removeDropIndicator(); // Clear any previous indicators
 
     dropIndicator = document.createElement('div');
     dropIndicator.className = 'drop-indicator';
 
+    // 🔥 Find tallest sibling in the row (only immediate children)
+    const previewChildren = Array.from(container.children);
+    const maxHeight = Math.max(...previewChildren.map(el => el.offsetHeight));
+    dropIndicator.style.height = `${maxHeight}px`;
+
+    // Insert before or after based on cursor position
     if (mouseX < targetRect.left + targetRect.width / 2) {
-        // Insert before
         container.insertBefore(dropIndicator, target);
     } else {
-        // Insert after
         container.insertBefore(dropIndicator, target.nextSibling);
     }
 }
+
 
 function onDrop(event) {
     event.preventDefault();
@@ -153,7 +158,7 @@ function onDragLeave(event) {
 
 function removeDropIndicator() {
     if (dropIndicator && dropIndicator.parentNode) {
-        //dropIndicator.parentNode.removeChild(dropIndicator);
+        dropIndicator.parentNode.removeChild(dropIndicator);
         dropIndicator = null;
     }
 }
