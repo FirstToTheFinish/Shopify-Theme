@@ -1707,6 +1707,16 @@ h2 {
 .art-container[draggable="true"] {
   cursor: grab;
 }
+
 .art-container[draggable="true"]:active {
   cursor: grabbing;
+}
+
+.drop-indicator {
+  width: 3px;
+  height: 100%;
+  background-color: #000000;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2px;
 }
