@@ -98,7 +98,7 @@ function generateSections(sectionsConfig) {
                         </div>
                     </div>
                 </div>
-                <div style="min-height:35px; padding-top:7px;">
+                <div style="min-height:35px; padding-top:15px;">
                     <div style="display: flex; align-items: center;">
                         <h5>
                            4. Add Your Art:
@@ -835,26 +835,33 @@ function sanitizeInput(value) {
         "'": '&#x27;',
         "/": '&#x2F;',
     };
-    const reg = /[&<>"'/]/ig;
-    return value.replace(reg, (match) => (map[match]));
+    const reg = /[&<>"'/]/g;
+    return value.replace(reg, match => map[match]);
 }
 
 function sanitizeInputField(input) {
+    const cursorPosition = input.selectionStart;
+    const originalLength = input.value.length;
+
     input.value = sanitizeInput(input.value);
+
+    // Adjust the cursor position if necessary
+    const newLength = input.value.length;
+    const diff = newLength - originalLength;
+    input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
 }
 
 function blockInvalidChars(event, regex) {
-    const invalidChars = regex.test(event.key);
-    if (invalidChars) {
-        event.preventDefault();
-    }
+    // Allow the input to happen first, then sanitize
+    // This assumes you're attaching this to the `input` event
+    const input = event.target;
+    input.value = input.value.replace(regex, '');
 }
 
 function sanitizeFormInputs(event) {
     // Prevent form submission
     event.preventDefault();
 
-    // Get all input fields
     const inputs = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
     inputs.forEach(input => {
         input.value = sanitizeInput(input.value);
