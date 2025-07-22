@@ -851,13 +851,6 @@ function sanitizeInputField(input) {
     input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
 }
 
-function blockInvalidChars(event, regex) {
-    // Allow the input to happen first, then sanitize
-    // This assumes you're attaching this to the `input` event
-    const input = event.target;
-    input.value = input.value.replace(regex, '');
-}
-
 function sanitizeFormInputs(event) {
     // Prevent form submission
     event.preventDefault();
@@ -869,7 +862,7 @@ function sanitizeFormInputs(event) {
 }
 
 function cleanInput(input, regex) {
-    input.value = input.value.replace(regex, '');
+    input.value = sanitizeInput(input);
 }
 
 function validateForm() {

@@ -356,14 +356,12 @@ document.addEventListener("DOMContentLoaded", function() {
             cleanInput(textInput, blockedCharsRegex);
             updateCanvasText(section);
         });
-        textInput.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
         
 
         const fontStyleDropdown = document.querySelector(`#font-style-${section.id}`).parentElement;
         fontStyleDropdown.addEventListener('click', () => validateTextInput(section.id));
 
         const notesInput = document.getElementById(`notes-${section.id}`);
-        notesInput.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
         notesInput.addEventListener('input', (event) =>{
           cleanInput(notesInput, blockedCharsRegex);
           enforceCharacterLimit(event, maxLength);  
@@ -371,32 +369,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const emailAddr = document.getElementById('email');
-    emailAddr.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     emailAddr.addEventListener('input', () => cleanInput(emailAddr, blockedCharsRegex));
 
     const emailConfirmAddr = document.getElementById('confirmEmail');
-    emailConfirmAddr.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     emailConfirmAddr.addEventListener('input', () => cleanInput(emailConfirmAddr, blockedCharsRegex));
 
     const userName = document.getElementById('userName');
-    userName.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     userName.addEventListener('input', () => cleanInput(userName, blockedCharsRegex));
 
     const schoolClub = document.getElementById('schoolClub');
-    schoolClub.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     schoolClub.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
 
     const street = document.getElementById('street');
-    street.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     street.addEventListener('input', () => cleanInput(street, blockedCharsRegex));
 
     const city = document.getElementById('city');
-    city.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     city.addEventListener('input', () => cleanInput(city, blockedCharsRegex));
 
     const tentName = document.getElementById('Tent-Name');
-    city.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    city.addEventListener('input', () => cleanInput(tentName, blockedCharsRegex));
+    tentName.addEventListener('input', () => cleanInput(tentName, blockedCharsRegex));
 
     // Add event listener to form submission
     const contactForm = document.getElementById('contactForm');
