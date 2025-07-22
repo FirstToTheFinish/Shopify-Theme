@@ -1704,3 +1704,9 @@ h2 {
   }
 }
 
+.art-container[draggable="true"] {
+  cursor: grab;
+}
+.art-container[draggable="true"]:active {
+  cursor: grabbing;
+}

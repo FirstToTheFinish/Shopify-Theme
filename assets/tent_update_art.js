@@ -38,7 +38,7 @@ function addArt(sectionId, sectionTitle) {
 
                 // Display image in the preview area
                 previewElement = `
-                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;">
+                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)" ondrop="onDrop(event)">
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
                         <button class="remove-art" onclick="removeArt('${imageId}')" style="position: absolute; top: 0px; right: 0px; background: red; color: white; cursor: pointer; border: none; border-radius: 3px; font-size: 14px;">&times;</button>
                         <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
@@ -103,6 +103,29 @@ function addArt(sectionId, sectionTitle) {
         addSelectionListener(combinedOverlay);
     }
 }
+
+let draggedElement = null;
+
+function onDragStart(event) {
+    draggedElement = event.currentTarget;
+    event.dataTransfer.effectAllowed = 'move';
+}
+
+function onDragOver(event) {
+    event.preventDefault(); // Necessary to allow drop
+    event.dataTransfer.dropEffect = 'move';
+}
+
+function onDrop(event) {
+    event.preventDefault();
+    const dropTarget = event.currentTarget;
+
+    if (dropTarget !== draggedElement && dropTarget.parentNode === draggedElement.parentNode) {
+        const container = dropTarget.parentNode;
+        container.insertBefore(draggedElement, dropTarget.nextSibling);
+    }
+}
+
 
 function makeElementResizable(element, container) {
     let isResizing = false;
