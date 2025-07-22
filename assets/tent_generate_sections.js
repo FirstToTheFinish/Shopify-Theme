@@ -49,7 +49,7 @@ function generateSections(sectionsConfig) {
                     </h5>
                     <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:75%; border-radius:3px; border: 1px solid #838383; height: 40px; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here..." oninput='updateCanvasText(${JSON.stringify(section)})'></textarea>
                     <div class="font-style-wrapper" style="margin-top: 10px; padding-left: 16px; display: none;">
-                        <label for="font-style-${section.id}" class="font-style-label">Font:</label>
+                        <label for="font-style-${section.id}" class="font-style-label">Font Style:</label>
                         <div class="custom-dropdown">
                             <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('font-style-${section.id}')">
                             <span id="font-style-label-${section.id}">Select a font style</span>
@@ -77,7 +77,7 @@ function generateSections(sectionsConfig) {
                                 <div style="font-family: swzconbn" onclick="selectDropdownOption('font-style-${section.id}', 'SwitzerlandCond', '${section.id}')">SwitzerlandCond</div>
                             </div>
                         </div>
-                        <span id="font-style-required-${section.id}" class="font-required-msg">*Required</span>
+                        <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span>
                     </div>
                     <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
                         <label for="font-color-${section.id}">Font Color:</label>

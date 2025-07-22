@@ -178,6 +178,8 @@ function toggleDropdown(id) {
 function selectDropdownOption(dropdownId, value, sectionId) {
     const button = document.querySelector(`#${dropdownId}`).previousElementSibling;
     button.textContent = value;
+    button.innerHTML = `<svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
     button.style.color = 'black'; // Set the text color of the button to black when a selection is made
 
     // Map custom font names to their CSS classes
