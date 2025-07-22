@@ -84,7 +84,7 @@ function generateSections(sectionsConfig) {
                             <label for="font-color-${section.id}" class="font-style-label">Text Color:</label>
                             <div style="display: flex; align-items: center;">
                                 <input type="color" id="font-color-picker-${section.id}" onchange="selectColorPickerOption('font-color-${section.id}', this.value, '${section.id}')" />
-                                <label id="font-color-${section.id}" class="font-style-label">Black</label>
+                                <label id="font-color-${section.id}" class="font-style-label" style="min-width: 70px;">Black</label>
                             </div>
                         </div>
 

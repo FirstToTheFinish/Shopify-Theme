@@ -118,7 +118,7 @@ document.addEventListener('keydown', (e) => {
             fontStyleButton.value = '';
             fontStyleButton.style.fontFamily = '';
             
-            fontStyleButton.parentElement.parentElement.style.display = 'none';
+            fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
             fontColorPicker.style.display = 'none';
             outlineColorPicker.style.display = 'none';
         }
