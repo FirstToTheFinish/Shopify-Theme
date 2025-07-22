@@ -74,7 +74,7 @@ function validateTextInput(sectionId) {
     let isValid = true;
 
     if (textInput !== '') {
-        if (fontStyleButton.textContent === 'Select a font style') {
+        if (fontStyleButton.textContent.includes('Select a font style')) {
             fontStyleButton.style.borderColor = 'red';
             fontStyleLabel.style.display = 'inline';
             isValid = false;
