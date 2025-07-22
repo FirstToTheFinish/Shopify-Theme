@@ -862,7 +862,7 @@ function sanitizeFormInputs(event) {
 }
 
 function cleanInput(input, regex) {
-    input.value = sanitizeInput(input.value);
+    
 }
 
 function validateForm() {
