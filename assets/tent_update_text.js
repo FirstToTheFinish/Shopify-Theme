@@ -339,7 +339,7 @@ function updateCanvasText(section) {
     newEditableText.style.wordBreak = 'keep-all';  // Prevent word break in Chrome
 
 
-    newEditableText.innerHTML = textInput.toUpperCase().replace(/\n/g, '<br>');
+    newEditableText.innerHTML = sanitizeInput(textInput.toUpperCase()).replace(/\n/g, '<br>');
 
     // Apply previous styles to the new text element
     if (currentLeft !== null){
