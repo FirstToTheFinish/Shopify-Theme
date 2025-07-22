@@ -153,7 +153,7 @@ function onDragLeave(event) {
 
 function removeDropIndicator() {
     if (dropIndicator && dropIndicator.parentNode) {
-        dropIndicator.parentNode.removeChild(dropIndicator);
+        //dropIndicator.parentNode.removeChild(dropIndicator);
         dropIndicator = null;
     }
 }
