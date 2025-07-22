@@ -82,7 +82,7 @@ function validateTextInput(sectionId) {
 
         
         // Show the controls
-        fontStyleButton.parentElement.parentElement.style.display = 'block';
+        fontStyleButton.parentElement.parentElement.parentElement.style.display = 'block';
         fontColorPicker.style.display = 'block';
         outlineColorPicker.style.display = 'block';
         toggleCenterButtons(true);
