@@ -107,6 +107,29 @@ function addArt(sectionId, sectionTitle) {
 let draggedElement = null;
 let dropIndicator = null;
 
+function syncOverlayOrder(previewContainer) {
+    const sectionId = previewContainer.id.replace('art-preview-', '');
+    const overlay = document.getElementById(`${sectionId.replace(' ', '')}TextOverlay`);
+    if (!overlay) return;
+
+    // Remove all existing editable-art elements from overlay
+    const existingOverlayArts = Array.from(overlay.querySelectorAll('.editable-art.resizable'));
+    existingOverlayArts.forEach(el => overlay.removeChild(el));
+
+    // Get preview IDs in current order
+    const orderedPreviewIds = Array.from(previewContainer.children)
+        .filter(child => child.id.endsWith('-preview'))
+        .map(child => child.id.replace('-preview', ''));
+
+    // Reverse loop to stack bottom to top correctly
+    for (let i = orderedPreviewIds.length - 1; i >= 0; i--) {
+        const overlayEl = overlay.querySelector(`[data-id="${orderedPreviewIds[i]}"]`);
+        if (overlayEl) {
+            overlay.appendChild(overlayEl);
+        }
+    }
+}
+
 function onDragStart(event) {
     draggedElement = event.currentTarget;
     draggedElement.classList.add('dragging'); // Apply grabbing cursor
@@ -153,7 +176,7 @@ function onDrop(event) {
 
     removeDropIndicator();
     if (draggedElement) {
-        draggedElement.classList.remove('dragging'); // Remove grabbing cursor
+        draggedElement.classList.remove('dragging');
         draggedElement = null;
     }
 }
@@ -165,6 +188,10 @@ function onDragLeave(event) {
 function onDragEnd(event) {
     if (draggedElement) {
         draggedElement.classList.remove('dragging');
+
+        const previewContainer = draggedElement.parentNode;
+        syncOverlayOrder(previewContainer); 
+
         draggedElement = null;
     }
 }

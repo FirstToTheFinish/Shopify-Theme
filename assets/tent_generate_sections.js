@@ -124,7 +124,7 @@ function generateSections(sectionsConfig) {
                     </div>
                 </div>
                 <label class="font-style-label">Art Order: </label>
-                <div id="art-preview-${section.id}" class="art-preview" style="padding-top: 8px; padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
+                <div id="art-preview-${section.id}" class="art-preview" style="padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
                 <div style="min-height:35px;">
                     <h5>
                         5. Notes to Artist:
