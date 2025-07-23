@@ -179,8 +179,8 @@ function onDrop(event) {
         draggedElement.classList.remove('dragging');
         draggedElement = null;
     }
-    const previewContainer = draggedElement.parentNode;
-    syncOverlayOrder(previewContainer); 
+
+    syncOverlayOrder(container); 
     console.log("reorder complete");
 }
 
