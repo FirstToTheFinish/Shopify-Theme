@@ -178,11 +178,6 @@ function toggleDropdown(id) {
 function selectDropdownOption(dropdownId, value, sectionId) {
     const button = document.querySelector(`#${dropdownId}`).previousElementSibling;
     button.value = value;
-    if(value == ''){
-        value = 'Select a Font Style'
-    }
-    button.innerHTML = `${value} <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
     button.style.color = 'black'; // Set the text color of the button to black when a selection is made
 
     // Map custom font names to their CSS classes
@@ -207,7 +202,13 @@ function selectDropdownOption(dropdownId, value, sectionId) {
 
     if (dropdownId.includes('font-style')) {
         button.style.fontFamily = fontClassMap[value]; // Set the font family of the button text to match the chosen font style
-        }
+    }
+    
+    if(value == ''){
+        value = 'Select a Font Style'
+    }
+    button.innerHTML = `${value} <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
 
     document.getElementById(dropdownId).classList.remove("show");
 
@@ -488,7 +489,12 @@ function copyTextProperties(source, target) {
     targetTextElement.value = sourceText;
 
     //Copy Font Style
-    const srcStyle = document.getElementById(`font-style-${source.id}`).previousElementSibling.value;
+    if(document.getElementById(`font-style-${source.id}`).previousElementSibling.value != ''){
+        const srcStyle = document.getElementById(`font-style-${source.id}`).previousElementSibling.value;
+    }
+    else{
+        const srcStyle = '';
+    }
     selectDropdownOption(`font-style-${target.id}`, srcStyle, `${target.id}`);
 
     //Copy Font Color
