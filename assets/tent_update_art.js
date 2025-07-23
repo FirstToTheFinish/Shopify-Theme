@@ -108,22 +108,29 @@ let draggedElement = null;
 let dropIndicator = null;
 
 function syncOverlayOrder(previewContainer) {
-    const overlay = document.getElementById(`${sectionsConfig[currentSection-1].title.replace(' ', '')}TextOverlay`);
-    console.log(overlay);
+    const overlay = document.getElementById(`${sectionsConfig[currentSection - 1].title.replace(' ', '')}TextOverlay`);
     if (!overlay) return;
 
-    // Remove all existing editable-art elements from overlay
+    // Step 1: Cache all overlay art elements by data-id
+    const overlayArtMap = new Map();
     const existingOverlayArts = Array.from(overlay.querySelectorAll('.editable-art.resizable'));
+    existingOverlayArts.forEach(el => {
+        const id = el.getAttribute('data-id');
+        if (id) overlayArtMap.set(id, el);
+    });
+
+    // Step 2: Remove all from DOM
     existingOverlayArts.forEach(el => overlay.removeChild(el));
 
-    // Get preview IDs in current order
+    // Step 3: Determine order based on preview
     const orderedPreviewIds = Array.from(previewContainer.children)
         .filter(child => child.id.endsWith('-preview'))
         .map(child => child.id.replace('-preview', ''));
 
-    // Reverse loop to stack bottom to top correctly
+    // Step 4: Re-add to overlay in reverse to match correct stacking order
     for (let i = orderedPreviewIds.length - 1; i >= 0; i--) {
-        const overlayEl = overlay.querySelector(`[data-id="${orderedPreviewIds[i]}"]`);
+        const id = orderedPreviewIds[i];
+        const overlayEl = overlayArtMap.get(id);
         if (overlayEl) {
             overlay.appendChild(overlayEl);
         }
