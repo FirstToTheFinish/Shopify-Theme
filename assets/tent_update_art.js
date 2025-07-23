@@ -109,6 +109,7 @@ let dropIndicator = null;
 
 function onDragStart(event) {
     draggedElement = event.currentTarget;
+    draggedElement.classList.add('dragging');
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('text/plain', ''); // for Firefox
 }
@@ -160,6 +161,10 @@ function removeDropIndicator() {
     if (dropIndicator && dropIndicator.parentNode) {
         dropIndicator.parentNode.removeChild(dropIndicator);
         dropIndicator = null;
+    }
+    if (draggedElement) {
+        draggedElement.classList.remove('dragging');
+        draggedElement = null;
     }
 }
 
