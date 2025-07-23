@@ -53,7 +53,7 @@ function generateSections(sectionsConfig) {
                             <label for="font-style-${section.id}" class="font-style-label">Font: <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
                             <div class="custom-dropdown">
                                 <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('font-style-${section.id}')">
-                                Select a font style
+                                Select a Font Style
                                 <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                 </svg>
