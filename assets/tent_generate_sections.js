@@ -104,20 +104,20 @@ function generateSections(sectionsConfig) {
                            4. Add Your Art:
                         </h5>
                         <!-- Drag and Drop Area -->
-                        <div class="drop-zone" id="drop-zone-${section.id}" 
-                            style="min-height: 50px; padding-right: 50px; margin-left: 10px; border: 2px dashed #aaa; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center;"
-                            ondragover="event.preventDefault();"
-                            ondrop="handleFileDrop(event, '${section.id}', '${section.title}');">
+                        <div class="drop-zone-modern" id="drop-zone-${section.id}"
+                            ondragover="event.preventDefault(); this.classList.add('drag-over');"
+                            ondragleave="this.classList.remove('drag-over');"
+                            ondrop="handleFileDrop(event, '${section.id}', '${section.title}'); this.classList.remove('drag-over');"
+                            onclick="document.getElementById('upload-${section.id}').click();">
 
-                            <!-- Upload Label -->
-                            <label class="add-art-button" for="upload-${section.id}" style="font-size:10px; color:#575757; display: flex; align-items: center;">
-                                <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" style="width: 30px; height: 30px; margin-right: 5px;">
-                                UPLOAD YOUR ART
-                            </label>
+                            <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" class="upload-icon">
+                            <div class="upload-instructions">
+                            <strong>Drag & Drop</strong> your file here<br>
+                            or <span class="upload-link">click to upload</span>
+                            </div>
 
-                            <!-- Hidden File Input -->
-                            <input type="file" id="upload-${section.id}" class="file-input" 
-                                accept=".jpg,.jpeg,.png,.svg" 
+                            <input type="file" id="upload-${section.id}" class="file-input"
+                                accept=".jpg,.jpeg,.png,.svg"
                                 onchange="validateFileInput(event, '${section.id}'); addArt('${section.id}', '${section.title}');"
                                 style="display: none;">
                         </div>
