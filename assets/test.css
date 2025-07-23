@@ -1761,3 +1761,26 @@ h2 {
   color: #0066cc;
   text-decoration: underline;
 }
+
+.remove-art {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  z-index: 2;
+}
+
+.remove-art:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}

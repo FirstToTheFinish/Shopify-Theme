@@ -40,7 +40,7 @@ function addArt(sectionId, sectionTitle) {
                 previewElement = `
                     <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
-                        <button class="remove-art" onclick="removeArt('${imageId}')" style="position: absolute; top: 0px; right: 0px; background: red; color: white; cursor: pointer; border: none; border-radius: 3px; font-size: 14px;">&times;</button>
+                        <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
                         <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
                             <option value="default">Choose Size</option>
                             <option value="valance-3-4">3/4 Valance Image</option>
@@ -139,13 +139,22 @@ function syncOverlayOrder(previewContainer) {
 
 function onDragStart(event) {
     draggedElement = event.currentTarget;
-    draggedElement.classList.add('dragging'); // Apply grabbing cursor
+    draggedElement.classList.add('dragging');
     event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('text/plain', ''); // for Firefox
-    
-    const img = new Image();
-    img.src = ''; // Blank image
-    event.dataTransfer.setDragImage(img, 0, 0);
+    event.dataTransfer.setData('text/plain', '');
+
+    // Clone for ghost image
+    const clone = draggedElement.cloneNode(true);
+    clone.style.position = 'absolute';
+    clone.style.top = '-1000px';
+    clone.style.left = '-1000px';
+    clone.style.width = getComputedStyle(draggedElement).width;
+    document.body.appendChild(clone);
+
+    event.dataTransfer.setDragImage(clone, 0, 0);
+
+    // Remove clone after it's used
+    setTimeout(() => document.body.removeChild(clone), 0);
 }
 
 function onDragOver(event) {
