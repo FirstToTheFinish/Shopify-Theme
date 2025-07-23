@@ -191,6 +191,7 @@ function onDragEnd(event) {
 
         const previewContainer = draggedElement.parentNode;
         syncOverlayOrder(previewContainer); 
+        console.log("reorder complete");
 
         draggedElement = null;
     }
