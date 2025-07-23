@@ -1721,9 +1721,3 @@ h2 {
   transition: all 150ms ease; /* Smooth movement */
 }
 
-.dragging {
-  opacity: 0.4;
-  transform: scale(0.98);
-  transition: transform 120ms ease, opacity 120ms ease;
-}
-

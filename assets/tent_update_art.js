@@ -109,34 +109,30 @@ let dropIndicator = null;
 
 function onDragStart(event) {
     draggedElement = event.currentTarget;
-    draggedElement.classList.add('dragging');
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('text/plain', ''); // for Firefox
 }
 
 function onDragOver(event) {
     event.preventDefault();
+    const target = event.target.closest('.art-container');
+    if (!target || target === draggedElement) return;
 
-    const target = event.currentTarget;
-    const container = target.parentNode;
-    const targetRect = target.getBoundingClientRect();
-    const mouseX = event.clientX;
+    const previewContainer = target.parentElement;
+    const children = Array.from(previewContainer.children);
+    const draggedIndex = children.indexOf(draggedElement);
+    const targetIndex = children.indexOf(target);
 
-    removeDropIndicator(); // Clear any previous indicators
+    if (draggedIndex < 0 || targetIndex < 0) return;
 
-    dropIndicator = document.createElement('div');
-    dropIndicator.className = 'drop-indicator';
+    // Animate the move
+    animateSwap(draggedElement, target);
 
-    // 🔥 Find tallest sibling in the row (only immediate children)
-    const previewChildren = Array.from(container.children);
-    const maxHeight = Math.max(...previewChildren.map(el => el.offsetHeight));
-    dropIndicator.style.height = `${maxHeight}px`;
-
-    // Insert before or after based on cursor position
-    if (mouseX < targetRect.left + targetRect.width / 2) {
-        container.insertBefore(dropIndicator, target);
+    // Reorder DOM
+    if (draggedIndex < targetIndex) {
+        previewContainer.insertBefore(draggedElement, target.nextSibling);
     } else {
-        container.insertBefore(dropIndicator, target.nextSibling);
+        previewContainer.insertBefore(draggedElement, target);
     }
 }
 
@@ -157,14 +153,34 @@ function onDragLeave(event) {
     removeDropIndicator();
 }
 
+// Add this helper function for smooth animation
+function animateSwap(fromEl, toEl) {
+    const fromRect = fromEl.getBoundingClientRect();
+    const toRect = toEl.getBoundingClientRect();
+
+    const deltaX = fromRect.left - toRect.left;
+    const deltaY = fromRect.top - toRect.top;
+
+    // Apply transition style
+    toEl.style.transition = 'transform 200ms ease';
+    toEl.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+
+    requestAnimationFrame(() => {
+        toEl.style.transform = 'translate(0, 0)';
+    });
+
+    // Cleanup after transition ends
+    toEl.addEventListener('transitionend', function handleTransitionEnd() {
+        toEl.style.transition = '';
+        toEl.style.transform = '';
+        toEl.removeEventListener('transitionend', handleTransitionEnd);
+    });
+}
+
 function removeDropIndicator() {
     if (dropIndicator && dropIndicator.parentNode) {
         dropIndicator.parentNode.removeChild(dropIndicator);
         dropIndicator = null;
-    }
-    if (draggedElement) {
-        draggedElement.classList.remove('dragging');
-        draggedElement = null;
     }
 }
 
