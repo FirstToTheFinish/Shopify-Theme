@@ -574,88 +574,84 @@ function copyArtElements(source, target) {
     const targetArtPreview = document.getElementById(`art-preview-${target.id}`);
     const artIds = {};
     let cnt = 0;
-    
-    // Clear the target art area first
-    targetArtPreview.innerHTML = '';
-    
-    // Filter out non-element nodes and clone all art elements from the source and append them to the target
-    [...sourceArtPreview.childNodes].filter(node => node.nodeType === 1).forEach(art => {
-        const clonedArt = art.cloneNode(true); // Clone the art element
 
-        // Generate a new unique ID for the cloned art element
+    // Clear target preview
+    targetArtPreview.innerHTML = '';
+
+    // Clone art previews
+    [...sourceArtPreview.childNodes].filter(node => node.nodeType === 1).forEach(art => {
+        const clonedArt = art.cloneNode(true);
         const newArtId = `image-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
         artIds[cnt] = newArtId;
-        
-        // Update the ID for the cloned element and its related elements
-        clonedArt.id = `${newArtId}-preview`; // Update the preview ID
+        clonedArt.id = `${newArtId}-preview`;
+
+        // Update remove button
         const removeButton = clonedArt.querySelector('.remove-art');
-        const sizeDropdown = clonedArt.querySelector('.image-size-dropdown');
-        const clonedImg = clonedArt.querySelector('img');
-
         if (removeButton) {
-            removeButton.setAttribute('onclick', `removeArt('${newArtId}')`); // Update the remove button
+            removeButton.setAttribute('onclick', `removeArt('${newArtId}')`);
         }
 
-        if (sizeDropdown) {
-            sizeDropdown.setAttribute('onchange', `resizeImage('${newArtId}', this.value)`); // Update size dropdown
+        // Update dropdown button ID
+        const dropdownButton = clonedArt.querySelector('.custom-dropdown-button');
+        if (dropdownButton) {
+            dropdownButton.setAttribute('onclick', `toggleDropdown('image-size-${newArtId}')`);
+            dropdownButton.id = `selected-image-size-${newArtId}`;
         }
 
-        if (clonedImg) {
-            clonedImg.id = newArtId; // Update the image ID
+        // Update dropdown content ID
+        const dropdownContent = clonedArt.querySelector('.custom-dropdown-content');
+        if (dropdownContent) {
+            dropdownContent.id = `image-size-${newArtId}`;
+
+            // Update each option's onclick
+            const options = dropdownContent.querySelectorAll('div');
+            options.forEach(option => {
+                const value = option.getAttribute('onclick').match(/'(.*?)'/g)[1].replace(/'/g, '');
+                const label = option.textContent.trim();
+                option.setAttribute('onclick', `selectImageSizeOption('${newArtId}', '${value}', '${label}')`);
+            });
         }
 
-        // Append the cloned art to the target art preview section
         targetArtPreview.appendChild(clonedArt);
         ++cnt;
     });
 
-    // Now handle the art on the canvas (TextOverlay)
+    // Handle overlay art
     const sourceOverlay = document.getElementById(`${source.title.replace(' ', '')}TextOverlay`);
     const targetOverlay = document.getElementById(`${target.title.replace(' ', '')}TextOverlay`);
     cnt = 0;
 
-    // Remove only art elements (with class 'editable-art') from the target overlay
-    [...targetOverlay.childNodes].filter(node => 
+    // Remove existing overlay art from target
+    [...targetOverlay.childNodes].filter(node =>
         node.nodeType === 1 && node.classList.contains('editable-art')
-    ).forEach(art => art.remove()); // Remove the art elements
+    ).forEach(art => art.remove());
 
-    // Filter and clone only elements with the class 'editable-art' from the source overlay
-    [...sourceOverlay.childNodes].filter(node => 
+    [...sourceOverlay.childNodes].filter(node =>
         node.nodeType === 1 && node.classList.contains('editable-art')
     ).forEach(art => {
-        const clonedArt = art.cloneNode(true); // Clone the art element
-        
-
-        // Generate a new unique ID for the cloned art element
+        const clonedArt = art.cloneNode(true);
         const newArtId = artIds[cnt];
-
-        // Update the ID for the cloned element
-        clonedArt.id = `${newArtId}`; // Update the overlay ID
-        clonedArt.setAttribute('data-id', newArtId); // Add data-id attribute for deletion
-
-        // Set the cloned art's position and properties (like draggable/resizable) on the canvas
-        clonedArt.style.left = `${parseFloat(art.style.left)}px`;
-        clonedArt.style.top = `${parseFloat(art.style.top)}px`;
+        clonedArt.id = newArtId;
+        clonedArt.setAttribute('data-id', newArtId);
         clonedArt.style.position = 'absolute';
         clonedArt.style.cursor = 'move';
+        clonedArt.style.left = `${parseFloat(art.style.left)}px`;
+        clonedArt.style.top = `${parseFloat(art.style.top)}px`;
 
-        // Append the new art to the target overlay (TextOverlay)
-        targetOverlay.appendChild(clonedArt);
-
-        // Make the new art draggable and resizable
         const tentCanvas = document.getElementById(`${target.title.replace(' ', '')}Canvas`);
+        targetOverlay.appendChild(clonedArt);
         makeElementDraggable(clonedArt, targetOverlay);
         makeElementResizable(clonedArt, tentCanvas);
         addSelectionListener(targetOverlay);
         ++cnt;
     });
-    const artPreview = document.getElementById(`art-preview-${target.id}`);
+
+    // Show label if art is present
     const artOrderLabel = document.getElementById(`art-order-label-${target.id}`);
-    if (artOrderLabel && artPreview.children.length > 0) {
+    if (artOrderLabel && targetArtPreview.children.length > 0) {
         artOrderLabel.style.display = 'block';
     }
 }
-
 
 // Copy notes
 function copyNotes(source, target) {

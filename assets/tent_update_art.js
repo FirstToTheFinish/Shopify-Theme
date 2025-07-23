@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;">
                         <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
                         <div class="custom-dropdown2">
-                            <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
+                            <button type="button" id="selected-image-size-${imageId}" class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
                                 Choose Size
                                 <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
