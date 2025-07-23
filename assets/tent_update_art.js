@@ -390,7 +390,7 @@ function removeArt(imageId) {
     if (canvasElement) {
         canvasElement.remove();
     }
-    const artOrderLabel = document.getElementById(`art-order-label-${sectionId}`);
+    const artOrderLabel = document.getElementById(`art-order-label-${sectionsConfig[currentSection-1].id}`);
     if (artOrderLabel && artPreview.children.length == 0 ) {
         artOrderLabel.style.display = 'none';
     }
