@@ -41,7 +41,7 @@ function addArt(sectionId, sectionTitle) {
                     <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
                         <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
-                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
+                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)">
                             <option value="default">Choose Size</option>
                             <option value="valance-3-4">3/4 Valance Image</option>
                             <option value="valance-full">Full Valance Image</option>
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
                         <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
-                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
+                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)">
                             <option value="default">Choose Size</option>
                             <option value="valance-3-4">3/4 Valance Image</option>
                             <option value="valance-full">Full Valance Image</option>
