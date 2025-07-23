@@ -41,14 +41,19 @@ function addArt(sectionId, sectionTitle) {
                     <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
                         <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
-                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)">
-                            <option value="default">Choose Size</option>
-                            <option value="valance-3-4">3/4 Valance Image</option>
-                            <option value="valance-full">Full Valance Image</option>
-                            <option value="peak-partial">Partial Peak Image</option>
-                            <option value="peak-full">Full Peak Image</option>
-                            <option value="wall">Wall Image</option>
-                        </select>
+                        <div class="custom-dropdown" id="image-size-${imageId}">
+                            <div class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
+                                <span id="selected-image-size-${imageId}">Choose Size</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </div>
+                            <div class="custom-dropdown-content">
+                                <div onclick="selectImageSizeOption('${imageId}', 'valance-3-4', '3/4 Valance Image')">3/4 Valance Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'valance-full', 'Full Valance Image')">Full Valance Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'peak-partial', 'Partial Peak Image')">Partial Peak Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'peak-full', 'Full Peak Image')">Full Peak Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'wall', 'Wall Image')">Wall Image</div>
+                            </div>
+                        </div>
                     </div>`;
 
                 // Create a container div for the image
@@ -107,6 +112,19 @@ function addArt(sectionId, sectionTitle) {
         addSelectionListener(combinedOverlay);
     }
 }
+
+function selectImageSizeOption(imageId, value, label) {
+    // Update label
+    document.getElementById(`selected-image-size-${imageId}`).innerText = label;
+  
+    // Close dropdown
+    document.querySelector(`#image-size-${imageId} .custom-dropdown-content`).style.display = 'none';
+    document.querySelector(`#image-size-${imageId} .custom-dropdown-button`).classList.remove('open');
+  
+    // Call your original resizing logic
+    resizeImage(imageId, value);
+  }
+  
 
 let draggedElement = null;
 let dropIndicator = null;
