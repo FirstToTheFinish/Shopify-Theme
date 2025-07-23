@@ -312,6 +312,13 @@
   width: 180px;
 }
 
+.custom-dropdown2 {
+  position: relative;
+  display: block;
+  width: 130px;
+  padding-top: 10px;
+}
+
 .custom-dropdown-button {
   background-color: #fff;
   border: 1px solid #ccc;
