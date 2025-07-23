@@ -93,6 +93,10 @@ function addArt(sectionId, sectionTitle) {
             }
 
             artPreview.insertAdjacentHTML('afterbegin', previewElement);
+            const artOrderLabel = document.getElementById(`art-order-label-${sectionId}`);
+            if (artOrderLabel && artPreview.children.length > 0) {
+                artOrderLabel.style.display = 'block';
+            }
 
             // Reset the file input value to allow re-uploading the same file
             fileInput.value = '';

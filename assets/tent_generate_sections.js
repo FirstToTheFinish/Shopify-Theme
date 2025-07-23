@@ -124,7 +124,7 @@ function generateSections(sectionsConfig) {
                         </div>
                     </div>
                 </div>
-                <label class="font-style-label">Art Order: </label>
+                <label id="art-order-label-${section.id}" class="font-style-label" style="display: none">Art Order: </label>
                 <div id="art-preview-${section.id}" class="art-preview" style="padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
                 <div style="min-height:35px;">
                     <h5>

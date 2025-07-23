@@ -485,7 +485,7 @@ function copyTextProperties(source, target) {
     targetTextElement.value = sourceText;
 
     //Copy Font Style
-    const srcStyle = document.getElementById(`font-style-${source.id}`).previousElementSibling.innerText;
+    const srcStyle = document.getElementById(`font-style-${source.id}`).previousElementSibling.value;
     selectDropdownOption(`font-style-${target.id}`, srcStyle, `${target.id}`);
 
     //Copy Font Color
