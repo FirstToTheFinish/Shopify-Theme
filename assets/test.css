@@ -1721,3 +1721,10 @@ h2 {
   transition: all 150ms ease; /* Smooth movement */
 }
 
+.art-container.dragging {
+  cursor: grabbing !important;
+  opacity: 0.8;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 999; /* Helps keep it on top if overlapping */
+}
+
