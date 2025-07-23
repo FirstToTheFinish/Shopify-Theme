@@ -649,6 +649,10 @@ function copyArtElements(source, target) {
         addSelectionListener(targetOverlay);
         ++cnt;
     });
+    const artOrderLabel = document.getElementById(`art-order-label-${source.id}`);
+    if (artOrderLabel && artPreview.children.length > 0) {
+        artOrderLabel.style.display = 'block';
+    }
 }
 
 
