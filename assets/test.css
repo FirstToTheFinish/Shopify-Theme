@@ -1709,7 +1709,7 @@ h2 {
 }
 
 .art-container[draggable="true"]:active {
-  cursor: grabbing;
+  cursor: grabbing !important;
 }
 
 .drop-indicator {

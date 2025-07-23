@@ -38,7 +38,7 @@ function addArt(sectionId, sectionTitle) {
 
                 // Display image in the preview area
                 previewElement = `
-                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
                         <button class="remove-art" onclick="removeArt('${imageId}')" style="position: absolute; top: 0px; right: 0px; background: red; color: white; cursor: pointer; border: none; border-radius: 3px; font-size: 14px;">&times;</button>
                         <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
@@ -109,6 +109,7 @@ let dropIndicator = null;
 
 function onDragStart(event) {
     draggedElement = event.currentTarget;
+    draggedElement.classList.add('dragging'); // Apply grabbing cursor
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('text/plain', ''); // for Firefox
 }
@@ -147,10 +148,21 @@ function onDrop(event) {
     }
 
     removeDropIndicator();
+    if (draggedElement) {
+        draggedElement.classList.remove('dragging'); // Remove grabbing cursor
+        draggedElement = null;
+    }
 }
 
 function onDragLeave(event) {
     removeDropIndicator();
+}
+
+function onDragEnd(event) {
+    if (draggedElement) {
+        draggedElement.classList.remove('dragging');
+        draggedElement = null;
+    }
 }
 
 // Add this helper function for smooth animation
