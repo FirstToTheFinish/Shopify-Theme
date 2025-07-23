@@ -200,10 +200,13 @@ function selectDropdownOption(dropdownId, value, sectionId) {
         'SwitzerlandCond': 'swzconbn',
     };
 
-    if (dropdownId.includes('font-style')) {
+    if (dropdownId.includes('font-style') && value != '') {
         button.style.fontFamily = fontClassMap[value]; // Set the font family of the button text to match the chosen font style
     }
-    
+    else{
+        button.style.fontFamily = 'Arial';
+    }
+
     if(value == ''){
         value = 'Select a Font Style'
     }
@@ -487,13 +490,13 @@ function copyTextProperties(source, target) {
     
     // Copy text
     targetTextElement.value = sourceText;
-
+    var srcStyle;
     //Copy Font Style
     if(document.getElementById(`font-style-${source.id}`).previousElementSibling.value != ''){
-        const srcStyle = document.getElementById(`font-style-${source.id}`).previousElementSibling.value;
+        srcStyle = document.getElementById(`font-style-${source.id}`).previousElementSibling.value;
     }
     else{
-        const srcStyle = '';
+        srcStyle = '';
     }
     selectDropdownOption(`font-style-${target.id}`, srcStyle, `${target.id}`);
 
