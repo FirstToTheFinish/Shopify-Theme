@@ -108,8 +108,8 @@ let draggedElement = null;
 let dropIndicator = null;
 
 function syncOverlayOrder(previewContainer) {
-    const sectionId = previewContainer.id.replace('art-preview-', '');
-    const overlay = document.getElementById(`${sectionId.replace(' ', '')}TextOverlay`);
+    const overlay = document.getElementById(`${sectionsConfig[currentSection-1].title.replace(' ', '')}TextOverlay`);
+    console.log(overlay);
     if (!overlay) return;
 
     // Remove all existing editable-art elements from overlay
