@@ -42,12 +42,12 @@ function addArt(sectionId, sectionTitle) {
                         <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;">
                         <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
                         <div class="custom-dropdown2">
-                            <div class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
-                                <span id="selected-image-size-${imageId}">Choose Size</span>
+                            <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
+                                Choose Size
                                 <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                 </svg>
-                            </div>
+                            </button>
                             <div class="custom-dropdown-content" id="image-size-${imageId}" style="">
                                 <div onclick="selectImageSizeOption('${imageId}', 'valance-3-4', '3/4 Valance Image')">3/4 Valance Image</div>
                                 <div onclick="selectImageSizeOption('${imageId}', 'valance-full', 'Full Valance Image')">Full Valance Image</div>
