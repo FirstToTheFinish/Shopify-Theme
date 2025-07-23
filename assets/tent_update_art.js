@@ -186,9 +186,6 @@ function onDrop(event) {
         draggedElement.classList.remove('dragging');
         draggedElement = null;
     }
-
-    syncOverlayOrder(container); 
-    console.log("reorder complete");
 }
 
 function onDragLeave(event) {
@@ -231,6 +228,10 @@ function removeDropIndicator() {
         dropIndicator.parentNode.removeChild(dropIndicator);
         dropIndicator = null;
     }
+
+    const container = event.currentTarget.parentNode;
+    syncOverlayOrder(container); 
+    console.log("reorder complete");
 }
 
 function makeElementResizable(element, container) {

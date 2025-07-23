@@ -104,14 +104,15 @@ function generateSections(sectionsConfig) {
                            4. Add Your Art:
                         </h5>
                         <!-- Drag and Drop Area -->
-                        <div class="drop-zone-modern" id="drop-zone-${section.id}"
+                        <div class="drop-zone-inline" id="drop-zone-${section.id}"
                             ondragover="event.preventDefault(); this.classList.add('drag-over');"
                             ondragleave="this.classList.remove('drag-over');"
                             ondrop="handleFileDrop(event, '${section.id}', '${section.title}'); this.classList.remove('drag-over');"
                             onclick="document.getElementById('upload-${section.id}').click();">
 
-                            <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" class="upload-icon">
-                            <div class="upload-instructions">
+                            <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" class="upload-icon-inline">
+
+                            <div class="upload-instructions-inline">
                             <strong>Drag & Drop</strong> your file here<br>
                             or <span class="upload-link">click to upload</span>
                             </div>
