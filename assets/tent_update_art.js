@@ -112,6 +112,10 @@ function onDragStart(event) {
     draggedElement.classList.add('dragging'); // Apply grabbing cursor
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('text/plain', ''); // for Firefox
+    
+    const img = new Image();
+    img.src = ''; // Blank image
+    event.dataTransfer.setDragImage(img, 0, 0);
 }
 
 function onDragOver(event) {
