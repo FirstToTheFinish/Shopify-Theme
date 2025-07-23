@@ -485,19 +485,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const artPreview = document.getElementById(`art-preview-${sectionId}`);
                 if (artPreview) {
                     const previewElement = `
-                        <div class="art-container resizable" id="${newId}-preview" style="position: relative; display: inline-block; margin: 5px;">
-                            <img src="${newArt.querySelector('img').src}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
-                            <button class="remove-art" onclick="removeArt('${newId}')" style="position: absolute; top: 0px; right: 0px; background: red; color: white; cursor: pointer; border: none; border-radius: 3px; font-size: 14px;">&times;</button>
-                            <select class="image-size-dropdown" onchange="resizeImage('${newId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
-                                <option value="default">Choose Size</option>
-                                <option value="valance-3-4">3/4 Valance Image</option>
-                                <option value="valance-full">Full Valance Image</option>
-                                <option value="peak-partial">Partial Peak Image</option>
-                                <option value="peak-full">Full Peak Image</option>
-                                <option value="wall">Wall Image</option>
-                            </select>
-                        </div>`;
-                    artPreview.insertAdjacentHTML('beforeend', previewElement);
+                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
+                        <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
+                        <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
+                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
+                            <option value="default">Choose Size</option>
+                            <option value="valance-3-4">3/4 Valance Image</option>
+                            <option value="valance-full">Full Valance Image</option>
+                            <option value="peak-partial">Partial Peak Image</option>
+                            <option value="peak-full">Full Peak Image</option>
+                            <option value="wall">Wall Image</option>
+                        </select>
+                    </div>`;
+                    artPreview.insertAdjacentHTML('afterbegin', previewElement);
                 }
     
                 console.log('Art pasted:', newArt); // For debugging purposes
