@@ -120,8 +120,7 @@ function selectImageSizeOption(imageId, value, label) {
     document.getElementById(`selected-image-size-${imageId}`).innerText = label;
   
     // Close dropdown
-    document.querySelector(`#image-size-${imageId} .custom-dropdown-content`).style.display = 'none';
-    document.querySelector(`#image-size-${imageId} .custom-dropdown-button`).classList.remove('open');
+    document.getElementById(`image-size-${imageId}`).classList.remove('show');
   
     // Call your original resizing logic
     resizeImage(imageId, value);
