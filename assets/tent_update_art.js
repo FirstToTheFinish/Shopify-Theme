@@ -92,7 +92,10 @@ function addArt(sectionId, sectionTitle) {
                 previewElement = `<p>Preview not available for this file type.</p>`;
             }
 
-            artPreview.insertAdjacentHTML('beforeend', previewElement);
+            const label = artPreview.querySelector('label');
+            if (label) {
+              label.insertAdjacentHTML('afterend', previewElement);
+            }            
 
             // Reset the file input value to allow re-uploading the same file
             fileInput.value = '';
@@ -112,7 +115,7 @@ function onDragStart(event) {
     draggedElement.classList.add('dragging'); // Apply grabbing cursor
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('text/plain', ''); // for Firefox
-    
+
     const img = new Image();
     img.src = ''; // Blank image
     event.dataTransfer.setDragImage(img, 0, 0);
