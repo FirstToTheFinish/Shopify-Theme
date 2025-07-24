@@ -303,13 +303,21 @@ document.addEventListener('DOMContentLoaded', () => {
 async function captureAndCombineSide(sideConfig) {
     const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, title } = sideConfig;
 
-    const peakImage = await captureElement(peakId);
-    const valanceImage = await captureElement(valanceId);
-    const wallImage = wallId ? await captureElement(wallId) : null;
-
-    const peakOverlayImage = await captureElement(peakOverlayId);
-    const valanceOverlayImage = await captureElement(valanceOverlayId);
-    const wallOverlayImage = wallOverlayId ? await captureElement(wallOverlayId) : null;
+    const [
+        peakImage,
+        valanceImage,
+        wallImage,
+        peakOverlayImage,
+        valanceOverlayImage,
+        wallOverlayImage
+      ] = await Promise.all([
+        captureElement(peakId),
+        captureElement(valanceId),
+        wallId ? captureElement(wallId) : null,
+        captureElement(peakOverlayId),
+        captureElement(valanceOverlayId),
+        wallOverlayId ? captureElement(wallOverlayId) : null
+      ]);      
 
     // Create the canvas with desired dimensions
     const canvas = document.createElement('canvas');
