@@ -114,15 +114,15 @@ function getSidesConfiguration(hasWalls, size) {
 
             base('BackPeakCanvas',      205, 305, Math.PI,     'Back'),
             base('BackValanceCanvas',   205, 276,   Math.PI,     'Back'),
-            base('BackWallCanvas',      205, 105, Math.PI,     'Back'),
+            base('BackWallCanvas',      205, 107, Math.PI,     'Back'),
 
-            base('RightPeakCanvas',     500, 376, -Math.PI/2,  'Right'),
-            base('RightValanceCanvas',  600, 426, -Math.PI/2, 'Right'),
-            base('RightWallCanvas',     700, 376, -Math.PI/2, 'Right'),
+            base('RightPeakCanvas',     525, 378, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  600, 438, -Math.PI/2, 'Right'),
+            base('RightWallCanvas',     700, 368, -Math.PI/2, 'Right'),
 
-            base('LeftPeakCanvas',      150, 374, Math.PI/2,   'Left'),
+            base('LeftPeakCanvas',      150, 378, Math.PI/2,   'Left'),
             base('LeftValanceCanvas',   50, 424, Math.PI/2,   'Left'),
-            base('LeftWallCanvas',      -50, 374, Math.PI/2,   'Left')
+            base('LeftWallCanvas',      -50, 378, Math.PI/2,   'Left')
         ];
     } else {
         return [
@@ -157,7 +157,7 @@ async function previewNow() {
     const previewCanvas = document.getElementById('tentPreviewCanvas');
     const previewImage = document.getElementById('tentPreviewImage');
     const ctx = previewCanvas.getContext('2d');
-    previewCanvas.width = 900;
+    previewCanvas.width = 1200;
     previewCanvas.height = 700;
     ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
 
