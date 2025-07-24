@@ -169,6 +169,8 @@ async function previewNow() {
 
     const sides = getSidesConfiguration(hasWalls, size);
 
+    console.log(sides);
+
     for (const side of sides) {
         const { id, x, y, rotation, scale, title } = side;
         console.log(side);
