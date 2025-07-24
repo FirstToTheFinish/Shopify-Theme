@@ -1,96 +1,5 @@
 let isFinished = false;
 
-function captureElement(elementId) {
-    const element = document.getElementById(elementId);
-    if (!element) {
-        return Promise.resolve(null);
-    }
-
-    // Temporarily make the element and its internal elements visible if they are hidden
-    const originalDisplay = element.style.display;
-    if (elementId.includes('Text')) {
-        element.style.display = 'flex';
-    } else {
-        element.style.display = 'block';
-    }
-
-    const internalElements = element.querySelectorAll('*:not(.center-line)');
-    const originalDisplayStyles = [];
-    internalElements.forEach(internalElement => {
-        originalDisplayStyles.push(internalElement.style.display);
-    });
-
-    return html2canvas(element, {
-        backgroundColor: null,
-        scale: 1, // Maintain the original size without scaling
-        logging: true, // Enable logging for debug purposes
-        width: element.clientWidth,
-        height: element.clientHeight
-    }).then(canvas => {
-        // Restore original display styles
-        element.style.display = originalDisplay;
-        internalElements.forEach((internalElement, index) => {
-            internalElement.style.display = originalDisplayStyles[index];
-        });
-
-        // Apply clipPath to the captured canvas
-        const overlay = document.getElementById(elementId.replace('Canvas', 'TextOverlay'));
-        if (overlay && overlay.style.clipPath && elementId.includes('Text')) {
-            const clipPath = overlay.style.clipPath.replace('path("', '').replace('")', '');
-
-            try {
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = canvas.width;
-                tempCanvas.height = canvas.height;
-                const tempCtx = tempCanvas.getContext('2d');
-
-                // Parse the clip path into a series of drawing commands
-                const pathCommands = clipPath.split(/(?=[MLQZ])/);
-                tempCtx.beginPath();
-                for (let cmd of pathCommands) {
-                    const parts = cmd.trim().split(/[ ,]+/);
-                    const command = parts[0];
-                    const params = parts.slice(1).map(parseFloat);
-                    switch (command) {
-                        case 'M':
-                            tempCtx.moveTo(params[0], params[1]);
-                            break;
-                        case 'L':
-                            tempCtx.lineTo(params[0], params[1]);
-                            break;
-                        case 'Q':
-                            tempCtx.quadraticCurveTo(params[0], params[1], params[2], params[3]);
-                            break;
-                        case 'Z':
-                            tempCtx.closePath();
-                            break;
-                        default:
-                            console.error(`Unsupported path command: ${command}`);
-                    }
-                }
-                tempCtx.clip();
-
-                tempCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
-
-                return tempCanvas.toDataURL("image/png");
-            } catch (error) {
-                console.error(`Error applying clipPath to ${elementId}:`, error);
-                return canvas.toDataURL("image/png");
-            }
-        } else {
-            return canvas.toDataURL("image/png");
-        }
-    }).catch(err => {
-        // Restore original display styles in case of error
-        element.style.display = originalDisplay;
-        internalElements.forEach((internalElement, index) => {
-            internalElement.style.display = originalDisplayStyles[index];
-        });
-        console.error(`Error capturing element ${elementId}:`, err);
-        return null;
-    });
-}
-
 async function previewNow() {
     // Show loading overlay
     document.getElementById('loadingOverlay').style.display = 'block';
@@ -213,6 +122,130 @@ async function previewNow() {
     });
 }
 
+function captureElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) {
+        return Promise.resolve(null);
+    }
+
+    const originalDisplay = element.style.display;
+    if (elementId.includes('Text')) {
+        element.style.display = 'flex';
+    } else {
+        element.style.display = 'block';
+    }
+
+    const internalElements = element.querySelectorAll('*:not(.center-line)');
+    const originalDisplayStyles = [];
+    internalElements.forEach(internalElement => {
+        originalDisplayStyles.push(internalElement.style.display);
+        internalElement.style.display = 'block';
+    });
+
+    return html2canvas(element, {
+        backgroundColor: null,
+        scale: 1,
+        logging: false,
+        width: element.clientWidth,
+        height: element.clientHeight
+    }).then(canvas => {
+        element.style.display = originalDisplay;
+        internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
+
+        const overlay = document.getElementById(elementId.replace('Canvas', 'TextOverlay'));
+        if (overlay && overlay.style.clipPath && elementId.includes('Text')) {
+            const clipPath = overlay.style.clipPath.replace('path("', '').replace('")', '');
+
+            try {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = canvas.width;
+                tempCanvas.height = canvas.height;
+                const tempCtx = tempCanvas.getContext('2d');
+
+                const pathCommands = clipPath.split(/(?=[MLQZ])/);
+                tempCtx.beginPath();
+                for (let cmd of pathCommands) {
+                    const parts = cmd.trim().split(/[ ,]+/);
+                    const command = parts[0];
+                    const params = parts.slice(1).map(parseFloat);
+                    switch (command) {
+                        case 'M': tempCtx.moveTo(params[0], params[1]); break;
+                        case 'L': tempCtx.lineTo(params[0], params[1]); break;
+                        case 'Q': tempCtx.quadraticCurveTo(params[0], params[1], params[2], params[3]); break;
+                        case 'Z': tempCtx.closePath(); break;
+                    }
+                }
+                tempCtx.clip();
+                tempCtx.drawImage(canvas, 0, 0);
+                return tempCanvas.toDataURL("image/png");
+            } catch (e) {
+                console.error(`clipPath failed for ${elementId}`, e);
+                return canvas.toDataURL("image/png");
+            }
+        } else {
+            return canvas.toDataURL("image/png");
+        }
+    }).catch(err => {
+        element.style.display = originalDisplay;
+        internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
+        console.error(`Error capturing ${elementId}:`, err);
+        return null;
+    });
+}
+
+async function captureAndCombineSide(side) {
+    const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, title } = side;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 800;
+    canvas.height = 600;
+    const ctx = canvas.getContext('2d');
+    const scale = 1;
+    let y = 0;
+
+    for (const pair of [
+        { base: peakId, overlay: peakOverlayId, type: 'peak' },
+        { base: valanceId, overlay: valanceOverlayId, type: 'valance' },
+        { base: wallId, overlay: wallOverlayId, type: 'wall' }
+    ]) {
+        if (!pair.base) continue;
+
+        const baseImg = await captureElement(pair.base);
+        const overlayImg = pair.overlay ? await captureElement(pair.overlay) : null;
+
+        if (baseImg) {
+            const img = new Image();
+            img.src = baseImg;
+            await new Promise(resolve => img.onload = resolve);
+            const x = (canvas.width - img.width * scale) / 2;
+            ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+
+            if (overlayImg) {
+                const overlay = new Image();
+                overlay.src = overlayImg;
+                await new Promise(resolve => overlay.onload = resolve);
+                ctx.drawImage(overlay, x, y, overlay.width * scale, overlay.height * scale);
+            }
+
+            // Draw logo if on front valance
+            if (pair.type === 'valance' && title.includes('Front')) {
+                const logo = document.getElementById('ValanceLogo');
+                if (logo && logo.src) {
+                    const brand = new Image();
+                    brand.src = logo.src;
+                    await new Promise(resolve => brand.onload = resolve);
+                    const brandW = 25;
+                    const brandH = brandW * (brand.naturalHeight / brand.naturalWidth);
+                    ctx.drawImage(brand, x + img.width * scale - brandW - 5, y + 5, brandW, brandH);
+                }
+            }
+            y += img.height * scale;
+        }
+    }
+
+    return canvas.toDataURL("image/png");
+}
+
 
 function goBackToSections() {
     if(isFinished){
@@ -299,85 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = ['FrontPeak', 'FrontValance'];
     sections.forEach(section => updateOverlayPositionAndSize(section));
 });
-
-async function captureAndCombineSide(sideConfig) {
-    const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, title } = sideConfig;
-
-    const peakImage = await captureElement(peakId);
-    const valanceImage = await captureElement(valanceId);
-    const wallImage = wallId ? await captureElement(wallId) : null;
-
-    const peakOverlayImage = await captureElement(peakOverlayId);
-    const valanceOverlayImage = await captureElement(valanceOverlayId);
-    const wallOverlayImage = wallOverlayId ? await captureElement(wallOverlayId) : null;
-
-    // Create the canvas with desired dimensions
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 800; // Adjust width as needed
-    canvas.height = 600; // Adjust height as needed
-
-    const imgScale = 1; // Adjust scaling as needed
-    let yOffset = 0;
-
-    const images = [
-        { image: peakImage, overlay: peakOverlayImage, type: 'peak' },
-        { image: valanceImage, overlay: valanceOverlayImage, type: 'valance' },
-        { image: wallImage, overlay: wallOverlayImage, type: 'wall' }
-    ];
-
-    for (const { image, overlay, type } of images) {
-        if (image) {
-            let valXPos = 0;
-            let valYPos = 0;
-            const img = new Image();
-            img.src = image;
-            await new Promise(resolve => {
-                img.onload = () => {
-                    const xPosition = (canvas.width - img.width * imgScale) / 2;
-                    ctx.drawImage(img, xPosition, yOffset, img.width * imgScale, img.height * imgScale);
-                    yOffset += img.height * imgScale;
-                    valXPos = xPosition;
-                    valYPos = yOffset;
-                    resolve();
-                };
-            });
-
-            if (overlay) {
-                const overlayImg = new Image();
-                overlayImg.src = overlay;
-                await new Promise(resolve => {
-                    overlayImg.onload = () => {
-                        const xPosition = (canvas.width - overlayImg.width * imgScale) / 2;
-                        ctx.drawImage(overlayImg, xPosition, yOffset - img.height * imgScale, overlayImg.width * imgScale, overlayImg.height * imgScale);
-                        resolve();
-                    };
-                });
-            }
-
-            // Draw the brand logo immediately after the valance is drawn
-            if (title.includes('Front') && type === 'valance') {
-                console.log("EMBEDING LOGO");
-                const brandLogo = new Image();
-                brandLogo.src = document.getElementById('ValanceLogo').src;
-                brandLogo.width = 25; // Set the width to match the CSS
-                brandLogo.height = brandLogo.width * (brandLogo.naturalHeight / brandLogo.naturalWidth); // Maintain aspect ratio
-
-                await new Promise(resolve => {
-                    brandLogo.onload = () => {
-                        const logoXPosition = valXPos + img.width * imgScale - brandLogo.width - 5;
-                        const logoYPosition = valYPos - img.height * imgScale + 5;
-                        ctx.drawImage(brandLogo, logoXPosition, logoYPosition, brandLogo.width, brandLogo.height);
-                        resolve();
-                    };
-                });
-            }
-        }
-    }
-
-    return canvas.toDataURL("image/png");
-}
-
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
