@@ -26,6 +26,7 @@ function captureElement(elementId) {
         logging: false,
         width: element.clientWidth,
         height: element.clientHeight,
+        removeContainer: true,
         ignoreElements: (el) => {
             // Prevent Shopify theme injected components from causing errors
             return (
