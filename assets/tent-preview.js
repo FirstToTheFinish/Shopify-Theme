@@ -108,12 +108,12 @@ function getSidesConfiguration(hasWalls, size) {
 
     if (hasWalls) {
         return [
-            base('FrontPeakCanvas',     200, 450, 0,           'Front'),
-            base('FrontValanceCanvas',  200, 595, 0,           'Front'),
+            base('FrontPeakCanvas',     205, 450, 0,           'Front'),
+            base('FrontValanceCanvas',  205, 595, 0,           'Front'),
 
-            base('BackPeakCanvas',      200, 300, Math.PI,     'Back'),
-            base('BackValanceCanvas',   200, 255, Math.PI,     'Back'),
-            base('BackWallCanvas',      200, 200, Math.PI,     'Back'),
+            base('BackPeakCanvas',      205, 310, Math.PI,     'Back'),
+            base('BackValanceCanvas',   205, 165, Math.PI,     'Back'),
+            base('BackWallCanvas',      205, 100, Math.PI,     'Back'),
 
             base('RightPeakCanvas',     0, 400, -Math.PI/2,  'Right'),
             base('RightValanceCanvas',  0, 400, -Math.PI/2, 'Right'),
@@ -171,8 +171,10 @@ async function previewNow() {
 
     for (const side of sides) {
         const { id, x, y, rotation, scale, title } = side;
+        console.log(side);
 
         const canvasEl = document.getElementById(id);
+        console.log(canvasEl);
         if (!canvasEl || canvasEl.width === 0 || canvasEl.height === 0) continue;
 
         const tempCanvas = document.createElement('canvas');
