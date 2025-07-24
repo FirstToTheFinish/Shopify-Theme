@@ -217,20 +217,37 @@ async function previewNow() {
             // Safely draw to the main preview
             try {
                 const img = await loadImage(tempCanvas.toDataURL("image/png"));
+
+                // Determine adjusted coordinates for center-based drawing
+                const centerX = x + (img.width * imgScale) / 2;
+                const centerY = y + (img.height * imgScale) / 2;
+
+                // Draw canvas content with rotation and scaling
                 ctx.save();
-                ctx.translate(x + img.width * imgScale / 2, y + img.height * imgScale / 2);
+                ctx.translate(centerX, centerY);
                 ctx.rotate(rotation);
-                ctx.drawImage(img, -img.width * imgScale / 2, -img.height * imgScale / 2, img.width * imgScale, img.height * imgScale);
+                ctx.drawImage(
+                    img,
+                    -(img.width * imgScale) / 2,
+                    -(img.height * imgScale) / 2,
+                    img.width * imgScale,
+                    img.height * imgScale
+                );
                 ctx.restore();
-    
-                // Optional logo draw
-                if (title.includes('Front') && id.includes('Valance')) {
+
+                // === Logo Layer (Front Valance Only) ===
+                if (title === 'Front' && id.includes('Valance')) {
                     const logo = document.getElementById('ValanceLogo');
                     if (logo && logo.complete && logo.naturalWidth > 0) {
                         const logoImg = await loadImage(logo.src);
                         const logoWidth = 25;
                         const logoHeight = logoWidth * (logoImg.height / logoImg.width);
-                        ctx.drawImage(logoImg, x + 200, y + 10, logoWidth, logoHeight);
+
+                        // Offset logo relative to drawn image (already rotated)
+                        const logoX = centerX - (logoWidth / 2);
+                        const logoY = centerY - (img.height * imgScale) / 2 + 10;
+
+                        ctx.drawImage(logoImg, logoX, logoY, logoWidth, logoHeight);
                     }
                 }
             } catch (err) {
