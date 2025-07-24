@@ -28,23 +28,20 @@ function captureElement(elementId) {
         height: element.clientHeight,
         removeContainer: true,
         ignoreElements: (el) => {
-            const id = el.id;
-            const cls = (el.className || '').toString();
-        
+            // Prevent Shopify theme injected components from causing errors
             return (
-                el.tagName === 'SCRIPT' ||                   // All <script> tags
-                el.tagName === 'STYLE' ||                    // Inline styles causing layout shifts
-                id?.includes('chat') ||                      // Shopify chat
-                cls.includes('predictive-search') ||
-                cls.includes('cart-drawer') ||
-                cls.includes('site-header') ||
-                cls.includes('site-footer') ||
-                cls.includes('announcement-bar') ||
-                cls.includes('breadcrumbs') ||
-                cls.includes('drawer__inner') ||             // Often triggers nextElementSibling
-                cls.includes('form__input') ||               // Search or login forms
-                cls.includes('list-menu')                    // Navigation menus
+                el.closest('header') ||
+                el.closest('footer') ||
+                el.classList.contains('predictive-search') ||
+                el.classList.contains('cart-drawer') ||
+                el.classList.contains('site-header') ||
+                el.classList.contains('site-footer') ||
+                el.id === 'shopify-chat' || // Optional
+                el.tagName === 'SCRIPT'
             );
+        },
+        onclone: (clonedDoc) => {
+            console.log(`Cloned [${elementId}]:`, clonedDoc.querySelector(`#${elementId}`));
         }
     }).then(canvas => {
         element.style.display = originalDisplay;
