@@ -108,11 +108,12 @@ function getSidesConfiguration(hasWalls, size) {
 
     if (hasWalls) {
         return [
-            base('FrontPeakCanvas',     400, 400, 0,           'Front'),
-            base('FrontValanceCanvas',  400, 550, 0,           'Front'),
-            base('BackPeakCanvas',      400, 400, Math.PI,     'Back'),
-            base('BackValanceCanvas',   400, 250, Math.PI,     'Back'),
-            base('BackWallCanvas',      400, 200, Math.PI,     'Back'),
+            base('FrontPeakCanvas',     325, 400, 0,           'Front'),
+            base('FrontValanceCanvas',  325, 525, 0,           'Front'),
+            
+            base('BackPeakCanvas',      325, 325, Math.PI,     'Back'),
+            base('BackValanceCanvas',   325, 200, Math.PI,     'Back'),
+            base('BackWallCanvas',      325, 150, Math.PI,     'Back'),
 
             base('RightPeakCanvas',     550, 400, -Math.PI/2,  'Right'),
             base('RightValanceCanvas',  650, 400, -Math.PI/2, 'Right'),
