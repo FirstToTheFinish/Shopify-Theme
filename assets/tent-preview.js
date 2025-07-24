@@ -44,7 +44,9 @@ function captureElement(elementId) {
                 id.includes('chat') ||                          // Shopify chat widgets
                 classList.includes('cart-drawer') ||            // Cart drawer
                 classList.includes('drawer__inner') ||          // Nested cart drawer content
-                classList.includes('predictive-search') ||      // Search auto-suggest
+                classList.includes('predictive-search') ||
+                classList.includes('predictive-search__input') ||  // <== 🔒 Prevent main.js crash
+                classList.includes('predictive-search__results') ||      // Search auto-suggest
                 classList.includes('site-header') ||
                 classList.includes('site-footer') ||
                 classList.includes('announcement-bar') ||       // Announcement bar (frequently animated)
@@ -53,7 +55,8 @@ function captureElement(elementId) {
                 classList.includes('modal') ||                  // Any modals or popups
                 classList.includes('tooltip') ||                // Hover info/tooltips
                 classList.includes('breadcrumbs') ||            // Optional, if not part of preview
-                classList.includes('form__input')               // Login, search, etc.
+                classList.includes('form__input') ||
+                classList.includes('field__input')             
             );
         }
     }).then(canvas => {
