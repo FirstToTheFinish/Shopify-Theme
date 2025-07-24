@@ -42,7 +42,6 @@ function captureElement(elementId) {
                 el.tagName === 'SCRIPT' ||                    // All <script> tags
                 el.tagName === 'STYLE' ||                       // Inline <style> tags that could interfere
                 id.includes('chat') ||                          // Shopify chat widgets
-                id.includes('shopify') ||                       // Shopify-specific IDs
                 classList.includes('cart-drawer') ||            // Cart drawer
                 classList.includes('drawer__inner') ||          // Nested cart drawer content
                 classList.includes('predictive-search') ||      // Search auto-suggest
