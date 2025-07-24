@@ -184,11 +184,19 @@ async function previewNow() {
         const overlayEl = document.getElementById(id.replace('Canvas', 'TextOverlay'));
         if (overlayEl) {
             const overlayRects = overlayEl.querySelectorAll('div');
+            const overlayBounds = overlayEl.getBoundingClientRect();
+
             for (const rect of overlayRects) {
                 const rectCanvas = await html2canvas(rect, { backgroundColor: null });
-                tempCtx.drawImage(rectCanvas, rect.offsetLeft, rect.offsetTop);
+                const rectBounds = rect.getBoundingClientRect();
+
+                const offsetX = rectBounds.left - overlayBounds.left;
+                const offsetY = rectBounds.top - overlayBounds.top;
+
+                tempCtx.drawImage(rectCanvas, offsetX, offsetY);
             }
         }
+
 
         const img = await loadImage(tempCanvas.toDataURL("image/png"));
         const centerX = x + (img.width * scale) / 2;
