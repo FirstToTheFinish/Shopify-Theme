@@ -109,19 +109,19 @@ function getSidesConfiguration(hasWalls, size) {
 
     if (hasWalls) {
         return [
-            base('FrontPeakCanvas',     600, 200, 0,           'Front'),
-            base('FrontValanceCanvas',  600, 300, 0,           'Front'),
-            base('BackPeakCanvas',      600, 700, Math.PI,     'Back'),
-            base('BackValanceCanvas',   600, 800, Math.PI,     'Back'),
-            base('BackWallCanvas',      600, 900, Math.PI,     'Back'),
+            base('FrontPeakCanvas',     0, 0, 0,           'Front'),
+            base('FrontValanceCanvas',  0, 0, 0,           'Front'),
+            base('BackPeakCanvas',      0, 0, Math.PI,     'Back'),
+            base('BackValanceCanvas',   0, 0, Math.PI,     'Back'),
+            base('BackWallCanvas',      0, 0, Math.PI,     'Back'),
 
-            base('RightPeakCanvas',     950, 500, -Math.PI/2,  'Right'),
-            base('RightValanceCanvas',  1000, 500, -Math.PI/2, 'Right'),
-            base('RightWallCanvas',     1050, 500, -Math.PI/2, 'Right'),
+            base('RightPeakCanvas',     0, 0, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  0, 0, -Math.PI/2, 'Right'),
+            base('RightWallCanvas',     0, 0, -Math.PI/2, 'Right'),
 
-            base('LeftPeakCanvas',      250, 500, Math.PI/2,   'Left'),
-            base('LeftValanceCanvas',   200, 500, Math.PI/2,   'Left'),
-            base('LeftWallCanvas',      150, 500, Math.PI/2,   'Left')
+            base('LeftPeakCanvas',      0, 0, Math.PI/2,   'Left'),
+            base('LeftValanceCanvas',   0, 0, Math.PI/2,   'Left'),
+            base('LeftWallCanvas',      0, 0, Math.PI/2,   'Left')
         ];
     } else {
         return [
