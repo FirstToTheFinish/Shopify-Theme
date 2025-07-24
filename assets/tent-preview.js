@@ -1,5 +1,97 @@
 let isFinished = false;
 
+function captureElement(elementId) {
+    console.log("updated code");
+    const element = document.getElementById(elementId);
+    if (!element) {
+        return Promise.resolve(null);
+    }
+
+    // Temporarily make the element and its internal elements visible if they are hidden
+    const originalDisplay = element.style.display;
+    if (elementId.includes('Text')) {
+        element.style.display = 'flex';
+    } else {
+        element.style.display = 'block';
+    }
+
+    const internalElements = element.querySelectorAll('*:not(.center-line)');
+    const originalDisplayStyles = [];
+    internalElements.forEach(internalElement => {
+        originalDisplayStyles.push(internalElement.style.display);
+    });
+
+    return html2canvas(element, {
+        backgroundColor: null,
+        scale: 1, // Maintain the original size without scaling
+        logging: false, // Enable logging for debug purposes
+        width: element.clientWidth,
+        height: element.clientHeight
+    }).then(canvas => {
+        // Restore original display styles
+        element.style.display = originalDisplay;
+        internalElements.forEach((internalElement, index) => {
+            internalElement.style.display = originalDisplayStyles[index];
+        });
+
+        // Apply clipPath to the captured canvas
+        const overlay = document.getElementById(elementId.replace('Canvas', 'TextOverlay'));
+        if (overlay && overlay.style.clipPath && elementId.includes('Text')) {
+            const clipPath = overlay.style.clipPath.replace('path("', '').replace('")', '');
+
+            try {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = canvas.width;
+                tempCanvas.height = canvas.height;
+                const tempCtx = tempCanvas.getContext('2d');
+
+                // Parse the clip path into a series of drawing commands
+                const pathCommands = clipPath.split(/(?=[MLQZ])/);
+                tempCtx.beginPath();
+                for (let cmd of pathCommands) {
+                    const parts = cmd.trim().split(/[ ,]+/);
+                    const command = parts[0];
+                    const params = parts.slice(1).map(parseFloat);
+                    switch (command) {
+                        case 'M':
+                            tempCtx.moveTo(params[0], params[1]);
+                            break;
+                        case 'L':
+                            tempCtx.lineTo(params[0], params[1]);
+                            break;
+                        case 'Q':
+                            tempCtx.quadraticCurveTo(params[0], params[1], params[2], params[3]);
+                            break;
+                        case 'Z':
+                            tempCtx.closePath();
+                            break;
+                        default:
+                            console.error(`Unsupported path command: ${command}`);
+                    }
+                }
+                tempCtx.clip();
+
+                tempCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+
+                return tempCanvas.toDataURL("image/png");
+            } catch (error) {
+                console.error(`Error applying clipPath to ${elementId}:`, error);
+                return canvas.toDataURL("image/png");
+            }
+        } else {
+            return canvas.toDataURL("image/png");
+        }
+    }).catch(err => {
+        // Restore original display styles in case of error
+        element.style.display = originalDisplay;
+        internalElements.forEach((internalElement, index) => {
+            internalElement.style.display = originalDisplayStyles[index];
+        });
+        console.error(`Error capturing element ${elementId}:`, err);
+        return null;
+    });
+}
+
 async function previewNow() {
     // Show loading overlay
     document.getElementById('loadingOverlay').style.display = 'block';
