@@ -20,6 +20,11 @@ function captureElement(elementId) {
         internalElement.style.display = 'block';
     });
 
+    console.log("Capture Target Exists:", document.getElementById(elementId));
+    console.log("Cart Drawer Exists:", document.querySelector('.cart-drawer'));
+    console.log("Predictive Search Input:", document.querySelector('.predictive-search__input'));
+
+
     return html2canvas(element, {
         backgroundColor: null,
         scale: 1,
@@ -58,7 +63,13 @@ function captureElement(elementId) {
                 classList.includes('form__input') ||
                 classList.includes('field__input')             
             );
+        },
+        onclone: (clonedDoc) => {
+            // Remove predictive search or other elements just in case
+            const predictiveEls = clonedDoc.querySelectorAll('.predictive-search, .predictive-search__input, .predictive-search__results');
+            predictiveEls.forEach(el => el.remove());
         }
+        
     }).then(canvas => {
         element.style.display = originalDisplay;
         internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
