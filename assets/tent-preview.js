@@ -102,30 +102,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // === Get Side Configs ===
 function getSidesConfiguration(hasWalls, size) {
-    const base = (peak, val, wall, pO, vO, wO, x, y, r, title) => ({
-        peakId: peak, valanceId: val, wallId: wall,
-        peakOverlayId: pO, valanceOverlayId: vO, wallOverlayId: wO,
-        x, y, rotation: r, title
+    const scaleUp = 1.5; // this will increase image size in preview
+    const base = (id, x, y, rotation, title) => ({
+        id, x, y, rotation, scale: scaleUp, title
     });
 
     if (hasWalls) {
-        const config = size === 20 ? [110, 110, 340, -120] : size === 15 ? [110, 110, 305, -85] : [110, 110, 260, -40];
         return [
-            base('FrontPeakCanvas', 'FrontValanceCanvas', null, 'FrontPeakTextOverlay', 'FrontValanceTextOverlay', null, config[0], 250, 0, 'Front'),
-            base('BackPeakCanvas', 'BackValanceCanvas', 'BackWallCanvas', 'BackPeakTextOverlay', 'BackValanceTextOverlay', 'BackWallTextOverlay', config[1], -50, Math.PI, 'Back'),
-            base('RightPeakCanvas', 'RightValanceCanvas', 'RightWallCanvas', 'RightPeakTextOverlay', 'RightValanceTextOverlay', 'RightWallTextOverlay', config[2], 100, -Math.PI / 2, 'Right'),
-            base('LeftPeakCanvas', 'LeftValanceCanvas', 'LeftWallCanvas', 'LeftPeakTextOverlay', 'LeftValanceTextOverlay', 'LeftWallTextOverlay', config[3], 100, Math.PI / 2, 'Left')
+            base('FrontPeakCanvas',     600, 200, 0,           'Front'),
+            base('FrontValanceCanvas',  600, 300, 0,           'Front'),
+            base('BackPeakCanvas',      600, 700, Math.PI,     'Back'),
+            base('BackValanceCanvas',   600, 800, Math.PI,     'Back'),
+            base('BackWallCanvas',      600, 900, Math.PI,     'Back'),
+
+            base('RightPeakCanvas',     950, 500, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  1000, 500, -Math.PI/2, 'Right'),
+            base('RightWallCanvas',     1050, 500, -Math.PI/2, 'Right'),
+
+            base('LeftPeakCanvas',      250, 500, Math.PI/2,   'Left'),
+            base('LeftValanceCanvas',   200, 500, Math.PI/2,   'Left'),
+            base('LeftWallCanvas',      150, 500, Math.PI/2,   'Left')
         ];
     } else {
-        const config = size === 20 ? [344] : size === 15 ? [294] : [226];
         return [
-            base('FrontPeakCanvas', 'FrontValanceCanvas', null, 'FrontPeakTextOverlay', 'FrontValanceTextOverlay', null, 0, 200, 0, 'Front'),
-            base('BackPeakCanvas', 'BackValanceCanvas', null, 'BackPeakTextOverlay', 'BackValanceTextOverlay', null, 0, -250, Math.PI, 'Back'),
-            base('RightPeakCanvas', 'RightValanceCanvas', null, 'RightPeakTextOverlay', 'RightValanceTextOverlay', null, config[0], -25, -Math.PI / 2, 'Right'),
-            base('LeftPeakCanvas', 'LeftValanceCanvas', null, 'LeftPeakTextOverlay', 'LeftValanceTextOverlay', null, -config[0], -25, Math.PI / 2, 'Left')
+            base('FrontPeakCanvas',     600, 250, 0,           'Front'),
+            base('FrontValanceCanvas',  600, 350, 0,           'Front'),
+            base('BackPeakCanvas',      600, 750, Math.PI,     'Back'),
+            base('BackValanceCanvas',   600, 850, Math.PI,     'Back'),
+
+            base('RightPeakCanvas',     950, 500, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  1000, 500, -Math.PI/2, 'Right'),
+
+            base('LeftPeakCanvas',      250, 500, Math.PI/2,   'Left'),
+            base('LeftValanceCanvas',   200, 500, Math.PI/2,   'Left')
         ];
     }
 }
+
 
 async function previewNow() {
     document.getElementById('loadingOverlay').style.display = 'block';
