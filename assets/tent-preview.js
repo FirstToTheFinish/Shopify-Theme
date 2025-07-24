@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getSidesConfiguration(hasWalls, size) {
-    const scaleUp = 0.85; // this will increase image size in preview
+    const scaleUp = 0.75; // this will increase image size in preview
     const base = (id, x, y, rotation, title) => ({
         id, x, y, rotation, scale: scaleUp, title
     });
