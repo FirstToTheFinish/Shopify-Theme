@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getSidesConfiguration(hasWalls, size) {
     const scaleUp = 0.75; // this will increase image size in preview
-    console.log("here");
     const base = (id, x, y, rotation, title) => ({
         id, x, y, rotation, scale: scaleUp, title
     });
@@ -170,15 +169,11 @@ async function previewNow() {
 
     const sides = getSidesConfiguration(hasWalls, size);
 
-    console.log(sides);
-
     for (const side of sides) {
         const { id, x, y, rotation, scale, title } = side;
-        console.log(side);
 
         const canvasEl = document.getElementById(id);
-        console.log(canvasEl);
-        if (!canvasEl || canvasEl.width === 0 || canvasEl.height === 0) continue;
+        if (!canvasEl || canvasEl.width === 0 || canvasEl.height === 0){ console.log("skip"); continue; }
 
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = canvasEl.width;
