@@ -105,6 +105,7 @@ function getSidesConfiguration(hasWalls, size) {
     const base = (id, x, y, rotation, title) => ({
         id, x, y, rotation, scale: scaleUp, title
     });
+    console.log("1");
 
     if (hasWalls) {
         return [
