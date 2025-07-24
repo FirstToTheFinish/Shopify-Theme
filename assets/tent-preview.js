@@ -133,6 +133,14 @@ async function previewNow() {
     document.getElementById('preview-section').style.display = 'block';
     document.getElementById('toggleSnapGrid').style.visibility = 'hidden';
 
+    // Hide the left side canvases
+    document.getElementById('LeftPeakCanvas').style.display = 'none';
+    document.getElementById('LeftValanceCanvas').style.display = 'none';
+    document.getElementById('LeftWallCanvas').style.display = 'none';
+    document.getElementById('LeftPeakTextOverlay').style.display = 'none';
+    document.getElementById('LeftValanceTextOverlay').style.display = 'none';
+    document.getElementById('LeftWallTextOverlay').style.display = 'none';
+
     const previewCanvas = document.getElementById('tentPreviewCanvas');
     const previewImage = document.getElementById('tentPreviewImage');
     const ctx = previewCanvas.getContext('2d');
