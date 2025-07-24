@@ -152,66 +152,83 @@ async function previewNow() {
 
     for (const side of sides) {
         const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, x, y, rotation, title } = side;
-
+    
         const layers = [
             { id: peakId, overlayId: peakOverlayId },
             { id: valanceId, overlayId: valanceOverlayId },
             wallId ? { id: wallId, overlayId: wallOverlayId } : null
         ].filter(Boolean);
-
+    
         for (const { id, overlayId } of layers) {
             const sourceCanvas = document.getElementById(id);
-            if (!sourceCanvas) continue;
-
+            if (!sourceCanvas || sourceCanvas.width === 0 || sourceCanvas.height === 0) {
+                console.warn(`Skipping ${id}: canvas is empty or not ready.`);
+                continue;
+            }
+    
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = sourceCanvas.width;
             tempCanvas.height = sourceCanvas.height;
             const tempCtx = tempCanvas.getContext('2d');
-
-            // Draw canvas background
+    
+            // Draw base canvas
             tempCtx.drawImage(sourceCanvas, 0, 0);
-
-            // Overlay text if available
+    
+            // Draw overlay if visible and sized
             const overlayEl = document.getElementById(overlayId);
-            if (overlayEl) {
+            if (overlayEl && overlayEl.offsetWidth > 0 && overlayEl.offsetHeight > 0) {
                 const overlayClone = overlayEl.cloneNode(true);
                 overlayClone.style.display = 'block';
                 overlayClone.style.position = 'absolute';
                 overlayClone.style.top = '0px';
                 overlayClone.style.left = '0px';
                 overlayClone.style.pointerEvents = 'none';
-
                 document.body.appendChild(overlayClone);
-                const overlayCanvas = await html2canvas(overlayClone, {
-                    backgroundColor: null,
-                    scale: 1,
-                    logging: false,
-                    width: overlayEl.clientWidth,
-                    height: overlayEl.clientHeight
-                });
-                tempCtx.drawImage(overlayCanvas, 0, 0);
-                document.body.removeChild(overlayClone);
-            }
-
-            // Draw combined layer to main preview canvas
-            const img = await loadImage(tempCanvas.toDataURL("image/png"));
-            ctx.save();
-            ctx.translate(x + img.width * imgScale / 2, y + img.height * imgScale / 2);
-            ctx.rotate(rotation);
-            ctx.drawImage(img, -img.width * imgScale / 2, -img.height * imgScale / 2, img.width * imgScale, img.height * imgScale);
-            ctx.restore();
-
-            // Add logo for front valance
-            if (title.includes('Front') && id.includes('Valance')) {
-                const logo = document.getElementById('ValanceLogo');
-                if (logo && logo.complete && logo.naturalWidth > 0) {
-                    const logoImg = await loadImage(logo.src);
-                    const logoWidth = 25;
-                    const logoHeight = logoWidth * (logoImg.height / logoImg.width);
-                    ctx.drawImage(logoImg, x + 200, y + 10, logoWidth, logoHeight);
+    
+                try {
+                    const overlayCanvas = await html2canvas(overlayClone, {
+                        backgroundColor: null,
+                        scale: 1,
+                        logging: false,
+                        width: overlayEl.clientWidth,
+                        height: overlayEl.clientHeight
+                    });
+    
+                    if (overlayCanvas.width > 0 && overlayCanvas.height > 0) {
+                        tempCtx.drawImage(overlayCanvas, 0, 0);
+                    } else {
+                        console.warn(`Overlay canvas for ${overlayId} had zero width/height`);
+                    }
+                } catch (err) {
+                    console.error(`Failed to capture overlay ${overlayId}:`, err);
+                } finally {
+                    document.body.removeChild(overlayClone);
                 }
             }
-        }
+    
+            // Safely draw to the main preview
+            try {
+                const img = await loadImage(tempCanvas.toDataURL("image/png"));
+                ctx.save();
+                ctx.translate(x + img.width * imgScale / 2, y + img.height * imgScale / 2);
+                ctx.rotate(rotation);
+                ctx.drawImage(img, -img.width * imgScale / 2, -img.height * imgScale / 2, img.width * imgScale, img.height * imgScale);
+                ctx.restore();
+    
+                // Optional logo draw
+                if (title.includes('Front') && id.includes('Valance')) {
+                    const logo = document.getElementById('ValanceLogo');
+                    if (logo && logo.complete && logo.naturalWidth > 0) {
+                        const logoImg = await loadImage(logo.src);
+                        const logoWidth = 25;
+                        const logoHeight = logoWidth * (logoImg.height / logoImg.width);
+                        ctx.drawImage(logoImg, x + 200, y + 10, logoWidth, logoHeight);
+                    }
+                }
+            } catch (err) {
+                console.error(`Error drawing image for ${id}:`, err);
+            }
+        }    
     }
 
     previewImage.src = previewCanvas.toDataURL("image/png");
