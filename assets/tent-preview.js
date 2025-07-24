@@ -213,7 +213,7 @@ async function previewNow() {
                 const logoImg = await loadImage(logo.src);
                 const logoWidth = 25;
                 const logoHeight = logoWidth * (logoImg.height / logoImg.width);
-                ctx.drawImage(logoImg, x + 200, y + 10, logoWidth, logoHeight);
+                ctx.drawImage(logoImg, x + 450, y + 5, logoWidth, logoHeight);
             }
         }
     }
