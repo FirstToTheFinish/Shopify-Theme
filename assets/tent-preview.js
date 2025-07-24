@@ -35,7 +35,6 @@ function captureElement(elementId) {
                 el.classList.contains('cart-drawer') ||
                 el.classList.contains('site-header') ||
                 el.classList.contains('site-footer') ||
-                el.closest('.shopify-section') ||
                 el.tagName === 'SCRIPT'
             );
         }
