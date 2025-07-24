@@ -144,8 +144,8 @@ async function previewNow() {
     const previewCanvas = document.getElementById('tentPreviewCanvas');
     const previewImage = document.getElementById('tentPreviewImage');
     const ctx = previewCanvas.getContext('2d');
-    previewCanvas.width = 1200;
-    previewCanvas.height = 900;
+    previewCanvas.width = 900;
+    previewCanvas.height = 700;
     ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
 
     document.getElementById('infoTitle').textContent = 'Contact Information';
