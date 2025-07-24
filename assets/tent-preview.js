@@ -28,7 +28,9 @@ function captureElement(elementId) {
         height: element.clientHeight,
         removeContainer: true,
         ignoreElements: (el) => {
-            // Prevent Shopify theme injected components from causing errors
+            const id = el.id || '';
+            const classList = (el.className || '').toString();
+        
             return (
                 el.closest('header') ||
                 el.closest('footer') ||
@@ -37,11 +39,23 @@ function captureElement(elementId) {
                 el.classList.contains('site-header') ||
                 el.classList.contains('site-footer') ||
                 el.id === 'shopify-chat' || // Optional
-                el.tagName === 'SCRIPT'
+                el.tagName === 'SCRIPT' ||                    // All <script> tags
+                el.tagName === 'STYLE' ||                       // Inline <style> tags that could interfere
+                id.includes('chat') ||                          // Shopify chat widgets
+                id.includes('shopify') ||                       // Shopify-specific IDs
+                classList.includes('cart-drawer') ||            // Cart drawer
+                classList.includes('drawer__inner') ||          // Nested cart drawer content
+                classList.includes('predictive-search') ||      // Search auto-suggest
+                classList.includes('site-header') ||
+                classList.includes('site-footer') ||
+                classList.includes('announcement-bar') ||       // Announcement bar (frequently animated)
+                classList.includes('list-menu') ||              // Navigation menus
+                classList.includes('menu-drawer') ||            // Mobile nav drawer
+                classList.includes('modal') ||                  // Any modals or popups
+                classList.includes('tooltip') ||                // Hover info/tooltips
+                classList.includes('breadcrumbs') ||            // Optional, if not part of preview
+                classList.includes('form__input')               // Login, search, etc.
             );
-        },
-        onclone: (clonedDoc) => {
-            console.log(`Cloned [${elementId}]:`, clonedDoc.querySelector(`#${elementId}`));
         }
     }).then(canvas => {
         element.style.display = originalDisplay;
