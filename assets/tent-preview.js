@@ -100,29 +100,40 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => updateOverlayPositionAndSize(section));
 });
 
-// === Get Side Configs ===
 function getSidesConfiguration(hasWalls, size) {
-    const base = (peak, val, wall, pO, vO, wO, x, y, r, title) => ({
-        peakId: peak, valanceId: val, wallId: wall,
-        peakOverlayId: pO, valanceOverlayId: vO, wallOverlayId: wO,
-        x, y, rotation: r, title
+    const scaleUp = 0.75; // this will increase image size in preview
+    const base = (id, x, y, rotation, title) => ({
+        id, x, y, rotation, scale: scaleUp, title
     });
 
     if (hasWalls) {
-        const config = size === 20 ? [110, 110, 340, -120] : size === 15 ? [110, 110, 305, -85] : [110, 110, 260, -40];
         return [
-            base('FrontPeakCanvas', 'FrontValanceCanvas', null, 'FrontPeakTextOverlay', 'FrontValanceTextOverlay', null, config[0], 250, 0, 'Front'),
-            base('BackPeakCanvas', 'BackValanceCanvas', 'BackWallCanvas', 'BackPeakTextOverlay', 'BackValanceTextOverlay', 'BackWallTextOverlay', config[1], -50, Math.PI, 'Back'),
-            base('RightPeakCanvas', 'RightValanceCanvas', 'RightWallCanvas', 'RightPeakTextOverlay', 'RightValanceTextOverlay', 'RightWallTextOverlay', config[2], 100, -Math.PI / 2, 'Right'),
-            base('LeftPeakCanvas', 'LeftValanceCanvas', 'LeftWallCanvas', 'LeftPeakTextOverlay', 'LeftValanceTextOverlay', 'LeftWallTextOverlay', config[3], 100, Math.PI / 2, 'Left')
+            base('FrontPeakCanvas',     600, 200, 0,           'Front'),
+            base('FrontValanceCanvas',  600, 300, 0,           'Front'),
+            base('BackPeakCanvas',      600, 700, Math.PI,     'Back'),
+            base('BackValanceCanvas',   600, 800, Math.PI,     'Back'),
+            base('BackWallCanvas',      600, 900, Math.PI,     'Back'),
+
+            base('RightPeakCanvas',     950, 500, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  1000, 500, -Math.PI/2, 'Right'),
+            base('RightWallCanvas',     1050, 500, -Math.PI/2, 'Right'),
+
+            base('LeftPeakCanvas',      250, 500, Math.PI/2,   'Left'),
+            base('LeftValanceCanvas',   200, 500, Math.PI/2,   'Left'),
+            base('LeftWallCanvas',      150, 500, Math.PI/2,   'Left')
         ];
     } else {
-        const config = size === 20 ? [344] : size === 15 ? [294] : [226];
         return [
-            base('FrontPeakCanvas', 'FrontValanceCanvas', null, 'FrontPeakTextOverlay', 'FrontValanceTextOverlay', null, 0, 200, 0, 'Front'),
-            base('BackPeakCanvas', 'BackValanceCanvas', null, 'BackPeakTextOverlay', 'BackValanceTextOverlay', null, 0, -250, Math.PI, 'Back'),
-            base('RightPeakCanvas', 'RightValanceCanvas', null, 'RightPeakTextOverlay', 'RightValanceTextOverlay', null, config[0], -25, -Math.PI / 2, 'Right'),
-            base('LeftPeakCanvas', 'LeftValanceCanvas', null, 'LeftPeakTextOverlay', 'LeftValanceTextOverlay', null, -config[0], -25, Math.PI / 2, 'Left')
+            base('FrontPeakCanvas',     600, 250, 0,           'Front'),
+            base('FrontValanceCanvas',  600, 350, 0,           'Front'),
+            base('BackPeakCanvas',      600, 750, Math.PI,     'Back'),
+            base('BackValanceCanvas',   600, 850, Math.PI,     'Back'),
+
+            base('RightPeakCanvas',     950, 500, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  1000, 500, -Math.PI/2, 'Right'),
+
+            base('LeftPeakCanvas',      250, 500, Math.PI/2,   'Left'),
+            base('LeftValanceCanvas',   200, 500, Math.PI/2,   'Left')
         ];
     }
 }
@@ -156,104 +167,54 @@ async function previewNow() {
     await delay(100);
 
     const sides = getSidesConfiguration(hasWalls, size);
-    const imgScale = 0.75;
 
     for (const side of sides) {
-        const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, x, y, rotation, title } = side;
-    
-        const layers = [
-            { id: peakId, overlayId: peakOverlayId },
-            { id: valanceId, overlayId: valanceOverlayId },
-            wallId ? { id: wallId, overlayId: wallOverlayId } : null
-        ].filter(Boolean);
-    
-        for (const { id, overlayId } of layers) {
-            const sourceCanvas = document.getElementById(id);
-            if (!sourceCanvas || sourceCanvas.width === 0 || sourceCanvas.height === 0) {
-                console.warn(`Skipping ${id}: canvas is empty or not ready.`);
-                continue;
+        const { id, x, y, rotation, scale, title } = side;
+
+        const canvasEl = document.getElementById(id);
+        if (!canvasEl || canvasEl.width === 0 || canvasEl.height === 0) continue;
+
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = canvasEl.width;
+        tempCanvas.height = canvasEl.height;
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCtx.drawImage(canvasEl, 0, 0);
+
+        const overlayEl = document.getElementById(id.replace('Canvas', 'TextOverlay'));
+        if (overlayEl) {
+            const overlayRects = overlayEl.querySelectorAll('div');
+            for (const rect of overlayRects) {
+                const rectCanvas = await html2canvas(rect, { backgroundColor: null });
+                tempCtx.drawImage(rectCanvas, rect.offsetLeft, rect.offsetTop);
             }
-    
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = sourceCanvas.width;
-            tempCanvas.height = sourceCanvas.height;
-            const tempCtx = tempCanvas.getContext('2d');
-    
-            // Draw base canvas
-            tempCtx.drawImage(sourceCanvas, 0, 0);
-    
-            // Draw overlay if visible and sized
-            const overlayEl = document.getElementById(overlayId);
-            if (overlayEl && overlayEl.offsetWidth > 0 && overlayEl.offsetHeight > 0) {
-                const overlayClone = overlayEl.cloneNode(true);
-                overlayClone.style.display = 'block';
-                overlayClone.style.position = 'absolute';
-                overlayClone.style.top = '0px';
-                overlayClone.style.left = '0px';
-                overlayClone.style.pointerEvents = 'none';
-                document.body.appendChild(overlayClone);
-    
-                try {
-                    const overlayCanvas = await html2canvas(overlayClone, {
-                        backgroundColor: null,
-                        scale: 1,
-                        logging: false,
-                        width: overlayEl.clientWidth,
-                        height: overlayEl.clientHeight
-                    });
-    
-                    if (overlayCanvas.width > 0 && overlayCanvas.height > 0) {
-                        tempCtx.drawImage(overlayCanvas, 0, 0);
-                    } else {
-                        console.warn(`Overlay canvas for ${overlayId} had zero width/height`);
-                    }
-                } catch (err) {
-                    console.error(`Failed to capture overlay ${overlayId}:`, err);
-                } finally {
-                    document.body.removeChild(overlayClone);
-                }
+        }
+
+        const img = await loadImage(tempCanvas.toDataURL("image/png"));
+        const centerX = x + (img.width * scale) / 2;
+        const centerY = y + (img.height * scale) / 2;
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(rotation);
+        ctx.drawImage(
+            img,
+            -(img.width * scale) / 2,
+            -(img.height * scale) / 2,
+            img.width * scale,
+            img.height * scale
+        );
+        ctx.restore();
+
+        // Optional logo draw
+        if (title.includes('Front') && id.includes('Valance')) {
+            const logo = document.getElementById('ValanceLogo');
+            if (logo && logo.complete && logo.naturalWidth > 0) {
+                const logoImg = await loadImage(logo.src);
+                const logoWidth = 25;
+                const logoHeight = logoWidth * (logoImg.height / logoImg.width);
+                ctx.drawImage(logoImg, x + 200, y + 10, logoWidth, logoHeight);
             }
-    
-            // Safely draw to the main preview
-            try {
-                const img = await loadImage(tempCanvas.toDataURL("image/png"));
-
-                // Determine adjusted coordinates for center-based drawing
-                const centerX = x + (img.width * imgScale) / 2;
-                const centerY = y + (img.height * imgScale) / 2;
-
-                // Draw canvas content with rotation and scaling
-                ctx.save();
-                ctx.translate(centerX, centerY);
-                ctx.rotate(rotation);
-                ctx.drawImage(
-                    img,
-                    -(img.width * imgScale) / 2,
-                    -(img.height * imgScale) / 2,
-                    img.width * imgScale,
-                    img.height * imgScale
-                );
-                ctx.restore();
-
-                // === Logo Layer (Front Valance Only) ===
-                if (title === 'Front' && id.includes('Valance')) {
-                    const logo = document.getElementById('ValanceLogo');
-                    if (logo && logo.complete && logo.naturalWidth > 0) {
-                        const logoImg = await loadImage(logo.src);
-                        const logoWidth = 25;
-                        const logoHeight = logoWidth * (logoImg.height / logoImg.width);
-
-                        // Offset logo relative to drawn image (already rotated)
-                        const logoX = centerX - (logoWidth / 2);
-                        const logoY = centerY - (img.height * imgScale) / 2 + 10;
-
-                        ctx.drawImage(logoImg, logoX, logoY, logoWidth, logoHeight);
-                    }
-                }
-            } catch (err) {
-                console.error(`Error drawing image for ${id}:`, err);
-            }
-        }    
+        }
     }
 
     previewImage.src = previewCanvas.toDataURL("image/png");
