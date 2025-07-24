@@ -100,178 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => updateOverlayPositionAndSize(section));
 });
 
-// === Main Preview Function ===
-async function previewNow() {
-    document.getElementById('loadingOverlay').style.display = 'block';
-    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
-    document.getElementById('preview-section').style.display = 'block';
-    document.getElementById('toggleSnapGrid').style.visibility = 'hidden';
-
-    // Hide left canvases
-    ['LeftPeakCanvas', 'LeftValanceCanvas', 'LeftWallCanvas', 'LeftPeakTextOverlay', 'LeftValanceTextOverlay', 'LeftWallTextOverlay']
-        .forEach(id => document.getElementById(id).style.display = 'none');
-
-    const previewer = document.getElementById('tentPreviewCanvas');
-    const previewImage = document.getElementById('tentPreviewImage');
-    document.getElementById('infoTitle').textContent = 'Contact Information';
-
-    previewer.style.display = 'none';
-    previewImage.style.display = 'none';
-    previewImage.src = '';
-
-    document.body.style.cursor = 'progress';
-    await delay(100);
-
-    const canvas = document.getElementById('tentPreviewCanvas');
-    const ctx = canvas.getContext('2d');
-    let imgScale = hasWalls ? 0.5 : 0.75;
-
-    const sides = getSidesConfiguration(hasWalls, size);
-
-    const promises = sides.map(async (side) => {
-        const combinedImage = await captureAndCombineSide(side);
-        if (!combinedImage) return;
-
-        const img = await loadImage(combinedImage);
-        ctx.save();
-        ctx.translate(side.x + img.width * imgScale / 2, side.y + img.height * imgScale / 2);
-        ctx.rotate(side.rotation);
-        ctx.drawImage(img, -img.width * imgScale / 2, -img.height * imgScale / 2, img.width * imgScale, img.height * imgScale);
-        ctx.restore();
-    });
-
-    await Promise.all(promises);
-
-    previewImage.src = canvas.toDataURL("image/png");
-    previewImage.style.display = 'block';
-    document.getElementById('loadingOverlay').style.display = 'none';
-    isFinished = true;
-    document.body.style.cursor = 'default';
-}
-
-// === Capture Element ===
-function captureElement(elementId) {
-    const element = document.getElementById(elementId);
-    if (!element) return Promise.resolve(null);
-
-    const originalDisplay = element.style.display;
-    element.style.display = elementId.includes('Text') ? 'flex' : 'block';
-
-    const internalElements = element.querySelectorAll('*:not(.center-line)');
-    const originalDisplayStyles = Array.from(internalElements).map(el => el.style.display);
-
-    return html2canvas(element, {
-        backgroundColor: null,
-        scale: 1,
-        logging: false,
-        width: element.clientWidth,
-        height: element.clientHeight
-    }).then(canvas => {
-        // Restore styles
-        element.style.display = originalDisplay;
-        internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
-
-        // Clip if necessary
-        const overlay = document.getElementById(elementId.replace('Canvas', 'TextOverlay'));
-        if (overlay && overlay.style.clipPath && elementId.includes('Text')) {
-            try {
-                const clipPath = overlay.style.clipPath.replace('path("', '').replace('")', '');
-                const pathCommands = clipPath.split(/(?=[MLQZ])/);
-
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = canvas.width;
-                tempCanvas.height = canvas.height;
-                const tempCtx = tempCanvas.getContext('2d');
-
-                tempCtx.beginPath();
-                for (let cmd of pathCommands) {
-                    const parts = cmd.trim().split(/[ ,]+/);
-                    const command = parts[0];
-                    const params = parts.slice(1).map(parseFloat);
-                    switch (command) {
-                        case 'M': tempCtx.moveTo(...params); break;
-                        case 'L': tempCtx.lineTo(...params); break;
-                        case 'Q': tempCtx.quadraticCurveTo(...params); break;
-                        case 'Z': tempCtx.closePath(); break;
-                        default: console.error(`Unsupported path: ${command}`);
-                    }
-                }
-                tempCtx.clip();
-                tempCtx.drawImage(canvas, 0, 0);
-                return tempCanvas.toDataURL("image/png");
-            } catch (err) {
-                console.error(`clipPath error for ${elementId}:`, err);
-                return canvas.toDataURL("image/png");
-            }
-        } else {
-            return canvas.toDataURL("image/png");
-        }
-    }).catch(err => {
-        element.style.display = originalDisplay;
-        internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
-        console.error(`Error capturing ${elementId}:`, err);
-        return null;
-    });
-}
-
-// === Capture and Combine Side ===
-async function captureAndCombineSide(sideConfig) {
-    const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, title } = sideConfig;
-
-    const [peakImage, valanceImage, wallImage] = await Promise.all([
-        captureElement(peakId),
-        captureElement(valanceId),
-        wallId ? captureElement(wallId) : null
-    ]);
-
-    const [peakOverlayImage, valanceOverlayImage, wallOverlayImage] = await Promise.all([
-        captureElement(peakOverlayId),
-        captureElement(valanceOverlayId),
-        wallOverlayId ? captureElement(wallOverlayId) : null
-    ]);
-
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 800;
-    canvas.height = 600;
-
-    const imgScale = 1;
-    let yOffset = 0;
-    const images = [
-        { image: peakImage, overlay: peakOverlayImage, type: 'peak' },
-        { image: valanceImage, overlay: valanceOverlayImage, type: 'valance' },
-        { image: wallImage, overlay: wallOverlayImage, type: 'wall' }
-    ];
-
-    for (const { image, overlay, type } of images) {
-        if (!image) continue;
-
-        const img = await loadImage(image);
-        const xPos = (canvas.width - img.width * imgScale) / 2;
-        const yPos = yOffset;
-
-        ctx.drawImage(img, xPos, yOffset, img.width * imgScale, img.height * imgScale);
-        yOffset += img.height * imgScale;
-
-        if (overlay) {
-            const overlayImg = await loadImage(overlay);
-            ctx.drawImage(overlayImg, xPos, yPos, overlayImg.width * imgScale, overlayImg.height * imgScale);
-        }
-
-        if (title.includes('Front') && type === 'valance') {
-            const logoElement = document.getElementById('ValanceLogo');
-            if (logoElement && logoElement.complete && logoElement.naturalWidth > 0) {
-                const logoImg = await loadImage(logoElement.src);
-                const logoWidth = 25;
-                const logoHeight = logoWidth * (logoImg.height / logoImg.width);
-                ctx.drawImage(logoImg, xPos + img.width * imgScale - logoWidth - 5, yPos + 5, logoWidth, logoHeight);
-            }
-        }
-    }
-
-    return canvas.toDataURL("image/png");
-}
-
 // === Get Side Configs ===
 function getSidesConfiguration(hasWalls, size) {
     const base = (peak, val, wall, pO, vO, wO, x, y, r, title) => ({
@@ -298,3 +126,98 @@ function getSidesConfiguration(hasWalls, size) {
         ];
     }
 }
+
+async function previewNow() {
+    document.getElementById('loadingOverlay').style.display = 'block';
+    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+    document.getElementById('preview-section').style.display = 'block';
+    document.getElementById('toggleSnapGrid').style.visibility = 'hidden';
+
+    const previewCanvas = document.getElementById('tentPreviewCanvas');
+    const previewImage = document.getElementById('tentPreviewImage');
+    const ctx = previewCanvas.getContext('2d');
+    previewCanvas.width = 900;
+    previewCanvas.height = 700;
+    ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+
+    document.getElementById('infoTitle').textContent = 'Contact Information';
+    previewCanvas.style.display = 'none';
+    previewImage.style.display = 'none';
+    previewImage.src = '';
+
+    await delay(100);
+
+    const sides = getSidesConfiguration(hasWalls, size);
+    const imgScale = hasWalls ? 0.5 : 0.75;
+
+    for (const side of sides) {
+        const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, x, y, rotation, title } = side;
+
+        const layers = [
+            { id: peakId, overlayId: peakOverlayId },
+            { id: valanceId, overlayId: valanceOverlayId },
+            wallId ? { id: wallId, overlayId: wallOverlayId } : null
+        ].filter(Boolean);
+
+        for (const { id, overlayId } of layers) {
+            const sourceCanvas = document.getElementById(id);
+            if (!sourceCanvas) continue;
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = sourceCanvas.width;
+            tempCanvas.height = sourceCanvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Draw canvas background
+            tempCtx.drawImage(sourceCanvas, 0, 0);
+
+            // Overlay text if available
+            const overlayEl = document.getElementById(overlayId);
+            if (overlayEl) {
+                const overlayClone = overlayEl.cloneNode(true);
+                overlayClone.style.display = 'block';
+                overlayClone.style.position = 'absolute';
+                overlayClone.style.top = '0px';
+                overlayClone.style.left = '0px';
+                overlayClone.style.pointerEvents = 'none';
+
+                document.body.appendChild(overlayClone);
+                const overlayCanvas = await html2canvas(overlayClone, {
+                    backgroundColor: null,
+                    scale: 1,
+                    logging: false,
+                    width: overlayEl.clientWidth,
+                    height: overlayEl.clientHeight
+                });
+                tempCtx.drawImage(overlayCanvas, 0, 0);
+                document.body.removeChild(overlayClone);
+            }
+
+            // Draw combined layer to main preview canvas
+            const img = await loadImage(tempCanvas.toDataURL("image/png"));
+            ctx.save();
+            ctx.translate(x + img.width * imgScale / 2, y + img.height * imgScale / 2);
+            ctx.rotate(rotation);
+            ctx.drawImage(img, -img.width * imgScale / 2, -img.height * imgScale / 2, img.width * imgScale, img.height * imgScale);
+            ctx.restore();
+
+            // Add logo for front valance
+            if (title.includes('Front') && id.includes('Valance')) {
+                const logo = document.getElementById('ValanceLogo');
+                if (logo && logo.complete && logo.naturalWidth > 0) {
+                    const logoImg = await loadImage(logo.src);
+                    const logoWidth = 25;
+                    const logoHeight = logoWidth * (logoImg.height / logoImg.width);
+                    ctx.drawImage(logoImg, x + 200, y + 10, logoWidth, logoHeight);
+                }
+            }
+        }
+    }
+
+    previewImage.src = previewCanvas.toDataURL("image/png");
+    previewImage.style.display = 'block';
+    document.getElementById('loadingOverlay').style.display = 'none';
+    isFinished = true;
+    document.body.style.cursor = 'default';
+}
+
