@@ -281,7 +281,7 @@ function getSidesConfiguration(hasWalls, size) {
     });
 
     if (hasWalls) {
-        const config = size === 20 ? [110, -50, 340, -120] : size === 15 ? [110, -50, 305, -85] : [110, -50, 260, -40];
+        const config = size === 20 ? [110, 110, 340, -120] : size === 15 ? [110, 110, 305, -85] : [110, 110, 260, -40];
         return [
             base('FrontPeakCanvas', 'FrontValanceCanvas', null, 'FrontPeakTextOverlay', 'FrontValanceTextOverlay', null, config[0], 250, 0, 'Front'),
             base('BackPeakCanvas', 'BackValanceCanvas', 'BackWallCanvas', 'BackPeakTextOverlay', 'BackValanceTextOverlay', 'BackWallTextOverlay', config[1], -50, Math.PI, 'Back'),
