@@ -32,6 +32,7 @@ function captureElement(elementId) {
             return (
                 el.closest('header') ||
                 el.closest('footer') ||
+                el.closest('.shopify-section') ||
                 el.classList.contains('predictive-search') ||
                 el.classList.contains('cart-drawer') ||
                 el.classList.contains('site-header') ||
