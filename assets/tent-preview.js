@@ -125,16 +125,17 @@ function getSidesConfiguration(hasWalls, size) {
         ];
     } else {
         return [
-            base('FrontPeakCanvas',     600, 250, 0,           'Front'),
-            base('FrontValanceCanvas',  600, 350, 0,           'Front'),
-            base('BackPeakCanvas',      600, 750, Math.PI,     'Back'),
-            base('BackValanceCanvas',   600, 850, Math.PI,     'Back'),
+            base('FrontPeakCanvas',     405, 450, 0,           'Front'),
+            base('FrontValanceCanvas',  405, 595, 0,           'Front'),
 
-            base('RightPeakCanvas',     950, 500, -Math.PI/2,  'Right'),
-            base('RightValanceCanvas',  1000, 500, -Math.PI/2, 'Right'),
+            base('BackPeakCanvas',      405, 305, Math.PI,     'Back'),
+            base('BackValanceCanvas',   405, 276,   Math.PI,     'Back'),
 
-            base('LeftPeakCanvas',      250, 500, Math.PI/2,   'Left'),
-            base('LeftValanceCanvas',   200, 500, Math.PI/2,   'Left')
+            base('RightPeakCanvas',     711, 378, -Math.PI/2,  'Right'),
+            base('RightValanceCanvas',  798, 436, -Math.PI/2, 'Right'),
+
+            base('LeftPeakCanvas',      326, 378, Math.PI/2,   'Left'),
+            base('LeftValanceCanvas',   239, 436, Math.PI/2,   'Left'),
         ];
     }
 }
@@ -184,29 +185,41 @@ async function previewNow() {
         const overlayEl = document.getElementById(id.replace('Canvas', 'TextOverlay'));
         if (overlayEl && overlayEl.children.length > 0) {
             const overlayRects = overlayEl.querySelectorAll('div');
-            const overlayBounds = overlayEl.getBoundingClientRect();
 
             for (const rect of overlayRects) {
-                // Clone the element to an offscreen container
+                // Clone the rect for safe offscreen rendering
                 const clone = rect.cloneNode(true);
                 clone.style.position = 'absolute';
                 clone.style.left = '-9999px';
                 clone.style.top = '0';
-                clone.style.display = 'block'; // ensure it renders
+                clone.style.display = 'block';
                 document.body.appendChild(clone);
 
-                // Use html2canvas on the clone
+                // Render the clone into canvas
                 const rectCanvas = await html2canvas(clone, { backgroundColor: null });
-
-                // Clean up
                 document.body.removeChild(clone);
 
-                // Get bounding boxes to position correctly
+                // Draw overlay rect onto temp canvas
+                // Respect same transformation as the base canvas draw
+                const centerX = x + (canvasEl.width * scale) / 2;
+                const centerY = y + (canvasEl.height * scale) / 2;
+
                 const rectBounds = rect.getBoundingClientRect();
+                const overlayBounds = overlayEl.getBoundingClientRect();
                 const offsetX = rectBounds.left - overlayBounds.left;
                 const offsetY = rectBounds.top - overlayBounds.top;
 
-                tempCtx.drawImage(rectCanvas, offsetX, offsetY);
+                tempCtx.save();
+                tempCtx.translate(centerX, centerY);
+                tempCtx.rotate(rotation);
+                tempCtx.drawImage(
+                    rectCanvas,
+                    -(canvasEl.width * scale) / 2 + offsetX * scale,
+                    -(canvasEl.height * scale) / 2 + offsetY * scale,
+                    rectCanvas.width * scale,
+                    rectCanvas.height * scale
+                );
+                tempCtx.restore();
             }
         }
 
