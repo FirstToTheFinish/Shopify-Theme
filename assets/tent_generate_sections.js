@@ -588,57 +588,39 @@ function updateCanvasColor(color) {
         <div class="preview-container">
             <form id="contactForm">
                 <div style="min-height:35px; padding-top:5px;">
-                    <span>
-                        <span>1</span>
-                    </span>
-                    <label for="email">Email Address:</label>
+                    <label for="email" class="font-style-label">1. Email Address:</label>
                     <input type="email" id="email" name="email" class="text-input placeholder-grey" style="width:250px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
                     <span id="email-error" style="color: red; display: none;">Emails do not match</span>
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>2</span>
-                    </span>
-                    <label for="confirmEmail">Confirm Email:</label>
+                    <label for="confirmEmail" class="font-style-label">2. Confirm Email:</label>
                     <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" style="width:250px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Retype email address" oninput="validateEmail()">
                     <span id="email-error" style="color: red; display: none;">Emails do not match</span>
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>3</span>
-                    </span>
-                    <label for="name">Customer Name:</label>
+                    <label for="name" class="font-style-label">3. Customer Name:</label>
                     <input type="text" id="userName" name="name" class="text-input placeholder-grey" style="width:194px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. John Doe">
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>4</span>
-                    </span>
-                    <label for="phone">Phone Number:</label>
+                    <label for="phone" class="font-style-label">4. Phone Number:</label>
                     <input type="text" id="phone" name="phone" class="text-input placeholder-grey" style="width:202px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
                     <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone number.</span>
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>5</span>
-                    </span>
-                    <label for="schoolClub">School/Club:</label>
+                    <label for="schoolClub" class="font-style-label">5. School/Club:</label>
                     <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" style="width:212px; border-radius:3px; border: 1px solid #838383; height: auto;" placeholder="Optional">
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>6</span>
-                    </span>
-                    <label for="street">Street Address:</label>
+                    <label for="street" class="font-style-label">6. Street Address:</label>
                     <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width:196px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. 2341 Plum St.">
                 </div>
                 <div class="input-row">
                 <div style="min-height:35px; margin-right: 10px;">
-                    <label for="city">City:</label>
+                    <label for="city" class="font-style-label">City:</label>
                     <input type="text" id="city" name="city" class="text-input placeholder-grey" style="width:125px; border-radius:3px; border: 1px solid #838383; height: 21px;" required placeholder="Ex. Edwardsville">
                 </div>
                 <div style="min-height:35px; margin-right: 10px;">
-                    <label for="state">State:</label>
+                    <label for="state" class="font-style-label">State:</label>
                     <div class="custom-dropdown">
                         <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 60px;">Ex.</button>
                         <div id="state-dropdown" class="custom-dropdown-content" style="width: 50px;">
@@ -697,17 +679,14 @@ function updateCanvasColor(color) {
                     </div>
                 </div>
                 <div style="min-height:35px;">
-                    <label for="zip">Zip Code:</label>
+                    <label for="zip" class="font-style-label">Zip Code:</label>
                     <input type="text" id="zip" name="zip" class="text-input placeholder-grey" style="width:110px; border-radius:3px; border: 1px solid #838383; height: 21px;" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">                
                     <span id="zip-error" style="color: red; display: none;">Please enter a valid zip code.</span>
                 </div>
             </div>
             
                 <div style="min-height:35px;">
-                    <span>
-                        <span>7</span>
-                    </span>
-                    <label for="priority">Ready to order:</label>
+                    <label for="priority">7. Ready to order:</label>
                     <div class="custom-dropdown">
                         <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
                         <div id="priority-dropdown" class="custom-dropdown-content">
@@ -719,10 +698,7 @@ function updateCanvasColor(color) {
                     </div>
                 </div>
                 <div style="min-height:35px;">
-                    <span>
-                        <span>8</span>
-                    </span>
-                    <label for="name">Design Name:</label>
+                    <label for="name" class="font-style-label">8. Design Name:</label>
                     <input type="text" id="Tent-Name" name="design" class="text-input placeholder-grey" style="width:194px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. Design 1">
                 </div>
                 <div class="arrow-container" style="padding-top:20px;">
