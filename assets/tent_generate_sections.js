@@ -686,7 +686,7 @@ function updateCanvasColor(color) {
             </div>
             
                 <div style="min-height:35px;">
-                    <label for="priority">7. Ready to order:</label>
+                    <label for="priority" class="font-style-label">7. Ready to order:</label>
                     <div class="custom-dropdown">
                         <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
                         <div id="priority-dropdown" class="custom-dropdown-content">
