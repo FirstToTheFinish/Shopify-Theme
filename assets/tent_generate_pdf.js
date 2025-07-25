@@ -906,12 +906,12 @@ async function createPdf(sectionData, contactInformation, previewURL) {
   
   loadingMessage.innerText = 'Loading images and fonts...';
   await delay(100); // Small delay to force DOM update
-  await createFrontPage(pdfDoc, 'Tent Mockup', `${window.shopifyAssetPaths.logos.blackValance}`, previewURL, contactInformation, dateCreated, tentName);
+  await createFrontPage(pdfDoc, 'Tent Mockup', `${window.shopifyAssetPaths.logos.pdfLogo}`, previewURL, contactInformation, dateCreated, tentName);
   for (const side of sides) {
     loadingMessage.innerText = `Processing ${side.title} side...`;
     await delay(100); // Small delay to force DOM update
     const sideImage = await captureAndCombineSide(side);
-    await createPage(pdfDoc, side.title, `${window.shopifyAssetPaths.logos.blackValance}`, sideImage, side.sectionData, dateCreated, tentName);
+    await createPage(pdfDoc, side.title, `${window.shopifyAssetPaths.logos.pdfLogo}`, sideImage, side.sectionData, dateCreated, tentName);
     await createImagePage(pdfDoc, side.title, side.sectionImages);
   }
 
