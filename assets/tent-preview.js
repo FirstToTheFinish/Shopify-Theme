@@ -20,12 +20,19 @@ function captureElement(elementId) {
         internalElement.style.display = 'block';
     });
 
-    console.log("Capture Target Exists:", document.getElementById(elementId));
-    console.log("Cart Drawer Exists:", document.querySelector('.cart-drawer'));
-    console.log("Predictive Search Input:", document.querySelector('.predictive-search__input'));
+        // Clone element into off-screen wrapper
+        const clonedWrapper = document.createElement('div');
+        clonedWrapper.style.position = 'absolute';
+        clonedWrapper.style.left = '-9999px';
+        clonedWrapper.style.top = '0';
+        clonedWrapper.style.width = `${element.clientWidth}px`;
+        clonedWrapper.style.height = `${element.clientHeight}px`;
+        document.body.appendChild(clonedWrapper);
+    
+        const clone = element.cloneNode(true);
+        clonedWrapper.appendChild(clone);
 
-
-    return html2canvas(element, {
+    return html2canvas(clone, {
         backgroundColor: null,
         scale: 1,
         logging: false,
@@ -64,16 +71,13 @@ function captureElement(elementId) {
                 classList.includes('field__input')             
             );
         },
-        onclone: (clonedDoc) => {
-            // Remove predictive search or other elements just in case
-            const predictiveEls = clonedDoc.querySelectorAll('.predictive-search, .predictive-search__input, .predictive-search__results');
-            predictiveEls.forEach(el => el.remove());
-        }
-        
     }).then(canvas => {
+        // Cleanup
+        document.body.removeChild(clonedWrapper);
         element.style.display = originalDisplay;
         internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
 
+        // If clipPath exists and it's a Text overlay
         const overlay = document.getElementById(elementId.replace('Canvas', 'TextOverlay'));
         if (overlay && overlay.style.clipPath && elementId.includes('Text')) {
             const clipPath = overlay.style.clipPath.replace('path("', '').replace('")', '');
@@ -105,10 +109,11 @@ function captureElement(elementId) {
                 console.error(`clipPath failed for ${elementId}`, e);
                 return canvas.toDataURL("image/png");
             }
-        } else {
-            return canvas.toDataURL("image/png");
         }
+
+        return canvas.toDataURL("image/png");
     }).catch(err => {
+        document.body.removeChild(clonedWrapper);
         element.style.display = originalDisplay;
         internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
         console.error(`Error capturing ${elementId}:`, err);
