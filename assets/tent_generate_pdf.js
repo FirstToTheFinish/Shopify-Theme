@@ -940,17 +940,6 @@ async function createPdf(sectionData, contactInformation, previewURL) {
       // Part 2: Send the Blob to the server to generate an email
       loadingMessage.innerText = 'Sending email...';
       await delay(100); // Small delay to force DOM update
-      await fetch(`save-pdf.asp?subject=${subjectLine}&recipientEmail=${recipientEmail}&bccEmail=${bccEmail}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/pdf'
-        },
-        body: blob
-    })
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.error('Error:', error));
-  //}
     loadingMessage.innerText = 'Design submitted successfully!';
     await delay(100); // Small delay to force DOM update
     pdfFinished = true;
