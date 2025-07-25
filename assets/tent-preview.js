@@ -20,19 +20,7 @@ function captureElement(elementId) {
         internalElement.style.display = 'block';
     });
 
-        // Clone element into off-screen wrapper
-        const clonedWrapper = document.createElement('div');
-        clonedWrapper.style.position = 'absolute';
-        clonedWrapper.style.left = '-9999px';
-        clonedWrapper.style.top = '0';
-        clonedWrapper.style.width = `${element.clientWidth}px`;
-        clonedWrapper.style.height = `${element.clientHeight}px`;
-        document.body.appendChild(clonedWrapper);
-    
-        const clone = element.cloneNode(true);
-        clonedWrapper.appendChild(clone);
-
-    return html2canvas(clone, {
+    return html2canvas(element, {
         backgroundColor: null,
         scale: 1,
         logging: false,
@@ -72,12 +60,9 @@ function captureElement(elementId) {
             );
         },
     }).then(canvas => {
-        // Cleanup
-        document.body.removeChild(clonedWrapper);
         element.style.display = originalDisplay;
         internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
 
-        // If clipPath exists and it's a Text overlay
         const overlay = document.getElementById(elementId.replace('Canvas', 'TextOverlay'));
         if (overlay && overlay.style.clipPath && elementId.includes('Text')) {
             const clipPath = overlay.style.clipPath.replace('path("', '').replace('")', '');
@@ -109,11 +94,10 @@ function captureElement(elementId) {
                 console.error(`clipPath failed for ${elementId}`, e);
                 return canvas.toDataURL("image/png");
             }
+        } else {
+            return canvas.toDataURL("image/png");
         }
-
-        return canvas.toDataURL("image/png");
     }).catch(err => {
-        document.body.removeChild(clonedWrapper);
         element.style.display = originalDisplay;
         internalElements.forEach((el, i) => el.style.display = originalDisplayStyles[i]);
         console.error(`Error capturing ${elementId}:`, err);
@@ -337,9 +321,15 @@ async function captureAndCombineSide(sideConfig) {
     const valanceImage = await captureElement(valanceId);
     const wallImage = wallId ? await captureElement(wallId) : null;
 
-    const peakOverlayImage = await captureElement(peakOverlayId);
-    const valanceOverlayImage = await captureElement(valanceOverlayId);
-    const wallOverlayImage = wallOverlayId ? await captureElement(wallOverlayId) : null;
+    const shouldCapture = (overlayId) => {
+        const el = document.getElementById(overlayId);
+        return el && (el.querySelector('.editable-text, .editable-art'));
+    };
+    
+    const peakOverlayImage = shouldCapture(peakOverlayId) ? await captureElement(peakOverlayId) : null;
+    const valanceOverlayImage = shouldCapture(valanceOverlayId) ? await captureElement(valanceOverlayId) : null;
+    const wallOverlayImage = wallOverlayId && shouldCapture(wallOverlayId) ? await captureElement(wallOverlayId) : null;
+    
 
     // Create the canvas with desired dimensions
     const canvas = document.createElement('canvas');
