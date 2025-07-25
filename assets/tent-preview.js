@@ -215,6 +215,7 @@ async function previewNow() {
 
     // Wait for all sides to be processed
     Promise.all(promises).then(() => {
+        document.getElementById("loading-message").innerText = `Combining All Previews...`
         const dataUrl = canvas.toDataURL("image/png");
         const imgElement = document.getElementById('tentPreviewImage');
         imgElement.src = dataUrl;
@@ -316,6 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function captureAndCombineSide(sideConfig) {
     const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, title } = sideConfig;
+
+    document.getElementById("loading-message").innerText = `Generating ${title} Preview...`;
 
     const peakImage = await captureElement(peakId);
     const valanceImage = await captureElement(valanceId);
