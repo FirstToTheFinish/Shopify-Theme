@@ -872,7 +872,7 @@ input:focus-visible, button:focus-visible, .custom-dropdown-button:focus-visible
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255);
   display: none;
   justify-content: center;
   align-items: center;
