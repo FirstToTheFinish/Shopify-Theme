@@ -923,51 +923,33 @@ async function createPdf(sectionData, contactInformation, previewURL) {
   await delay(100); // Small delay to force DOM update
   const blob = new Blob([pdfBytes], { type: 'application/pdf' });
   const url = URL.createObjectURL(blob);
-
-  // Optional: Download the PDF
   const a = document.createElement('a');
   a.href = url;
   a.download = 'tent_customization.pdf';
   document.body.appendChild(a);
   a.click();
   setTimeout(() => {
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
   }, 0);
 
-  const base64pdf = await blobToBase64(blob);
-
-  // Optional: Use contact info for logging or future fields
-  const subjectLine = encodeURIComponent(`${contactInformation.userName}'s Custom Tent`);
-  const recipientEmail = encodeURIComponent(contactInformation.email);
-  const bccEmail = encodeURIComponent('customer_service@fttf.com');
-
-  // Send to serverless email function
-  loadingMessage.innerText = 'Sending email...';
-
-  try {
-    const response = await fetch("https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pdfBase64: base64pdf }),
+    // Part 2: Send the Blob to the server to generate an email
+    const response = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: contactInformation.email,
+        userName: contactInformation.userName,
+        bcc: 'jasonkattenbraker@gmail.com'
+      })
     });
 
-    const result = await response.json();
-
-    if (result.success) {
-      loadingMessage.innerText = 'Design submitted successfully!';
-      await delay(100);
-      pdfFinished = true;
-      return pdfFinished;
-    } else {
-      throw new Error(result.error || 'Failed to send email');
-    }
-  } catch (err) {
-    console.error('Email send error:', err);
-    loadingMessage.innerText = 'Failed to send email.';
-    return false;
-  }
-
+    loadingMessage.innerText = 'Sending email...';
+    await delay(100); // Small delay to force DOM update
+    loadingMessage.innerText = 'Design submitted successfully!';
+    await delay(100); // Small delay to force DOM update
+    pdfFinished = true;
+    return pdfFinished;
 
 }
 
@@ -1018,13 +1000,4 @@ return `${month}/${day}/${year}`;
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function blobToBase64(blob) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result.split(',')[1]); // Strip "data:application/pdf;base64,"
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
-  });
 }
