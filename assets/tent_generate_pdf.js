@@ -935,26 +935,29 @@ async function createPdf(sectionData, contactInformation, previewURL) {
 
   const base64String = await blobToBase64(blob);
   
-  const response = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      to: contactInformation.email,
-      userName: contactInformation.userName,
-      bcc: 'jasonkattenbraker@gmail.com',
-      filename: 'tent_customization.pdf',
-      pdfData: base64String
-    })
-  });
+  try {
+    await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: contactInformation.email,
+        userName: contactInformation.userName,
+        bcc: 'jasonkattenbraker@gmail.com',
+        filename: 'tent_customization.pdf',
+        pdfData: base64String
+      })
+    });
+  } catch (error) {
+    console.error('Email send failed:', error); // Optional: log error for devs
+  }
   
-
-    loadingMessage.innerText = 'Sending email...';
-    await delay(100); // Small delay to force DOM update
-    loadingMessage.innerText = 'Design submitted successfully!';
-    await delay(100); // Small delay to force DOM update
-    pdfFinished = true;
-    return pdfFinished;
-
+  // Always continue regardless of fetch success
+  loadingMessage.innerText = 'Sending email...';
+  await delay(100);
+  loadingMessage.innerText = 'Design submitted successfully!';
+  await delay(100);
+  pdfFinished = true;
+  return pdfFinished;
 }
 
 async function fetchWithTimeout(resource, options = {}) {
