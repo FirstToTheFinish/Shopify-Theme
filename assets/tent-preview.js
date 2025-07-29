@@ -305,7 +305,7 @@ async function submitForm() {
             else{
                 alert("Tent customization is complete. Feel free to send the pdf to customer_service@fttf.com whenever you are ready with your order. Thank you!");
             }
-            window.location.href = '/tent-builder';
+            window.location.href = '/pages/tent-builder';
         }
     }
 }
