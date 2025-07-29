@@ -933,8 +933,7 @@ async function createPdf(sectionData, contactInformation, previewURL) {
       window.URL.revokeObjectURL(url);
   }, 0);
 
-  const arrayBuffer = await blob.arrayBuffer();
-  const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+  const base64String = await blobToBase64(blob);
   
   const response = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email', {
     method: 'POST',
@@ -1005,4 +1004,17 @@ return `${month}/${day}/${year}`;
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // Strip off the "data:application/pdf;base64," prefix
+      const base64String = reader.result.split(',')[1];
+      resolve(base64String);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
 }
