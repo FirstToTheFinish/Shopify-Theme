@@ -933,16 +933,21 @@ async function createPdf(sectionData, contactInformation, previewURL) {
       window.URL.revokeObjectURL(url);
   }, 0);
 
-    // Part 2: Send the Blob to the server to generate an email
-    const response = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: contactInformation.email,
-        userName: contactInformation.userName,
-        bcc: 'jasonkattenbraker@gmail.com'
-      })
-    });
+  const arrayBuffer = await blob.arrayBuffer();
+  const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+  
+  const response = await fetch('https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-faa2a6c7-c827-459c-b1dc-dd056fa15f60/api/email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      to: contactInformation.email,
+      userName: contactInformation.userName,
+      bcc: 'jasonkattenbraker@gmail.com',
+      filename: 'tent_customization.pdf',
+      pdfData: base64String
+    })
+  });
+  
 
     loadingMessage.innerText = 'Sending email...';
     await delay(100); // Small delay to force DOM update
