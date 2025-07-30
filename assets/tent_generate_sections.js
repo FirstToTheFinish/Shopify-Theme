@@ -582,8 +582,10 @@ function updateCanvasColor(color) {
     previewSection.id = 'preview-section';
     previewSection.classList.add('section');
     previewSection.style.display = 'none'; // Initially hidden
+    previewSection.style.marginTop = '0px';
 
     previewSection.innerHTML = `
+    <h5>Contact Information</h5>
     <form id="contactForm">
         <!-- Email + Confirm Email -->
         <div class="form-group-row">
