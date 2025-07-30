@@ -296,6 +296,7 @@ async function submitForm() {
     let pdfFinished = false;
     if (validateForm()) {
         const { sectionData, contactInformation, previewURL } = gatherSectionInformation(sectionsConfig);
+        document.getElementById('TentDescription').style.display = 'none';
         document.getElementById('loadingOverlay2').style.display = 'flex';
         document.body.style.cursor = 'progress';
 
