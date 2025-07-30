@@ -584,7 +584,6 @@ function updateCanvasColor(color) {
     previewSection.style.display = 'none'; // Initially hidden
 
     previewSection.innerHTML = `
-    <div id="preview-section" class="section">
         <div class="preview-container" style="">
             <form id="contactForm">
                 <!-- Email Section -->
@@ -676,7 +675,6 @@ function updateCanvasColor(color) {
                 </div>
             </form>
         </div>
-    </div>
     `;
 
     container.appendChild(previewSection);
