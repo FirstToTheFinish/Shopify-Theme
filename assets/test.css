@@ -1827,11 +1827,13 @@ h2 {
 
 .form-group-row {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 10px;
+  align-items: flex-start;
 }
 
 .form-col {
-  flex: 1;
-  min-width: 100px;
+  display: flex;
+  flex-direction: column;
 }
+
