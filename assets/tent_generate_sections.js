@@ -629,7 +629,7 @@ function updateCanvasColor(color) {
                     <label for="state" class="font-style-label">State:</label>
                     <div class="custom-dropdown">
                         <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 70px;">Ex.</button>
-                        <div id="state-dropdown" class="custom-dropdown-content" style="width: 60px; max-height: 160px; overflow-y: auto;">
+                        <div id="state-dropdown" class="custom-dropdown-content" style="width: 70px; max-height: 160px; overflow-y: auto;">
                         ${["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"].map(state => `<div onclick="selectDropdownOption2('state-dropdown', '${state}', 'state')">${state}</div>`).join('')}
                         </div>
                         <input type="hidden" id="state" name="state" required>
