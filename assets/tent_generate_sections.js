@@ -584,6 +584,7 @@ function updateCanvasColor(color) {
     previewSection.style.display = 'none'; // Initially hidden
 
     previewSection.innerHTML = `
+    <form id="contactForm">
         <!-- Email + Confirm Email -->
         <div class="form-group-row">
         <div class="form-col" style="flex: 1;">
@@ -687,6 +688,7 @@ function updateCanvasColor(color) {
             <div class="arrow"></div>
         </button>
         </div>
+    </form>
         
     `;
 
