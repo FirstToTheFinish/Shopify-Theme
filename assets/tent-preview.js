@@ -296,7 +296,7 @@ async function submitForm() {
     let pdfFinished = false;
     if (validateForm()) {
         const { sectionData, contactInformation, previewURL } = gatherSectionInformation(sectionsConfig);
-        document.getElementById('loadingOverlay2').style.display = 'block';
+        document.getElementById('loadingOverlay2').style.display = 'flex';
         document.body.style.cursor = 'progress';
 
         pdfFinished = await createPdf(sectionData, contactInformation, previewURL);

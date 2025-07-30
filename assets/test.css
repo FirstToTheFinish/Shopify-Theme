@@ -881,7 +881,7 @@ input:focus-visible, button:focus-visible, .custom-dropdown-button:focus-visible
 }
 
 .loading-message {
-  font-size: 18px;
+  font-size: 36px;
   color: #000000;
   background: white;
   padding: 16px 24px;
