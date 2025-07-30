@@ -387,6 +387,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const schoolClub = document.getElementById('schoolClub');
     schoolClub.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
 
+    const salesRep = document.getElementById('salesRep');
+    salesRep.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
+
     const street = document.getElementById('street');
     street.addEventListener('input', () => cleanInput(street, blockedCharsRegex));
 
