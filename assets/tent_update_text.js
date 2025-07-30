@@ -24,7 +24,10 @@ function updateFontStyle(canvasText, fontStyle) {
 
     switch(fontStyle){
         case 'Benguiat BK':
-                canvasText.style.paddingLeft = 10 + 'px';
+        case 'Steel City':
+            canvasText.style.paddingLeft = 10 + 'px';
+            break;
+        
         case 'Cityd Bold':
         case 'Eurostile':
         case 'Evogria':
@@ -33,15 +36,20 @@ function updateFontStyle(canvasText, fontStyle) {
             break;
 
         case 'Evogria Italic':
-        case 'Magnolia Script':
         case 'SwitzerlandCond Italic':
         case 'Rock Road':
-            canvasText.style.paddingLeft = 10 + 'px';
+            canvasText.style.paddingLeft = 12.5 + 'px';
             canvasText.style.paddingRight = 10 + 'px';
             break;
 
-
+        case 'Magnolia Script':
         case 'Srabi Script':
+            canvasText.style.paddingLeft = 25 + 'px';
+            canvasText.style.paddingRight = 18 + 'px';
+            canvasText.style.paddingTop = 5 + 'px';
+            canvasText.style.paddingBottom = 10 + 'px';
+            break;
+
         case 'Demonized':
         case 'Keylock Fighter':
             canvasText.style.paddingLeft = 10 + 'px';
