@@ -586,12 +586,12 @@ function updateCanvasColor(color) {
     previewSection.innerHTML = `
         <!-- Email + Confirm Email -->
         <div class="form-group-row">
-        <div class="form-col" style="flex: 1; min-width: 250px;">
+        <div class="form-col" style="flex: 1;">
             <label for="email" class="font-style-label">1. Email Address:</label>
             <input type="email" id="email" name="email" class="text-input placeholder-grey" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
             <span id="email-error" style="color: red; display: none;">Emails do not match</span>
         </div>
-        <div class="form-col" style="flex: 1; min-width: 250px;">
+        <div class="form-col" style="flex: 1;">
             <label for="confirmEmail" class="font-style-label">2. Confirm Email:</label>
             <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" required placeholder="Retype email address" oninput="validateEmail()">
         </div>
@@ -599,11 +599,11 @@ function updateCanvasColor(color) {
         
         <!-- Name + Phone -->
         <div class="form-group-row">
-        <div class="form-col" style="flex: 1; min-width: 250px;">
+        <div class="form-col" style="flex: 1; ">
             <label for="userName" class="font-style-label">3. Customer Name:</label>
             <input type="text" id="userName" name="name" class="text-input placeholder-grey" required placeholder="Ex. John Doe">
         </div>
-        <div class="form-col" style="flex: 1; min-width: 250px;">
+        <div class="form-col" style="flex: 1; ">
             <label for="phone" class="font-style-label">4. Phone Number:</label>
             <input type="text" id="phone" name="phone" class="text-input placeholder-grey" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
             <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone number.</span>
@@ -612,7 +612,7 @@ function updateCanvasColor(color) {
         
         <!-- School/Club + Street Address -->
         <div class="form-group-row">
-        <div class="form-col" style="flex: 1; min-width: 250px;">
+        <div class="form-col" style="flex: 1; ">
             <label for="schoolClub" class="font-style-label">5. School/Club:</label>
             <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" placeholder="Optional">
         </div>
