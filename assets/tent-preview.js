@@ -107,6 +107,7 @@ function captureElement(elementId) {
 
 async function previewNow() {
     // Show loading overlay
+    document.getElementById('TentDescription').style.display = 'none';
     document.getElementById('loadingOverlay').style.display = 'flex';
 
     // Hide all other sections and show the preview section
@@ -220,6 +221,7 @@ async function previewNow() {
         const imgElement = document.getElementById('tentPreviewImage');
         imgElement.src = dataUrl;
         imgElement.style.display = 'block';
+        document.getElementById('TentDescription').style.display = 'block';
         document.getElementById('loadingOverlay').style.display = 'none';
         document.getElementById("loading-message").innerText = `Generating preview, please wait...`
         isFinished = true; 
