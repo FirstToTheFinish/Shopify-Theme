@@ -585,7 +585,7 @@ function updateCanvasColor(color) {
 
     previewSection.innerHTML = `
     <div id="preview-section" class="section">
-        <div class="preview-container">
+        <div class="preview-container" style="">
             <form id="contactForm">
                 <!-- Email Section -->
                 <div class="form-row">
