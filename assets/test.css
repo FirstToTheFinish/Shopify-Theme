@@ -1837,4 +1837,14 @@ h2 {
   margin-bottom: 12px;
 }
 
+/* Initial light gray look for placeholder option */
+.state-select {
+  color: #999;
+}
+
+.state-select option {
+  color: #000; /* Normal dropdown option color */
+}
+
+
 
