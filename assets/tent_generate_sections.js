@@ -584,7 +584,7 @@ function updateCanvasColor(color) {
     previewSection.style.display = 'none'; // Initially hidden
 
     previewSection.innerHTML = `
-    <div id="preview-section" class="section" style="display: none;">
+    <div id="preview-section" class="section">
         <div class="preview-container">
             <form id="contactForm">
                 <!-- Email Section -->
