@@ -320,6 +320,7 @@ async function captureAndCombineSide(sideConfig) {
     const { peakId, valanceId, wallId, peakOverlayId, valanceOverlayId, wallOverlayId, title } = sideConfig;
 
     document.getElementById("loading-message").innerText = `Generating ${title} Preview...`;
+    await delay(100);
 
     const peakImage = await captureElement(peakId);
     const valanceImage = await captureElement(valanceId);
