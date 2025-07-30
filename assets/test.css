@@ -1821,19 +1821,20 @@ h2 {
   border: 1px solid #ccc;
 }
 
-.form-row {
-  margin-bottom: 10px;
-}
-
 .form-group-row {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .form-col {
   display: flex;
   flex-direction: column;
 }
+
+.form-row {
+  margin-bottom: 12px;
+}
+
 

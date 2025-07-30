@@ -584,100 +584,99 @@ function updateCanvasColor(color) {
     previewSection.style.display = 'none'; // Initially hidden
 
     previewSection.innerHTML = `
-        <div class="preview-container" style="">
-            <form id="contactForm">
-                <!-- Email Section -->
-                <div class="form-row">
-                    <label for="email" class="font-style-label">1. Email Address:</label>
-                    <input type="email" id="email" name="email" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
-                    <span id="email-error" style="color: red; display: none;">Emails do not match</span>
-                </div>
-                <div class="form-row">
-                    <label for="confirmEmail" class="font-style-label">2. Confirm Email:</label>
-                    <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Retype email address" oninput="validateEmail()">
-                </div>
-
-                <!-- Name and Phone -->
-                <div class="form-row">
-                    <label for="userName" class="font-style-label">3. Customer Name:</label>
-                    <input type="text" id="userName" name="name" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. John Doe">
-                </div>
-                <div class="form-row">
-                    <label for="phone" class="font-style-label">4. Phone Number:</label>
-                    <input type="text" id="phone" name="phone" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
-                    <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone number.</span>
-                </div>
-
-                <!-- Optional Field -->
-                <div class="form-row">
-                    <label for="schoolClub" class="font-style-label">5. School/Club:</label>
-                    <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" style="width: 250px;" placeholder="Optional">
-                </div>
-
-                <!-- Address -->
-                <div class="form-row">
-                    <label for="street" class="font-style-label">6. Street Address:</label>
-                    <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. 2341 Plum St.">
-                </div>
-
-                <div class="form-group-row">
-                    <div class="form-col" style="flex: 1; min-width: 130px;">
-                        <label for="city" class="font-style-label">City:</label>
-                        <input type="text" id="city" name="city" class="text-input placeholder-grey" style="width: 100%;" required placeholder="Ex. Edwardsville">
-                    </div>
-
-                    <div class="form-col" style="width: 80px;">
-                        <label for="state" class="font-style-label">State:</label>
-                        <div class="custom-dropdown" style="width: 70px;">
-                        <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 70px;">Ex.</button>
-                        <div id="state-dropdown" class="custom-dropdown-content" style="width: 70px; max-height: 160px; overflow-y: auto;">
-                            ${["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"].map(state => `<div onclick="selectDropdownOption2('state-dropdown', '${state}', 'state')">${state}</div>`).join('')}
-                        </div>
-                        <input type="hidden" id="state" name="state" required>
-                        </div>
-                    </div>
-
-                    <div class="form-col" style="flex: 1; min-width: 110px;">
-                        <label for="zip" class="font-style-label">Zip Code:</label>
-                        <input type="text" id="zip" name="zip" class="text-input placeholder-grey" style="width: 100%;" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">
-                        <span id="zip-error" style="color: red; display: none;">Please enter a valid zip code.</span>
-                    </div>
-                </div>
-
-
-                <!-- Priority (Dropdown) -->
-                <div class="form-row">
-                    <label for="priority" class="font-style-label">7. Ready to order:</label>
-                    <div class="custom-dropdown">
-                    <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
-                    <div id="priority-dropdown" class="custom-dropdown-content">
-                        <div onclick="selectDropdownOption2('priority-dropdown', 'No, I am just browsing.', 'priority')">No, I am just browsing for now.</div>
-                        <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, but I want some help.', 'priority')">Yes, but I am wanting some help with my design.</div>
-                        <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, I am ready to order!', 'priority')">Yes, I am ready to order!</div>
-                    </div>
-                    <input type="hidden" id="priority" name="priority" required>
-                    </div>
-                </div>
-
-                <!-- Design Name -->
-                <div class="form-row">
-                    <label for="Tent-Name" class="font-style-label">8. Design Name:</label>
-                    <input type="text" id="Tent-Name" name="design" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. Design 1">
-                </div>
-
-                <!-- Submit Buttons -->
-                <div class="arrow-container" style="padding-top: 20px;">
-                    <button type="button" class="arrow-button2" onclick="goBackToSections()">
-                    <div class="arrow"></div>
-                    Back to Editing
-                    </button>
-                    <button type="submit" id="submit-button" class="arrow-button" onclick="submitForm()">
-                    Submit
-                    <div class="arrow"></div>
-                    </button>
-                </div>
-            </form>
+        <!-- Email + Confirm Email -->
+        <div class="form-group-row">
+        <div class="form-col" style="flex: 1; min-width: 250px;">
+            <label for="email" class="font-style-label">1. Email Address:</label>
+            <input type="email" id="email" name="email" class="text-input placeholder-grey" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
+            <span id="email-error" style="color: red; display: none;">Emails do not match</span>
         </div>
+        <div class="form-col" style="flex: 1; min-width: 250px;">
+            <label for="confirmEmail" class="font-style-label">2. Confirm Email:</label>
+            <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" required placeholder="Retype email address" oninput="validateEmail()">
+        </div>
+        </div>
+        
+        <!-- Name + Phone -->
+        <div class="form-group-row">
+        <div class="form-col" style="flex: 1; min-width: 250px;">
+            <label for="userName" class="font-style-label">3. Customer Name:</label>
+            <input type="text" id="userName" name="name" class="text-input placeholder-grey" required placeholder="Ex. John Doe">
+        </div>
+        <div class="form-col" style="flex: 1; min-width: 250px;">
+            <label for="phone" class="font-style-label">4. Phone Number:</label>
+            <input type="text" id="phone" name="phone" class="text-input placeholder-grey" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
+            <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone number.</span>
+        </div>
+        </div>
+        
+        <!-- School/Club + Street Address -->
+        <div class="form-group-row">
+        <div class="form-col" style="flex: 1; min-width: 250px;">
+            <label for="schoolClub" class="font-style-label">5. School/Club:</label>
+            <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" placeholder="Optional">
+        </div>
+        <div class="form-col" style="flex: 1; min-width: 250px;">
+            <label for="street" class="font-style-label">6. Street Address:</label>
+            <input type="text" id="street" name="street" class="text-input placeholder-grey" required placeholder="Ex. 2341 Plum St.">
+        </div>
+        </div>
+        
+        <!-- City + State + Zip -->
+        <div class="form-group-row">
+        <div class="form-col" style="flex: 1; min-width: 150px;">
+            <label for="city" class="font-style-label">City:</label>
+            <input type="text" id="city" name="city" class="text-input placeholder-grey" required placeholder="Ex. Edwardsville">
+        </div>
+        <div class="form-col" style="width: 80px;">
+            <label for="state" class="font-style-label">State:</label>
+            <div class="custom-dropdown" style="width: 70px;">
+            <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 70px;">Ex.</button>
+            <div id="state-dropdown" class="custom-dropdown-content" style="width: 70px; max-height: 160px; overflow-y: auto;">
+                ${["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"].map(state => `<div onclick="selectDropdownOption2('state-dropdown', '${state}', 'state')">${state}</div>`).join('')}
+            </div>
+            <input type="hidden" id="state" name="state" required>
+            </div>
+        </div>
+        <div class="form-col" style="flex: 1; min-width: 120px;">
+            <label for="zip" class="font-style-label">Zip Code:</label>
+            <input type="text" id="zip" name="zip" class="text-input placeholder-grey" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">
+            <span id="zip-error" style="color: red; display: none;">Please enter a valid zip code.</span>
+        </div>
+        </div>
+        
+        <!-- Priority -->
+        <div class="form-row">
+        <label for="priority" class="font-style-label">7. Ready to order:</label>
+        <div class="custom-dropdown">
+            <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
+            <div id="priority-dropdown" class="custom-dropdown-content">
+            <div onclick="selectDropdownOption2('priority-dropdown', 'No, I am just browsing.', 'priority')">No, I am just browsing for now.</div>
+            <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, but I want some help.', 'priority')">Yes, but I am wanting some help with my design.</div>
+            <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, I am ready to order!', 'priority')">Yes, I am ready to order!</div>
+            </div>
+            <input type="hidden" id="priority" name="priority" required>
+        </div>
+        </div>
+        
+        <!-- Design Name -->
+        <div class="form-row">
+        <label for="Tent-Name" class="font-style-label">8. Design Name:</label>
+        <input type="text" id="Tent-Name" name="design" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. Design 1">
+        </div>
+        
+        <!-- Buttons -->
+        <div class="arrow-container" style="padding-top: 20px;">
+        <button type="button" class="arrow-button2" onclick="goBackToSections()">
+            <div class="arrow"></div>
+            Back to Editing
+        </button>
+        <button type="submit" id="submit-button" class="arrow-button" onclick="submitForm()">
+            Submit
+            <div class="arrow"></div>
+        </button>
+        </div>
+        
     `;
 
     container.appendChild(previewSection);
