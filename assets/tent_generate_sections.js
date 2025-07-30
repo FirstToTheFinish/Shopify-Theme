@@ -617,15 +617,15 @@ function updateCanvasColor(color) {
             <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" placeholder="Optional">
         </div>
         <div class="form-col" style="flex: 1;">
-            <label for="salesRep" class="font-style-label">Sales Rep (if known):</label>
+            <label for="salesRep" class="font-style-label">6. Sales Rep (if known):</label>
             <input type="text" id="salesRep" name="salesRep" class="text-input placeholder-grey" placeholder="Optional">
         </div>
         </div>
 
         <!-- Street Address -->
         <div class="form-row">
-            <label for="street" class="font-style-label">6. Street Address:</label>
-            <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width: 250px;" required placeholder="Ex. 2341 Plum St.">
+            <label for="street" class="font-style-label">7. Street Address:</label>
+            <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width: 450px;" required placeholder="Ex. 2341 Plum St.">
         </div>
 
         
@@ -656,10 +656,10 @@ function updateCanvasColor(color) {
         <div class="form-group-row">
         <!-- Ready to order dropdown -->
         <div class="form-col" style="flex: 1;">
-            <label for="priority" class="font-style-label">7. Ready to order:</label>
+            <label for="priority" class="font-style-label">8. Ready to order:</label>
             <div class="custom-dropdown">
-            <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
-            <div id="priority-dropdown" class="custom-dropdown-content">
+            <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" style="width: 220px;" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
+            <div id="priority-dropdown" class="custom-dropdown-content" style="width: 220px;">
                 <div onclick="selectDropdownOption2('priority-dropdown', 'No, I am just browsing.', 'priority')">No, I am just browsing for now.</div>
                 <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, but I want some help.', 'priority')">Yes, but I am wanting some help with my design.</div>
                 <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, I am ready to order!', 'priority')">Yes, I am ready to order!</div>
@@ -670,7 +670,7 @@ function updateCanvasColor(color) {
 
         <!-- Design Name -->
         <div class="form-col" style="flex: 1;">
-            <label for="Tent-Name" class="font-style-label">8. Design Name:</label>
+            <label for="Tent-Name" class="font-style-label">9. Design Name:</label>
             <input type="text" id="Tent-Name" name="design" class="text-input placeholder-grey" required placeholder="Ex. Design 1">
         </div>
         </div>
