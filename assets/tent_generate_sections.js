@@ -639,17 +639,13 @@ function updateCanvasColor(color) {
         <div class="form-col" style="width: 80px;">
             <label for="state" class="font-style-label">State:</label>
             <div class="custom-dropdown" style="width: 70px;">
-                <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey text-input" onclick="toggleDropdown2('state-dropdown')" style="width: 70px;">Ex.</button>
-                <div id="state-dropdown" class="custom-dropdown-content" style="width: 70px; max-height: 160px; overflow-y: auto;">
-                <input type="text" class="dropdown-search" placeholder="Search..." onkeyup="filterDropdownOptions('state-dropdown', this)">
-                ${["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
-                    .map(state => `<div class="dropdown-option" onclick="selectDropdownOption2('state-dropdown', '${state}', 'state')">${state}</div>`).join('')}
-                </div>
-                <input type="hidden" id="state" name="state" required>
-                <span class="field-error" id="state-error" style="color:red; display:none;">Please select a state.</span>
+            <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 70px;">Ex.</button>
+            <div id="state-dropdown" class="custom-dropdown-content" style="width: 70px; max-height: 160px; overflow-y: auto;">
+                ${["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"].map(state => `<div onclick="selectDropdownOption2('state-dropdown', '${state}', 'state')">${state}</div>`).join('')}
+            </div>
+            <input type="hidden" id="state" name="state" required>
             </div>
         </div>
-
         <div class="form-col" style="flex: 1; min-width: 120px;">
             <label for="zip" class="font-style-label">Zip Code:</label>
             <input type="text" id="zip" name="zip" class="text-input placeholder-grey" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">
@@ -729,18 +725,6 @@ function updateCanvasColor(color) {
 function toggleDropdown2(id) {
     document.getElementById(id).classList.toggle("show");
 }
-
-function filterDropdownOptions(dropdownId, input) {
-    const filter = input.value.toUpperCase();
-    const dropdown = document.getElementById(dropdownId);
-    const options = dropdown.querySelectorAll('.dropdown-option');
-  
-    options.forEach(option => {
-      const text = option.textContent || option.innerText;
-      option.style.display = text.toUpperCase().includes(filter) ? '' : 'none';
-    });
-  }
-  
 
 function selectDropdownOption2(dropdownId, value, inputId) {
     const button = document.getElementById(`${dropdownId}-button`);
