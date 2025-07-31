@@ -398,3 +398,21 @@ function updateOverlayPositionAndSize(sectionTitle) {
     combinedOverlay.style.alignItems = 'center';
     combinedOverlay.style.justifyContent = 'center';
 }
+
+function toggleTentSettingsMenu() {
+    const menu = document.getElementById('tent-settings-menu');
+    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+  }
+  
+  function saveTentSettings() {
+    const size = document.getElementById('tent-size').value;
+    const frame = document.querySelector('input[name="frame-type"]:checked').value;
+    const walls = Array.from(document.querySelectorAll('input[name="walls"]:checked')).map(cb => cb.value);
+  
+    console.log({ size, frame, walls });
+    // You can now store or apply these values
+  
+    // Optionally hide the panel
+    document.getElementById('tent-settings-menu').style.display = 'none';
+  }
+  

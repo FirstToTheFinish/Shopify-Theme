@@ -477,7 +477,7 @@ function generateSections(sectionsConfig) {
             }
         }
         
-function updateCanvasColor(color) {
+        function updateCanvasColor(color) {
             const canvas = document.getElementById(section.title.replace(' ', '') + 'Canvas');
             const textInput = document.getElementById(`text-input-${section.id}`);
             if (canvas) {

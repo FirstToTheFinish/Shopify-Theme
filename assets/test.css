@@ -1861,5 +1861,24 @@ h2 {
   margin-bottom: 4px;
 }
 
+.tent-settings-button {
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
+.tent-settings-panel {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+}
 
+.settings-group {
+  margin-bottom: 12px;
+}
