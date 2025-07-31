@@ -547,6 +547,7 @@ function toggleTentSettingsMenu() {
         ];
     }
     currentSection = 2;
+    console.log("HERE");
     console.log(sectionsConfig);
     prevSection()
     updateOverlayPositionAndSize(sectionsConfig[currentSection-1].title)
