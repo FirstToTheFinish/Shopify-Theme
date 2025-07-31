@@ -426,11 +426,11 @@ function toggleTentSettingsMenu() {
     const selectedFrame = document.querySelector('input[name="frame-type"]:checked').value;
   
     if (selectedFrame === 'steel') {
-      aluminumLabel.innerText = 'Aluminum -$100';
-      steelLabel.innerText = 'Steel +$100';
+      aluminumLabel.innerText = 'Aluminum (-$100.00)';
+      steelLabel.innerText = 'Steel';
     } else {
       aluminumLabel.innerText = 'Aluminum';
-      steelLabel.innerText = 'Steel +$100';
+      steelLabel.innerText = 'Steel (+$100.00)';
     }
   }
   
