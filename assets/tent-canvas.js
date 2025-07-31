@@ -475,21 +475,15 @@ function toggleTentSettingsMenu() {
     }
   
     // Update Total
-    document.getElementById('total-price').textContent = `$${total.toLocaleString()}`;
+    document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
   }
   
   function formatPriceDiff(diff) {
     if (diff === 0) return '';
     const sign = diff > 0 ? '+' : '–';
-    return `(${sign}$${Math.abs(diff).toLocaleString()})`;
+    return `(${sign}$${Math.abs(diff).toFixed(2)})`;
   }
   
-  
-  function formatPriceDiff(diff) {
-    if (diff === 0) return '';
-    const symbol = diff > 0 ? '+' : '–';
-    return `(${symbol}$${Math.abs(diff).toLocaleString()})`;
-  }
   
   const tentPrices = {
     "10x10": 899.00,
