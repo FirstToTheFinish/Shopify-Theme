@@ -230,7 +230,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, imagePreviewURL,
   });
 
   // Draw the item description
-  page.drawText(`${itDescript}`, {
+  page.drawText(`${tentTitle}`, {
     x: 15,
     y: page.getHeight() - 100,
     size: 20,
