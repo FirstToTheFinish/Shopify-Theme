@@ -546,6 +546,9 @@ function toggleTentSettingsMenu() {
             },  
         ];
     }
+    currentSection = 2;
+    prevSection()
+    updateOverlayPositionAndSize(sectionsConfig[currentSection-1].title)
   
     document.getElementById('tent-settings-menu').style.display = 'none';
   }
