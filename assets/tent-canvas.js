@@ -409,7 +409,7 @@ function toggleTentSettingsMenu() {
     const size = getSelectedTentSize();
     const frame = document.querySelector('input[name="frame-type"]:checked').value;
     const walls = document.querySelector('input[name="walls-present"]:checked').value;
-    const total = document.getElementById("tent-price").innerText;
+    const total = document.getElementById("total-price").innerText;
   
     console.log({ size, frame, walls, total });
     // You can now store or apply these values
