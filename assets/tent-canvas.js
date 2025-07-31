@@ -436,40 +436,51 @@ function toggleTentSettingsMenu() {
   }
 
   function updateTentPricing() {
-    const hasWalls = document.querySelector('input[name="walls-present"]:checked').value === 'yes';
     const selectedSize = document.querySelector('input[name="tent-size"]:checked').value;
+    const hasWalls = document.querySelector('input[name="walls-present"]:checked').value === 'yes';
+    const isSteel = document.querySelector('input[name="frame-type"]:checked').value === 'steel';
   
-    // Base prices
-    const basePrice = 899; // 10x10 no walls
-    const prices = {
-      "10x10": { noWalls: 899, withWalls: 1169 },
-      "10x15": { noWalls: 1079, withWalls: 1529 },
-      "10x20": { noWalls: 1349, withWalls: 1889 }
-    };
+    const basePrice = tentPrices[selectedSize];
+    const wallCost = hasWalls ? wallUpcharge[selectedSize] : 0;
+    const frameCost = isSteel ? steelFrameUpcharge : 0;
+    const total = basePrice + wallCost + frameCost;
   
-    // Update tent size labels with price differences
-    Object.keys(prices).forEach(size => {
-      const currentPrice = hasWalls ? prices[size].withWalls : prices[size].noWalls;
-      const diff = currentPrice - basePrice;
+    // Update Tent Size Labels
+    for (const size in tentPrices) {
       const label = document.getElementById(`price-${size}`);
-      if (label) {
+      if (!label) continue;
+  
+      if (size === selectedSize) {
+        label.textContent = `($${tentPrices[size].toLocaleString()})`;
+      } else {
+        const diff = tentPrices[size] - tentPrices[selectedSize];
         label.textContent = formatPriceDiff(diff);
       }
-    });
+    }
   
-    // Update wall options
-    const wallYes = document.querySelector('input[name="walls-present"][value="yes"]');
-    const wallNo = document.querySelector('input[name="walls-present"][value="no"]');
-    const wallYesLabel = document.getElementById('wall-yes-label');
-    const wallNoLabel = document.getElementById('wall-no-label');
+    // Update Walls Label
+    const yesLabel = document.getElementById('wall-yes-label');
+    const noLabel = document.getElementById('wall-no-label');
+    const diff = wallUpcharge[selectedSize];
   
-    const priceWithWalls = prices[selectedSize].withWalls;
-    const priceWithoutWalls = prices[selectedSize].noWalls;
-    const diffWalls = priceWithWalls - priceWithoutWalls;
+    if (hasWalls) {
+      yesLabel.textContent = "Yes";
+      noLabel.textContent = `No ${formatPriceDiff(-diff)}`;
+    } else {
+      noLabel.textContent = "No";
+      yesLabel.textContent = `Yes ${formatPriceDiff(diff)}`;
+    }
   
-    if (wallYesLabel) wallYesLabel.textContent = `Yes ${formatPriceDiff(diffWalls)}`;
-    if (wallNoLabel) wallNoLabel.textContent = `No ${formatPriceDiff(-diffWalls)}`;
+    // Update Total
+    document.getElementById('total-price').textContent = `$${total.toLocaleString()}`;
   }
+  
+  function formatPriceDiff(diff) {
+    if (diff === 0) return '';
+    const sign = diff > 0 ? '+' : '–';
+    return `(${sign}$${Math.abs(diff).toLocaleString()})`;
+  }
+  
   
   function formatPriceDiff(diff) {
     if (diff === 0) return '';
@@ -477,5 +488,16 @@ function toggleTentSettingsMenu() {
     return `(${symbol}$${Math.abs(diff).toLocaleString()})`;
   }
   
+  const tentPrices = {
+    "10x10": 899,
+    "10x15": 1079,
+    "10x20": 1349
+  };
+  const wallUpcharge = {
+    "10x10": 270,
+    "10x15": 450,
+    "10x20": 540
+  };
+  const steelFrameUpcharge = 100;
   
   
