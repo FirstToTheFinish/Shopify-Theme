@@ -447,16 +447,18 @@ function toggleTentSettingsMenu() {
   
     // Update Tent Size Labels
     for (const size in tentPrices) {
-      const label = document.getElementById(`price-${size}`);
-      if (!label) continue;
-  
-      if (size === selectedSize) {
-        label.textContent = `($${tentPrices[size].toLocaleString()})`;
-      } else {
-        const diff = tentPrices[size] - tentPrices[selectedSize];
-        label.textContent = formatPriceDiff(diff);
+        const label = document.getElementById(`price-${size}`);
+        if (!label) continue;
+      
+        const labelText = `${size.replace('x', "'x")}'`; // e.g., 10x10 => 10'x10'
+        if (size === selectedSize) {
+          label.textContent = `${labelText} ($${tentPrices[size].toLocaleString()})`;
+        } else {
+          const diff = tentPrices[size] - tentPrices[selectedSize];
+          label.textContent = `${labelText} ${formatPriceDiff(diff)}`;
+        }
       }
-    }
+      
   
     // Update Walls Label
     const yesLabel = document.getElementById('wall-yes-label');
