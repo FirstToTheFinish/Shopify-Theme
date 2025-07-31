@@ -433,6 +433,7 @@ function toggleTentSettingsMenu() {
       aluminumLabel.innerText = 'Aluminum';
       steelLabel.innerText = 'Steel (+$100.00)';
     }
+    updateTentPricing();
   }
 
   function updateTentPricing() {
