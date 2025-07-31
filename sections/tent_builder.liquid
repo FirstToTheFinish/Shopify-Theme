@@ -108,18 +108,27 @@
                             <h4 id="tentTitle"></h4>
                             <span id="infoTitle" style="display: none"></span>
                             <p id ="pricing" style="font-size: 20px; margin-top:-15px;"></p>
-                            <button type="button" id="tent-setup-button" class="tent-settings-button" onclick="toggleTentSettingsMenu()">
+                            <button type="button" id="tent-setup-button" class="btn btn--primary w-full" onclick="toggleTentSettingsMenu()">
                                 ⚙️ Tent Setup Options
                             </button>
                             <div id="tent-settings-menu" class="tent-settings-panel" style="display: none;">
                                 <div class="settings-group">
-                                  <label for="tent-size" class="font-style-label">Tent Size:</label>
-                                  <select id="tent-size" class="text-input">
-                                    <option value="10x10">10x10</option>
-                                    <option value="10x15">10x15</option>
-                                    <option value="10x20" selected>10x20</option>
-                                  </select>
-                                </div>
+                                    <label class="font-style-label">Tent Size:</label>
+                                    <div class="button-radio-group" id="tent-size-options">
+                                      <label class="square-radio">
+                                        <input type="radio" name="tent-size" value="10x10">
+                                        <span>10x10</span>
+                                      </label>
+                                      <label class="square-radio">
+                                        <input type="radio" name="tent-size" value="10x15">
+                                        <span>10x15</span>
+                                      </label>
+                                      <label class="square-radio">
+                                        <input type="radio" name="tent-size" value="10x20" checked>
+                                        <span>10x20</span>
+                                      </label>
+                                    </div>
+                                </div>                                  
                               
                                 <div class="settings-group">
                                   <label class="font-style-label">Frame Type:</label>

@@ -1882,3 +1882,36 @@ h2 {
 .settings-group {
   margin-bottom: 12px;
 }
+
+.button-radio-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.square-radio {
+  position: relative;
+  display: inline-block;
+}
+
+.square-radio input[type="radio"] {
+  display: none;
+}
+
+.square-radio span {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.square-radio input[type="radio"]:checked + span {
+  border-color: #333;
+  background-color: #e6e6e6;
+  font-weight: bold;
+}
