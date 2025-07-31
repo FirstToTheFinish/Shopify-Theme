@@ -548,8 +548,7 @@ function toggleTentSettingsMenu() {
     }
     currentSection = 2;
     totalSections = sectionsConfig.length;
-    console.log("HERE");
-    console.log(sectionsConfig);
+    generateSections(sectionsConfig);
     prevSection()
     updateOverlayPositionAndSize(sectionsConfig[currentSection-1].title)
   
