@@ -148,12 +148,15 @@
                                 <div class="settings-group">
                                     <label class="font-style-label">Walls Present:</label>
                                     <label>
-                                      <input type="radio" name="walls-present" value="yes" checked onchange="updateTentPricing()"> Yes
+                                      <input type="radio" name="walls-present" value="yes" checked onchange="updateTentPricing()">
+                                      <span id="wall-yes-label">Yes</span>
                                     </label>
                                     <label>
-                                      <input type="radio" name="walls-present" value="no" onchange="updateTentPricing()"> No
+                                      <input type="radio" name="walls-present" value="no" onchange="updateTentPricing()">
+                                      <span id="wall-no-label">No</span>
                                     </label>
                                 </div>
+                                  
                                                                    
                                 <button type="button" onclick="saveTentSettings()">Save</button>
                             </div>                                                           

@@ -402,6 +402,7 @@ function updateOverlayPositionAndSize(sectionTitle) {
 function toggleTentSettingsMenu() {
     const menu = document.getElementById('tent-settings-menu');
     menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+    updateTentPricing();
   }
   
   function saveTentSettings() {
@@ -436,19 +437,45 @@ function toggleTentSettingsMenu() {
 
   function updateTentPricing() {
     const hasWalls = document.querySelector('input[name="walls-present"]:checked').value === 'yes';
+    const selectedSize = document.querySelector('input[name="tent-size"]:checked').value;
   
+    // Base prices
+    const basePrice = 899; // 10x10 no walls
     const prices = {
-      "10x10": hasWalls ? 1169 : 899,
-      "10x15": hasWalls ? 1529 : 1079,
-      "10x20": hasWalls ? 1889 : 1349
+      "10x10": { noWalls: 899, withWalls: 1169 },
+      "10x15": { noWalls: 1079, withWalls: 1529 },
+      "10x20": { noWalls: 1349, withWalls: 1889 }
     };
   
-    for (const size in prices) {
-      const priceSpan = document.getElementById(`price-${size}`);
-      if (priceSpan) {
-        priceSpan.textContent = `($${prices[size].toLocaleString()})`;
+    // Update tent size labels with price differences
+    Object.keys(prices).forEach(size => {
+      const currentPrice = hasWalls ? prices[size].withWalls : prices[size].noWalls;
+      const diff = currentPrice - basePrice;
+      const label = document.getElementById(`price-${size}`);
+      if (label) {
+        label.textContent = formatPriceDiff(diff);
       }
-    }
+    });
+  
+    // Update wall options
+    const wallYes = document.querySelector('input[name="walls-present"][value="yes"]');
+    const wallNo = document.querySelector('input[name="walls-present"][value="no"]');
+    const wallYesLabel = document.getElementById('wall-yes-label');
+    const wallNoLabel = document.getElementById('wall-no-label');
+  
+    const priceWithWalls = prices[selectedSize].withWalls;
+    const priceWithoutWalls = prices[selectedSize].noWalls;
+    const diffWalls = priceWithWalls - priceWithoutWalls;
+  
+    if (wallYesLabel) wallYesLabel.textContent = `Yes ${formatPriceDiff(diffWalls)}`;
+    if (wallNoLabel) wallNoLabel.textContent = `No ${formatPriceDiff(-diffWalls)}`;
   }
+  
+  function formatPriceDiff(diff) {
+    if (diff === 0) return '';
+    const symbol = diff > 0 ? '+' : '–';
+    return `(${symbol}$${Math.abs(diff).toLocaleString()})`;
+  }
+  
   
   
