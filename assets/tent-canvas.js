@@ -452,7 +452,7 @@ function toggleTentSettingsMenu() {
       
         const labelText = `${size.replace('x', "'x")}'`; // e.g., 10x10 => 10'x10'
         if (size === selectedSize) {
-          label.textContent = `${labelText} ($${tentPrices[size].toLocaleString()})`;
+          label.textContent = `${labelText}`;
         } else {
           const diff = tentPrices[size] - tentPrices[selectedSize];
           label.textContent = `${labelText} ${formatPriceDiff(diff)}`;
