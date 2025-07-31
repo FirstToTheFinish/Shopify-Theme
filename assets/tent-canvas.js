@@ -492,15 +492,15 @@ function toggleTentSettingsMenu() {
   }
   
   const tentPrices = {
-    "10x10": 899,
-    "10x15": 1079,
-    "10x20": 1349
+    "10x10": 899.00,
+    "10x15": 1079.00,
+    "10x20": 1349.00
   };
   const wallUpcharge = {
-    "10x10": 270,
-    "10x15": 450,
-    "10x20": 540
+    "10x10": 270.00,
+    "10x15": 450.00,
+    "10x20": 540.00
   };
-  const steelFrameUpcharge = 100;
+  const steelFrameUpcharge = 100.00;
   
   
