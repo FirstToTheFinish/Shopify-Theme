@@ -404,6 +404,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (contactForm) {
         contactForm.addEventListener('submit', sanitizeFormInputs);
     }
+    document.addEventListener('DOMContentLoaded', updateTentPricing);
+
 });
 
 function copyOppositeSection(sectionId) {

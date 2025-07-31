@@ -116,19 +116,20 @@
                                     <label class="font-style-label">Tent Size:</label>
                                     <div class="button-radio-group" id="tent-size-options">
                                       <label class="square-radio">
-                                        <input type="radio" name="tent-size" value="10x10">
-                                        <span>10'x10'</span>
+                                        <input type="radio" name="tent-size" value="10x10" onchange="updateTentPricing()">
+                                        <span>10'x10' <span class="tent-price" id="price-10x10"></span></span>
                                       </label>
                                       <label class="square-radio">
-                                        <input type="radio" name="tent-size" value="10x15">
-                                        <span>10'x15'</span>
+                                        <input type="radio" name="tent-size" value="10x15" onchange="updateTentPricing()">
+                                        <span>10'x15' <span class="tent-price" id="price-10x15"></span></span>
                                       </label>
                                       <label class="square-radio">
-                                        <input type="radio" name="tent-size" value="10x20" checked>
-                                        <span>10'x20'</span>
+                                        <input type="radio" name="tent-size" value="10x20" checked onchange="updateTentPricing()">
+                                        <span>10'x20' <span class="tent-price" id="price-10x20"></span></span>
                                       </label>
                                     </div>
-                                </div>                                  
+                                </div>
+                                                                    
                               
                                 <div class="settings-group">
                                     <label class="font-style-label">Frame Type:</label>
@@ -147,12 +148,13 @@
                                 <div class="settings-group">
                                     <label class="font-style-label">Walls Present:</label>
                                     <label>
-                                      <input type="radio" name="walls-present" value="yes" checked> Yes
+                                      <input type="radio" name="walls-present" value="yes" checked onchange="updateTentPricing()"> Yes
                                     </label>
                                     <label>
-                                      <input type="radio" name="walls-present" value="no"> No
+                                      <input type="radio" name="walls-present" value="no" onchange="updateTentPricing()"> No
                                     </label>
-                                </div>                                 
+                                </div>
+                                                                   
                                 <button type="button" onclick="saveTentSettings()">Save</button>
                             </div>                                                           
                             <div id="file-upload-modal" class="modal">

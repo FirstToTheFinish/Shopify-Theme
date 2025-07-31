@@ -407,7 +407,7 @@ function toggleTentSettingsMenu() {
   function saveTentSettings() {
     const size = getSelectedTentSize();
     const frame = document.querySelector('input[name="frame-type"]:checked').value;
-    const walls = Array.from(document.querySelectorAll('input[name="walls"]:checked')).map(cb => cb.value);
+    const walls = document.querySelector('input[name="walls-present"]:checked').value;
   
     console.log({ size, frame, walls });
     // You can now store or apply these values
@@ -433,4 +433,22 @@ function toggleTentSettingsMenu() {
       steelLabel.innerText = 'Steel (+$100.00)';
     }
   }
+
+  function updateTentPricing() {
+    const hasWalls = document.querySelector('input[name="walls-present"]:checked').value === 'yes';
+  
+    const prices = {
+      "10x10": hasWalls ? 1169 : 899,
+      "10x15": hasWalls ? 1529 : 1079,
+      "10x20": hasWalls ? 1889 : 1349
+    };
+  
+    for (const size in prices) {
+      const priceSpan = document.getElementById(`price-${size}`);
+      if (priceSpan) {
+        priceSpan.textContent = `($${prices[size].toLocaleString()})`;
+      }
+    }
+  }
+  
   
