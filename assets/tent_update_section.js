@@ -1,5 +1,5 @@
 let currentSection = 1;
-const totalSections = sectionsConfig.length; // Use the length of the sectionsConfig array
+var totalSections = sectionsConfig.length; // Use the length of the sectionsConfig array
 let capturedImages = {}; // Store captured image data
 const blockedCharsRegex = /[&<>"'/`();]/g;
 

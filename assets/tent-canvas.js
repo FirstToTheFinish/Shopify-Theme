@@ -547,6 +547,7 @@ function toggleTentSettingsMenu() {
         ];
     }
     currentSection = 2;
+    totalSections = sectionsConfig.length;
     console.log("HERE");
     console.log(sectionsConfig);
     prevSection()
