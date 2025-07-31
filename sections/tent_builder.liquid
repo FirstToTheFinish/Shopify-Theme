@@ -131,10 +131,18 @@
                                 </div>                                  
                               
                                 <div class="settings-group">
-                                  <label class="font-style-label">Frame Type:</label>
-                                  <label><input type="radio" name="frame-type" value="standard" checked> Aluminum</label>
-                                  <label><input type="radio" name="frame-type" value="heavy"> Heavy Duty</label>
-                                </div>
+                                    <label class="font-style-label">Frame Type:</label>
+                                    <div class="button-radio-group" id="frame-type-options">
+                                      <label class="square-radio">
+                                        <input type="radio" name="frame-type" value="aluminum" checked onchange="updateFramePricing()">
+                                        <span id="frame-aluminum-label">Aluminum</span>
+                                      </label>
+                                      <label class="square-radio">
+                                        <input type="radio" name="frame-type" value="steel" onchange="updateFramePricing()">
+                                        <span id="frame-steel-label">Steel +$100</span>
+                                      </label>
+                                    </div>
+                                </div>                                  
                               
                                 <div class="settings-group">
                                     <label class="font-style-label">Walls Present:</label>

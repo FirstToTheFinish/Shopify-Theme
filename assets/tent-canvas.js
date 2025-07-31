@@ -420,3 +420,17 @@ function toggleTentSettingsMenu() {
     return selected ? selected.value : null;
   }
   
+  function updateFramePricing() {
+    const aluminumLabel = document.getElementById('frame-aluminum-label');
+    const steelLabel = document.getElementById('frame-steel-label');
+    const selectedFrame = document.querySelector('input[name="frame-type"]:checked').value;
+  
+    if (selectedFrame === 'steel') {
+      aluminumLabel.innerText = 'Aluminum -$100';
+      steelLabel.innerText = 'Steel +$100';
+    } else {
+      aluminumLabel.innerText = 'Aluminum';
+      steelLabel.innerText = 'Steel +$100';
+    }
+  }
+  
