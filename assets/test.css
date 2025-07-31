@@ -1913,5 +1913,4 @@ h2 {
 .square-radio input[type="radio"]:checked + span {
   border-color: #333;
   background-color: #e6e6e6;
-  font-weight: bold;
 }

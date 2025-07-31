@@ -405,14 +405,18 @@ function toggleTentSettingsMenu() {
   }
   
   function saveTentSettings() {
-    const size = document.getElementById('tent-size').value;
+    const size = getSelectedTentSize();
     const frame = document.querySelector('input[name="frame-type"]:checked').value;
     const walls = Array.from(document.querySelectorAll('input[name="walls"]:checked')).map(cb => cb.value);
   
     console.log({ size, frame, walls });
     // You can now store or apply these values
   
-    // Optionally hide the panel
     document.getElementById('tent-settings-menu').style.display = 'none';
+  }
+  
+  function getSelectedTentSize() {
+    const selected = document.querySelector('input[name="tent-size"]:checked');
+    return selected ? selected.value : null;
   }
   
