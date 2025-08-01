@@ -617,10 +617,11 @@ function toggleTentSettingsMenu() {
             notesInput.value = match.notes;
         }
 
-        // 7. Re-add Art Images (if needed)
-        document.getElementById(`art-preview-${sectionId}`) = match.artPreviewDiv;
-
         validateTextInput(sectionId);
+
+        // 7. Re-add Art Images (if needed)
+        const newArtDiv = document.getElementById(`art-preview-${sectionId}`);
+        newArtDiv.innerHTML = match.oldArtPreviewDiv.innerHTML;
     });
 }
 
@@ -651,6 +652,9 @@ function toggleTentSettingsMenu() {
         const outlineColor = outlineColorLabel ? outlineColorLabel.textContent.trim() : '';
 
         // 6. Art previews (get srcs from preview container)
+        const originalDiv = document.getElementById(`art-preview-${id}`);
+        const oldArtPreviewDiv = originalDiv ? originalDiv.cloneNode(true) : null;
+
         const artPreviewDiv = document.getElementById(`art-preview-${id}`);
         const artImages = [];
         if (artPreviewDiv) {
@@ -673,7 +677,7 @@ function toggleTentSettingsMenu() {
             fontStyle,
             fontColor,
             outlineColor,
-            artPreviewDiv,
+            oldArtPreviewDiv,
             artImages,
             notes
         };
