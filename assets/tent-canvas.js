@@ -651,7 +651,7 @@ function updateSelectedColor(section, color, selectedColorSpan) {
         'Columbia Blue': 'rgb(143, 169, 221)',
         'Purple': 'rgb(115, 81, 158)',
     };
-    
+
     if (selectedRadio) {
         selectedColorSpan.textContent = selectedRadio.value;
         const canvas = document.getElementById(section.title.replace(' ', '') + 'Canvas');
@@ -671,6 +671,53 @@ function updateSelectedColor(section, color, selectedColorSpan) {
     }
     else{
         updateCanvasColor(color, section);
+    }
+}
+
+function updateValanceLogo(color){
+    const logo = document.getElementById('ValanceLogo');
+    switch (color){
+        // Black Logo is used
+        case 'White':
+        case 'Silver':
+        case 'Vegas Gold':
+        case 'Yellow Gold':
+        case 'Yellow':
+             logo.src = `${window.shopifyAssetPaths.logos.blackValance}`;
+             break;
+
+        // White Logo is used
+        case 'Black':
+        case 'Grey':
+        case 'Maroon':
+        case 'Cardinal':
+        case 'Red':
+        case 'Orange':
+        case 'Forest Green':
+        case 'Navy Blue':
+        case 'Purple':
+        case 'Royal Blue':
+        case 'Kelly Green':
+        case 'Columbia Blue':
+            logo.src = `${window.shopifyAssetPaths.logos.whiteValance}`;
+            break;
+    }
+    if(color.includes("#")){
+        const rgb = hexToRgb(color);
+
+        // Calculate brightness (perceived brightness)
+        const brightness = Math.sqrt(
+            0.299 * (rgb.r * rgb.r) +
+            0.587 * (rgb.g * rgb.g) +
+            0.114 * (rgb.b * rgb.b)
+        );
+
+        // Choose logo based on brightness
+        if (brightness > 150) { // Adjust this threshold as needed
+            logo.src = `${window.shopifyAssetPaths.logos.blackValance}`;
+        } else {
+            logo.src = `${window.shopifyAssetPaths.logos.whiteValance}`;
+        }
     }
 }
 
