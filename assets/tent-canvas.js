@@ -583,8 +583,8 @@ function toggleTentSettingsMenu() {
         if (!colorSet && match.color) {
             const colorLabel = document.getElementById(`selected-color-${sectionId}`);
             if (colorLabel) colorLabel.textContent = match.color;
-            updateSelectedColor(section, match.color)
         }
+        updateSelectedColor(section, match.color)
 
         // 2. Set Text
         const textInput = document.getElementById(`text-input-${sectionId}`);
