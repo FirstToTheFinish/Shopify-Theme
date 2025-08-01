@@ -574,7 +574,7 @@ function toggleTentSettingsMenu() {
         const text = document.getElementById(`text-input-${id}`)?.value?.trim() || '';
 
         // 3. Font style
-        const fontStyle = document.getElementById(`font-style-${id}`)?.dataset?.selected || '';
+        const fontStyle = document.getElementById(`font-style-${id}`)?.value?.trim() || '';
 
         // 4. Font color
         const fontColorLabel = document.getElementById(`font-color-${id}`);
@@ -606,6 +606,7 @@ function toggleTentSettingsMenu() {
             fontStyle,
             fontColor,
             outlineColor,
+            artPreviewDiv,
             artImages,
             notes
         };
