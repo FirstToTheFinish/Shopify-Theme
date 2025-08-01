@@ -626,6 +626,7 @@ function toggleTentSettingsMenu() {
 }
 
 function updateSelectedColor(section, color) {
+    const sectionDiv = document.getElementById(section.id);
     const selectedRadio = sectionDiv.querySelector('.color-radio:checked');
     const textInput = document.getElementById(`text-input-${section.id}`);
     if (selectedRadio) {
