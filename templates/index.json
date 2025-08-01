@@ -61,7 +61,7 @@
           "name": "Tent Banner",
           "settings": {
             "image_desktop": "shopify://shop_images/Tent_Specials_-_Large_Banner_1_d9caedec-2070-4585-b97a-6e2c1f234a48.svg",
-            "image_mobile": "shopify://shop_images/fully_custom_360_x_120_px_400_x_400_px.png",
+            "image_mobile": "shopify://shop_images/Copy_of_fully_custom.png",
             "url": "shopify://collections/custom-tents",
             "enable_scheduling": false,
             "start_time": "",
