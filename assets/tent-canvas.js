@@ -630,6 +630,28 @@ function updateSelectedColor(section, color, selectedColorSpan) {
     const sectionDiv = document.getElementById(section.id);
     const selectedRadio = sectionDiv.querySelector('.color-radio:checked');
     const textInput = document.getElementById(`text-input-${section.id}`);
+
+    const colorClassMap = {
+        'None': 'none',
+        'White': 'rgb(255, 255, 255)',
+        'Black': 'rgb(6, 8, 8)',
+        'Silver': 'rgb(194, 194, 194)',
+        'Grey': 'rgb(141, 140, 140)',
+        'Vegas Gold': 'rgb(192, 196, 148)',
+        'Maroon': 'rgb(85, 33, 50)',
+        'Cardinal': 'rgb(134, 40, 56)',
+        'Red': 'rgb(197, 44, 44)',
+        'Orange': 'rgb(218, 75, 18)',
+        'Yellow Gold': 'rgb(255, 189, 13)',
+        'Yellow': 'rgb(252, 230, 13)',
+        'Kelly Green': 'rgb(68, 177, 92)',
+        'Forest Green': 'rgb(52, 78, 48)',
+        'Navy Blue': 'rgb(27, 35, 75)',
+        'Royal Blue': 'rgb(47, 95, 167)',
+        'Columbia Blue': 'rgb(143, 169, 221)',
+        'Purple': 'rgb(115, 81, 158)',
+    };
+    
     if (selectedRadio) {
         selectedColorSpan.textContent = selectedRadio.value;
         const canvas = document.getElementById(section.title.replace(' ', '') + 'Canvas');
