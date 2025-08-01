@@ -409,6 +409,65 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+function bindSectionEventListeners() {
+    const blockedCharsRegex = /[&<>"'/`();]/g;
+    const maxLength = 200;
+
+    sectionsConfig.forEach(section => {
+        const textInput = document.getElementById(`text-input-${section.id}`);
+        textInput.addEventListener('input', () => {
+            cleanInput(textInput, blockedCharsRegex);
+            validateTextInput(section.id);
+            updateCanvasText(section);
+        });
+        textInput.addEventListener('paste', () => {
+            cleanInput(textInput, blockedCharsRegex);
+            updateCanvasText(section);
+        });
+        
+
+        const fontStyleDropdown = document.querySelector(`#font-style-${section.id}`).parentElement;
+        fontStyleDropdown.addEventListener('click', () => validateTextInput(section.id));
+
+        const notesInput = document.getElementById(`notes-${section.id}`);
+        notesInput.addEventListener('input', (event) =>{
+          cleanInput(notesInput, blockedCharsRegex);
+          enforceCharacterLimit(event, maxLength);  
+        });
+    });
+
+    const emailAddr = document.getElementById('email');
+    emailAddr.addEventListener('input', () => cleanInput(emailAddr, blockedCharsRegex));
+
+    const emailConfirmAddr = document.getElementById('confirmEmail');
+    emailConfirmAddr.addEventListener('input', () => cleanInput(emailConfirmAddr, blockedCharsRegex));
+
+    const userName = document.getElementById('userName');
+    userName.addEventListener('input', () => cleanInput(userName, blockedCharsRegex));
+
+    const schoolClub = document.getElementById('schoolClub');
+    schoolClub.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
+
+    const salesRep = document.getElementById('salesRep');
+    salesRep.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
+
+    const street = document.getElementById('street');
+    street.addEventListener('input', () => cleanInput(street, blockedCharsRegex));
+
+    const city = document.getElementById('city');
+    city.addEventListener('input', () => cleanInput(city, blockedCharsRegex));
+
+    const tentName = document.getElementById('Tent-Name');
+    tentName.addEventListener('input', () => cleanInput(tentName, blockedCharsRegex));
+
+    // Add event listener to form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', sanitizeFormInputs);
+    }
+}
+  
+
 function copyOppositeSection(sectionId) {
     let sourceSection, targetSection;
 

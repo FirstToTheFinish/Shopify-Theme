@@ -551,6 +551,7 @@ function toggleTentSettingsMenu() {
     generateSections(sectionsConfig);
     prevSection();
     updateOverlayPositionAndSize(sectionsConfig[currentSection-1].title);
+    bindSectionEventListeners();
   
     document.getElementById('tent-settings-menu').style.display = 'none';
   }
