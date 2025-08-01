@@ -423,6 +423,9 @@ function toggleTentSettingsMenu() {
     document.getElementById("pricing").textContent = `Total Price: ${total}`;
     higherPrice = total;
 
+    let inputValues = getSectionInputValues(sectionsConfig);
+    console.log(inputValues);
+
     initializeAllCanvases();
     if(itType){
         sectionsConfig = [
@@ -555,6 +558,62 @@ function toggleTentSettingsMenu() {
   
     document.getElementById('tent-settings-menu').style.display = 'none';
   }
+
+  function getSectionInputValues(sectionsConfig) {
+    const data = {};
+
+    sectionsConfig.forEach(section => {
+        const id = section.id;
+
+        // 1. Color
+        const radio = document.querySelector(`input[name="color-${id}"]:checked`);
+        const customColor = document.getElementById(`selected-color-${id}`)?.textContent?.trim();
+        const selectedColor = radio ? radio.value : customColor;
+
+        // 2. Text input
+        const text = document.getElementById(`text-input-${id}`)?.value?.trim() || '';
+
+        // 3. Font style
+        const fontStyle = document.getElementById(`font-style-${id}`)?.dataset?.selected || '';
+
+        // 4. Font color
+        const fontColorLabel = document.getElementById(`font-color-${id}`);
+        const fontColor = fontColorLabel ? fontColorLabel.textContent.trim() : '';
+
+        // 5. Outline color
+        const outlineColorLabel = document.getElementById(`outline-color-${id}`);
+        const outlineColor = outlineColorLabel ? outlineColorLabel.textContent.trim() : '';
+
+        // 6. Art previews (get srcs from preview container)
+        const artPreviewDiv = document.getElementById(`art-preview-${id}`);
+        const artImages = [];
+        if (artPreviewDiv) {
+            const imgs = artPreviewDiv.querySelectorAll('img');
+            imgs.forEach(img => {
+                if (img.src) {
+                    artImages.push(img.src);
+                }
+            });
+        }
+
+        // 7. Notes
+        const notes = document.getElementById(`notes-${id}`)?.value?.trim() || '';
+
+        // Store all values
+        data[section.name] = {
+            color: selectedColor,
+            text,
+            fontStyle,
+            fontColor,
+            outlineColor,
+            artImages,
+            notes
+        };
+    });
+
+    return data;
+}
+
   
   function getSelectedTentSize() {
     const selected = document.querySelector('input[name="tent-size"]:checked');
