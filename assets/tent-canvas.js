@@ -583,7 +583,7 @@ function toggleTentSettingsMenu() {
         if (!colorSet && match.color) {
             const colorLabel = document.getElementById(`selected-color-${sectionId}`);
             if (colorLabel) colorLabel.textContent = match.color;
-            updateCanvasColor(match.color, section); // Or your canvas update logic
+            updateSelectedColor(section, match.color)
         }
 
         // 2. Set Text
@@ -623,6 +623,31 @@ function toggleTentSettingsMenu() {
         const newArtDiv = document.getElementById(`art-preview-${sectionId}`);
         newArtDiv.innerHTML = match.oldArtPreviewDiv.innerHTML;
     });
+}
+
+function updateSelectedColor(section, color) {
+    const selectedRadio = sectionDiv.querySelector('.color-radio:checked');
+    const textInput = document.getElementById(`text-input-${section.id}`);
+    if (selectedRadio) {
+        selectedColorSpan.textContent = selectedRadio.value;
+        const canvas = document.getElementById(section.title.replace(' ', '') + 'Canvas');
+        if (canvas) {
+            const context = canvas.getContext('2d');
+            context.fillStyle = colorClassMap[selectedRadio.value];
+            context.fill();
+            context.strokeStyle = '#5A5A5A';
+            context.stroke();
+            if (section.title === "Front Valance") {
+                updateValanceLogo(selectedRadio.value);
+            }
+            if (textInput.value !== '') {
+                updateCanvasText(section);
+            }
+        }
+    }
+    else{
+        updateCanvasColor(color, section);
+    }
 }
 
 function updateCanvasColor(color, section) {
