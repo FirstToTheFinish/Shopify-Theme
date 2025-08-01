@@ -574,7 +574,8 @@ function toggleTentSettingsMenu() {
         const text = document.getElementById(`text-input-${id}`)?.value?.trim() || '';
 
         // 3. Font style
-        const fontStyle = document.getElementById(`font-style-${id}`)?.value?.trim() || '';
+        const fontButton = document.querySelector(`#font-style-${id}`)?.parentElement.querySelector('.custom-dropdown-button');
+        const fontStyle = fontButton ? fontButton.getAttribute('value') : '';
 
         // 4. Font color
         const fontColorLabel = document.getElementById(`font-color-${id}`);
