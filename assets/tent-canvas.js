@@ -571,6 +571,7 @@ function toggleTentSettingsMenu() {
 
         // 1. Set Color
         const colorRadios = document.querySelectorAll(`input[name="color-${sectionId}"]`);
+        const colorLabel = document.getElementById(`selected-color-${sectionId}`);
         let colorSet = false;
         colorRadios.forEach(radio => {
             if (radio.value === match.color) {
@@ -581,10 +582,10 @@ function toggleTentSettingsMenu() {
 
         // If it's a custom color, update manually
         if (!colorSet && match.color) {
-            const colorLabel = document.getElementById(`selected-color-${sectionId}`);
+            
             if (colorLabel) colorLabel.textContent = match.color;
         }
-        updateSelectedColor(section, match.color)
+        updateSelectedColor(section, match.color, colorLabel);
 
         // 2. Set Text
         const textInput = document.getElementById(`text-input-${sectionId}`);
@@ -625,7 +626,7 @@ function toggleTentSettingsMenu() {
     });
 }
 
-function updateSelectedColor(section, color) {
+function updateSelectedColor(section, color, selectedColorSpan) {
     const sectionDiv = document.getElementById(section.id);
     const selectedRadio = sectionDiv.querySelector('.color-radio:checked');
     const textInput = document.getElementById(`text-input-${section.id}`);
