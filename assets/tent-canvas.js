@@ -602,6 +602,7 @@ function toggleTentSettingsMenu() {
 
         // Store all values
         data[section.name] = {
+            id: section.title,
             color: selectedColor,
             text,
             fontStyle,
