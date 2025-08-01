@@ -108,6 +108,7 @@ function captureElement(elementId) {
 async function previewNow() {
     // Show loading overlay
     document.getElementById('TentDescription').style.display = 'none';
+    document.getElementById('tent-setup-button').style.display = 'none';
     document.getElementById('loadingOverlay').style.display = 'flex';
 
     // Hide all other sections and show the preview section

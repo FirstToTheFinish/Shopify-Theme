@@ -7,6 +7,7 @@ function showSection(section) {
     for (let i = 0; i < totalSections; i++) {
         document.getElementById(sectionsConfig[i].id).style.display = 'none';
     }
+    document.getElementById('tent-setup-button').style.display = 'inline-block';
 
     document.getElementById(sectionsConfig[section - 1].id).style.display = 'inline';
     updateCurrentSectionText(section);
