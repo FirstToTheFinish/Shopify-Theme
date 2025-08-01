@@ -554,10 +554,82 @@ function toggleTentSettingsMenu() {
     generateSections(sectionsConfig);
     prevSection();
     updateOverlayPositionAndSize(sectionsConfig[currentSection-1].title);
+    applySectionInputValues(inputValues, sectionsConfig);
     bindSectionEventListeners();
   
     document.getElementById('tent-settings-menu').style.display = 'none';
   }
+
+  function applySectionInputValues(oldValues, newSections) {
+    newSections.forEach(section => {
+        const sectionId = section.id;
+        const sectionTitle = section.title;
+
+        // Try to find old value by title match
+        const match = Object.values(oldValues).find(val => val.id === sectionTitle);
+        if (!match) return;
+
+        // 1. Set Color
+        const colorRadios = document.querySelectorAll(`input[name="color-${sectionId}"]`);
+        let colorSet = false;
+        colorRadios.forEach(radio => {
+            if (radio.value === match.color) {
+                radio.checked = true;
+                colorSet = true;
+            }
+        });
+
+        // If it's a custom color, update manually
+        if (!colorSet && match.color) {
+            const colorLabel = document.getElementById(`selected-color-${sectionId}`);
+            if (colorLabel) colorLabel.textContent = match.color;
+            updateCanvasColor(match.color); // Or your canvas update logic
+        }
+
+        // 2. Set Text
+        const textInput = document.getElementById(`text-input-${sectionId}`);
+        if (textInput) {
+            textInput.value = match.text;
+            textInput.dispatchEvent(new Event('input')); // Trigger related listeners
+        }
+
+        // 3. Set Font Style
+        const fontButton = document.querySelector(`#font-style-${sectionId}`)?.parentElement.querySelector('.custom-dropdown-button');
+        if (fontButton && match.fontStyle) {
+            fontButton.textContent = match.fontStyle;
+            fontButton.setAttribute('value', match.fontStyle);
+            fontButton.style.fontFamily = match.fontStyle.replace(/\s+/g, '-'); // e.g., "Famous College" → "Famous-College"
+        }
+
+        // 4. Set Font Color
+        if (match.fontColor) {
+            selectColorPickerOption(`font-color-${sectionId}`, match.fontColor, sectionId);
+        }
+
+        // 5. Set Outline Color
+        if (match.outlineColor) {
+            selectColorPickerOption(`outline-color-${sectionId}`, match.outlineColor, sectionId);
+        }
+
+        // 6. Set Notes
+        const notesInput = document.getElementById(`notes-${sectionId}`);
+        if (notesInput) {
+            notesInput.value = match.notes;
+        }
+
+        // 7. Re-add Art Images (if needed)
+        const artContainer = document.getElementById(`art-preview-${sectionId}`);
+        if (artContainer && match.artImages && match.artImages.length) {
+            match.artImages.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.style.maxHeight = '100px'; // or your preview styling
+                img.style.marginRight = '10px';
+                artContainer.appendChild(img);
+            });
+        }
+    });
+}
 
   function getSectionInputValues(sectionsConfig) {
     const data = {};
