@@ -618,16 +618,9 @@ function toggleTentSettingsMenu() {
         }
 
         // 7. Re-add Art Images (if needed)
-        const artContainer = document.getElementById(`art-preview-${sectionId}`);
-        if (artContainer && match.artImages && match.artImages.length) {
-            match.artImages.forEach(src => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.style.maxHeight = '100px'; // or your preview styling
-                img.style.marginRight = '10px';
-                artContainer.appendChild(img);
-            });
-        }
+        document.getElementById(`art-preview-${sectionId}`) = match.artPreviewDiv;
+
+        validateTextInput(sectionId);
     });
 }
 
