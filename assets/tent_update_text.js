@@ -428,7 +428,13 @@ function adjustTextboxPosition(textElement, overlay, previousWidth, previousHeig
 
 function autoResizeTextarea(textarea) {
     textarea.style.height = 'auto';
-    textarea.style.height = (textarea.scrollHeight) + 'px';
+    if(textarea.scrollHeight != 0){
+        textarea.style.height = (textarea.scrollHeight) + 'px';
+    }
+    else{
+        textarea.style.height = '40px';
+    }
+    
 }
 
 let snapGridEnabled = false;
