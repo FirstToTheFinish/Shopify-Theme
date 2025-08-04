@@ -36,7 +36,7 @@ function showSection(section) {
     document.querySelectorAll('.canvas-overlay').forEach(overlay => overlay.remove());
 
     const sectionTitle = sectionsConfig[section - 1].title;
-    if(hasWalls){
+    if(itType){
         switch (sectionTitle) {
             case "Front Peak":
                 showCanvasWithOverlay('FrontPeakCanvas', 'FrontValanceCanvas', 'FrontPeakTextOverlay', 'FrontValanceTextOverlay');
