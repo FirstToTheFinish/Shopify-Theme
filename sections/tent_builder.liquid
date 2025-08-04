@@ -112,6 +112,9 @@
                                 ⚙️ Tent Setup Options
                             </button>
                             <div id="tent-settings-menu" class="tent-settings-panel" style="display: none;">
+                                <button class="close-button" onclick="toggleTentSettingsMenu()" aria-label="Close">
+                                    &times;
+                                </button>
                                 <div class="settings-group">
                                     <label class="font-style-label">Tent Size:</label>
                                     <div class="button-radio-group" id="tent-size-options">
@@ -164,12 +167,8 @@
                                 </div>
                                                                    
                                 <button id="save-button" class="btn btn--primary w-half" onclick="saveSectionData()" style="margin-top: 15px;">
-                                    💾 Save Changes
+                                    Save Changes
                                 </button>
-                                <button class="close-button" onclick="toggleTentSettingsMenu()" aria-label="Close">
-                                    &times;
-                                </button>
-                                
                                 
                             </div>                                                           
                             <div id="file-upload-modal" class="modal">
