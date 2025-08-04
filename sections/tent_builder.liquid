@@ -163,7 +163,14 @@
                                     <div id="total-price" style="font-weight: bold; font-size: 16px;">$1,889</div>
                                 </div>
                                                                    
-                                <button type="button" onclick="saveTentSettings()">Save</button>
+                                <button id="save-button" class="btn btn--primary w-half" onclick="saveSectionData()" style="margin-top: 15px;">
+                                    💾 Save Changes
+                                </button>
+                                <button class="close-button" onclick="toggleTentSettingsMenu()" aria-label="Close">
+                                    &times;
+                                </button>
+                                
+                                
                             </div>                                                           
                             <div id="file-upload-modal" class="modal">
                                 <div class="modal-content">
