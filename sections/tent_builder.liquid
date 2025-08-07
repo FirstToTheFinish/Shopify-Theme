@@ -21,7 +21,7 @@
         <span>
             <div id="TentDescription" class="TentHeader" style="text-align: center; line-height: 1.3;">
                 <h1 style="margin: 0px;">Welcome to the Official FTTF Tent Builder!</h1>
-                <p>From here you will be able to design your tent in many ways. Please use the link HERE for the instructions on using this builder. <br> For best functionality, use Google Chrome or Microsoft Edge as your browser. Other browsers may not work as expected. </p>
+                <p>From here you will be able to design your tent in many ways. Please use the link <a href="{{ 'Tent Instructions.pdf' | asset_url }}" target="_blank" rel="noopener">HERE</a> for the instructions on using this builder. <br> For best functionality, use Google Chrome or Microsoft Edge as your browser. Other browsers may not work as expected. </p>
             </div>
             <div class="tent-builder-wrapper">
                 
@@ -230,7 +230,8 @@
               },
             tools: {
                 uploadIcon: "{{ 'upload.png' | asset_url }}",
-                eyeDropper: "{{ 'OIP.jfif' | asset_url }}"
+                eyeDropper: "{{ 'OIP.jfif' | asset_url }}",
+                tentPDF: "{{ 'Tent Instructions.pdf' | asset_url }}"
               },
             tentColors: {
                 "Black": "{{ 'BLACK.svg' | asset_url }}",
