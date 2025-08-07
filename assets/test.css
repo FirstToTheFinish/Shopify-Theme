@@ -1928,3 +1928,16 @@ h2 {
 .close-button:hover {
   color: #000;
 }
+
+.tent-pdf-link {
+  color: #0066cc;             /* Base color (e.g. blue) */
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.tent-pdf-link:hover {
+  color: #003366;             /* Darker on hover */
+  text-decoration: none;      /* Optional: remove underline on hover */
+  cursor: pointer;
+}
