@@ -942,7 +942,7 @@ async function createPdf(sectionData, contactInformation, previewURL) {
       body: JSON.stringify({
         to: contactInformation.email,
         userName: contactInformation.userName,
-        bcc: 'jasonkattenbraker@gmail.com',
+        bcc: 'customer_service@fttf.com',
         filename: 'tent_customization.pdf',
         pdfData: base64String
       })
