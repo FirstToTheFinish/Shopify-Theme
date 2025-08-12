@@ -1,0 +1,263 @@
+
+{% layout none %}
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>FTTF Uniform Builder</title>
+    </head>
+        <link href="{{ 'test.css' | asset_url }}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+        {{ 'fonts.css' | asset_url | stylesheet_tag }}
+        <style>
+            canvas {
+                position: absolute;
+                image-rendering: auto;
+                margin-left: -400px;
+                margin-top: -50px;
+            }
+            #TankTopCanvas, #hiddenTankTopCanvas {
+                z-index: 1; /* Base layer for the tank top */
+            }
+            
+            #TankTopCuffCanvas, #hiddenTankTopCuffCanvas {
+                z-index: 5; /* Layer for the cuffs on top of the base */
+            }
+            
+            #TankTopInternalFrontCanvas, #hiddenTankTopInternalFrontCanvas {
+                z-index: 4; /* Layer for any other internal front features */
+            }
+            
+            #TankTopBackCanvas, #hiddenTankTopBackCanvas {
+                z-index: 1; /* Base layer for the tank top */
+            }
+            
+            #TankTopBackHolesCanvas, #hiddenTankTopBackHolesCanvas, #TankTopFrontOutlineCanvas, #hiddenTankTopFrontOutlineCanvas {
+                z-index: 4; /* Base layer for the tank top */
+            }
+            
+            #TankTopBackCuffCanvas, #hiddenTankTopBackCuffCanvas {
+                z-index: 5; /* Layer for the cuffs on top of the base */
+            }
+            
+            #TankTopBackRacerCuffCanvas, #hiddenTankTopBackRacerCuffCanvas {
+                z-index: 5; /* Layer for the cuffs on top of the base */
+            }
+            
+            #TankTopInternalBackCanvas, #hiddenTankTopInternalBackCanvas {
+                z-index: 4; /* Layer for any other internal front features */
+            }
+            
+            #TankTopTemplateColor1Canvas, #hiddenTankTopTemplateColor1Canvas{
+                z-index: 2; /* Layers for template designs */
+            }
+            
+            #TankTopTemplateColor2Canvas, #hiddenTankTopTemplateColor2Canvas{
+                z-index: 2; /* Layers for template designs */
+            }
+            
+            #TankTopTemplateColor3Canvas, #hiddenTankTopTemplateColor3Canvas{
+                z-index: 2; /* Layers for template designs */
+            }
+        </style>
+    <body>
+        <span>
+            <div id="loadingOverlay" class="loading-overlay">
+                <div class="loading-message">Generating preview, please wait...</div>
+            </div>
+            <div id="loadingOverlay2" class="loading-overlay" style="width:1100px; height:700px; left:-400px;z-index: 51;">
+                <div id="loading-message2" class="loading-message">Submitting Design, please wait...</div>
+            </div>
+            <span>
+                <div id="TentDescription" class="TentHeader" style="text-align: center; line-height: 1.3;">
+                    <h1 style="margin: 0px;">Welcome to the Official FTTF Track/XC Singlet Builder!</h1>
+                    <p>From here you will be able to design your singlets in many ways. Please use the link <a class="tent-pdf-link" href="{{ 'Tent Instructions.pdf' | asset_url }}" target="_blank" rel="noopener">HERE</a> for the instructions on using this builder. <br> For best functionality, use Google Chrome or Microsoft Edge as your browser. Other browsers may not work as expected. </p>
+                </div>
+                <div class="tent-builder-wrapper">
+                    <span>
+                        <div class="tent-preview">
+                            <div id="uniform-canvases" style="margin-top:20px; position:relative;">        
+                                    
+                                <div id="button-grid" style="display: flex; flex-direction: column; gap: 10px;">
+                                    <button id="toggleSnapGrid" class="snap-button">
+                                        <img id="snapGrid" alt="" width="25" height="25" style="width: 25px; height: auto;">
+                                        <div class="description" style="visibility: hidden;">Toggle Snap Grid</div>
+                                    </button>
+                                    <button id="horizontalCenter" class="center-button1 hidden" style="top: 35px;">
+                                        <img id="horizCenter" alt="" width="25" height="25" style="width: 25px; height: auto;">
+                                        <div class="description" style="visibility: hidden;">Horizontal Center</div>
+                                    </button>
+                                    <button id="verticalCenter" class="center-button2 hidden" style="top: 69px;">
+                                        <img id="vertCenter" alt="" width="25" height="25" style="width: 25px; height: auto;">
+                                        <div class="description" style="visibility: hidden;">Vertical Center</div>
+                                    </button>
+                                </div>
+
+                                <div id="uniformCanvases" style="visibility: hidden;">
+                                    <canvas id="TankTopCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopCuffCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopInternalFrontCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopBackCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopBackHolesCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopFrontOutlineCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopBackCuffCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopBackRacerCuffCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopInternalBackCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopTemplateColor1Canvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopTemplateColor2Canvas" width="1100" height="800"></canvas>
+                                    <canvas id="TankTopTemplateColor3Canvas" width="1100" height="800"></canvas>
+                                    <img id="NordLogo" alt="Overlay Image" style="display:block; position:relative; height: 30px; width: 43.23px; z-index: 50; top: 190px; left: 10px">
+                                    <!-- Front Overlay with Tank Top Clip Path -->
+                                    <div id="FrontOverlayCanvas" style=" position: absolute; z-index: 8; width: 1100px; height:800px; left: -400px; top: -50px;"> </div>
+                                    <div id="BackOverlayCanvas" style="position: absolute; z-index: 8; width: 1100px; height:800px; left: 100px; top: -50px;" ></div>   
+                                </div>
+
+                                <!-- Hidden Canvases for Rendering Thumbnails -->
+                                <div style="display: none;">
+                                    <canvas id="hiddenTankTopCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopCuffCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopInternalFrontCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopBackCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopBackHolesCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopFrontOutlineCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopBackCuffCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopBackRacerCuffCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopInternalBackCanvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopTemplateColor1Canvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopTemplateColor2Canvas" width="1100" height="800"></canvas>
+                                    <canvas id="hiddenTankTopTemplateColor3Canvas" width="1100" height="800"></canvas>
+                                    <div id="hiddenFrontOverlayCanvas" width="1100" height="800"style="z-index: 6"></div>
+                                    <div id="hiddenBackOverlayCanvas" width="1100" height="800" style="z-index: 6"></div>
+                                    <img id="hiddenNordLogo" alt="Overlay Image" style="display:block; position:relative; height: 30px; width: 43.23px; z-index: 100; top: 190px; left: 10px">
+                                    <img id="hiddenNordLogo2" alt="Overlay Image" style="display:block; position:relative; height: 30px; width: 43.23px; z-index: 100; top: 190px; left: 10px">
+                                    <img id="hiddenNordLogo3" alt="Overlay Image" style="display:block; position:relative; height: 30px; width: 43.23px; z-index: 100; top: 190px; left: 10px">
+                                    <img id="hiddenNordLogo4" alt="Overlay Image" style="display:block; position:relative; height: 30px; width: 43.23px; z-index: 100; top: 190px; left: 10px">
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <span>
+                        <div class = "tent-controls">
+                            <div style="position:relative;">
+
+                                <script>
+                                    var itDescript = "Men's Legend Singlet";
+                                    var higherPrice = "$34.99/ea";
+                                    var builderTitle = itDescript;
+                                    var pricing = `Total Price: ${higherPrice}`;
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        document.getElementById("builderTitle").textContent = builderTitle;
+                                    });
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        document.getElementById("pricing").textContent = pricing;
+                                    });
+                                </script>
+
+                                <h4 id="builderTitle"></h4>
+                                <span id="infoTitle" style="display: none"></span>
+                                <p id ="pricing" style="font-size: 20px; margin-top:-15px;"></p>
+
+                                <div id="file-upload-modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close-button" onclick="closeUploadModal()">&times;</span>
+                                        <div class="modal-header">
+                                            <h2>CHOOSE ANOTHER FILE</h2>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>File extension error. Only jpeg, jpg, png, and svg images are allowed.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="ok-button" onclick="closeUploadModal()">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="required-fields-modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close-button" onclick="closeRequiredFieldsModal()">&times;</span>
+                                        <div class="modal-header">
+                                            <h2>REQUIRED FIELDS</h2>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Please complete all required fields presented with a red outline and/or says *REQUIRED.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="ok-button" onclick="closeRequiredFieldsModal()">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="sections-container" class="tab-container">
+                                    <button class="tab-button active" onclick="switchTab('design')">Design</button>
+                                    <button class="tab-button" onclick="switchTab('text-art')">Text/Art</button>
+                                    <button class="tab-button" onclick="switchTab('sizing')">Sizing</button>
+                                    <button class="tab-button" onclick="switchTab('submit-design')">Submit</button>
+                                </div>
+                                    
+                                <div id="design" class="tab-content active"></div>
+                                <div id="text-art" class="tab-content"></div>
+                                <div id="sizing" class="tab-content"></div> 
+                                <div id="submit-design" class="tab-content"></div>                        
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </span>
+        </span>
+        <script>
+            window.shopifyAssetPaths = {
+                logos: {
+                    blackValance: "{{ 'fttf black logo for valnce TENT.svg' | asset_url }}",
+                    whiteValance: "{{ 'fttf white logo for valnce TENT.svg' | asset_url }}",
+                    pdfLogo: "{{ 'fttf black logo for valnce TENT.png' | asset_url }}",
+                    NordLogo1: "{{ 'Norditalia_Runner_Black.svg' | asset_url }}",
+                    NordLogo2: "{{ 'Norditalia_Runner_Black_White.svg' | asset_url }}",
+                    NordLogo3: "{{ 'Norditalia_Runner_White.svg' | asset_url }}",
+                    NordLogo4: "{{ 'Norditalia_Runner_White_Black.svg' | asset_url }}",
+                    LegendLogo: "{{ 'RUN LIKE A LEGEND.png' | asset_url }}"
+
+                },
+                grid: {
+                    horizontalCenter: "{{ 'horizontal-center.png' | asset_url }}",
+                    horizontalCenterWhite: "{{ 'horizontal_center_white.png' | asset_url }}",
+                    verticalCenter: "{{ 'vertical-center.png' | asset_url }}",
+                    verticalCenterWhite: "{{ 'vertical-center_white.png' | asset_url }}",
+                    snapGrid: "{{ 'snap-grid.png' | asset_url }}",
+                    snapGridWhite: "{{ 'snap-grid_white.png' | asset_url }}"
+                },
+                tools: {
+                    uploadIcon: "{{ 'upload.png' | asset_url }}",
+                    eyeDropper: "{{ 'OIP.jfif' | asset_url }}",
+                    tentPDF: "{{ 'Tent Instructions.pdf' | asset_url }}",
+                    straightText: "{{ 'Straight.png' | asset_url }}",
+                    archText: "{{ 'Vertical_Arch.png' | asset_url }}",
+                    revArchText: "{{ 'Reverse_Vertical_Arch.png' | asset_url }}",
+                    verticalText: "{{ 'Vertical.png' | asset_url }}",
+                },
+                
+            };
+            document.getElementById('snapGrid').src = window.shopifyAssetPaths.grid.snapGrid;
+            document.getElementById('horizCenter').src = window.shopifyAssetPaths.grid.horizontalCenter;
+            document.getElementById('vertCenter').src = window.shopifyAssetPaths.grid.verticalCenter;
+            document.getElementById('NordLogo').src = window.shopifyAssetPaths.logos.NordLogo1;
+            document.getElementById('hiddenNordLogo1').src = window.shopifyAssetPaths.logos.NordLogo1;
+            document.getElementById('hiddenNordLogo2').src = window.shopifyAssetPaths.logos.NordLogo3;
+            document.getElementById('hiddenNordLogo3').src = window.shopifyAssetPaths.logos.NordLogo2;
+            document.getElementById('hiddenNordLogo4').src = window.shopifyAssetPaths.logos.NordLogo4;
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js" defer></script>
+        <script src="{{ 'uniform_canvas.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_sections_config.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_generate_sections.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_update_section.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_preview.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_update_text.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_update_art.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_generate_pdf.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_templates.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_colors.js' | asset_url }}" defer></script>
+        <script src="{{ 'uniform_compression_templates.js' | asset_url }}" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+        <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js" defer></script>
+    </body>
+</html>
