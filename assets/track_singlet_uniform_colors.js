@@ -1168,6 +1168,15 @@
     "C33 R34": "#EB5500"
 };
 
+function hexToRgbColor(hex) {
+    let bigint = parseInt(hex.slice(1), 16);
+    return {
+        r: (bigint >> 16) & 255,
+        g: (bigint >> 8) & 255,
+        b: bigint & 255
+    };
+}
+
 // Calculate Euclidean distance between two colors
 function colorDistance(color1, color2) {
     return Math.sqrt(
