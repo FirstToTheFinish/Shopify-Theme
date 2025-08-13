@@ -1168,16 +1168,6 @@
     "C33 R34": "#EB5500"
 };
 
-// Utility function to convert hex color to RGB
-function hexToRgbColor(hex) {
-    let bigint = parseInt(hex.slice(1), 16);
-    return {
-        r: (bigint >> 16) & 255,
-        g: (bigint >> 8) & 255,
-        b: bigint & 255
-    };
-}
-
 // Calculate Euclidean distance between two colors
 function colorDistance(color1, color2) {
     return Math.sqrt(
@@ -1669,14 +1659,6 @@ function colorDistance(color1, color2) {
         const templatePreviewImage = document.getElementById("templatePreviewImage");
         populateTemplateDropdown();
         generateThumbnail(selectedTemplate, templatePreviewImage);
-    }
-    
-    function hexToRgb(hex) {
-        let bigint = parseInt(hex.slice(1), 16);
-        let r = (bigint >> 16) & 255;
-        let g = (bigint >> 8) & 255;
-        let b = bigint & 255;
-        return `rgb(${r}, ${g}, ${b})`;
     }
     
     function updateDisplayedColor(rowInputId, columnInputId, displayBoxId, textId, selectedColorId) {
