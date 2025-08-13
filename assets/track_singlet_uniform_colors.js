@@ -1477,7 +1477,7 @@ function colorDistance(color1, color2) {
                                 image.src = window.shopifyAssetPaths.logos.NordLogo4;
                             }
                             else{
-                                image.src = window.shopifyAssetPaths.logos.NordLogo1;
+                                image.src = window.shopifyAssetPaths.logos.NordLogo3;
                             }
                             
                         }
@@ -1496,7 +1496,7 @@ function colorDistance(color1, color2) {
                                 image.src = window.shopifyAssetPaths.logos.NordLogo4;
                             }
                             else{
-                                image.src = window.shopifyAssetPaths.logos.NordLogo1;
+                                image.src = window.shopifyAssetPaths.logos.NordLogo3;
                             }
                             
                         }
