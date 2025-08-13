@@ -1452,7 +1452,7 @@ function colorDistance(color1, color2) {
                     context.stroke();
 
                     const rgb = hexToRgb(color);
-                    console.log(rgb);
+                    console.log(rgb, rgb.r, rgb.g, rgb.b);
 
                     // Calculate brightness (perceived brightness)
                     const brightness = Math.sqrt(
