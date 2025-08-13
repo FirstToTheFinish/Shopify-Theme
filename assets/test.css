@@ -1714,7 +1714,7 @@ h2 {
   .tent-preview, .tent-controls {
     max-width: 100%;
   }
-  
+
   .builder-preview, .builder-controls {
     max-width: 100%;
   }
@@ -1952,8 +1952,6 @@ h2 {
   min-width: 550px;
   max-width: 600px;
   text-align: center;
-  display: block;
-  position: relative;
   margin-right: 100px;
   margin-left: 300px;
 }
@@ -1965,6 +1963,4 @@ h2 {
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
-  display: block;
-  position: relative;
 }
