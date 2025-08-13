@@ -224,6 +224,7 @@ window.onclick = function(event) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("builder-controls").style.visibility = "visible";
 
     const snapButton = document.getElementById('toggleSnapGrid');
     const horizButton = document.getElementById('horizontalCenter');
