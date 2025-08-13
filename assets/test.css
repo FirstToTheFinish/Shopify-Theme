@@ -1714,6 +1714,10 @@ h2 {
   .tent-preview, .tent-controls {
     max-width: 100%;
   }
+  
+  .builder-preview, .builder-controls {
+    max-width: 100%;
+  }
 }
 
 .art-container[draggable="true"] {
@@ -1940,4 +1944,27 @@ h2 {
   color: #003366;             /* Darker on hover */
   text-decoration: none;      /* Optional: remove underline on hover */
   cursor: pointer;
+}
+
+
+.builder-preview {
+  flex: 1 1 50%;
+  min-width: 550px;
+  max-width: 600px;
+  text-align: center;
+  display: block;
+  position: relative;
+  margin-right: 100px;
+  margin-left: 300px;
+}
+
+.builder-controls {
+  flex: 1 1 350px;
+  max-width: 500px;
+  background: #f1f1f1;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  display: block;
+  position: relative;
 }
