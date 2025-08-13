@@ -1483,6 +1483,7 @@ function colorDistance(color1, color2) {
                         }
                     }
                     else{
+                        console.log(brightness);
                         if (brightness > 150) { // Adjust this threshold as needed
                             if(designName.includes('4') || designName.includes('5') || designName.includes('8')){
                                 image.src = window.shopifyAssetPaths.logos.NordLogo2;
@@ -1500,6 +1501,7 @@ function colorDistance(color1, color2) {
                             }
                             
                         }
+                        console.log(image.src);
                     }
                 }
                 const hiddencanvasFront = document.getElementById('hiddenTankTopCanvas');
