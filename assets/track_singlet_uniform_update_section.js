@@ -224,10 +224,6 @@ window.onclick = function(event) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('hiddenNordLogo1').src = window.shopifyAssetPaths.logos.NordLogo1;
-    document.getElementById('hiddenNordLogo2').src = window.shopifyAssetPaths.logos.NordLogo3;
-    document.getElementById('hiddenNordLogo3').src = window.shopifyAssetPaths.logos.NordLogo2;
-    document.getElementById('hiddenNordLogo4').src = window.shopifyAssetPaths.logos.NordLogo4;
 
     const snapButton = document.getElementById('toggleSnapGrid');
     const horizButton = document.getElementById('horizontalCenter');
