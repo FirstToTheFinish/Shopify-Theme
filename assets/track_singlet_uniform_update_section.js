@@ -696,16 +696,16 @@ function populateEffectDropdown(){
         let fontEffectDropdown = document.getElementById(`font-effect-${section.id}`);
         if(i === 0){
             fontEffectDropdown.innerHTML = `<div onclick="selectDropdownOption('font-effect-${section.id}', 'Straight', '${section.id}')">
-            <img src="${window.shopifyAssetPaths.straightText}" style="object-fit: contain; width: 150px; height: auto;" />
+            <img src="${window.shopifyAssetPaths.tools.straightText}" style="object-fit: contain; width: 150px; height: auto;" />
         </div>
         <div onclick="selectDropdownOption('font-effect-${section.id}', 'Vertical Arch', '${section.id}')">
-            <img src="${window.shopifyAssetPaths.archText}" alt="Arch Effect" style="object-fit: contain; width: 150px; height: auto;" />
+            <img src="${window.shopifyAssetPaths.tools.archText}" alt="Arch Effect" style="object-fit: contain; width: 150px; height: auto;" />
         </div>
         <div onclick="selectDropdownOption('font-effect-${section.id}', 'Reverse Vertical Arch', '${section.id}')">
-            <img src="${window.shopifyAssetPaths.revArchText}" alt="Reverse Arch Effect" style="object-fit: contain; width: 150px; height: auto;" />
+            <img src="${window.shopifyAssetPaths.tools.revArchText}" alt="Reverse Arch Effect" style="object-fit: contain; width: 150px; height: auto;" />
         </div>
         <div onclick="selectDropdownOption('font-effect-${section.id}', 'Stacked', '${section.id}')">
-            <img src="${window.shopifyAssetPaths.verticalText}" style="object-fit: contain; width: 150px; height: auto;" />
+            <img src="${window.shopifyAssetPaths.tools.verticalText}" style="object-fit: contain; width: 150px; height: auto;" />
         </div>`
         }
         else{
