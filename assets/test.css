@@ -1957,8 +1957,10 @@ h2 {
 .builder-controls {
   flex: 1 1 350px;
   max-width: 500px;
+  min-width: 450px;
   background: #f1f1f1;
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  margin-bottom: 100px;
 }
