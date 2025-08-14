@@ -1471,11 +1471,12 @@ h2 {
 
 .color-preview-box {
   width: 60px;
-  height: 38px;
+  height: 39px;
   border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 10px;
   display: inline-block;
+  vertical-align: middle;
   transition: none;
 }
 
