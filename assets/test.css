@@ -2057,3 +2057,27 @@ h2 {
   gap: 10px;
   margin-top: 8px;
 }
+
+.our-color-preview-box {
+  width: 60px;
+  height: 39px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: none;
+  cursor: pointer;
+}
+
+.our-color-preview-box:hover {
+  border: 1px solid #000;
+  transition: none;
+}
+
+/* Color option that is currently selected */
+.our-color-preview-box.selected {
+  border: 2px solid #000;
+  /* Highlight the selected color option in the dropdown */
+  transition: none;
+}

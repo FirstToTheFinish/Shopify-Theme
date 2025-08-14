@@ -1324,6 +1324,10 @@ function normalizeHex(hex) {
             console.error("Eyedropper cancelled or failed: ", error);
         }
     }
+    function useOurColorOption(colorPreview, selectedColor){
+        const colorDropdown = selectedColor.replace('selectedColor','colorDropdown');
+        selectColor(document.getElementById(colorPreview).style.backgroundColor, selectedColor, colorDropdown);
+    }
     
     let currentOpenDropdown = null;
     let currentSelectedColorDiv = null; // To track the current active selected color box

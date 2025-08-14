@@ -90,17 +90,17 @@ function generateSections(sectionsConfig) {
                                 <span style="font-weight: bold;">Our Colors:</span>
 
                                 <div class="match-row">
-                                    <div id="colorPreview1.1" class="color-preview-box"></div>
+                                    <div id="colorPreview1.1" class="our-color-preview-box" onclick="useOurColorOption('colorPreview1.1','selectedColor1')"></div>
                                     <div id="closestColorInfo1.1" class="our-color-text"></div>
                                 </div>
 
                                 <div class="match-row">
-                                    <div id="colorPreview1.2" class="color-preview-box"></div>
+                                    <div id="colorPreview1.2" class="our-color-preview-box" onclick="useOurColorOption('colorPreview1.2','selectedColor1')"></div>
                                     <div id="closestColorInfo1.2" class="our-color-text"></div>
                                 </div>
 
                                 <div class="match-row">
-                                    <div id="colorPreview1.3" class="color-preview-box"></div>
+                                    <div id="colorPreview1.3" class="our-color-preview-box" onclick="useOurColorOption('colorPreview1.3','selectedColor1')"></div>
                                     <div id="closestColorInfo1.3" class="our-color-text"></div>
                                 </div>
                             </div>
