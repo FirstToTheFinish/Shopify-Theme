@@ -1324,7 +1324,7 @@ function normalizeHex(hex) {
             console.error("Eyedropper cancelled or failed: ", error);
         }
     }
-    
+
     function useOurColorOption(colorPreview, selectedColor) {
         // IDs derived from the selectedColor id
         const dropdownId   = selectedColor.replace('selectedColor', 'colorDropdown');
@@ -1549,6 +1549,8 @@ function normalizeHex(hex) {
                         0.587 * (rgb.g * rgb.g) +
                         0.114 * (rgb.b * rgb.b)
                     );
+
+                    console.log(brightness);
 
                     // Choose class based on brightness
                     const image = document.getElementById("NordLogo");
