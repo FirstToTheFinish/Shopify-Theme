@@ -1300,6 +1300,19 @@ h2 {
   box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.3);
 }
 
+/* ========= Design tokens ========= */
+:root{
+  --panel-bg: #fff;
+  --text: #111827;
+  --muted: #6b7280;
+  --ring: #3b82f6;
+  --shadow: 0 10px 30px rgba(0,0,0,.12);
+  --radius: 18px;
+  --gap: 14px;
+  --swatch: 32px; /* core swatch size */
+}
+
+/* ========= Layout around the three dropdowns ========= */
 .dropdown-wrapper{
   display: flex;              /* was: display: relative (invalid) */
   gap: 24px;

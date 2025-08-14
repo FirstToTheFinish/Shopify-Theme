@@ -4,7 +4,7 @@ function generateSections(sectionsConfig) {
     designTab.innerHTML = `<div class="" style="min-height:35px;">
             <div id="uniformTemplateDropdown" class="template-dropdown">
                 <div id="templatePreview" class="preview-container2" onclick="toggleTemplateDropdown()">
-                    <img id="templatePreviewImage" src="" alt="Uniform Preview" style="width: 225px; align-items: center; max-width: 150%;" />
+                    <img id="templatePreviewImage" src="" alt="Uniform Preview" style="width: 225px; align-items: center; max-width: 125%;" />
                 </div>
                 
                 <div id="templateOptions" class="dropdown-content">
