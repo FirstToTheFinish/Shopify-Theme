@@ -306,7 +306,7 @@ function generateSections(sectionsConfig) {
             </h5>
             </span><div class="dropdown-wrapper">
             <div class="dropdown-title-wrapper">
-                <div class="dropdown-title" style="margin-left: 0px;">Color 1:</div>
+                <div class="dropdown-title" style="margin-left: 3px;">Color 1:</div>
                 <div class="dropdown-container">
                         <div class="selected-color" id="selectedColor4" onclick="toggleColorDropdown('colorDropdown4', 'selectedColor4')"></div>
                             <div class="dropdown-menu" id="colorDropdown4">

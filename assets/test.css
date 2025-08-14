@@ -1531,6 +1531,7 @@ h2 {
   margin-left: 10px;
   margin-bottom: -170px;
   position: relative;
+  border-radius: 10px;
   /* Ensures dropdown aligns with the container */
 }
 
