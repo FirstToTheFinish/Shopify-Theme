@@ -75,14 +75,14 @@ function generateSections(sectionsConfig) {
                         </div>
                         <div class="input-container">
                             <div style="margin-top: 10px;">
-                                <span style="font-weight: bold;">Yours:</span>
+                                <span style="font-weight: bold;">Your Color:</span>
                             </div>
                             <label for="hexInput1">Hex Code:</label>
                             <div style="position: relative; display: inline-block;">
                                 <input type="text" id="hexInput1" class="input-field" style="width: 100px;" placeholder="#FFFFFF" oninput="handleHexInput(this, '1')">
                                 <div id="userColorPreview1" class="color-preview-box"></div>
                                 <!-- Eyedropper Button with Absolute Positioning -->
-                                <button onclick="useEyeDropper('1')" title="Use Eyedropper" style="position: absolute; top: 50%; right: -30px; transform: translateY(-50%); border: none; background: none; padding: 0; cursor: pointer;">
+                                <button onclick="useEyeDropper('1')" title="Use Eyedropper" style="position: absolute; top: 50%; right: -100px; transform: translateY(-50%); border: none; background: none; padding: 0; cursor: pointer;">
                                     <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                 </button>
                             </div>
