@@ -1167,37 +1167,68 @@
     "C33 R34": "#EB5500"
 };
 
-function hexToRgbColor(hex) {
-    let bigint = parseInt(hex.slice(1), 16);
+// Normalize to a canonical 6-digit, uppercase hex (handles rgb(...) too)
+function normalizeHex(hex) {
+    if (!hex) return hex;
+  
+    // If it's rgb(...) or rgba(...), convert to hex
+    if (/^rgba?\(/i.test(hex)) {
+      const m = hex.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+      if (m) {
+        const [ , r, g, b ] = m.map(Number);
+        return ('#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('')).toUpperCase();
+      }
+    }
+  
+    let h = hex.trim();
+    if (h[0] !== '#') h = '#' + h;
+    if (h.length === 4) { // #abc => #aabbcc
+      h = '#' + h[1] + h[1] + h[2] + h[2] + h[3] + h[3];
+    }
+    return h.toUpperCase();
+  }
+  
+  function hexToRgbColor(hex) {
+    const h = normalizeHex(hex);
+    const bigint = parseInt(h.slice(1), 16);
     return {
-        r: (bigint >> 16) & 255,
-        g: (bigint >> 8) & 255,
-        b: bigint & 255
+      r: (bigint >> 16) & 255,
+      g: (bigint >> 8) & 255,
+      b: bigint & 255
     };
-}
-
-// Calculate Euclidean distance between two colors
-function colorDistance(color1, color2) {
+  }
+  
+  function colorDistance(c1, c2) {
     return Math.sqrt(
-        Math.pow(color1.r - color2.r, 2) +
-        Math.pow(color1.g - color2.g, 2) +
-        Math.pow(color1.b - color2.b, 2)
-        );
-}
-const MAX_RGB_DISTANCE = Math.sqrt(3 * 255 * 255); // ≈ 441.6729
-
-function distanceToPercent(distance) {
-    const pct = 100 * (1 - (distance / MAX_RGB_DISTANCE));
-    // clamp 0–100
-    return Math.max(0, Math.min(100, pct));
-}
-
-    // Top 3 closest colors (now includes percent)
-function findTopClosestColors(inputColor) {
-    const inputRgb = hexToRgbColor(inputColor);
+      Math.pow(c1.r - c2.r, 2) +
+      Math.pow(c1.g - c2.g, 2) +
+      Math.pow(c1.b - c2.b, 2)
+    );
+  }
+  
+  const MAX_RGB_DISTANCE = Math.sqrt(3 * 255 * 255); // ≈ 441.673
+  
+  // Show 100 only when distance === 0; otherwise floor so 99% max for nonzero
+  function distanceToPercent(distance) {
+    if (distance === 0) return 100;
+    const pct = 100 * (1 - distance / MAX_RGB_DISTANCE);
+    return Math.max(0, Math.floor(pct));
+  }
+  
+  // Compute top 3, returning normalized hex + percent
+  function findTopClosestColors(inputColor) {
+    const inputHex = normalizeHex(inputColor);
+    const inputRgb = hexToRgbColor(inputHex);
+  
     const colorDistances = Object.entries(colorMapping).map(([key, hexColor]) => {
-      const d = colorDistance(inputRgb, hexToRgbColor(hexColor));
-      return { key, hexColor, distance: d, percent: distanceToPercent(d) };
+      const mappedHex = normalizeHex(hexColor);
+      const dist = colorDistance(inputRgb, hexToRgbColor(mappedHex));
+      return {
+        key,
+        hexColor: mappedHex,    // ensure normalized in UI
+        distance: dist,
+        percent: distanceToPercent(dist)
+      };
     });
   
     return colorDistances
@@ -1205,7 +1236,6 @@ function findTopClosestColors(inputColor) {
       .slice(0, 3);
   }
   
-  // Display with % match instead of 1:, 2:, 3:
   function displayClosestColors(hexInput, indexPrefix) {
     const closestMatches = findTopClosestColors(hexInput);
   
@@ -1214,22 +1244,21 @@ function findTopClosestColors(inputColor) {
       let closestColorInfoId = `closestColorInfo${indexPrefix}.${i + 1}`;
   
       if (indexPrefix > 6) {
-        colorPreviewId += `-${sectionsConfig[currentSection - 1].id}`;
-        closestColorInfoId += `-${sectionsConfig[currentSection - 1].id}`;
+        const secId = sectionsConfig[currentSection - 1].id;
+        colorPreviewId += `-${secId}`;
+        closestColorInfoId += `-${secId}`;
       }
   
       const previewBox = document.getElementById(colorPreviewId);
       const infoBox = document.getElementById(closestColorInfoId);
-      const [col, row] = match.key.split('R'); // key like "C12R7"
+      const [col, row] = match.key.split('R'); // "C12R7" -> ["C12","7"]
   
       if (previewBox) previewBox.style.backgroundColor = match.hexColor;
   
-      // Round to whole %; use toFixed(1) if you want one decimal
-      const pct = Math.round(match.percent);
-  
       if (infoBox) {
+        const pct = match.percent; // already clamped and floored
         infoBox.innerHTML =
-          `${pct}% match — ${match.hexColor}&nbsp;&nbsp;&nbsp;&nbsp; Row: ${row}, Column: ${col.replace('C','')}`;
+          `<br>${pct}% match — ${match.hexColor}&nbsp;&nbsp;&nbsp;&nbsp; Row: ${row}, Column: ${col.replace('C','')}`;
       }
     });
   }
