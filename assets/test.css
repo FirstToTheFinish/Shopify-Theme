@@ -1558,6 +1558,7 @@ h2 {
   height: 200px;
   margin-right: 0px;
   max-width: 150%;
+  margin-left: -10px;
 }
 
 .editable-text div {
