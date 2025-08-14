@@ -65,7 +65,7 @@ function generateSections(sectionsConfig) {
                             
                             <div style="display: inline-grid; margin-left: 25px;">
                                 <div class="color-display-box" id="colorDisplayBox1" onclick="selectColor(document.getElementById('colorDisplayBox1').style.backgroundColor, 'selectedColor1', 'colorDropdown1')"></div>
-                                <span id="colorText1" class="color-text">#ffffff</span>
+                                <span id="colorText1" class="color-text">#FFFFFF</span>
                             </div>
                         </div>
                         <!-- Hexcode input field to find the closest color -->
