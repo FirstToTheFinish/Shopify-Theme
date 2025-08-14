@@ -1430,7 +1430,14 @@ function colorDistance(color1, color2) {
         } else {
             const rowValue = document.getElementById(rowInputId).value || 0;
             const columnValue = document.getElementById(columnInputId).value || 0;
-            const mappingId = `C${columnValue} R${rowValue}`;
+            var mappingId;
+            if(rowValue == 0 || columnValue == 0){
+                mappingId = 'White';
+            }
+            else{
+                mappingId = `C${columnValue} R${rowValue}`;
+            }
+            
             colorTextSpan.textContent = mappingId;
         }
         
@@ -1696,7 +1703,7 @@ function colorDistance(color1, color2) {
             colorText.textContent = colorMapping[mappingId];
             
         } else {
-            displayBox.style.backgroundColor = 'white'; // Clear the box if no color found
+            displayBox.style.backgroundColor = '#FFFFFF'; // Clear the box if no color found
             colorText.textContent = '#FFFFFF'; // Clear the text
             displayBox.classList.remove('active'); // Ensure active class is removed
         }
