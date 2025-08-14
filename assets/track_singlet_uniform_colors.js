@@ -1,7 +1,6 @@
  // Object to hold the mappings
  const colorMapping = {
     "C0 R1": "#FFFFFF",
-    "C0 R2": "#000000",
     
     "C1 R1": "#F0EB87",
     "C2 R1": "#EBDC82",
