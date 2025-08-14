@@ -4,7 +4,7 @@ function generateSections(sectionsConfig) {
     designTab.innerHTML = `<div class="" style="min-height:35px;">
             <div id="uniformTemplateDropdown" class="template-dropdown">
                 <div id="templatePreview" class="preview-container2" onclick="toggleTemplateDropdown()">
-                    <img id="templatePreviewImage" src="" alt="Uniform Preview" style="width: 225px; align-items: center;" />
+                    <img id="templatePreviewImage" src="" alt="Uniform Preview" style="width: 225px; align-items: center; max-width: 200%;" />
                 </div>
                 
                 <div id="templateOptions" class="dropdown-content">
@@ -12,12 +12,11 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div id="templateLabel" class="template-label">Choose a Template</div>
             </div>            
-            <span class="itemStep inblock valignM">
-                <span>1</span>
-            </span>
-            <span class="fws_ftaquiB ftcolG2 fs16">
-                CHOOSE SINGLET COLORS:
-            </span><div class="dropdown-wrapper">
+
+            <h5 style="padding-top: 10px;">
+                1. Singlet Colors:
+            </h5>
+            <div class="dropdown-wrapper">
             <div class="dropdown-title-wrapper">
                 <div class="dropdown-title">Front: </div>
                 <div class="dropdown-container">
@@ -250,12 +249,9 @@ function generateSections(sectionsConfig) {
             <br>
         </div>
         <div class="" style="min-height:35px;">
-            <span class="itemStep inblock valignM">
-                <span>2</span>
-            </span>
-            <span class="fws_ftaquiB ftcolG2 fs16">
-                CHOOSE TEMPLATE COLORS:
-            </span>
+            <h5 style="padding-top: 10px;">
+                2. Template Colors:
+            </h5>
             </span><div class="dropdown-wrapper">
             <div class="dropdown-title-wrapper">
                 <div class="dropdown-title" style="margin-left: 0px;">Color 1:</div>
