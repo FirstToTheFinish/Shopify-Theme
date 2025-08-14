@@ -88,10 +88,10 @@ function generateSections(sectionsConfig) {
                             </div>
                             <!-- "OURS" section for the top 3 closest matches -->
                             <div style="margin-top: 20px;">
-                                <span style="font-weigth: bold;">Our Colors:</span>
-                                <br><div id="colorPreview1.1" class="color-preview-box"></div><div id="closestColorInfo1.1" class="color-text"></div>
-                                <br><div id="colorPreview1.2" class="color-preview-box"></div><div id="closestColorInfo1.2" class="color-text"></div>
-                                <br><div id="colorPreview1.3" class="color-preview-box"></div><div id="closestColorInfo1.3" class="color-text"></div>
+                                <span style="font-weight: bold;">Our Colors:</span>
+                                <br><div id="colorPreview1.1" class="color-preview-box"></div><div id="closestColorInfo1.1" class="our-color-text"></div>
+                                <br><div id="colorPreview1.2" class="color-preview-box"></div><div id="closestColorInfo1.2" class="our-color-text"></div>
+                                <br><div id="colorPreview1.3" class="color-preview-box"></div><div id="closestColorInfo1.3" class="our-color-text"></div>
                             </div>
 
                             <!-- Info for the top 3 closest colors -->

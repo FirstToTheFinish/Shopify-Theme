@@ -1468,6 +1468,10 @@ h2 {
 .color-text {
   font-size: 14px;
 }
+.our-color-text {
+  font-size: 14px;
+  display: inline-block;
+}
 
 .color-preview-box {
   width: 60px;
