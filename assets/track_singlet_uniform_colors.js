@@ -1541,7 +1541,18 @@ function normalizeHex(hex) {
                     context.lineWidth = 0.1;
                     context.stroke();
 
-                    const rgb = hexToRgb(color);
+                    let rgb;
+                    if (typeof color === 'string' && /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(color.trim())) {
+                        rgb = hexToRgb(color);
+                    } else if (typeof color === 'string' && /^rgba?\(/i.test(color)) {
+                        const m = color.match(/rgba?\(\s*([\d.]+%?)\s*,\s*([\d.]+%?)\s*,\s*([\d.]+%?)/i);
+                        const to255 = v => (String(v).endsWith('%') ? Math.round(parseFloat(v) * 2.55) : Math.round(parseFloat(v)));
+                        rgb = { r: to255(m[1]), g: to255(m[2]), b: to255(m[3]) };
+                    } else if (color && typeof color === 'object' && 'r' in color && 'g' in color && 'b' in color) {
+                        rgb = color;
+                    } else {
+                        rgb = { r: 0, g: 0, b: 0 };
+                    }
 
                     // Calculate brightness (perceived brightness)
                     const brightness = Math.sqrt(
