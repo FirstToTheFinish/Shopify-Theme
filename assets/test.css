@@ -2003,3 +2003,21 @@ h2 {
   color:#ffffff;
   font:600 12px/1 system-ui;
 }
+
+.color-grid-link{
+  color:#2563eb;                 
+  text-decoration:none;
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+.color-grid-link:hover{
+  color:#1d4ed8;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+.color-grid-link:focus-visible{
+  outline:2px solid #3b82f6;
+  outline-offset:2px;
+  border-radius:4px;
+}
+

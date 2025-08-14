@@ -52,9 +52,9 @@ function generateSections(sectionsConfig) {
                             <div class="color-option" id="#37144B" onclick="selectColor('#37144B', 'selectedColor1', 'colorDropdown1')" style="background-color: #37144B;"></div>
                             <div class="color-option" id="#F5509B" onclick="selectColor('#F5509B', 'selectedColor1', 'colorDropdown1')" style="background-color: #F5509B;"></div>
                         </div>
-                        <div class="section-title">
-                            <span class="badge">1</span>
-                            <h5>Custom Color<span> (<a href="https://cdn.shopify.com/s/files/1/0658/2409/6326/files/Color_Swatch.pdf?v=1755179910" target="_blank" style="color: blue">click for more colors</a>)</span> </h5>
+                        <div class="section-title" style="border-top: 1px solid #e5e7eb;">
+                            <span class="badge" style="margin-top: 5px;">2</span>
+                            <h5 style="margin-top: 10px;">Custom Color<span> (<a href="https://cdn.shopify.com/s/files/1/0658/2409/6326/files/Color_Swatch.pdf?v=1755179910" class="color-grid-link" target="_blank" style="color: blue">click for more colors</a>)</span> </h5>
                         </div>
                         <div class="input-container">
                             <label for="rowNumber1">Row:</label>
