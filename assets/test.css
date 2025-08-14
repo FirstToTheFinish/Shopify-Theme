@@ -2051,3 +2051,9 @@ h2 {
   border-radius:4px;
 }
 
+.match-row{
+  display: flex;
+  align-items: center;   /* vertically center text with swatch */
+  gap: 10px;
+  margin-top: 8px;
+}
