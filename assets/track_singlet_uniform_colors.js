@@ -1324,10 +1324,44 @@ function normalizeHex(hex) {
             console.error("Eyedropper cancelled or failed: ", error);
         }
     }
-    function useOurColorOption(colorPreview, selectedColor){
-        const colorDropdown = selectedColor.replace('selectedColor','colorDropdown');
-        selectColor(document.getElementById(colorPreview).style.backgroundColor, selectedColor, colorDropdown);
-    }
+    
+    function useOurColorOption(colorPreview, selectedColor) {
+        // IDs derived from the selectedColor id
+        const dropdownId   = selectedColor.replace('selectedColor', 'colorDropdown');
+        const rowId        = selectedColor.replace('selectedColor', 'rowNumber');
+        const colId        = selectedColor.replace('selectedColor', 'columnNumber');
+      
+        // The info element that contains "… Row: X, Column: Y"
+        const infoId = colorPreview.replace('colorPreview', 'closestColorInfo');
+        const infoEl = document.getElementById(infoId);
+      
+        if (infoEl) {
+          // e.g. "89% match — #A046C3   Row: 23, Column: 7"
+          const txt = infoEl.textContent; // safer than innerHTML
+          const m = txt.match(/Row:\s*(\d+)\s*,\s*Column:\s*(\d+)/i);
+          if (m) {
+            const [, row, col] = m;
+            const rowInput = document.getElementById(rowId);
+            const colInput = document.getElementById(colId);
+      
+            if (rowInput) rowInput.value = row;
+            if (colInput) colInput.value = col;
+      
+            // trigger any listeners that recalc/update the preview
+            ['input', 'change'].forEach(ev => {
+              if (rowInput) rowInput.dispatchEvent(new Event(ev, { bubbles: true }));
+              if (colInput) colInput.dispatchEvent(new Event(ev, { bubbles: true }));
+            });
+          }
+        }
+      
+        // Apply the color choice (pass the dropdown's ID string if your API expects it)
+        const swatchEl = document.getElementById(colorPreview);
+        if (swatchEl) {
+          selectColor(swatchEl.style.backgroundColor, selectedColor, dropdownId);
+        }
+      }
+      
     
     let currentOpenDropdown = null;
     let currentSelectedColorDiv = null; // To track the current active selected color box
