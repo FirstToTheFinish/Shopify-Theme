@@ -1381,9 +1381,35 @@ h2 {
 }
 
 .input-field {
-  width: 40px;
-  padding: 5px;
-  margin-right: 10px;
+  width: 80px;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: center;
+  background: #fff;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.input-field:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.25); /* soft focus ring */
+}
+
+/* Ensure number spinners (▲▼) are visible across browsers */
+.input-field[type="number"] {
+  appearance: auto;         /* modern */
+  -moz-appearance: auto;    /* Firefox */
+  -webkit-appearance: auto; /* Safari/Chrome fallback */
+}
+
+/* If a reset was hiding them, this re-enables in WebKit */
+.input-field[type="number"]::-webkit-outer-spin-button,
+.input-field[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: auto;
+  margin: 0;
 }
 
  #colorDisplayBox2, #colorDisplayBox3, #colorDisplayBox4, #colorDisplayBox5, #colorDisplayBox6 {
