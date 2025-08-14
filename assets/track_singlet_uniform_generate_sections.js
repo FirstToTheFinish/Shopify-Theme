@@ -4,7 +4,7 @@ function generateSections(sectionsConfig) {
     designTab.innerHTML = `<div class="" style="min-height:35px;">
             <div id="uniformTemplateDropdown" class="template-dropdown">
                 <div id="templatePreview" class="preview-container2" onclick="toggleTemplateDropdown()">
-                    <img id="templatePreviewImage" src="" alt="Uniform Preview" style="width: 225px; align-items: center; max-width: 200%;" />
+                    <img id="templatePreviewImage" src="" alt="Uniform Preview" style="width: 225px; align-items: center; max-width: 150%;" />
                 </div>
                 
                 <div id="templateOptions" class="dropdown-content">
@@ -17,82 +17,139 @@ function generateSections(sectionsConfig) {
                 1. Singlet Colors:
             </h5>
             <div class="dropdown-wrapper">
-            <div class="dropdown-title-wrapper">
-                <div class="dropdown-title">Front: </div>
-                <div class="dropdown-container">
-                    <div class="selected-color" id="selectedColor1" onclick="toggleColorDropdown('colorDropdown1', 'selectedColor1')"></div>
-                    <div class="dropdown-menu" id="colorDropdown1">
-                    <h2>Core Colors</h2>
-                    <div class="color-option" id="#FFFFFF" onclick="selectColor('#FFFFFF', 'selectedColor1', 'colorDropdown1')" style="background-color: #FFFFFF;"></div>
-                    <div class="color-option" id="#000000" onclick="selectColor('#000000', 'selectedColor1', 'colorDropdown1')" style="background-color: #000000;"></div>
-                    <div class="color-option" id="#B4AFA5" onclick="selectColor('#B4AFA5', 'selectedColor1', 'colorDropdown1')" style="background-color: #B4AFA5;"></div>
-                    <div class="color-option" id="#7D7873" onclick="selectColor('#7D7873', 'selectedColor1', 'colorDropdown1')" style="background-color: #7D7873;"></div>
-                    <div class="color-option" id="#9B4B00" onclick="selectColor('#9B4B00', 'selectedColor1', 'colorDropdown1')" style="background-color: #9B4B00;"></div>
-                    <div class="color-option" id="#CDA55F" onclick="selectColor('#CDA55F', 'selectedColor1', 'colorDropdown1')" style="background-color: #CDA55F;"></div>
-                    <div class="color-option" id="#00233C" onclick="selectColor('#00233C', 'selectedColor1', 'colorDropdown1')" style="background-color: #00233C;"></div>
-                    <div class="color-option" id="#0041AF" onclick="selectColor('#0041AF', 'selectedColor1', 'colorDropdown1')" style="background-color: #0041AF;"></div>
-                    <div class="color-option" id="#009BD7" onclick="selectColor('#009BD7', 'selectedColor1', 'colorDropdown1')" style="background-color: #009BD7;"></div>
-                    <div class="color-option" id="#8CA5DC" onclick="selectColor('#8CA5DC', 'selectedColor1', 'colorDropdown1')" style="background-color: #8CA5DC;"></div>
-                    <div class="color-option" id="#28A523" onclick="selectColor('#28A523', 'selectedColor1', 'colorDropdown1')" style="background-color: #28A523;"></div>
-                    <div class="color-option" id="#00461E" onclick="selectColor('#00461E', 'selectedColor1', 'colorDropdown1')" style="background-color: #00461E;"></div>
-                    <div class="color-option" id="#E6F541" onclick="selectColor('#E6F541', 'selectedColor1', 'colorDropdown1')" style="background-color: #E6F541;"></div>
-                    <div class="color-option" id="#FAE100" onclick="selectColor('#FAE100', 'selectedColor1', 'colorDropdown1')" style="background-color: #FAE100;"></div>
-                    <div class="color-option" id="#FABE14" onclick="selectColor('#FABE14', 'selectedColor1', 'colorDropdown1')" style="background-color: #FABE14;"></div>
-                    <div class="color-option" id="#FFAF00" onclick="selectColor('#FFAF00', 'selectedColor1', 'colorDropdown1')" style="background-color: #FFAF00;"></div>
-                    <div class="color-option" id="#FF5A00" onclick="selectColor('#FF5A00', 'selectedColor1', 'colorDropdown1')" style="background-color: #FF5A00;"></div>
-                    <div class="color-option" id="#E6230F" onclick="selectColor('#E6230F', 'selectedColor1', 'colorDropdown1')" style="background-color: #E6230F;"></div>
-                    <div class="color-option" id="#500F0F" onclick="selectColor('#500F0F', 'selectedColor1', 'colorDropdown1')" style="background-color: #500F0F;"></div>
-                    <div class="color-option" id="#37144B" onclick="selectColor('#37144B', 'selectedColor1', 'colorDropdown1')" style="background-color: #37144B;"></div>
-                    <div class="color-option" id="#F5509B" onclick="selectColor('#F5509B', 'selectedColor1', 'colorDropdown1')" style="background-color: #F5509B;"></div>
-                    <h2 style="margin-top: 10px;">Custom Color<span> (<a href="Color Swatch.pdf" target="_blank" style="color: blue">click for more colors</a>)</span></h2>
-                    <div class="input-container">
-                        <label for="rowNumber1">Row:</label>
-                        <input type="number" id="rowNumber1" class="input-field" placeholder="0" min="0" max="34">
+                <div class="dropdown-title-wrapper">
+                    <div class="dropdown-title">Front:</div>
 
-                        <label for="columnNumber1">Column:</label>
-                        <input type="number" id="columnNumber1" class="input-field" placeholder="0" min="0" max="34">
+                    <div class="dropdown-container">
+                    <button class="selected-color" id="selectedColor1"
+                            aria-haspopup="dialog" aria-expanded="false"
+                            onclick="openColorPanel('1')"></button>
 
-                        <!-- Color display box -->
-                        <div id="colorDisplayBox1" onclick="selectColor(document.getElementById('colorDisplayBox1').style.backgroundColor, 'selectedColor1', 'colorDropdown1')"></div>
-                        <span id="colorText1" class="color-text"></span>
-                    </div>
-                    <!-- Hexcode input field to find the closest color -->
-                    <h2 class="fs16" style="margin-top: 20px;">Trouble Finding Match! Type in color code below and get top 3 closest matches.</h2>
-                    <div class="input-container">
-                        <label for="hexInput1">Hex Code:</label>
-                            <div style="position: relative; display: inline-block;">
-                                <input type="text" id="hexInput1" class="input-field" style="width: 80px;" placeholder="#FFFFFF" oninput="handleHexInput(this, '1')">
-                                
-                                <!-- Eyedropper Button with Absolute Positioning -->
-                                <button onclick="useEyeDropper('1')" title="Use Eyedropper" style="position: absolute; top: 50%; right: -30px; transform: translateY(-50%); border: none; background: none; padding: 0; cursor: pointer;">
-                                    <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
-                                </button>
+                    <!-- ===== Overlay + Panel ===== -->
+                    <div class="color-panel-overlay" id="colorPanelOverlay1" hidden onclick="closeColorPanel('1')"></div>
+
+                    <div class="color-panel" id="colorDropdown1" role="dialog" aria-modal="true" aria-labelledby="colorPanelTitle1" hidden>
+                        <div class="panel-header">
+                        <h3 id="colorPanelTitle1">Choose Front Color</h3>
+                        <button class="icon-btn" type="button" aria-label="Close" onclick="closeColorPanel('1')">×</button>
+                        </div>
+
+                        <div class="panel-body">
+
+                        <!-- 1) CORE COLORS -->
+                        <section class="panel-section">
+                            <div class="section-title">
+                            <span class="badge">1</span>
+                            <h4>Core Colors</h4>
                             </div>
 
-                        <!-- "YOURS" section -->
-                        <div style="margin-top: 10px;">
-                            <span>YOURS:</span>
-                            <div id="userColorPreview1" class="color-preview-box"></div>
+                            <ul class="swatch-grid" id="coreSwatches1">
+                            <!-- Use buttons for accessibility; supply data-color -->
+                            <!-- Add/remove freely; keep your palette -->
+                            <li><button class="swatch" data-color="#FFFFFF" style="--swatch:#FFFFFF" title="White"      onclick="selectColor('#FFFFFF','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#000000" style="--swatch:#000000" title="Black"      onclick="selectColor('#000000','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#B4AFA5" style="--swatch:#B4AFA5" title="Cool Gray"  onclick="selectColor('#B4AFA5','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#7D7873" style="--swatch:#7D7873" title="Slate Gray" onclick="selectColor('#7D7873','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#9B4B00" style="--swatch:#9B4B00" title="Brown"      onclick="selectColor('#9B4B00','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#CDA55F" style="--swatch:#CDA55F" title="Gold"       onclick="selectColor('#CDA55F','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#00233C" style="--swatch:#00233C" title="Navy"       onclick="selectColor('#00233C','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#0041AF" style="--swatch:#0041AF" title="Royal"      onclick="selectColor('#0041AF','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#009BD7" style="--swatch:#009BD7" title="Carolina"   onclick="selectColor('#009BD7','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#8CA5DC" style="--swatch:#8CA5DC" title="Periwinkle" onclick="selectColor('#8CA5DC','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#28A523" style="--swatch:#28A523" title="Kelly"      onclick="selectColor('#28A523','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#00461E" style="--swatch:#00461E" title="Forest"     onclick="selectColor('#00461E','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#E6F541" style="--swatch:#E6F541" title="Lime"       onclick="selectColor('#E6F541','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#FAE100" style="--swatch:#FAE100" title="Yellow"     onclick="selectColor('#FAE100','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#FABE14" style="--swatch:#FABE14" title="Sun"        onclick="selectColor('#FABE14','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#FFAF00" style="--swatch:#FFAF00" title="Orange"     onclick="selectColor('#FFAF00','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#FF5A00" style="--swatch:#FF5A00" title="Burnt"      onclick="selectColor('#FF5A00','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#E6230F" style="--swatch:#E6230F" title="Red"        onclick="selectColor('#E6230F','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#500F0F" style="--swatch:#500F0F" title="Maroon"     onclick="selectColor('#500F0F','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#37144B" style="--swatch:#37144B" title="Purple"     onclick="selectColor('#37144B','selectedColor1','colorDropdown1')"></button></li>
+                            <li><button class="swatch" data-color="#F5509B" style="--swatch:#F5509B" title="Pink"       onclick="selectColor('#F5509B','selectedColor1','colorDropdown1')"></button></li>
+                            </ul>
+                        </section>
+
+                        <!-- 2) CUSTOM COLOR (GRID PDF) -->
+                        <section class="panel-section">
+                            <div class="section-title">
+                            <span class="badge">2</span>
+                            <h4>Custom Color (Grid)</h4>
+                            </div>
+
+                            <div class="grid-row">
+                            <label class="field">
+                                <span>Row</span>
+                                <input type="number" id="rowNumber1" min="0" max="34" inputmode="numeric" />
+                            </label>
+                            <label class="field">
+                                <span>Column</span>
+                                <input type="number" id="columnNumber1" min="0" max="34" inputmode="numeric" />
+                            </label>
+
+                            <button class="link-btn" type="button"
+                                    onclick="window.open('https://cdn.shopify.com/s/files/1/0658/2409/6326/files/Color_Swatch.pdf?v=1755179910','_blank')">
+                                View color grid (PDF)
+                            </button>
+
+                            <div class="preview">
+                                <div id="colorDisplayBox1" class="preview-swatch"
+                                    onclick="selectColor(getComputedStyle(this).backgroundColor,'selectedColor1','colorDropdown1')"></div>
+                                <div id="colorText1" class="muted"></div>
+                            </div>
+                            </div>
+                        </section>
+
+                        <!-- 3) MATCH BY HEX / EYEDROPPER -->
+                        <section class="panel-section">
+                            <div class="section-title">
+                            <span class="badge">3</span>
+                            <h4>Match by Hex / Eyedropper</h4>
+                            </div>
+
+                            <div class="hex-row">
+                            <label class="field">
+                                <span>Hex code</span>
+                                <input type="text" id="hexInput1" placeholder="#FFFFFF" oninput="handleHexInput(this,'1')" />
+                            </label>
+
+                            <button class="icon-btn" type="button" title="Use Eyedropper"
+                                    onclick="useEyeDropper('1')">
+                                <img src="${window.shopifyAssetPaths.tools.eyeDropper}" alt="Eyedropper" width="22" height="22">
+                            </button>
+                            </div>
+
+                            <div class="match-wrap">
+                            <div class="match-col">
+                                <div class="muted label">YOURS</div>
+                                <div id="userColorPreview1" class="match-swatch"></div>
+                            </div>
+
+                            <div class="match-col">
+                                <div class="muted label">OURS (Top 3)</div>
+                                <div class="top-matches">
+                                <button id="colorPreview1-1" class="match-swatch" onclick="/* choose first match */"></button>
+                                <button id="colorPreview1-2" class="match-swatch" onclick="/* choose second match */"></button>
+                                <button id="colorPreview1-3" class="match-swatch" onclick="/* choose third match */"></button>
+                                </div>
+                                <div id="closestColorInfo1-1" class="muted"></div>
+                                <div id="closestColorInfo1-2" class="muted"></div>
+                                <div id="closestColorInfo1-3" class="muted"></div>
+                            </div>
+                            </div>
+                        </section>
                         </div>
 
-                        <!-- "OURS" section for the top 3 closest matches -->
-                        <div style="margin-top: 20px;">
-                            <span>OURS:</span>
-                            <div id="colorPreview1.1" class="color-preview-box"></div>
-                            <div id="colorPreview1.2" class="color-preview-box"></div>
-                            <div id="colorPreview1.3" class="color-preview-box"></div>
+                        <div class="panel-footer">
+                        <button class="btn ghost" type="button" onclick="closeColorPanel('1')">Cancel</button>
+                        <button class="btn primary" type="button" onclick="applySelectedColor('1')">Apply color</button>
                         </div>
+                    </div>
+                    </div>
 
-                        <!-- Info for the top 3 closest colors -->
-                        <div id="closestColorInfo1.1" class="color-text"></div>
-                        <div id="closestColorInfo1.2" class="color-text"></div>
-                        <div id="closestColorInfo1.3" class="color-text"></div>
-                    </div>
-                    </div>
+                    <span id="colorText1-5" class="color-text"></span>
                 </div>
-                <span id="colorText1.5" class="color-text" style="margin-left: -15px;"></span>
-            </div>
-        </div>
+                </div>
         <div class="dropdown-wrapper" style="margin-left:2.5px;">
             <div class="dropdown-title-wrapper">
                 <div class="dropdown-title">Back: </div>
