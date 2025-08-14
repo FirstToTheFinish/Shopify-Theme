@@ -62,15 +62,14 @@ function generateSections(sectionsConfig) {
 
                             <label for="columnNumber1">Column:</label>
                             <input type="number" id="columnNumber1" class="input-field" placeholder="0" min="0" max="34">
-                        </div>
-                        <div>
-                            <div id="colorDisplayBox1" onclick="selectColor(document.getElementById('colorDisplayBox1').style.backgroundColor, 'selectedColor1', 'colorDropdown1')"></div>
+
+                            <div class="color-option" id="colorDisplayBox1" onclick="selectColor(document.getElementById('colorDisplayBox1').style.backgroundColor, 'selectedColor1', 'colorDropdown1')"></div>
                             <span id="colorText1" class="color-text"></span>
                         </div>
                         <!-- Hexcode input field to find the closest color -->
                         <div class="section-title" style="border-top: 1px solid #e5e7eb;">
-                            <span class="badge">3</span>
-                            <h5>Find Your Top 3 Color Matches</h5>
+                            <span class="badge" style="margin-top: 5px;">3</span>
+                            <h5 style="margin-top: 10px;">Find Your Top 3 Color Matches</h5>
                         </div>
                         <div class="input-container">
                             <label for="hexInput1">Hex Code:</label>
