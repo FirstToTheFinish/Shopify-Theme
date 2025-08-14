@@ -1409,23 +1409,24 @@ h2 {
 }
 
 .color-display-box {
-  width: 30px;
+  width: 60px;
   height: 30px;
-  border: 1px solid #ccc;
-  display: inline-block;
-  vertical-align: middle;
-  /* Aligns the color box with the input fields */
   cursor: pointer;
-  transition: none;
+  border: 1px solid #ccc;
   box-sizing: border-box;
+  border-radius: 4px;
+  display: inline-block;
+  transition: none;
 }
 
 .color-display-box:hover {
   border: 1px solid #000;
+  transition: none;
 }
 
 .color-display-box.active {
   border: 2px solid #000;
+  transition: none;
 }
 
 .dropdown-title-wrapper {
