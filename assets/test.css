@@ -1356,10 +1356,10 @@ h2 {
 .color-option {
   width: 30px;
   height: 30px;
-  margin: 5px;
   cursor: pointer;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  border-radius: 4px;
   display: inline-block;
   transition: none;
 }
@@ -1972,13 +1972,15 @@ h2 {
 .dropdown-header{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
   margin-bottom:10px;
+  border-bottom: 1px solid #e5e7eb;
 }
 .dropdown-header h4{
   margin:0;
-  font-size:16px;
+  font-size:24px;
   font-weight:600;
+  margin-bottom: 10px;
 }
 
 .section-title{
@@ -1989,16 +1991,15 @@ h2 {
 }
 .section-title h5{
   margin:0;
-  font-size:14px;
+  font-size:16px;
   font-weight:600;
 }
 
 .badge{
-  display:inline-grid;
-  place-items:center;
+  place-content:center;
   width:22px; height:22px;
   border-radius:9999px;
-  background:#eef2ff;
-  color:#4338ca;
+  background:#ced0d7;
+  color:#ffffff;
   font:600 12px/1 system-ui;
 }
