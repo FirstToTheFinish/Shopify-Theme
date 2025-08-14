@@ -110,7 +110,7 @@ function generateSections(sectionsConfig) {
                     <span id="colorText1.5" class="color-text" style="margin-left: -15px;"></span>
                 </div>
             </div>
-            <div class="dropdown-wrapper" style="margin-left:2.5px;">
+            <div class="dropdown-wrapper" style="margin-left:3px;">
                 <div class="dropdown-title-wrapper">
                     <div class="dropdown-title">Back: </div>
                     <div class="dropdown-container">
@@ -204,7 +204,7 @@ function generateSections(sectionsConfig) {
                     <span id="colorText2.5" class="color-text" style="margin-left: -15px;"></span>
                 </div>
             </div>
-            <div class="dropdown-wrapper" style="margin-left:5px;">
+            <div class="dropdown-wrapper" style="margin-left:7px;">
                 <div class="dropdown-title-wrapper">
                 <div class="dropdown-title">Trim: </div>
                     <div class="dropdown-container">
