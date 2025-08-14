@@ -1489,7 +1489,7 @@ function colorDistance(color1, color2) {
                         }
                     }
                     else{
-                        if (brightness > 150) { // Adjust this threshold as needed
+                        if (brightness > 150 || mappingId == "White") { // Adjust this threshold as needed
                             if(designName.includes('4') || designName.includes('5') || designName.includes('8')){
                                 image.src = window.shopifyAssetPaths.logos.NordLogo2;
                             }
