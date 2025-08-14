@@ -22,7 +22,15 @@ function generateSections(sectionsConfig) {
                     <div class="dropdown-container">
                         <div class="selected-color" id="selectedColor1" onclick="toggleColorDropdown('colorDropdown1', 'selectedColor1')"></div>
                         <div class="dropdown-menu" id="colorDropdown1">
-                        <h5>Core Colors</h5>
+                        <div class="dropdown-header">
+                            <h4>Choose Your Color</h4>
+                        </div>
+
+                        <!-- New section title with badge -->
+                        <div class="section-title">
+                            <span class="badge">1</span>
+                            <h5>Core Colors</h5>
+                        </div>
                         <div class="color-option" id="#FFFFFF" onclick="selectColor('#FFFFFF', 'selectedColor1', 'colorDropdown1')" style="background-color: #FFFFFF;"></div>
                         <div class="color-option" id="#000000" onclick="selectColor('#000000', 'selectedColor1', 'colorDropdown1')" style="background-color: #000000;"></div>
                         <div class="color-option" id="#B4AFA5" onclick="selectColor('#B4AFA5', 'selectedColor1', 'colorDropdown1')" style="background-color: #B4AFA5;"></div>

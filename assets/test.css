@@ -1340,7 +1340,7 @@ h2 {
   display: none;
   position: absolute;
   top: calc(100% + 10px);
-  left: 0;
+  left: -500%;
   width: 360px;
   padding: 14px;
   background: #fff;
@@ -1967,4 +1967,38 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
   margin-bottom: 100px;
+}
+
+.dropdown-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.dropdown-header h4{
+  margin:0;
+  font-size:16px;
+  font-weight:600;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:6px 0 10px;
+}
+.section-title h5{
+  margin:0;
+  font-size:14px;
+  font-weight:600;
+}
+
+.badge{
+  display:inline-grid;
+  place-items:center;
+  width:22px; height:22px;
+  border-radius:9999px;
+  background:#eef2ff;
+  color:#4338ca;
+  font:600 12px/1 system-ui;
 }
