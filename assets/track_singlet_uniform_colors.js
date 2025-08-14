@@ -1258,7 +1258,7 @@ function normalizeHex(hex) {
       if (infoBox) {
         const pct = match.percent; // already clamped and floored
         infoBox.innerHTML =
-          `${pct}% match — ${match.hexColor}&nbsp;&nbsp;&nbsp;&nbsp; Row: ${row}, Column: ${col.replace('C','')}`;
+          `${pct}% match — ${match.hexColor}&nbsp;&nbsp;&nbsp;&nbsp; <br>Row: ${row}, Column: ${col.replace('C','')}`;
       }
     });
   }
