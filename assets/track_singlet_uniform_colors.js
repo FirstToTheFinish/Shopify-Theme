@@ -1550,7 +1550,7 @@ function normalizeHex(hex) {
                         0.114 * (rgb.b * rgb.b)
                     );
 
-                    console.log(brightness);
+                    console.log(brightness, color);
 
                     // Choose class based on brightness
                     const image = document.getElementById("NordLogo");
