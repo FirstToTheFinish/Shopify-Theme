@@ -20,62 +20,31 @@ function generateSections(sectionsConfig) {
                 <div class="dropdown-title-wrapper">
                     <div class="dropdown-title">Front:</div>
                     <div class="dropdown-container">
-                    <div class="selected-color" id="selectedColor1"
-                    aria-haspopup="listbox" aria-expanded="false" title="Choose Front color"
-                    onclick="toggleColorDropdown('colorDropdown1', 'selectedColor1')"></div>
-               
-               <div class="dropdown-menu core-colors" id="colorDropdown1" role="listbox" aria-labelledby="coreColorsHeading1">
-                 <div class="dropdown-header">
-                   <span class="badge">1</span>
-                   <h4 id="coreColorsHeading1">Core Colors</h4>
-                 </div>
-               
-                 <div class="swatch-grid">
-                   <button class="color-option" style="--swatch:#FFFFFF" aria-label="White"
-                           onclick="selectColor('#FFFFFF','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#000000" aria-label="Black"
-                           onclick="selectColor('#000000','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#B4AFA5" aria-label="Cool Gray"
-                           onclick="selectColor('#B4AFA5','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#7D7873" aria-label="Slate Gray"
-                           onclick="selectColor('#7D7873','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#9B4B00" aria-label="Brown"
-                           onclick="selectColor('#9B4B00','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#CDA55F" aria-label="Gold"
-                           onclick="selectColor('#CDA55F','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#00233C" aria-label="Navy"
-                           onclick="selectColor('#00233C','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#0041AF" aria-label="Royal"
-                           onclick="selectColor('#0041AF','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#009BD7" aria-label="Carolina"
-                           onclick="selectColor('#009BD7','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#8CA5DC" aria-label="Periwinkle"
-                           onclick="selectColor('#8CA5DC','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#28A523" aria-label="Kelly"
-                           onclick="selectColor('#28A523','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#00461E" aria-label="Forest"
-                           onclick="selectColor('#00461E','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#E6F541" aria-label="Lime"
-                           onclick="selectColor('#E6F541','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#FAE100" aria-label="Yellow"
-                           onclick="selectColor('#FAE100','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#FABE14" aria-label="Sun"
-                           onclick="selectColor('#FABE14','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#FFAF00" aria-label="Orange"
-                           onclick="selectColor('#FFAF00','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#FF5A00" aria-label="Burnt Orange"
-                           onclick="selectColor('#FF5A00','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#E6230F" aria-label="Red"
-                           onclick="selectColor('#E6230F','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#500F0F" aria-label="Maroon"
-                           onclick="selectColor('#500F0F','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#37144B" aria-label="Purple"
-                           onclick="selectColor('#37144B','selectedColor1','colorDropdown1')"></button>
-                   <button class="color-option" style="--swatch:#F5509B" aria-label="Pink"
-                           onclick="selectColor('#F5509B','selectedColor1','colorDropdown1')"></button>
-                 </div>
-               </div>
-               <h5 style="margin-top: 10px;">Custom Color<span> (<a href="https://cdn.shopify.com/s/files/1/0658/2409/6326/files/Color_Swatch.pdf?v=1755179910" target="_blank" style="color: blue">click for more colors</a>)</span></h5>
+                        <div class="selected-color" id="selectedColor1" onclick="toggleColorDropdown('colorDropdown1', 'selectedColor1')"></div>
+                        <div class="dropdown-menu" id="colorDropdown1">
+                        <h>Core Colors</h2>
+                        <div class="color-option" id="#FFFFFF" onclick="selectColor('#FFFFFF', 'selectedColor1', 'colorDropdown1')" style="background-color: #FFFFFF;"></div>
+                        <div class="color-option" id="#000000" onclick="selectColor('#000000', 'selectedColor1', 'colorDropdown1')" style="background-color: #000000;"></div>
+                        <div class="color-option" id="#B4AFA5" onclick="selectColor('#B4AFA5', 'selectedColor1', 'colorDropdown1')" style="background-color: #B4AFA5;"></div>
+                        <div class="color-option" id="#7D7873" onclick="selectColor('#7D7873', 'selectedColor1', 'colorDropdown1')" style="background-color: #7D7873;"></div>
+                        <div class="color-option" id="#9B4B00" onclick="selectColor('#9B4B00', 'selectedColor1', 'colorDropdown1')" style="background-color: #9B4B00;"></div>
+                        <div class="color-option" id="#CDA55F" onclick="selectColor('#CDA55F', 'selectedColor1', 'colorDropdown1')" style="background-color: #CDA55F;"></div>
+                        <div class="color-option" id="#00233C" onclick="selectColor('#00233C', 'selectedColor1', 'colorDropdown1')" style="background-color: #00233C;"></div>
+                        <div class="color-option" id="#0041AF" onclick="selectColor('#0041AF', 'selectedColor1', 'colorDropdown1')" style="background-color: #0041AF;"></div>
+                        <div class="color-option" id="#009BD7" onclick="selectColor('#009BD7', 'selectedColor1', 'colorDropdown1')" style="background-color: #009BD7;"></div>
+                        <div class="color-option" id="#8CA5DC" onclick="selectColor('#8CA5DC', 'selectedColor1', 'colorDropdown1')" style="background-color: #8CA5DC;"></div>
+                        <div class="color-option" id="#28A523" onclick="selectColor('#28A523', 'selectedColor1', 'colorDropdown1')" style="background-color: #28A523;"></div>
+                        <div class="color-option" id="#00461E" onclick="selectColor('#00461E', 'selectedColor1', 'colorDropdown1')" style="background-color: #00461E;"></div>
+                        <div class="color-option" id="#E6F541" onclick="selectColor('#E6F541', 'selectedColor1', 'colorDropdown1')" style="background-color: #E6F541;"></div>
+                        <div class="color-option" id="#FAE100" onclick="selectColor('#FAE100', 'selectedColor1', 'colorDropdown1')" style="background-color: #FAE100;"></div>
+                        <div class="color-option" id="#FABE14" onclick="selectColor('#FABE14', 'selectedColor1', 'colorDropdown1')" style="background-color: #FABE14;"></div>
+                        <div class="color-option" id="#FFAF00" onclick="selectColor('#FFAF00', 'selectedColor1', 'colorDropdown1')" style="background-color: #FFAF00;"></div>
+                        <div class="color-option" id="#FF5A00" onclick="selectColor('#FF5A00', 'selectedColor1', 'colorDropdown1')" style="background-color: #FF5A00;"></div>
+                        <div class="color-option" id="#E6230F" onclick="selectColor('#E6230F', 'selectedColor1', 'colorDropdown1')" style="background-color: #E6230F;"></div>
+                        <div class="color-option" id="#500F0F" onclick="selectColor('#500F0F', 'selectedColor1', 'colorDropdown1')" style="background-color: #500F0F;"></div>
+                        <div class="color-option" id="#37144B" onclick="selectColor('#37144B', 'selectedColor1', 'colorDropdown1')" style="background-color: #37144B;"></div>
+                        <div class="color-option" id="#F5509B" onclick="selectColor('#F5509B', 'selectedColor1', 'colorDropdown1')" style="background-color: #F5509B;"></div>
+                        <h5 style="margin-top: 10px;">Custom Color<span> (<a href="https://cdn.shopify.com/s/files/1/0658/2409/6326/files/Color_Swatch.pdf?v=1755179910" target="_blank" style="color: blue">click for more colors</a>)</span></h5>
                         <div class="input-container">
                             <label for="rowNumber1">Row:</label>
                             <input type="number" id="rowNumber1" class="input-field" placeholder="0" min="0" max="34">
