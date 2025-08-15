@@ -1348,7 +1348,7 @@ h2 {
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  z-index: 1000;
+  z-index: 15;
   max-height: 340px;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -1497,11 +1497,14 @@ h2 {
   width: 320px;
   max-height: 300px;
   overflow-y: auto;
-  z-index: 1;
+  z-index: 15;
   gap: 10px;
   padding: 10px;
   top: 30px;
   right: 0px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px #0000001f;
 }
 
 .template-option {
