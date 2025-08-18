@@ -129,7 +129,7 @@ function validateTextInput(sectionId) {
         
         // Show the controls
         fontStyleButton.parentElement.parentElement.parentElement.style.display = 'flex';
-        fontEffectButton.parentElement.parentElement.style.display = 'flex';
+        fontEffectButton.parentElement.parentElement.style.display = 'block';
         fontColorPicker.style.display = 'block';
         outlineColorPicker.style.display = 'block';
         textRotationSlider.parentElement.parentElement.style.display = 'block';
