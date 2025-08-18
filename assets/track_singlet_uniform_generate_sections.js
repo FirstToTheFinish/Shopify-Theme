@@ -649,7 +649,7 @@ function generateSections(sectionsConfig) {
                                 </div>
                             </div>
                         </div>
-                        <div style="display:none">
+                        <div class="font-style-wrapper" style="display:none">
                             <label for="font-effect-${section.id}" class="font-style-label">Effect: <span id="font-effect-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
                             <div class="custom-dropdown" style="">
                                 <button class="custom-dropdown-button" onclick="toggleDropdown('font-effect-${section.id}')">
