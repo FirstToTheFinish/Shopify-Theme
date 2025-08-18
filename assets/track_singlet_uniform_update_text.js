@@ -165,8 +165,18 @@ document.addEventListener('keydown', (e) => {
             const fontColorPicker = document.querySelector(`#selectedColor7-${sectionId}`);
             const outlineColorPicker = document.querySelector(`#selectedColor8-${sectionId}`);
 
-            fontStyleButton.textContent = 'Select a Font Style';
+            fontStyleButton.innerHTML = `Select a Font Style <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
+            fontStyleButton.value = '';
             fontStyleButton.style.fontFamily = '';
+
+            fontEffectButton.innerHTML = `Select a Font Effect <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
+            fontEffectButton.value = '';
+            
+            fontEffectButton.parentElement.parentElement.style.display = 'none';
+            
+            fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
 
             fontEffectButton.textContent = 'Select a Font Effect';
 
