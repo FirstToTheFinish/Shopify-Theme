@@ -2076,14 +2076,3 @@ h2 {
   background-size: 10px 10px;     /* adjust to your swatch size */
   background-position: 0 0, 5px 5px;
 }
-
-/* Diagonal slash overlay */
-.color-option--transparent::after{
-  content: "";
-  position: absolute;
-  inset: 6px;                      /* padding from edges; tweak for your 30–35px box */
-  border-top: 2px solid #111827;   /* the slash */
-  transform: rotate(-45deg);
-  pointer-events: none;
-  opacity: 0.85;
-}
