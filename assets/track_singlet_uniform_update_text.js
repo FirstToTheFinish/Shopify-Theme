@@ -178,8 +178,6 @@ document.addEventListener('keydown', (e) => {
             
             fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
 
-            fontEffectButton.textContent = 'Select a Font Effect';
-
             textRotationSlider.value = 0;
 
             fontColorPicker.style.backgroundColor = 'Black';
@@ -361,8 +359,8 @@ document.addEventListener('DOMContentLoaded', function() {
         newEditableText.style.fontSize = currentFontSize || '16px'; // Default font size if not set
     
         // Apply text styling
-        const fontStyle = document.querySelector(`#font-style-${section.id}`).previousElementSibling.textContent.trim() || 'Arial';
-        const fontEffect = document.querySelector(`#font-effect-${section.id}`).previousElementSibling.textContent.trim() || 'Straight';
+        const fontStyle = document.querySelector(`#font-style-${section.id}`).previousElementSibling.value.trim() || 'Arial';
+        const fontEffect = document.querySelector(`#font-effect-${section.id}`).previousElementSibling.value.trim() || 'Straight';
         const fontColor =  currentFontColor || 'Black';
         const outlineColor = currentOutlineColor || null;
         const rotateAngle = document.querySelector(`#rotationSlider-${section.id}`).value || 0;

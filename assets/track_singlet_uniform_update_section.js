@@ -114,7 +114,7 @@ function toggleDropdown(id) {
 
 function selectDropdownOption(dropdownId, value, sectionId) {
     const button = document.querySelector(`#${dropdownId}`).previousElementSibling;
-    button.textContent = value;
+    button.value = value;
     button.style.color = 'black'; // Set the text color of the button to black when a selection is made
 
     // Map custom font names to their CSS classes
@@ -137,9 +137,19 @@ function selectDropdownOption(dropdownId, value, sectionId) {
         'SwitzerlandCond': 'swzconbn',
     };
 
-    if (dropdownId.includes('font-style')) {
+    if (dropdownId.includes('font-style') && value != '') {
         button.style.fontFamily = fontClassMap[value]; // Set the font family of the button text to match the chosen font style
     }
+    else{
+        button.style.fontFamily = 'Arial';
+        if(value == ''){
+            value = 'Select a Font Style'
+        }
+    }
+
+    
+    button.innerHTML = `${value} <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>`;
 
     document.getElementById(dropdownId).classList.remove("show");
 
@@ -231,39 +241,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const vertButton = document.getElementById('verticalCenter');
 
     snapButton.addEventListener('mouseover', function() {
-        this.querySelector('img').src = window.shopifyAssetPaths.grid.snapGridWhite;
+        this.querySelector('img').src = `${window.shopifyAssetPaths.grid.snapGridWhite}`;
     });
 
     snapButton.addEventListener('mouseout', function() {
         const img = this.querySelector('img');
         if (this.classList.contains('active')) {
-            img.src = window.shopifyAssetPaths.grid.snapGridWhite;
+            img.src = `${window.shopifyAssetPaths.grid.snapGridWhite}`;
         } else {
-            img.src = window.shopifyAssetPaths.grid.snapGrid;
+            img.src = `${window.shopifyAssetPaths.grid.snapGrid}`;
         }
     });
 
     horizButton.addEventListener('mouseover', function() {
-        this.querySelector('img').src = window.shopifyAssetPaths.grid.horizontalCenterWhite;
+        this.querySelector('img').src = `${window.shopifyAssetPaths.grid.horizontalCenterWhite}`;
     });
     horizButton.addEventListener('mouseout', function() {
-        this.querySelector('img').src = window.shopifyAssetPaths.grid.horizontalCenter;
+        this.querySelector('img').src = `${window.shopifyAssetPaths.grid.horizontalCenter}`;
     });
 
     vertButton.addEventListener('mouseover', function() {
-        this.querySelector('img').src = window.shopifyAssetPaths.grid.verticalCenterWhite;
+        this.querySelector('img').src = `${window.shopifyAssetPaths.grid.verticalCenterWhite}`;
     });
     vertButton.addEventListener('mouseout', function() {
-        this.querySelector('img').src = window.shopifyAssetPaths.grid.verticalCenter;
+        this.querySelector('img').src = `${window.shopifyAssetPaths.grid.verticalCenter}`;
     });
 
     snapButton.addEventListener('click', function() {
         this.classList.toggle('active');
         const img = this.querySelector('img');
         if (this.classList.contains('active')) {
-            img.src = window.shopifyAssetPaths.grid.snapGridWhite;
+            img.src = `${window.shopifyAssetPaths.grid.snapGridWhite}`;
         } else {
-            img.src = window.shopifyAssetPaths.grid.snapGrid;
+            img.src = `${window.shopifyAssetPaths.grid.snapGrid}`;
         }
     });
 });
@@ -425,8 +435,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         const notesInput = document.getElementById(`notes-${section.id}`);
-        notesInput.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-        notesInput.addEventListener('input', (event) =>{
+                notesInput.addEventListener('input', (event) =>{
           cleanInput(notesInput, blockedCharsRegex);
           enforceCharacterLimit(event, maxLength);  
         });
@@ -440,32 +449,28 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const emailAddr = document.getElementById('email');
-    emailAddr.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    emailAddr.addEventListener('input', () => cleanInput(emailAddr, blockedCharsRegex));
+        emailAddr.addEventListener('input', () => cleanInput(emailAddr, blockedCharsRegex));
 
     const emailConfirmAddr = document.getElementById('confirmEmail');
-    emailConfirmAddr.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    emailConfirmAddr.addEventListener('input', () => cleanInput(emailConfirmAddr, blockedCharsRegex));
+        emailConfirmAddr.addEventListener('input', () => cleanInput(emailConfirmAddr, blockedCharsRegex));
 
     const userName = document.getElementById('userName');
-    userName.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    userName.addEventListener('input', () => cleanInput(userName, blockedCharsRegex));
+        userName.addEventListener('input', () => cleanInput(userName, blockedCharsRegex));
 
     const schoolClub = document.getElementById('schoolClub');
-    schoolClub.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    schoolClub.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
+        schoolClub.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
+
+const salesRep = document.getElementById('salesRep');
+    salesRep.addEventListener('input', () => cleanInput(schoolClub, blockedCharsRegex));
 
     const street = document.getElementById('street');
-    street.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    street.addEventListener('input', () => cleanInput(street, blockedCharsRegex));
+        street.addEventListener('input', () => cleanInput(street, blockedCharsRegex));
 
     const city = document.getElementById('city');
-    city.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    city.addEventListener('input', () => cleanInput(city, blockedCharsRegex));
+        city.addEventListener('input', () => cleanInput(city, blockedCharsRegex));
 
     const tentName = document.getElementById('Tent-Name');
-    city.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
-    city.addEventListener('input', () => cleanInput(tentName, blockedCharsRegex));
+    tentName.addEventListener('input', () => cleanInput(tentName, blockedCharsRegex));
 
     // Add event listener to form submission
     const contactForm = document.getElementById('contactForm');
