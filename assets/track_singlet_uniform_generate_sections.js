@@ -1171,144 +1171,96 @@ function generateSections(sectionsConfig) {
     submitTab.innerHTML = '';
     submitTab.innerHTML = `
         <div class="preview-container">
+            <h5>Contact Information</h5>
             <form id="contactForm">
-                <div style="min-height:35px; padding-top:5px;">
-                    <span class="itemStep inblock valignM">
-                        <span>1</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" class="text-input placeholder-grey" style="width:250px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
+                <!-- Email + Confirm Email -->
+                <div class="form-group-row">
+                <div class="form-col" style="flex: 1;">
+                    <label for="email" class="font-style-label">1. Email Address:</label>
+                    <input type="email" id="email" name="email" class="text-input placeholder-grey" required placeholder="Ex. customer_service@fttf.com" oninput="validateEmail()">
                     <span id="email-error" style="color: red; display: none;">Emails do not match</span>
                 </div>
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>2</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="confirmEmail">Confirm Email:</label>
-                    <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" style="width:250px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Retype email address" oninput="validateEmail()">
-                    <span id="email-error" style="color: red; display: none;">Emails do not match</span>
+                <div class="form-col" style="flex: 1;">
+                    <label for="confirmEmail" class="font-style-label">2. Confirm Email:</label>
+                    <input type="email" id="confirmEmail" name="confirmEmail" class="text-input placeholder-grey" required placeholder="Retype email address" oninput="validateEmail()">
                 </div>
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>3</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="name">Customer Name:</label>
-                    <input type="text" id="userName" name="name" class="text-input placeholder-grey" style="width:194px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. John Doe">
                 </div>
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>4</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="phone">Phone Number:</label>
-                    <input type="text" id="phone" name="phone" class="text-input placeholder-grey" style="width:202px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
+                
+                <!-- Name + Phone -->
+                <div class="form-group-row">
+                <div class="form-col" style="flex: 1; ">
+                    <label for="userName" class="font-style-label">3. Customer Name:</label>
+                    <input type="text" id="userName" name="name" class="text-input placeholder-grey" required placeholder="Ex. John Doe">
+                </div>
+                <div class="form-col" style="flex: 1; ">
+                    <label for="phone" class="font-style-label">4. Phone Number:</label>
+                    <input type="text" id="phone" name="phone" class="text-input placeholder-grey" required placeholder="Ex. (800) 747-9013" oninput="formatPhoneNumber(this)">
                     <span id="phone-error" style="color: red; display: none;">Please enter a valid 10-digit phone number.</span>
                 </div>
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>5</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="schoolClub">School/Club:</label>
-                    <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" style="width:212px; border-radius:3px; border: 1px solid #838383; height: auto;" placeholder="Optional">
                 </div>
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>6</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="street">Street Address:</label>
-                    <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width:196px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. 2341 Plum St.">
+                
+                <!-- School/Club + Sales Rep -->
+                <div class="form-group-row">
+                <div class="form-col" style="flex: 1;">
+                    <label for="schoolClub" class="font-style-label">5. School/Club:</label>
+                    <input type="text" id="schoolClub" name="schoolClub" class="text-input placeholder-grey" placeholder="Optional">
                 </div>
-                <div class="input-row">
-                <div style="min-height:35px; margin-right: 10px;">
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="city">City:</label>
-                    <input type="text" id="city" name="city" class="text-input placeholder-grey" style="width:125px; border-radius:3px; border: 1px solid #838383; height: 21px;" required placeholder="Ex. Edwardsville">
+                <div class="form-col" style="flex: 1;">
+                    <label for="salesRep" class="font-style-label">6. Sales Rep (if known):</label>
+                    <input type="text" id="salesRep" name="salesRep" class="text-input placeholder-grey" placeholder="Optional">
                 </div>
-                <div style="min-height:35px; margin-right: 10px;">
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="state">State:</label>
-                    <div class="custom-dropdown">
-                        <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 60px;">Ex.</button>
-                        <div id="state-dropdown" class="custom-dropdown-content" style="width: 50px;">
-                            <div onclick="selectDropdownOption2('state-dropdown', 'AL', 'state')">AL</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'AK', 'state')">AK</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'AZ', 'state')">AZ</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'AR', 'state')">AR</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'CA', 'state')">CA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'CO', 'state')">CO</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'CT', 'state')">CT</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'DE', 'state')">DE</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'FL', 'state')">FL</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'GA', 'state')">GA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'HI', 'state')">HI</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'ID', 'state')">ID</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'IL', 'state')">IL</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'IN', 'state')">IN</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'IA', 'state')">IA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'KS', 'state')">KS</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'KY', 'state')">KY</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'LA', 'state')">LA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'ME', 'state')">ME</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MD', 'state')">MD</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MA', 'state')">MA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MI', 'state')">MI</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MN', 'state')">MN</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MS', 'state')">MS</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MO', 'state')">MO</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'MT', 'state')">MT</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NE', 'state')">NE</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NV', 'state')">NV</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NH', 'state')">NH</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NJ', 'state')">NJ</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NM', 'state')">NM</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NY', 'state')">NY</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'NC', 'state')">NC</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'ND', 'state')">ND</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'OH', 'state')">OH</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'OK', 'state')">OK</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'OR', 'state')">OR</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'PA', 'state')">PA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'RI', 'state')">RI</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'SC', 'state')">SC</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'SD', 'state')">SD</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'TN', 'state')">TN</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'TX', 'state')">TX</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'UT', 'state')">UT</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'VT', 'state')">VT</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'VA', 'state')">VA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'WA', 'state')">WA</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'WV', 'state')">WV</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'WI', 'state')">WI</div>
-                            <div onclick="selectDropdownOption2('state-dropdown', 'WY', 'state')">WY</div>
-                        </div>
-                        <input type="hidden" id="state" name="state" required>
+                </div>
+        
+                <!-- Street Address -->
+                <div class="form-row">
+                    <label for="street" class="font-style-label">7. Street Address:</label>
+                    <input type="text" id="street" name="street" class="text-input placeholder-grey" style="width: 450px;" required placeholder="Ex. 2341 Plum St.">
+                </div>
+        
+                
+                <!-- City + State + Zip -->
+                <div class="form-group-row">
+                <div class="form-col" style="flex: 1; min-width: 150px;">
+                    <label for="city" class="font-style-label">City:</label>
+                    <input type="text" id="city" name="city" class="text-input placeholder-grey" required placeholder="Ex. Edwardsville">
+                </div>
+                <div class="form-col" style="width: 80px;">
+                    <label for="state" class="font-style-label">State:</label>
+                    <div class="custom-dropdown" style="width: 70px;">
+                    <button type="button" id="state-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('state-dropdown')" style="width: 70px;">Ex.</button>
+                    <div id="state-dropdown" class="custom-dropdown-content" style="width: 70px; max-height: 160px; overflow-y: auto;">
+                        ${["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"].map(state => `<div onclick="selectDropdownOption2('state-dropdown', '${state}', 'state')">${state}</div>`).join('')}
+                    </div>
+                    <input type="hidden" id="state" name="state" required>
                     </div>
                 </div>
-                <div style="min-height:35px;">
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="zip">Zip Code:</label>
-                    <input type="text" id="zip" name="zip" class="text-input placeholder-grey" style="width:110px; border-radius:3px; border: 1px solid #838383; height: 21px;" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">                
+                <div class="form-col" style="flex: 1; min-width: 120px;">
+                    <label for="zip" class="font-style-label">Zip Code:</label>
+                    <input type="text" id="zip" name="zip" class="text-input placeholder-grey" required placeholder="Ex. 62025-1234" oninput="formatZipCode(this)">
                     <span id="zip-error" style="color: red; display: none;">Please enter a valid zip code.</span>
                 </div>
-            </div>
-            
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>7</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="priority">Ready to order:</label>
+                </div>
+                
+                <!-- Ready to order + Design Name -->
+                <div class="form-group-row">
+                <!-- Ready to order dropdown -->
+                <div class="form-col" style="flex: 1;">
+                    <label for="priority" class="font-style-label">8. Ready to order:</label>
                     <div class="custom-dropdown">
-                        <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
-                        <div id="priority-dropdown" class="custom-dropdown-content">
-                            <div onclick="selectDropdownOption2('priority-dropdown', 'No, I am just browsing.', 'priority')">No, I am just browsing for now.</div>
-                            <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, but I want some help.', 'priority')">Yes, but I am wanting some help with my design.</div>
-                            <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, I am ready to order!', 'priority')">Yes, I am ready to order!</div>
-                        </div>
-                        <input type="hidden" id="priority" name="priority" required>
+                    <button type="button" id="priority-dropdown-button" class="custom-dropdown-button placeholder-grey" style="width: 220px;" onclick="toggleDropdown2('priority-dropdown')">Select a choice</button>
+                    <div id="priority-dropdown" class="custom-dropdown-content" style="width: 220px;">
+                        <div onclick="selectDropdownOption2('priority-dropdown', 'No, I am just browsing.', 'priority')">No, I am just browsing for now.</div>
+                        <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, but I want some help.', 'priority')">Yes, but I am wanting some help with my design.</div>
+                        <div onclick="selectDropdownOption2('priority-dropdown', 'Yes, I am ready to order!', 'priority')">Yes, I am ready to order!</div>
+                    </div>
+                    <input type="hidden" id="priority" name="priority" required>
                     </div>
                 </div>
-                <div style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
-                        <span>8</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs16" for="name">Design Name:</label>
-                    <input type="text" id="design-Name" name="design" class="text-input placeholder-grey" style="width:194px; border-radius:3px; border: 1px solid #838383; height: auto;" required placeholder="Ex. Design 1">
+        
+                <!-- Design Name -->
+                <div class="form-col" style="flex: 1;">
+                    <label for="Tent-Name" class="font-style-label">9. Design Name:</label>
+                    <input type="text" id="Tent-Name" name="design" class="text-input placeholder-grey" required placeholder="Ex. Design 1">
                 </div>
                 <div class="arrow-container" style="padding-top:20px;">
                     <button type="button" class="arrow-button2" onclick="prevSection()">
