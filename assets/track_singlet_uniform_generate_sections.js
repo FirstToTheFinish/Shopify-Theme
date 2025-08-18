@@ -798,7 +798,7 @@ function generateSections(sectionsConfig) {
                                             <div class="color-option" id="#500F0F" onclick="selectColor('#500F0F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #500F0F;"></div>
                                             <div class="color-option" id="#37144B" onclick="selectColor('#37144B', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #37144B;"></div>
                                             <div class="color-option" id="#F5509B" onclick="selectColor('#F5509B', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #F5509B;"></div>
-                                            <div class="color-option" id="none" onclick="selectColor('transparent', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: transparent;"><div style="font-size: 40px; margin-top: -7px; margin-left: 1px;"></div></div>
+                                            <div class="color-option color-option--transparent" id="none" onclick="selectColor('transparent', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: transparent;"><div style="font-size: 40px; margin-top: -7px; margin-left: 1px;"></div></div>
                                         </div>
                                         <div class="section-title" style="border-top: 1px solid #e5e7eb;">
                                             <span class="badge" style="margin-top: 5px;">2</span>

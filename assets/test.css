@@ -2066,3 +2066,24 @@ h2 {
   /* Highlight the selected color option in the dropdown */
   transition: none;
 }
+
+/* Checkerboard background to indicate transparency */
+.color-option--transparent{
+  position: relative;
+  background-image:
+    linear-gradient(45deg, #e5e7eb 25%, transparent 25%, transparent 75%, #e5e7eb 75%),
+    linear-gradient(45deg, #e5e7eb 25%, transparent 25%, transparent 75%, #e5e7eb 75%);
+  background-size: 10px 10px;     /* adjust to your swatch size */
+  background-position: 0 0, 5px 5px;
+}
+
+/* Diagonal slash overlay */
+.color-option--transparent::after{
+  content: "";
+  position: absolute;
+  inset: 6px;                      /* padding from edges; tweak for your 30–35px box */
+  border-top: 2px solid #111827;   /* the slash */
+  transform: rotate(-45deg);
+  pointer-events: none;
+  opacity: 0.85;
+}
