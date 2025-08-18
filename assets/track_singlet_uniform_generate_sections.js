@@ -609,25 +609,25 @@ function generateSections(sectionsConfig) {
 
         sectionDiv.innerHTML = `
                 
-                <div class="" style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                <div style="min-height:35px;">
+                    <span>
                         <span>1</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16">
+                    <span>
                         CURRENT SECTION: <span id="current-section">${section.title}</span>
                     </span>
                     <br><br>
                 </div>
-                <div class="" style="min-height:35px; padding-top:10px;">
-                    <span class="itemStep inblock valignM">
+                <div style="min-height:35px; padding-top:10px;">
+                    <span>
                         <span>2</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:2px">
+                    <span style="padding-left:2px">
                         ADD TEXT:
                         <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:196px; border-radius:3px; border: 1px solid #838383; height: auto; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here" ></textarea>
                     </span>
                     <div style="margin-top:10px; padding-left:16px; display:none">
-                        <label class="fws_ftaquiB ftcolG1 fs14" for="font-style-${section.id}">Font Style:</label>
+                        <label for="font-style-${section.id}">Font Style:</label>
                         <div class="custom-dropdown" style="">
                             <button class="custom-dropdown-button" style="width:202px" onclick="toggleDropdown('font-style-${section.id}')">Select a font style</button>
                             <div id="font-style-${section.id}" class="custom-dropdown-content">
@@ -652,7 +652,7 @@ function generateSections(sectionsConfig) {
                         <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span>
                     </div>
                     <div style="margin-top:10px; padding-left:11px; display:none">
-                        <label class="fws_ftaquiB ftcolG1 fs14" for="font-effect-${section.id}">Font Effect:</label>
+                        <label for="font-effect-${section.id}">Font Effect:</label>
                         <div class="custom-dropdown" style="">
                             <button class="custom-dropdown-button" style="width:202px" onclick="toggleDropdown('font-effect-${section.id}')">Select a font effect</button>
                             <div id="font-effect-${section.id}" class="custom-dropdown-content">
@@ -664,7 +664,7 @@ function generateSections(sectionsConfig) {
                     <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
                         <div class="dropdown-wrapper">
                             <div class="dropdown-title-wrapper">
-                            <label class="fws_ftaquiB ftcolG1 fs14" for="font-color-${section.id}">Font Color:</label>
+                            <label for="font-color-${section.id}">Font Color:</label>
                             <div class="dropdown-container" style="margin-left: 10px;">
                                 <div class="selected-color" id="selectedColor7-${section.id}" onclick="toggleColorDropdown('colorDropdown7-${section.id}', 'selectedColor7-${section.id}')" style="background-color: black"></div>
                                 <div class="dropdown-menu" id="colorDropdown7-${section.id}">
@@ -702,7 +702,7 @@ function generateSections(sectionsConfig) {
                                         <div id="colorDisplayBox7-${section.id}" class="color-display-box" onclick="selectColor(document.getElementById('colorDisplayBox7-${section.id}').style.backgroundColor, 'selectedColor7-${section.id}', 'colorDropdown7-${section.id}')"></div>
                                         <span id="colorText7-${section.id}" class="color-text"></span>
                                     </div>
-                                    <h2 class="fs16" style="margin-top: 20px;">Trouble Finding Match! Type in color code below and get top 3 closest matches.</h2>
+                                    <h2 style="margin-top: 20px;">Trouble Finding Match! Type in color code below and get top 3 closest matches.</h2>
                                     <div class="input-container">
                                         <label for="hexInput7">Hex Code:</label>
                                             <div style="position: relative; display: inline-block;">
@@ -744,7 +744,7 @@ function generateSections(sectionsConfig) {
                     <div id="outline-color-div-${section.id}" style="display:none">
                         <div class="dropdown-wrapper">
                             <div class="dropdown-title-wrapper">
-                            <label class="fws_ftaquiB ftcolG1 fs14" for="outline-color-${section.id}">Outline Color:</label>
+                            <label for="outline-color-${section.id}">Outline Color:</label>
                             <div class="dropdown-container" style="margin-left: 10px;">
                                 <div class="selected-color" id="selectedColor8-${section.id}" onclick="toggleColorDropdown('colorDropdown8-${section.id}', 'selectedColor8-${section.id}')"></div>
                                 <div class="dropdown-menu" id="colorDropdown8-${section.id}">
@@ -783,7 +783,7 @@ function generateSections(sectionsConfig) {
                                         <div id="colorDisplayBox8-${section.id}" class="color-display-box" onclick="selectColor(document.getElementById('colorDisplayBox8-${section.id}').style.backgroundColor, 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')"></div>
                                         <span id="colorText8-${section.id}" class="color-text"></span>
                                     </div>
-                                    <h2 class="fs16" style="margin-top: 20px;">Trouble Finding Match! Type in color code below and get top 3 closest matches.</h2>
+                                    <h2 style="margin-top: 20px;">Trouble Finding Match! Type in color code below and get top 3 closest matches.</h2>
                                     <div class="input-container">
                                         <label for="hexInput8-${section.id}">Hex Code:</label>
                                             <div style="position: relative; display: inline-block;">
@@ -825,7 +825,7 @@ function generateSections(sectionsConfig) {
                     </div>
                 </div>
                 <div style="padding-top: 10px; display: none;">
-                    <label class="fws_ftaquiB ftcolG1 fs14" for="rotationSlider-${section.id}" style="padding-left: 10px;">Text Rotation: <span id="sliderValue-${section.id}">0\u00B0</span></label>
+                    <label for="rotationSlider-${section.id}" style="padding-left: 10px;">Text Rotation: <span id="sliderValue-${section.id}">0\u00B0</span></label>
                     <div class="slider-container">
                         <input type="range" min="-90" max="90" value="0" step="1" class="slider" id="rotationSlider-${section.id}" />
                         <button id="rotateRightBtn-${section.id}" class="rotation-btn" style="background: none; border: none; cursor: pointer; transform: translateY(-24px);">
@@ -858,10 +858,10 @@ function generateSections(sectionsConfig) {
                 </div>                       
                 <div class="" style="min-height:35px; padding-top:7px;">
                     <div style="display: flex; align-items: center;">
-                        <span class="itemStep inblock valignM">
+                        <span>
                             <span>3</span>
                         </span>
-                        <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:6px">
+                        <span style="padding-left:6px">
                             ADD YOUR ART:
                         </span>
                         <!-- Drag and Drop Area -->
@@ -886,10 +886,10 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div id="art-preview-${section.id}" class="art-preview" style="padding-top: 8px; padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
                 <div class="" style="min-height:35px;">
-                    <span class="itemStep inblock valignM">
+                    <span>
                         <span>4</span>
                     </span>
-                    <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:2px">
+                    <span style="padding-left:2px">
                         NOTES:
                     </span>
                     <div>
