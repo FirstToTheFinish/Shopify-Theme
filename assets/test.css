@@ -1412,28 +1412,6 @@ h2 {
   margin: 0;
 }
 
- #colorDisplayBox2, #colorDisplayBox3, #colorDisplayBox4, #colorDisplayBox5, #colorDisplayBox6 {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ccc;
-  display: inline-block;
-  vertical-align: middle;
-  /* Aligns the color box with the input fields */
-  cursor: pointer;
-  transition: none;
-  box-sizing: border-box;
-}
-
-#colorDisplayBox2:hover, #colorDisplayBox3:hover, #colorDisplayBox4:hover, #colorDisplayBox5:hover, #colorDisplayBox6:hover {
-  border: 1px solid #000;
-  /* Add hover effect */
-}
-
-#colorDisplayBox2.active, #colorDisplayBox3.active, #colorDisplayBox4.active, #colorDisplayBox5.active, #colorDisplayBox6.active {
-  border: 2px solid #000;
-  /* Add active effect */
-}
-
 .color-display-box {
   width: 60px;
   height: 30px;

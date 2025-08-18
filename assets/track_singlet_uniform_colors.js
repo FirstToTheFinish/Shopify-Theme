@@ -1267,18 +1267,20 @@ function normalizeHex(hex) {
     function handleHexInput(input, indexPrefix) {
         input.value = input.value.toUpperCase().substring(0, 7).replace(/[^#A-F0-9]/g, '');
         let userColorPreviewId = `userColorPreview${indexPrefix}`;
+        let ourColorsId = `our-colors-${indexPrefix}`;
         if(indexPrefix > 6){
             userColorPreviewId += `-${sectionsConfig[currentSection - 1].id}`;
+            ourColorsId += `-${sectionsConfig[currentSection - 1].id}`;
         }
         if (!input.value.startsWith('#')) input.value = '#' + input.value;
         
         if (/^#([0-9A-F]{6})$/i.test(input.value)) {
             document.getElementById(userColorPreviewId).style.backgroundColor = input.value;
-            document.getElementById(`our-colors-${indexPrefix}`).style.display = 'inline-block';
+            ourColorsId.style.display = 'inline-block';
             displayClosestColors(input.value, indexPrefix);
         } else {
             resetColorPreviewAndMatches(indexPrefix);
-            document.getElementById(`our-colors-${indexPrefix}`).style.display = 'none';
+            ourColorsId.style.display = 'none';
         }
     }
     
