@@ -1415,14 +1415,15 @@ function sanitizeInput(value) {
 }
 
 function sanitizeInputField(input) {
-    input.value = sanitizeInput(input.value);
-}
+    const cursorPosition = input.selectionStart;
+    const originalLength = input.value.length;
 
-function blockInvalidChars(event, regex) {
-    const invalidChars = regex.test(event.key);
-    if (invalidChars) {
-        event.preventDefault();
-    }
+    input.value = sanitizeInput(input.value);
+
+    // Adjust the cursor position if necessary
+    const newLength = input.value.length;
+    const diff = newLength - originalLength;
+    input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
 }
 
 function sanitizeFormInputs(event) {
@@ -1437,7 +1438,7 @@ function sanitizeFormInputs(event) {
 }
 
 function cleanInput(input, regex) {
-    input.value = input.value.replace(regex, '');
+    
 }
 
 function validateForm() {

@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
         newEditableText.style.textOverflow = 'ellipsis'; // Ensure text is not altered but cut off
         newEditableText.style.wordBreak = 'keep-all';  // Prevent word break in Chrome
     
-        newEditableText.innerHTML = textInput.toUpperCase().replace(/\n/g, '<br>');
+        newEditableText.innerHTML = sanitizeInput(textInput).replace(/\n/g, '<br>');
     
         // Set initial position if not defined
         if (currentLeft !== null && currentTop !== null) {

@@ -304,7 +304,6 @@ document.addEventListener("DOMContentLoaded", function() {
             cleanInput(textInput, blockedCharsRegex);
             updateCanvasText(section);
         });
-        textInput.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
         
 
         const fontStyleDropdown = document.querySelector(`#font-style-${section.id}`).parentElement;
@@ -450,7 +449,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const shortNotesInput = document.getElementById(`shortDesign-notes`);
-    shortNotesInput.addEventListener('keydown', (event) => blockInvalidChars(event, blockedCharsRegex));
     shortNotesInput.addEventListener('input', (event) =>{
         cleanInput(shortNotesInput, blockedCharsRegex);
         enforceCharacterLimit(event, maxLength);  
