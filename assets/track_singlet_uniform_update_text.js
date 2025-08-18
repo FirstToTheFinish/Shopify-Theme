@@ -120,7 +120,7 @@ function validateTextInput(sectionId) {
             fontStyleLabel.style.display = 'inline';
             isValid = false;
         }
-        if (fontEffectButton.textContent === 'Select a font effect') {
+        if (fontEffectButton.textContent === 'Select a Font Effect') {
             fontEffectButton.style.borderColor = 'red';
             fontEffectLabel.style.display = 'inline';
             isValid = false;
@@ -165,10 +165,10 @@ document.addEventListener('keydown', (e) => {
             const fontColorPicker = document.querySelector(`#selectedColor7-${sectionId}`);
             const outlineColorPicker = document.querySelector(`#selectedColor8-${sectionId}`);
 
-            fontStyleButton.textContent = 'Select a font style';
+            fontStyleButton.textContent = 'Select a Font Style';
             fontStyleButton.style.fontFamily = '';
 
-            fontEffectButton.textContent = 'Select a font effect';
+            fontEffectButton.textContent = 'Select a Font Effect';
 
             textRotationSlider.value = 0;
 

@@ -619,7 +619,7 @@ function generateSections(sectionsConfig) {
                     </h5>
                     <textarea id="text-input-${section.id}" class="text-input placeholder-grey" style="width:75%; border-radius:3px; border: 1px solid #838383; height: 40px; overflow:hidden; resize:none; vertical-align: middle;" placeholder="Enter text here" ></textarea>
                     <div style="display: flex; gap: 20px; margin-top: 10px; display: none;" id="color-options-wrapper-${section.id}">
-                        <div class="font-style-wrapper" display: none;">
+                        <div class="font-style-wrapper">
                             <label for="font-style-${section.id}" class="font-style-label">Font: <span id="font-style-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
                             <div class="custom-dropdown">
                                 <button type="button" class="custom-dropdown-button" onclick="toggleDropdown('font-style-${section.id}')">
@@ -649,10 +649,15 @@ function generateSections(sectionsConfig) {
                                 </div>
                             </div>
                         </div>
-                        <div style="margin-top:10px; padding-left:11px; display:none">
+                        <div style="display:none">
                             <label for="font-effect-${section.id}" class="font-style-label">Style: <span id="font-effect-required-${section.id}" style="color: red; display: none; padding-left:8px;">*Required</span></label>
                             <div class="custom-dropdown" style="">
-                                <button class="custom-dropdown-button" style="width:202px" onclick="toggleDropdown('font-effect-${section.id}')">Select a font effect</button>
+                                <button class="custom-dropdown-button" onclick="toggleDropdown('font-effect-${section.id}')">
+                                Select a Font Effect
+                                <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                                </button>
                                 <div id="font-effect-${section.id}" class="custom-dropdown-content">
                                 </div>
                             </div>
