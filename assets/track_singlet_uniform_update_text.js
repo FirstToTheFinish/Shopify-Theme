@@ -27,6 +27,10 @@ function updateFontStyle(canvasText, fontStyle) {
 
     switch(fontStyle){
         case 'Benguiat BK':
+        case 'Steel City':
+            canvasText.style.paddingLeft = 10 + 'px';
+            break;
+        
         case 'Cityd Bold':
         case 'Eurostile':
         case 'Evogria':
@@ -35,18 +39,23 @@ function updateFontStyle(canvasText, fontStyle) {
             break;
 
         case 'Evogria Italic':
-        case 'Magnolia Script':
-        case 'SwitzerlandCond Italic':
+                case 'SwitzerlandCond Italic':
         case 'Rock Road':
-            canvasText.style.paddingLeft = 5 + 'px';
+            canvasText.style.paddingLeft = 12.5 + 'px';
             canvasText.style.paddingRight = 10 + 'px';
             break;
 
-
+        case 'Magnolia Script':
         case 'Srabi Script':
+            canvasText.style.paddingLeft = 25 + 'px';
+            canvasText.style.paddingRight = 18 + 'px';
+            canvasText.style.paddingTop = 5 + 'px';
+            canvasText.style.paddingBottom = 10 + 'px';
+            break;
+
         case 'Demonized':
         case 'Keylock Fighter':
-            canvasText.style.paddingLeft = 5 + 'px';
+            canvasText.style.paddingLeft = 10 + 'px';
             canvasText.style.paddingRight = 18 + 'px';
             canvasText.style.paddingTop = 5 + 'px';
             canvasText.style.paddingBottom = 7.5 + 'px';
@@ -106,7 +115,7 @@ function validateTextInput(sectionId) {
     let isValid = true;
 
     if (textInput !== '') {
-        if (fontStyleButton.textContent === 'Select a font style') {
+        if (fontStyleButton.textContent.includes('Select a Font Style')) {
             fontStyleButton.style.borderColor = 'red';
             fontStyleLabel.style.display = 'inline';
             isValid = false;
@@ -119,16 +128,16 @@ function validateTextInput(sectionId) {
 
         
         // Show the controls
-        fontStyleButton.parentElement.parentElement.style.display = 'block';
-        fontEffectButton.parentElement.parentElement.style.display = 'block';
+        fontStyleButton.parentElement.parentElement.parentElement.style.display = 'flex';
+        fontEffectButton.parentElement.parentElement.parentElement.style.display = 'flex';
         fontColorPicker.style.display = 'block';
         outlineColorPicker.style.display = 'block';
         textRotationSlider.parentElement.parentElement.style.display = 'block';
         toggleCenterButtons(true);
     } else {
         // Hide the controls if no text is entered
-        fontStyleButton.parentElement.parentElement.style.display = 'none';
-        fontEffectButton.parentElement.parentElement.style.display = 'none';
+        fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
+        fontEffectButton.parentElement.parentElement.parentElement.style.display = 'none';
         fontColorPicker.style.display = 'none';
         outlineColorPicker.style.display = 'none';
         textRotationSlider.parentElement.parentElement.style.display = 'none';
@@ -171,8 +180,8 @@ document.addEventListener('keydown', (e) => {
             let outlineText = outlineColorPicker.id.replace("selectedColor", "colorText") + ".5";
             document.getElementById(outlineText).textContent = "None";
             
-            fontStyleButton.parentElement.parentElement.style.display = 'none';
-            fontEffectButton.parentElement.parentElement.style.display = 'none';
+            fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
+            fontEffectButton.parentElement.parentElement.parentElement.style.display = 'none';
             textRotationSlider.parentElement.parentElement.style.display = 'none';
             fontColorPicker.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
             outlineColorPicker.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
@@ -218,11 +227,11 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('mouseover', function() {
             const img = this.querySelector('img');
             if (button.id === 'toggleSnapGrid') {
-                img.src = window.shopifyAssetPaths.grid.snapGridWhite;
+                img.src = `${window.shopifyAssetPaths.grid.snapGridWhite}`;
             } else if (button.id === 'horizontalCenter') {
-                img.src = window.shopifyAssetPaths.grid.horizontalCenterWhite;
+                img.src = `${window.shopifyAssetPaths.grid.horizontalCenterWhite}`;
             } else if (button.id === 'verticalCenter') {
-                img.src = window.shopifyAssetPaths.grid.verticalCenterWhite;
+                img.src = `${window.shopifyAssetPaths.grid.verticalCenterWhite}`;
             }
             hoverTimeout = setTimeout(() => showDescription(button), 1000);
         });
@@ -233,14 +242,14 @@ document.addEventListener('DOMContentLoaded', function() {
             hideDescription(button);
             if (button.id === 'toggleSnapGrid') {
                 if (this.classList.contains('active')) {
-                    img.src = window.shopifyAssetPaths.grid.snapGridWhite;
+                    img.src = `${window.shopifyAssetPaths.grid.snapGridWhite}`;
                 } else {
-                    img.src = window.shopifyAssetPaths.grid.snapGrid;
+                    img.src = `${window.shopifyAssetPaths.grid.snapGrid}`;
                 }
             } else if (button.id === 'horizontalCenter') {
-                img.src = window.shopifyAssetPaths.grid.horizontalCenter;
+                img.src = `${window.shopifyAssetPaths.grid.horizontalCenter}`;
             } else if (button.id === 'verticalCenter') {
-                img.src = window.shopifyAssetPaths.grid.verticalCenter;
+                img.src = `${window.shopifyAssetPaths.grid.verticalCenter}`;
             }
         });
     }
@@ -253,9 +262,9 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.toggle('active');
         const img = this.querySelector('img');
         if (this.classList.contains('active')) {
-            img.src = window.shopifyAssetPaths.grid.snapGridWhite;
+            img.src = `${window.shopifyAssetPaths.grid.snapGridWhite}`;
         } else {
-            img.src = window.shopifyAssetPaths.grid.snapGrid;
+            img.src = `${window.shopifyAssetPaths.grid.snapGrid}`;
         }
     });
 
@@ -499,7 +508,13 @@ function adjustTextboxPosition(textElement, overlay, previousWidth, previousHeig
 
 function autoResizeTextarea(textarea) {
     textarea.style.height = 'auto';
-    textarea.style.height = (textarea.scrollHeight) + 'px';
+    if(textarea.scrollHeight != 0){
+        textarea.style.height = (textarea.scrollHeight) + 'px';
+    }
+    else{
+        textarea.style.height = '40px';
+    }
+    
 }
 
 let snapGridEnabled = false;
