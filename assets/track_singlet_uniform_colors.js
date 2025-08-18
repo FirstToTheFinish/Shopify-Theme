@@ -1276,8 +1276,21 @@ function normalizeHex(hex) {
         
         if (/^#([0-9A-F]{6})$/i.test(input.value)) {
             document.getElementById(userColorPreviewId).style.backgroundColor = input.value;
-            document.getElementById(ourColorsId).style.display = 'inline-block';
-            document.getElementById(ourColorsId).scrollIntoView({ behavior: "smooth", block: "start" });
+        
+            const ourColorsEl = document.getElementById(ourColorsId);
+            ourColorsEl.style.display = 'inline-block';
+        
+            // ⬇️ Scroll inside dropdown, not the whole page
+            const scrollContainer = ourColorsEl.closest('.dropdown-menu');
+            if (scrollContainer) {
+              const cRect = scrollContainer.getBoundingClientRect();
+              const tRect = ourColorsEl.getBoundingClientRect();
+              const targetTop = scrollContainer.scrollTop + (tRect.top - cRect.top) - 8;
+              scrollContainer.scrollTo({ top: targetTop, behavior: 'smooth' });
+            } else {
+              ourColorsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        
             displayClosestColors(input.value, indexPrefix);
         } else {
             resetColorPreviewAndMatches(indexPrefix);
