@@ -86,7 +86,7 @@ function generateSections(sectionsConfig) {
                                         <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                     </button>
                                 </div>
-                                <div id="our-colors-1" style="margin-top: 20px; visibility: hidden;">
+                                <div id="our-colors-1" style="margin-top: 20px; display: none;">
                                     <span style="font-weight: bold;">Our Colors:</span>
 
                                     <div class="match-row">
@@ -180,7 +180,7 @@ function generateSections(sectionsConfig) {
                                             <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                         </button>
                                     </div>
-                                    <div id="our-colors-2" style="margin-top: 20px; visibility: hidden;">
+                                    <div id="our-colors-2" style="margin-top: 20px; display: none;">
                                         <span style="font-weight: bold;">Our Colors:</span>
 
                                         <div class="match-row">
@@ -274,7 +274,7 @@ function generateSections(sectionsConfig) {
                                             <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                         </button>
                                     </div>
-                                    <div id="our-colors-3" style="margin-top: 20px; visibility: hidden;">
+                                    <div id="our-colors-3" style="margin-top: 20px; display: none;">
                                         <span style="font-weight: bold;">Our Colors:</span>
 
                                         <div class="match-row">
@@ -374,7 +374,7 @@ function generateSections(sectionsConfig) {
                                         <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                     </button>
                                 </div>
-                                <div id="our-colors-4" style="margin-top: 20px; visibility: hidden;">
+                                <div id="our-colors-4" style="margin-top: 20px; display: none;">
                                     <span style="font-weight: bold;">Our Colors:</span>
 
                                     <div class="match-row">
@@ -468,7 +468,7 @@ function generateSections(sectionsConfig) {
                                         <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                     </button>
                                 </div>
-                                <div id="our-colors-5" style="margin-top: 20px; visibility: hidden;">
+                                <div id="our-colors-5" style="margin-top: 20px; display: none;">
                                     <span style="font-weight: bold;">Our Colors:</span>
 
                                     <div class="match-row">
@@ -562,7 +562,7 @@ function generateSections(sectionsConfig) {
                                         <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                     </button>
                                 </div>
-                                <div id="our-colors-6" style="margin-top: 20px; visibility: hidden;">
+                                <div id="our-colors-6" style="margin-top: 20px; display: none;">
                                     <span style="font-weight: bold;">Our Colors:</span>
 
                                     <div class="match-row">

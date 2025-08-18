@@ -1274,11 +1274,11 @@ function normalizeHex(hex) {
         
         if (/^#([0-9A-F]{6})$/i.test(input.value)) {
             document.getElementById(userColorPreviewId).style.backgroundColor = input.value;
-            document.getElementById(`our-colors-${indexPrefix}`).style.visibility = 'visible';
+            document.getElementById(`our-colors-${indexPrefix}`).style.display = 'inline-block';
             displayClosestColors(input.value, indexPrefix);
         } else {
             resetColorPreviewAndMatches(indexPrefix);
-            document.getElementById(`our-colors-${indexPrefix}`).style.visibility = 'hidden';
+            document.getElementById(`our-colors-${indexPrefix}`).style.display = 'none';
         }
     }
     
