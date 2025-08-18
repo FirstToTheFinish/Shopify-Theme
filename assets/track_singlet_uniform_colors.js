@@ -1276,11 +1276,11 @@ function normalizeHex(hex) {
         
         if (/^#([0-9A-F]{6})$/i.test(input.value)) {
             document.getElementById(userColorPreviewId).style.backgroundColor = input.value;
-            ourColorsId.style.display = 'inline-block';
+            document.getElementById(ourColorsId).style.display = 'inline-block';
             displayClosestColors(input.value, indexPrefix);
         } else {
             resetColorPreviewAndMatches(indexPrefix);
-            ourColorsId.style.display = 'none';
+            document.getElementById(ourColorsId).style.display = 'none';
         }
     }
     
