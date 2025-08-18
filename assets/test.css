@@ -1552,43 +1552,38 @@ h2 {
   width: 300px;
   margin: 20px auto;
   text-align: center;
-  display: grid;
-  grid-template-columns: 40px 1fr 40px; /* left btn, slider, right btn */
-  grid-template-rows: auto auto;       /* row1: controls, row2: labels */
-  column-gap: 10px;
-  align-items: center;
 }
 
-/* Slider track */
 .slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 6px;
+  /* Track height */
   background: #ddd;
   border-radius: 5px;
   outline: none;
-  grid-column: 2;
-  grid-row: 1;
   position: relative;
-  z-index: 2;
 }
 
-/* WebKit thumb */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
+  /* Dot width */
   height: 15px;
+  /* Dot height */
   background: #007bff;
   border: 2px solid #fff;
   border-radius: 50%;
+  /* Make it a circle */
+  position: relative;
   cursor: pointer;
-  margin-top: -5px; /* centers on 6px track */
-  z-index: 3;
+  margin-top: 0px;
+  /* Adjust to center the dot on the track */
+  z-index: 2;
 }
 
-/* Firefox thumb */
 .slider::-moz-range-thumb {
   width: 15px;
   height: 15px;
@@ -1596,7 +1591,7 @@ h2 {
   border: 2px solid #fff;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 3;
+  z-index: 2;
 }
 
 .slider:focus {
@@ -1612,54 +1607,49 @@ h2 {
 }
 
 .labels {
-  grid-column: 2;
-  grid-row: 2;
-  position: relative;
+  position: absolute;
+  top: 25px;
+  /* Position below the slider */
   width: 100%;
-  margin-top: 6px;
   pointer-events: none;
+  /* Labels should not interfere with slider interaction */
 }
+
 .label {
   position: absolute;
   transform: translateX(-50%);
-  font-size: 12px;
+  /* Center the label */
+  font-size: 14px;
   color: #333;
 }
 
-/* Notches */
 .notches {
-  grid-column: 2;
-  grid-row: 1;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px; /* match track height */
+  top: 0px;
+  /* Adjust this based on the slider height */
+  width: 95%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
-  z-index: 1;
+  margin-left: 7px;
 }
+
 .notch {
+  position: absolute;
   width: 2px;
   height: 18px;
   background-color: #000;
-  transform: translateY(-6px); /* extend above/below the track */
+  /* Color of the notches */
+  transform: translateX(-50%);
+  /* Center the notch */
 }
 
 .rotation-btn {
-  grid-row: 1;
-  width: 36px;
-  height: 36px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: none;
+  border: none;
   cursor: pointer;
+  padding: 5px;
 }
-.rotation-btn:hover { background: #f8fafc; }
-.rotation-btn:active svg { transform: scale(1.1); }
 
 .rotation-btn svg {
   transition: transform 0.2s ease-in-out;
