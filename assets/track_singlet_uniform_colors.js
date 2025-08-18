@@ -1277,6 +1277,7 @@ function normalizeHex(hex) {
         if (/^#([0-9A-F]{6})$/i.test(input.value)) {
             document.getElementById(userColorPreviewId).style.backgroundColor = input.value;
             document.getElementById(ourColorsId).style.display = 'inline-block';
+            document.getElementById(ourColorsId).scrollIntoView({ behavior: "smooth", block: "start" });
             displayClosestColors(input.value, indexPrefix);
         } else {
             resetColorPreviewAndMatches(indexPrefix);

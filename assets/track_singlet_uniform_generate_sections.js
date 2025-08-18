@@ -859,7 +859,7 @@ function generateSections(sectionsConfig) {
                                         </div>
                                     </div>
                                 </div>
-                                <span id="colorText8-${section.id}.5" class="color-text" style="margin-left: -15px;">Black</span>
+                                <span id="colorText8-${section.id}.5" class="color-text" style="margin-left: -15px;">None</span>
                             </div>
                         </div>
                     </div>
