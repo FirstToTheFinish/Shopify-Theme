@@ -663,7 +663,7 @@ function generateSections(sectionsConfig) {
                             </div>
                         </div>
                     </div>
-                    <div id="font-color-div-${section.id}" style="padding-left:14px; display:none">
+                    <div id="font-color-div-${section.id}" style="display:none">
                         <div class="dropdown-wrapper">
                             <div class="dropdown-title-wrapper">
                                 <label class="font-style-label" for="font-color-${section.id}">Font Color:</label>
@@ -765,80 +765,101 @@ function generateSections(sectionsConfig) {
                     <div id="outline-color-div-${section.id}" style="display:none">
                         <div class="dropdown-wrapper">
                             <div class="dropdown-title-wrapper">
-                            <label for="outline-color-${section.id}">Outline Color:</label>
-                            <div class="dropdown-container" style="margin-left: 10px;">
-                                <div class="selected-color" id="selectedColor8-${section.id}" onclick="toggleColorDropdown('colorDropdown8-${section.id}', 'selectedColor8-${section.id}')"></div>
-                                <div class="dropdown-menu" id="colorDropdown8-${section.id}">
-                                <h2>Core Colors</h2>
-                                    <div class="color-option" id="#FFFFFF" onclick="selectColor('#FFFFFF', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FFFFFF;"></div>
-                                    <div class="color-option" id="#000000" onclick="selectColor('#000000', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #000000;"></div>
-                                    <div class="color-option" id="#B4AFA5" onclick="selectColor('#B4AFA5', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #B4AFA5;"></div>
-                                    <div class="color-option" id="#7D7873" onclick="selectColor('#7D7873', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #7D7873;"></div>
-                                    <div class="color-option" id="#9B4B00" onclick="selectColor('#9B4B00', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #9B4B00;"></div>
-                                    <div class="color-option" id="#CDA55F" onclick="selectColor('#CDA55F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #CDA55F;"></div>
-                                    <div class="color-option" id="#00233C" onclick="selectColor('#00233C', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #00233C;"></div>
-                                    <div class="color-option" id="#0041AF" onclick="selectColor('#0041AF', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #0041AF;"></div>
-                                    <div class="color-option" id="#009BD7" onclick="selectColor('#009BD7', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #009BD7;"></div>
-                                    <div class="color-option" id="#8CA5DC" onclick="selectColor('#8CA5DC', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #8CA5DC;"></div>
-                                    <div class="color-option" id="#28A523" onclick="selectColor('#28A523', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #28A523;"></div>
-                                    <div class="color-option" id="#00461E" onclick="selectColor('#00461E', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #00461E;"></div>
-                                    <div class="color-option" id="#E6F541" onclick="selectColor('#E6F541', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #E6F541;"></div>
-                                    <div class="color-option" id="#FAE100" onclick="selectColor('#FAE100', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FAE100;"></div>
-                                    <div class="color-option" id="#FABE14" onclick="selectColor('#FABE14', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FABE14;"></div>
-                                    <div class="color-option" id="#FFAF00" onclick="selectColor('#FFAF00', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FFAF00;"></div>
-                                    <div class="color-option" id="#FF5A00" onclick="selectColor('#FF5A00', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FF5A00;"></div>
-                                    <div class="color-option" id="#E6230F" onclick="selectColor('#E6230F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #E6230F;"></div>
-                                    <div class="color-option" id="#500F0F" onclick="selectColor('#500F0F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #500F0F;"></div>
-                                    <div class="color-option" id="#37144B" onclick="selectColor('#37144B', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #37144B;"></div>
-                                    <div class="color-option" id="#F5509B" onclick="selectColor('#F5509B', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #F5509B;"></div>
-                                    <div class="color-option" id="none" onclick="selectColor('transparent', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: transparent;"><div style="font-size: 40px; margin-top: -7px; margin-left: 1px;">X</div></div>
-                                    <h2 style="margin-top: 10px;">Custom Color<span> (<a href="Color Swatch.pdf" target="_blank" style="color: blue">click for more colors</a>)</span></h2>
-                                    <div class="input-container">
-                                        <label for="rowNumber8-${section.id}">Row:</label>
-                                        <input type="number" id="rowNumber8-${section.id}" class="input-field" placeholder="0" min="0" max="34">
-                    
-                                        <label for="columnNumber8">Column:</label>
-                                        <input type="number" id="columnNumber8-${section.id}" class="input-field" placeholder="0" min="0" max="34">
-                    
-                                        <!-- Color display box -->
-                                        <div id="colorDisplayBox8-${section.id}" class="color-display-box" onclick="selectColor(document.getElementById('colorDisplayBox8-${section.id}').style.backgroundColor, 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')"></div>
-                                        <span id="colorText8-${section.id}" class="color-text"></span>
-                                    </div>
-                                    <h2 style="margin-top: 20px;">Trouble Finding Match! Type in color code below and get top 3 closest matches.</h2>
-                                    <div class="input-container">
-                                        <label for="hexInput8-${section.id}">Hex Code:</label>
-                                            <div style="position: relative; display: inline-block;">
-                                                <input type="text" id="hexInput8-${section.id}" class="input-field" style="width: 80px;" placeholder="#FFFFFF" oninput="handleHexInput(this, '8')">
-                                                
+                            <label class="font-style-label" for="outline-color-${section.id}">Outline Color:</label>
+                                <div class="dropdown-container" style="margin-left: 10px;">
+                                    <div class="selected-color" id="selectedColor8-${section.id}" onclick="toggleColorDropdown('colorDropdown8-${section.id}', 'selectedColor8-${section.id}')"></div>
+                                    <div class="dropdown-menu" id="colorDropdown8-${section.id}">
+                                        <div class="dropdown-header">
+                                            <h4>Choose Your Color</h4>
+                                        </div>
+                                        <div class="section-title">
+                                            <span class="badge">1</span>
+                                            <h5>Core Colors</h5>
+                                        </div>
+                                        <div class="color-option-grid">
+                                            <div class="color-option" id="#FFFFFF" onclick="selectColor('#FFFFFF', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FFFFFF;"></div>
+                                            <div class="color-option" id="#000000" onclick="selectColor('#000000', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #000000;"></div>
+                                            <div class="color-option" id="#B4AFA5" onclick="selectColor('#B4AFA5', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #B4AFA5;"></div>
+                                            <div class="color-option" id="#7D7873" onclick="selectColor('#7D7873', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #7D7873;"></div>
+                                            <div class="color-option" id="#9B4B00" onclick="selectColor('#9B4B00', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #9B4B00;"></div>
+                                            <div class="color-option" id="#CDA55F" onclick="selectColor('#CDA55F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #CDA55F;"></div>
+                                            <div class="color-option" id="#00233C" onclick="selectColor('#00233C', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #00233C;"></div>
+                                            <div class="color-option" id="#0041AF" onclick="selectColor('#0041AF', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #0041AF;"></div>
+                                            <div class="color-option" id="#009BD7" onclick="selectColor('#009BD7', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #009BD7;"></div>
+                                            <div class="color-option" id="#8CA5DC" onclick="selectColor('#8CA5DC', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #8CA5DC;"></div>
+                                            <div class="color-option" id="#28A523" onclick="selectColor('#28A523', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #28A523;"></div>
+                                            <div class="color-option" id="#00461E" onclick="selectColor('#00461E', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #00461E;"></div>
+                                            <div class="color-option" id="#E6F541" onclick="selectColor('#E6F541', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #E6F541;"></div>
+                                            <div class="color-option" id="#FAE100" onclick="selectColor('#FAE100', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FAE100;"></div>
+                                            <div class="color-option" id="#FABE14" onclick="selectColor('#FABE14', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FABE14;"></div>
+                                            <div class="color-option" id="#FFAF00" onclick="selectColor('#FFAF00', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FFAF00;"></div>
+                                            <div class="color-option" id="#FF5A00" onclick="selectColor('#FF5A00', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #FF5A00;"></div>
+                                            <div class="color-option" id="#E6230F" onclick="selectColor('#E6230F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #E6230F;"></div>
+                                            <div class="color-option" id="#500F0F" onclick="selectColor('#500F0F', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #500F0F;"></div>
+                                            <div class="color-option" id="#37144B" onclick="selectColor('#37144B', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #37144B;"></div>
+                                            <div class="color-option" id="#F5509B" onclick="selectColor('#F5509B', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: #F5509B;"></div>
+                                            <div class="color-option" id="none" onclick="selectColor('transparent', 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')" style="background-color: transparent;"><div style="font-size: 40px; margin-top: -7px; margin-left: 1px;"></div></div>
+                                        </div>
+                                        <div class="section-title" style="border-top: 1px solid #e5e7eb;">
+                                            <span class="badge" style="margin-top: 5px;">2</span>
+                                            <h5 style="margin-top: 10px;">Custom Color<span> (<a href="https://cdn.shopify.com/s/files/1/0658/2409/6326/files/Color_Swatch.pdf?v=1755179910" class="color-grid-link" target="_blank" style="color: blue">click for more colors</a>)</span> </h5>
+                                        </div>
+
+                                        <div class="input-container">
+                                            <label for="rowNumber8-${section.id}">Row:</label>
+                                            <input type="number" id="rowNumber8-${section.id}" class="input-field" placeholder="0" min="0" max="34">
+                        
+                                            <label for="columnNumber8">Column:</label>
+                                            <input type="number" id="columnNumber8-${section.id}" class="input-field" placeholder="0" min="0" max="34">
+                        
+                                            <!-- Color display box -->
+                                            <div style="display: inline-grid; margin-left: 25px;">
+                                                <div id="colorDisplayBox8-${section.id}" class="color-display-box" onclick="selectColor(document.getElementById('colorDisplayBox8-${section.id}').style.backgroundColor, 'selectedColor8-${section.id}', 'colorDropdown8-${section.id}')"></div>
+                                                <span id="colorText8-${section.id}" class="color-text">#FFFFFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="section-title" style="border-top: 1px solid #e5e7eb;">
+                                            <span class="badge" style="margin-top: 5px;">3</span>
+                                            <h5 style="margin-top: 10px;">Find Your Top 3 Color Matches</h5>
+                                        </div>
+                                        <div class="input-container">
+                                            <div style="margin-top: 10px;">
+                                                <span style="font-weight: bold;">Your Color:</span>
+                                            </div>
+                                            <label for="hexInput8">Hex Code:</label>
+                                            <div style="display: inline-block;">
+                                                <input type="text" id="hexInput8-${section.id}" class="input-field" style="width: 100px;" placeholder="#FFFFFF" oninput="handleHexInput(this, '8')">
+                                                <div id="userColorPreview8-${section.id}" class="color-preview-box"></div>
                                                 <!-- Eyedropper Button with Absolute Positioning -->
-                                                <button onclick="useEyeDropper('8')" title="Use Eyedropper" style="position: absolute; top: 50%; right: -30px; transform: translateY(-50%); border: none; background: none; padding: 0; cursor: pointer;">
+                                                <button onclick="useEyeDropper('8')" title="Use Eyedropper" style="border: none; background: none; padding: 0; cursor: pointer;">
                                                     <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
                                                 </button>
                                             </div>
-                    
-                                        <!-- "YOURS" section -->
-                                        <div style="margin-top: 10px;">
-                                            <span>YOURS:</span>
-                                            <div id="userColorPreview8-${section.id}" class="color-preview-box"></div>
+
+                                            <div class="input-container">
+                                                <div id="our-colors-8-${section.id}" style="margin-top: 20px; display: none;">
+                                                    <span style="font-weight: bold;">Our Colors:</span>
+                
+                                                    <div class="match-row">
+                                                        <div id="colorPreview8.1-${section.id}" class="our-color-preview-box" onclick="useOurColorOption('colorPreview8.1-${section.id}','selectedColor8-${section.id}')"></div>
+                                                        <div id="closestColorInfo8.1-${section.id}" class="our-color-text"></div>
+                                                    </div>
+                
+                                                    <div class="match-row">
+                                                        <div id="colorPreview8.2-${section.id}" class="our-color-preview-box" onclick="useOurColorOption('colorPreview8.2-${section.id}','selectedColor8-${section.id}')"></div>
+                                                        <div id="closestColorInfo8.2-${section.id}" class="our-color-text"></div>
+                                                    </div>
+                
+                                                    <div class="match-row">
+                                                        <div id="colorPreview8.3-${section.id}" class="our-color-preview-box" onclick="useOurColorOption('colorPreview8.3-${section.id}','selectedColor8-${section.id}')"></div>
+                                                        <div id="closestColorInfo8.3-${section.id}" class="our-color-text"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                    
-                                        <!-- "OURS" section for the top 3 closest matches -->
-                                        <div style="margin-top: 20px;">
-                                            <span>OURS:</span>
-                                            <div id="colorPreview8.1-${section.id}" class="color-preview-box"></div>
-                                            <div id="colorPreview8.2-${section.id}" class="color-preview-box"></div>
-                                            <div id="colorPreview8.3-${section.id}" class="color-preview-box"></div>
-                                        </div>
-                    
-                                        <!-- Info for the top 3 closest colors -->
-                                        <div id="closestColorInfo8.1-${section.id}" class="color-text"></div>
-                                        <div id="closestColorInfo8.2-${section.id}" class="color-text"></div>
-                                        <div id="closestColorInfo8.3-${section.id}" class="color-text"></div>
                                     </div>
-                                    </div>
-                                    
                                 </div>
-                                <span id="colorText8-${section.id}.5" class="color-text" style="margin-left: -15px;">None</span>
+                                <span id="colorText8-${section.id}.5" class="color-text" style="margin-left: -15px;">Black</span>
                             </div>
                         </div>
                     </div>

@@ -897,3 +897,43 @@ function updateCharacterCounter(event, maxLength) {
     const remainingChars = maxLength - target.value.length;
     charCountSpan.textContent = `${remainingChars} characters remaining`;
 }
+
+
+                                        <div class="input-container">
+                                            <div style="margin-top: 10px;">
+                                                <span style="font-weight: bold;">Your Color:</span>
+                                            </div>
+                                            <label for="hexInput7">Hex Code:</label>
+                                            <div style="display: inline-block;">
+                                                <input type="text" id="hexInput7-${section.id}" class="input-field" style="width: 100px;" placeholder="#FFFFFF" oninput="handleHexInput(this, '7')">
+                                                <div id="userColorPreview7-${section.id}" class="color-preview-box"></div>
+                                                <!-- Eyedropper Button with Absolute Positioning -->
+                                                <button onclick="useEyeDropper('7')" title="Use Eyedropper" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                                    <img src="${window.shopifyAssetPaths.tools.eyeDropper}" style="width: 24px; height: 24px;">
+                                                </button>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <div id="our-colors-7-${section.id}" style="margin-top: 20px; display: none;">
+                                                    <span style="font-weight: bold;">Our Colors:</span>
+                
+                                                    <div class="match-row">
+                                                        <div id="colorPreview7.1-${section.id}" class="our-color-preview-box" onclick="useOurColorOption('colorPreview7.1-${section.id}','selectedColor7-${section.id}')"></div>
+                                                        <div id="closestColorInfo7.1-${section.id}" class="our-color-text"></div>
+                                                    </div>
+                
+                                                    <div class="match-row">
+                                                        <div id="colorPreview7.2-${section.id}" class="our-color-preview-box" onclick="useOurColorOption('colorPreview7.2-${section.id}','selectedColor7-${section.id}')"></div>
+                                                        <div id="closestColorInfo7.2-${section.id}" class="our-color-text"></div>
+                                                    </div>
+                
+                                                    <div class="match-row">
+                                                        <div id="colorPreview7.3-${section.id}" class="our-color-preview-box" onclick="useOurColorOption('colorPreview7.3-${section.id}','selectedColor7-${section.id}')"></div>
+                                                        <div id="closestColorInfo7.3-${section.id}" class="our-color-text"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span id="colorText7-${section.id}.5" class="color-text" style="margin-left: -15px;">Black</span>
