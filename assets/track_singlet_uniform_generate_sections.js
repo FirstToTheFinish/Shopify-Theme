@@ -715,7 +715,7 @@ function generateSections(sectionsConfig) {
                                             <div style="display: inline-grid; margin-left: 25px;">
                                                 <div id="colorDisplayBox7-${section.id}" class="color-display-box" onclick="selectColor(document.getElementById('colorDisplayBox7-${section.id}').style.backgroundColor, 'selectedColor7-${section.id}', 'colorDropdown7-${section.id}')"></div>
                                                 <span id="colorText7-${section.id}" class="color-text">#FFFFFF</span>
-                                            <div>
+                                            </div>
                                         </div>
                                         <div class="section-title" style="border-top: 1px solid #e5e7eb;">
                                             <span class="badge" style="margin-top: 5px;">3</span>
