@@ -129,7 +129,7 @@ function validateTextInput(sectionId) {
         
         // Show the controls
         fontStyleButton.parentElement.parentElement.parentElement.style.display = 'flex';
-        fontEffectButton.parentElement.parentElement.parentElement.style.display = 'flex';
+        fontEffectButton.parentElement.parentElement.style.display = 'flex';
         fontColorPicker.style.display = 'block';
         outlineColorPicker.style.display = 'block';
         textRotationSlider.parentElement.parentElement.style.display = 'block';
@@ -137,7 +137,7 @@ function validateTextInput(sectionId) {
     } else {
         // Hide the controls if no text is entered
         fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
-        fontEffectButton.parentElement.parentElement.parentElement.style.display = 'none';
+        fontEffectButton.parentElement.parentElement.style.display = 'none';
         fontColorPicker.style.display = 'none';
         outlineColorPicker.style.display = 'none';
         textRotationSlider.parentElement.parentElement.style.display = 'none';
@@ -181,7 +181,7 @@ document.addEventListener('keydown', (e) => {
             document.getElementById(outlineText).textContent = "None";
             
             fontStyleButton.parentElement.parentElement.parentElement.style.display = 'none';
-            fontEffectButton.parentElement.parentElement.parentElement.style.display = 'none';
+            fontEffectButton.parentElement.parentElement.style.display = 'none';
             textRotationSlider.parentElement.parentElement.style.display = 'none';
             fontColorPicker.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
             outlineColorPicker.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
