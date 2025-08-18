@@ -617,7 +617,7 @@ input:focus-visible, button:focus-visible, .custom-dropdown-button:focus-visible
 .modal {
   display: none;
   position: fixed;
-  z-index: 10;
+  z-index: 30;
   left: 0;
   top: 0;
   width: 100%;
