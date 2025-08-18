@@ -120,7 +120,7 @@ function validateTextInput(sectionId) {
             fontStyleLabel.style.display = 'inline';
             isValid = false;
         }
-        if (fontEffectButton.textContent === 'Select a Font Effect') {
+        if (fontEffectButton.textContent.includes('Select a Font Effect')) {
             fontEffectButton.style.borderColor = 'red';
             fontEffectLabel.style.display = 'inline';
             isValid = false;
