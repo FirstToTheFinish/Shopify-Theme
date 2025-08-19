@@ -126,7 +126,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(`${window.shopifyAssetPaths.logos.whiteValance}`, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -168,7 +168,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
 
   let pngRUNLogoImage;
   try {
-    const imagePreviewBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.LegendLogo, 10000).then(res => res.arrayBuffer());
+    const imagePreviewBytes2 = await fetchWithTimeout(`${window.shopifyAssetPaths.logos.LegendLogo}`, 10000).then(res => res.arrayBuffer());
     pngRUNLogoImage = await pdfDoc.embedPng(imagePreviewBytes2);
   } catch (error) {
     console.error('Error embedding preview image:', error);
@@ -663,7 +663,7 @@ async function createPage(pdfDoc, frontSectionData, backSectionData, imageLogoUr
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(`${window.shopifyAssetPaths.logos.whiteValance}`, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -1088,7 +1088,7 @@ async function createContactPage(pdfDoc, imageLogoUrl, contactInformation, dateC
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(`${window.shopifyAssetPaths.logos.whiteValance}`, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -1317,7 +1317,7 @@ async function createSizingPage(pdfDoc, imageLogoUrl, sizingData, dateCreated, d
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(`${window.shopifyAssetPaths.logos.whiteValance}`, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -1646,15 +1646,15 @@ async function createPdf(designData, sectionData, contactInformation, previewURL
 
   loadingMessage.innerText = 'Loading images and fonts...';
   await delay(100); // Small delay to force DOM update
-  await createFrontPage(pdfDoc, 'NOT A FINAL PROOF', window.shopifyAssetPaths.logos.NordLogo3, designData, previewURL, contactInformation, dateCreated, designName);
-  await createPage(pdfDoc, frontSectionData, backSectionData, window.shopifyAssetPaths.logos.NordLogo3);
+  await createFrontPage(pdfDoc, 'NOT A FINAL PROOF', `${window.shopifyAssetPaths.logos.NordLogo3}`, designData, previewURL, contactInformation, dateCreated, designName);
+  await createPage(pdfDoc, frontSectionData, backSectionData, `${window.shopifyAssetPaths.logos.NordLogo3}`);
   for (const side of sides) {
     loadingMessage.innerText = `Processing ${side.title} side...`;
     await delay(100); // Small delay to force DOM update
     await createImagePage(pdfDoc, side.title, side.sectionImages);
   }
-  await createContactPage(pdfDoc, window.shopifyAssetPaths.logos.NordLogo3, contactInformation, dateCreated, designName);
-  await createSizingPage(pdfDoc, window.shopifyAssetPaths.logos.NordLogo3, sizingData, dateCreated, designName);
+  await createContactPage(pdfDoc, `${window.shopifyAssetPaths.logos.NordLogo3}`, contactInformation, dateCreated, designName);
+  await createSizingPage(pdfDoc, `${window.shopifyAssetPaths.logos.NordLogo3}`, sizingData, dateCreated, designName);
  
   loadingMessage.innerText = 'Saving PDF...';
   await delay(100); // Small delay to force DOM update
