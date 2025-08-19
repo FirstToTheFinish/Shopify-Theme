@@ -420,7 +420,6 @@ async function gatherSectionInformation(sectionsConfig) {
     else{
         sizingData = {
             singletSizes: {
-                'xs': parseInt(document.getElementById('xsSingletInput').value, 10) || 0,
                 'small': parseInt(document.getElementById('smallSingletInput').value, 10) || 0,
                 'medium': parseInt(document.getElementById('mediumSingletInput').value, 10) || 0,
                 'large': parseInt(document.getElementById('largeSingletInput').value, 10) || 0,
