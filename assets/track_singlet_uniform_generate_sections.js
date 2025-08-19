@@ -1056,7 +1056,7 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div id="shortDesignNotes" style="min-height:35px; padding-top:15px; display: none;">
                     <h5>
-                        3. Short Notes:
+                        3. Short Design Notes:
                     </h5>
                     <div>
                         <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
@@ -1151,22 +1151,18 @@ function generateSections(sectionsConfig) {
                 <!-- Checkbox to toggle shorts selection -->
                 <div style="min-height:35px; padding-top:5px; padding-left:4px;">
                     <input type="checkbox" id="includeShortsCheckbox">
-                    <label for="includeShortsCheckbox" class="fws_ftaquiB ftcolG2 fs16">
-                        Would you like to include shorts for an additional charge per short? <p style="display: contents;">Charges vary depending on short style</p>.
+                    <label for="includeShortsCheckbox">
+                        Would you like to include shorts for an additional charge per short? <p style="font-size: 10px;">*Charges </p>
                     </label>
                 </div>
-
-                <div id="shortDesignNotes" class="" style="min-height:35px; padding-top:15px; display: none;">
-                        <span class="itemStep inblock valignM">
-                            <span>3</span>
-                        </span>
-                        <span class="fws_ftaquiB ftcolG2 fs16" style="padding-left:2px">
-                            SHORT DESIGN NOTES:
-                        </span>
-                        <div>
-                            <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" style="width:90%; height:100px; margin-top: 10px; border-radius:3px; border: 1px solid #838383; overflow: auto; resize: none;" placeholder="Enter any design information for your shorts. (i.e. short style, color, design) Ex. Match design for loose-fit shorts. All black shorts. etc."></textarea>
-                            <div><span id="char-count-notes">200 characters remaining</span></div>
-                        </div>
+                <div id="shortDesignNotes" style="min-height:35px; padding-top:15px; display: none;">
+                    <h5>
+                        3. Short Design Notes:
+                    </h5>
+                    <div>
+                        <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
+                        <div><span id="char-count-notes">200 characters remaining</span></div>
+                    </div>
                 </div>
 
                 <div class="arrow-container" style="padding-top:20px;">
