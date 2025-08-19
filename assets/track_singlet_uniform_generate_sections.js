@@ -984,199 +984,193 @@ function generateSections(sectionsConfig) {
     sizingTab.innerHTML = '';
     if(itDescript.toUpperCase().includes("TANK")){
         sizingTab.innerHTML = `
-        <div class="preview-container">
-                <div style="min-height:35px; padding-top:5px;">
-                    <span class="itemStep inblock valignM">
-                        <span>1</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs18">Singlet Sizes <p style="display: contents;">(optional)</p></label>
+        <div class="sizing-container">
+            <!-- Section Titles -->
+            <div class="sizing-steps">
+                <div class="step">
+                <span class="itemStep"><span>1</span></span>
+                <label class="fws_ftaquiB ftcolG2 fs18">
+                    Singlet Sizes <span class="optional">(optional)</span>
+                </label>
+                </div>
+                <div class="step">
+                <span class="itemStep"><span>2</span></span>
+                <label class="fws_ftaquiB ftcolG2 fs18">
+                    Short Sizes <span class="optional">(optional)</span>
+                </label>
+                </div>
+            </div>
 
-                    <span class="itemStep inblock valignM" style="padding-left:40px;">
-                        <span>2</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs18">Short Sizes <p style="display: contents;">(optional)</p></label>
+            <!-- Sizing Grid -->
+            <div id="sizingContainer" class="sizing-grid">
+                <div class="sizing-row">
+                <label for="smallSingletInput">Total Small:</label>
+                <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1">
+
+                <label for="smallShortInput" class="short-label">Total Small:</label>
+                <input type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
-                <div id="sizingContainer">
-                    <div style="min-height:35px; padding-top:5px; padding-left:16px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total Small:</label>
-                        <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
+                <div class="sizing-row">
+                <label for="mediumSingletInput">Total Medium:</label>
+                <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1">
 
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:56px;">Total Small:</label>
-                        <input type="number" class="short-input" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px; padding-left:8px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total Medium:</label>
-                        <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:47px;">Total Medium:</label>
-                        <input type="number" class="short-input" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px; padding-left:18px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total Large:</label>
-                        <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:58px;">Total Large:</label>
-                        <input type="number" class="short-input" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px; padding-left:6px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total X-Large:</label>
-                        <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:46px;">Total X-Large:</label>
-                        <input type="number" class="short-input" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total 2X-Large:</label>
-                        <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:40px;">Total 2X-Large:</label>
-                        <input type="number" class="short-input" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total 3X-Large:</label>
-                        <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:40px;">Total 3X-Large:</label>
-                        <input type="number" class="short-input" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
+                <label for="mediumShortInput" class="short-label">Total Medium:</label>
+                <input type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
-                <!-- Checkbox to toggle shorts selection -->
-                <div style="min-height:35px; padding-top:5px; padding-left:4px;">
-                    <input type="checkbox" id="includeShortsCheckbox">
-                    <label for="includeShortsCheckbox">
-                        Would you like to include shorts for an additional charge per short? <p style="font-size: 10px;">*Charges </p>
-                    </label>
-                </div>
-                <div id="shortDesignNotes" style="min-height:35px; padding-top:15px; display: none;">
-                    <h5>
-                        3. Short Design Notes:
-                    </h5>
-                    <div>
-                        <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
-                        <div><span id="char-count-notes">200 characters remaining</span></div>
-                    </div>
+                <div class="sizing-row">
+                <label for="largeSingletInput">Total Large:</label>
+                <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1">
+
+                <label for="largeShortInput" class="short-label">Total Large:</label>
+                <input type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
-                <div class="arrow-container" style="padding-top:20px;">
-                    <button id="prevSizingButton" class="arrow-button2" onclick="prevSection()">
-                        <div class="arrow"></div>
-                        Back
-                    </button>
-                    <button id="nextSizingButton" class="arrow-button" onclick="nextSection()">
-                        Next
-                        <div class="arrow"></div>
-                    </button>
+                <div class="sizing-row">
+                <label for="xlSingletInput">Total X-Large:</label>
+                <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1">
+
+                <label for="xlShortInput" class="short-label">Total X-Large:</label>
+                <input type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
-            
-        </div>
+
+                <div class="sizing-row">
+                <label for="2xlSingletInput">Total 2X-Large:</label>
+                <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1">
+
+                <label for="2xlShortInput" class="short-label">Total 2X-Large:</label>
+                <input type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" class="short-input">
+                </div>
+
+                <div class="sizing-row">
+                <label for="3xlSingletInput">Total 3X-Large:</label>
+                <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1">
+
+                <label for="3xlShortInput" class="short-label">Total 3X-Large:</label>
+                <input type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" class="short-input">
+                </div>
+            </div>
+
+            <!-- Shorts Checkbox -->
+            <div class="shorts-toggle">
+                <input type="checkbox" id="includeShortsCheckbox">
+                <label for="includeShortsCheckbox">
+                Would you like to include shorts in your quote for an additional charge per short? 
+                <p class="note">*Charges may vary depending on style of short.</p>
+                </label>
+            </div>
+
+            <!-- Notes -->
+            <div id="shortDesignNotes" class="notes-container" style="display:none;">
+                <h5>3. Short Design Notes:</h5>
+                <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" placeholder="Enter any notes here..."></textarea>
+                <div><span id="char-count-notes">200 characters remaining</span></div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="arrow-container">
+                <button id="prevSizingButton" class="arrow-button2" onclick="prevSection()">
+                <div class="arrow"></div> Back
+                </button>
+                <button id="nextSizingButton" class="arrow-button" onclick="nextSection()">
+                Next <div class="arrow"></div>
+                </button>
+            </div>
+            </div>
+
         `;
     }
     else{
         sizingTab.innerHTML = `
-        <div class="preview-container">
-                <div style="min-height:35px; padding-top:5px;">
-                    <span class="itemStep inblock valignM">
-                        <span>1</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs18">Singlet Sizes <p style="display: contents;">(optional)</p></label>
+        <div class="sizing-container">
+            <!-- Section Titles -->
+            <div class="sizing-steps">
+                <div class="step">
+                    <h5>1. Singlet Sizing:</h5>
+                </div>
+                <div class="step">
+                    <h5>2. Short Sizing:</h5>
+                </div>
+            </div>
 
-                    <span class="itemStep inblock valignM" style="padding-left:40px;">
-                        <span>2</span>
-                    </span>
-                    <label class="fws_ftaquiB ftcolG2 fs18">Short Sizes <p style="display: contents;">(optional)</p></label>
+            <!-- Sizing Grid -->
+            <div id="sizingContainer" class="sizing-grid">
+                <div class="sizing-row">
+                <label for="smallSingletInput">Total Small:</label>
+                <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1">
+
+                <label for="smallShortInput" class="short-label">Total Small:</label>
+                <input type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
-                <div id="sizingContainer">
-                    <div style="min-height:35px; padding-top:5px; padding-left:4px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total X-Small:</label>
-                        <input type="number" id="xsSingletInput" name="xsSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
+                <div class="sizing-row">
+                <label for="mediumSingletInput">Total Medium:</label>
+                <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1">
 
-                    <div style="min-height:35px; padding-top:5px; padding-left:16px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total Small:</label>
-                        <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:56px;">Total Small:</label>
-                        <input type="number" class="short-input" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px; padding-left:8px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total Medium:</label>
-                        <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:47px;">Total Medium:</label>
-                        <input type="number" class="short-input" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px; padding-left:18px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total Large:</label>
-                        <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:58px;">Total Large:</label>
-                        <input type="number" class="short-input" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px; padding-left:6px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total X-Large:</label>
-                        <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:46px;">Total X-Large:</label>
-                        <input type="number" class="short-input" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total 2X-Large:</label>
-                        <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:40px;">Total 2X-Large:</label>
-                        <input type="number" class="short-input" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
-
-                    <div style="min-height:35px; padding-top:5px;">
-                        <label class="fws_ftaquiB ftcolG2 fs16">Total 3X-Large:</label>
-                        <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-
-                        <label class="fws_ftaquiB ftcolG2 fs16 short-label" style="padding-left:40px;">Total 3X-Large:</label>
-                        <input type="number" class="short-input" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" style="width: 60px; text-align: center;">
-                    </div>
+                <label for="mediumShortInput" class="short-label">Total Medium:</label>
+                <input type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
-                <!-- Checkbox to toggle shorts selection -->
-                <div style="min-height:35px; padding-top:5px; padding-left:4px;">
-                    <input type="checkbox" id="includeShortsCheckbox">
-                    <label for="includeShortsCheckbox">
-                        Would you like to include shorts for an additional charge per short? <p style="font-size: 10px;">*Charges </p>
-                    </label>
-                </div>
-                <div id="shortDesignNotes" style="min-height:35px; padding-top:15px; display: none;">
-                    <h5>
-                        3. Short Design Notes:
-                    </h5>
-                    <div>
-                        <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
-                        <div><span id="char-count-notes">200 characters remaining</span></div>
-                    </div>
+                <div class="sizing-row">
+                <label for="largeSingletInput">Total Large:</label>
+                <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1">
+
+                <label for="largeShortInput" class="short-label">Total Large:</label>
+                <input type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
-                <div class="arrow-container" style="padding-top:20px;">
-                    <button id="prevSizingButton" class="arrow-button2" onclick="prevSection()">
-                        <div class="arrow"></div>
-                        Back
-                    </button>
-                    <button id="nextSizingButton" class="arrow-button" onclick="nextSection()">
-                        Next
-                        <div class="arrow"></div>
-                    </button>
+                <div class="sizing-row">
+                <label for="xlSingletInput">Total X-Large:</label>
+                <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1">
+
+                <label for="xlShortInput" class="short-label">Total X-Large:</label>
+                <input type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
-            
-        </div>
+
+                <div class="sizing-row">
+                <label for="2xlSingletInput">Total 2X-Large:</label>
+                <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1">
+
+                <label for="2xlShortInput" class="short-label">Total 2X-Large:</label>
+                <input type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" class="short-input">
+                </div>
+
+                <div class="sizing-row">
+                <label for="3xlSingletInput">Total 3X-Large:</label>
+                <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1">
+
+                <label for="3xlShortInput" class="short-label">Total 3X-Large:</label>
+                <input type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" class="short-input">
+                </div>
+            </div>
+
+            <!-- Shorts Checkbox -->
+            <div class="shorts-toggle">
+                <input type="checkbox" id="includeShortsCheckbox">
+                <label for="includeShortsCheckbox">
+                Would you like to include shorts in your quote for an additional charge per short? 
+                <p class="note">*Charges may vary depending on style of short.</p>
+                </label>
+            </div>
+
+            <!-- Notes -->
+            <div id="shortDesignNotes" class="notes-container" style="display:none;">
+                <h5>3. Short Design Notes:</h5>
+                <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" placeholder="Enter any notes here..."></textarea>
+                <div><span id="char-count-notes">200 characters remaining</span></div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="arrow-container">
+                <button id="prevSizingButton" class="arrow-button2" onclick="prevSection()">
+                <div class="arrow"></div> Back
+                </button>
+                <button id="nextSizingButton" class="arrow-button" onclick="nextSection()">
+                Next <div class="arrow"></div>
+                </button>
+            </div>
+            </div>
         `;
     }
     document.getElementById("includeShortsCheckbox").addEventListener("change", function() {
