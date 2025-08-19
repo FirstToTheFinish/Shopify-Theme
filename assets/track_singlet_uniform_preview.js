@@ -462,7 +462,7 @@ async function submitForm() {
     let pdfFinished = false;
     if (validateForm()) {
         const { designData, sectionData, contactInformation, previewURL, sizingData } = await gatherSectionInformation(sectionsConfig);
-        document.getElementById('loadingOverlay2').style.display = 'block';
+        document.getElementById('loadingOverlay2').style.display = 'flex';
         document.body.style.cursor = 'progress';
 
         await delay(100);
