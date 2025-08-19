@@ -47,14 +47,24 @@ function addArt(sectionId, sectionTitle) {
 
                 // Display image in the preview area
                 previewElement = `
-                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;">
-                        <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
-                        <button class="remove-art" onclick="removeArt('${imageId}')" style="position: absolute; top: 0px; right: 0px; background: red; color: white; cursor: pointer; border: none; border-radius: 3px; font-size: 14px;">&times;</button>
-                        <select class="image-size-dropdown" onchange="resizeImage('${imageId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
-                            <option value="default">Choose Size</option>
-                            <option value="lr-chest">Right Chest</option>
-                            <option value="chest-full">Full Chest</option>
-                        </select>
+                    <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
+                        <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;">
+                        <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
+                        <div class="custom-dropdown2">
+                            <button type="button" id="selected-image-size-${imageId}" class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
+                                Choose Size
+                                <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        <div class="custom-dropdown-content" id="image-size-${imageId}" style="">
+                                <div onclick="selectImageSizeOption('${imageId}', 'valance-3-4', '3/4 Valance Image')">3/4 Valance Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'valance-full', 'Full Valance Image')">Full Valance Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'peak-partial', 'Partial Peak Image')">Partial Peak Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'peak-full', 'Full Peak Image')">Full Peak Image</div>
+                        <div onclick="selectImageSizeOption('${imageId}', 'wall', 'Wall Image')">Wall Image</div>
+                            </div>
+                        </div>
                     </div>`;
 
                 // Create a container div for the image
@@ -129,13 +139,170 @@ function addArt(sectionId, sectionTitle) {
                 previewElement = `<p>Preview not available for this file type.</p>`;
             }
 
-            artPreview.insertAdjacentHTML('beforeend', previewElement);
+            artPreview.insertAdjacentHTML('afterbegin', previewElement);
+            const artOrderLabel = document.getElementById(`art-order-label-${sectionId}`);
+            if (artOrderLabel && artPreview.children.length > 0) {
+                artOrderLabel.style.display = 'block';
+            }
 
             // Reset the file input value to allow re-uploading the same file
             fileInput.value = '';
         };
         reader.readAsDataURL(file);
     }
+}
+
+function selectImageSizeOption(imageId, value, label) {
+    // Update label
+    document.getElementById(`selected-image-size-${imageId}`).innerHTML = label + `<svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>`;
+  
+    // Close dropdown
+    document.getElementById(`image-size-${imageId}`).classList.remove('show');
+  
+    // Call your original resizing logic
+    resizeImage(imageId, value);
+}
+  
+
+let draggedElement = null;
+let dropIndicator = null;
+
+function syncOverlayOrder(previewContainer) {
+    const overlay = document.getElementById(`${sectionsConfig[currentSection - 1].title.replace(' ', '')}TextOverlay`);
+    if (!overlay) return;
+
+    // Step 1: Cache all overlay art elements by data-id
+    const overlayArtMap = new Map();
+    const existingOverlayArts = Array.from(overlay.querySelectorAll('.editable-art.resizable'));
+    existingOverlayArts.forEach(el => {
+        const id = el.getAttribute('data-id');
+        if (id) overlayArtMap.set(id, el);
+    });
+
+    // Step 2: Remove all from DOM
+    existingOverlayArts.forEach(el => overlay.removeChild(el));
+
+    // Step 3: Determine order based on preview
+    const orderedPreviewIds = Array.from(previewContainer.children)
+        .filter(child => child.id.endsWith('-preview'))
+        .map(child => child.id.replace('-preview', ''));
+
+    // Step 4: Re-add to overlay in reverse to match correct stacking order
+    for (let i = orderedPreviewIds.length - 1; i >= 0; i--) {
+        const id = orderedPreviewIds[i];
+        const overlayEl = overlayArtMap.get(id);
+        if (overlayEl) {
+            overlay.appendChild(overlayEl);
+        }
+    }
+}
+
+function onDragStart(event) {
+    draggedElement = event.currentTarget;
+    draggedElement.classList.add('dragging');
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', '');
+
+    // Clone for ghost image
+    const clone = draggedElement.cloneNode(true);
+    clone.style.position = 'absolute';
+    clone.style.top = '-1000px';
+    clone.style.left = '-1000px';
+    clone.style.width = getComputedStyle(draggedElement).width;
+    document.body.appendChild(clone);
+
+    event.dataTransfer.setDragImage(clone, 0, 0);
+
+    // Remove clone after it's used
+    setTimeout(() => document.body.removeChild(clone), 0);
+}
+
+function onDragOver(event) {
+    event.preventDefault();
+    const target = event.target.closest('.art-container');
+    if (!target || target === draggedElement) return;
+
+    const previewContainer = target.parentElement;
+    const children = Array.from(previewContainer.children);
+    const draggedIndex = children.indexOf(draggedElement);
+    const targetIndex = children.indexOf(target);
+
+    if (draggedIndex < 0 || targetIndex < 0) return;
+
+    // Animate the move
+    animateSwap(draggedElement, target);
+
+    // Reorder DOM
+    if (draggedIndex < targetIndex) {
+        previewContainer.insertBefore(draggedElement, target.nextSibling);
+    } else {
+        previewContainer.insertBefore(draggedElement, target);
+    }
+}
+
+
+function onDrop(event) {
+    event.preventDefault();
+
+    const container = event.currentTarget.parentNode;
+
+    if (dropIndicator && draggedElement) {
+        container.insertBefore(draggedElement, dropIndicator);
+    }
+
+    removeDropIndicator();
+    if (draggedElement) {
+        draggedElement.classList.remove('dragging');
+        draggedElement = null;
+    }
+}
+
+function onDragLeave(event) {
+    removeDropIndicator();
+}
+
+function onDragEnd(event) {
+    if (draggedElement) {
+        draggedElement.classList.remove('dragging');
+        draggedElement = null;
+    }
+}
+
+// Add this helper function for smooth animation
+function animateSwap(fromEl, toEl) {
+    const fromRect = fromEl.getBoundingClientRect();
+    const toRect = toEl.getBoundingClientRect();
+
+    const deltaX = fromRect.left - toRect.left;
+    const deltaY = fromRect.top - toRect.top;
+
+    // Apply transition style
+    toEl.style.transition = 'transform 200ms ease';
+    toEl.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+
+    requestAnimationFrame(() => {
+        toEl.style.transform = 'translate(0, 0)';
+    });
+
+    // Cleanup after transition ends
+    toEl.addEventListener('transitionend', function handleTransitionEnd() {
+        toEl.style.transition = '';
+        toEl.style.transform = '';
+        toEl.removeEventListener('transitionend', handleTransitionEnd);
+    });
+}
+
+function removeDropIndicator() {
+    if (dropIndicator && dropIndicator.parentNode) {
+        dropIndicator.parentNode.removeChild(dropIndicator);
+        dropIndicator = null;
+    }
+
+    const container = event.currentTarget.parentNode;
+    syncOverlayOrder(container); 
+    console.log("reorder complete");
 }
 
 function makeElementResizable(element, container) {
@@ -296,6 +463,11 @@ function removeArt(imageId) {
     if (canvasElement) {
         canvasElement.remove();
     }
+    const artPreview = document.getElementById(`art-preview-${sectionsConfig[currentSection-1].id}`);
+    const artOrderLabel = document.getElementById(`art-order-label-${sectionsConfig[currentSection-1].id}`);
+    if (artOrderLabel && artPreview.children.length == 0 ) {
+        artOrderLabel.style.display = 'none';
+    }
 }
 
 function validateFileInput(event, sectionId) {
@@ -399,16 +571,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 const artPreview = document.getElementById(`art-preview-${sectionId}`);
                 if (artPreview) {
                     const previewElement = `
-                        <div class="art-container resizable" id="${newId}-preview" style="position: relative; display: inline-block; margin: 5px;">
-                            <img src="${newArt.querySelector('img').src}" alt="Art Preview" style="max-width: 115px; height: auto;" onload="this.nextElementSibling.nextElementSibling.style.marginTop = this.offsetHeight + 5 + 'px';">
-                            <button class="remove-art" onclick="removeArt('${newId}')" style="position: absolute; top: 0px; right: 0px; background: red; color: white; cursor: pointer; border: none; border-radius: 3px; font-size: 14px;">&times;</button>
-                            <select class="image-size-dropdown" onchange="resizeImage('${newId}', this.value)" style="width: 100px; font-size: 12px; right: 0px; position: absolute;">
-                                <option value="default">Choose Size</option>
-                                <option value="lr-chest">Right Chest</option>
-                                <option value="chest-full">Full Chest</option>
-                            </select>
+                        <div class="art-container resizable" id="${imageId}-preview" style="position: relative; display: inline-block; margin: 5px;" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)"  ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
+                        <img src="${e.target.result}" alt="Art Preview" style="max-width: 115px; height: auto;">
+                        <button class="remove-art" onclick="removeArt('${imageId}')">&times;</button>
+                        <div class="custom-dropdown2">
+                            <button type="button" id="selected-image-size-${imageId}" class="custom-dropdown-button" onclick="toggleDropdown('image-size-${imageId}')">
+                                Choose Size
+                                <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div class="custom-dropdown-content" id="image-size-${imageId}" style="">
+                                <div onclick="selectImageSizeOption('${imageId}', 'valance-3-4', '3/4 Valance Image')">3/4 Valance Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'valance-full', 'Full Valance Image')">Full Valance Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'peak-partial', 'Partial Peak Image')">Partial Peak Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'peak-full', 'Full Peak Image')">Full Peak Image</div>
+                            <div onclick="selectImageSizeOption('${imageId}', 'wall', 'Wall Image')">Wall Image</div>
+                            </div>
+                        </div>
                         </div>`;
-                    artPreview.insertAdjacentHTML('beforeend', previewElement);
+                    artPreview.insertAdjacentHTML('afterbegin', previewElement);
                 }
     
                 console.log('Art pasted:', newArt); // For debugging purposes

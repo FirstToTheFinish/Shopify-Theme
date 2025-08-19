@@ -910,44 +910,40 @@ function generateSections(sectionsConfig) {
                     </div>
                     </div>
                 </div>                       
-                <div class="" style="min-height:35px; padding-top:7px;">
+                <div style="min-height:35px; padding-top:15px;">
                     <div style="display: flex; align-items: center;">
-                        <span>
-                            <span>3</span>
-                        </span>
-                        <span style="padding-left:6px">
-                            ADD YOUR ART:
-                        </span>
+                        <h5 style="padding-right: 20px;">
+                           4. Add Your Art:
+                        </h5>
                         <!-- Drag and Drop Area -->
-                        <div class="drop-zone" id="drop-zone-${section.id}" 
-                            style="min-height: 50px; padding-right: 50px; margin-left: 10px; border: 2px dashed #aaa; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center;"
-                            ondragover="event.preventDefault();"
-                            ondrop="handleFileDrop(event, '${section.id}', '${section.title}');">
+                        <div class="drop-zone-inline" id="drop-zone-${section.id}"
+                            ondragover="event.preventDefault(); this.classList.add('drag-over');"
+                            ondragleave="this.classList.remove('drag-over');"
+                            ondrop="handleFileDrop(event, '${section.id}', '${section.title}'); this.classList.remove('drag-over');"
+                            onclick="document.getElementById('upload-${section.id}').click();">
 
-                            <!-- Upload Label -->
-                            <label class="add-art-button" for="upload-${section.id}" style="font-size:10px; color:#575757; display: flex; align-items: center;">
-                                <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" style="width: 30px; height: 30px; margin-right: 5px;">
-                                UPLOAD YOUR ART
-                            </label>
+                            <img src="${window.shopifyAssetPaths.tools.uploadIcon}" alt="Upload Icon" class="upload-icon-inline">
 
-                            <!-- Hidden File Input -->
-                            <input type="file" id="upload-${section.id}" class="file-input" 
-                                accept=".jpg,.jpeg,.png,.svg" 
+                            <div class="upload-instructions-inline">
+                            <strong>Drag & Drop</strong> your file here<br>
+                            or <span class="upload-link">click to upload</span>
+                            </div>
+
+                            <input type="file" id="upload-${section.id}" class="file-input"
+                                accept=".jpg,.jpeg,.png,.svg"
                                 onchange="validateFileInput(event, '${section.id}'); addArt('${section.id}', '${section.title}');"
                                 style="display: none;">
                         </div>
                     </div>
                 </div>
-                <div id="art-preview-${section.id}" class="art-preview" style="padding-top: 8px; padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
-                <div class="" style="min-height:35px;">
-                    <span>
-                        <span>4</span>
-                    </span>
-                    <span style="padding-left:2px">
-                        NOTES:
-                    </span>
+                <label id="art-order-label-${section.id}" class="font-style-label" style="display: none">Art Order: </label>
+                <div id="art-preview-${section.id}" class="art-preview" style="padding-bottom: 25px; display: flex; flex-wrap: wrap;"></div>
+                <div style="min-height:35px;">
+                    <h5>
+                        4. Notes to Artist:
+                    </h5>
                     <div>
-                        <textarea id="notes-${section.id}" maxlength="200" class="notes-textarea placeholder-grey" style="width:75%; height:100px; margin-top: 10px; border-radius:3px; border: 1px solid #838383; overflow: auto; resize: none;" placeholder="Enter any notes about this section"></textarea>
+                        <textarea id="notes-${section.id}" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
                         <div><span id="char-count-${section.id}">200 characters remaining</span></div>
                     </div>
                 </div>
