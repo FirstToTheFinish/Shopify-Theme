@@ -1892,3 +1892,51 @@ if (window.OverlayScrollbarsGlobal) {
   initMobileScrollbars();
   document.addEventListener('shopify:section:load', initMobileScrollbars);
 }
+
+(function () {
+  const DESKTOP_ONLY_PATHS = [
+    '/pages/track-xc-singlet-builder',
+    '/pages/tent-builder'
+  ];
+  const BREAKPOINT = 1024; // px
+
+  const isTargetPage = DESKTOP_ONLY_PATHS.some(p =>
+    location.pathname.toLowerCase().startsWith(p)
+  );
+  if (!isTargetPage) return;
+
+  function blockMobileIfNeeded() {
+    if (window.innerWidth <= BREAKPOINT) {
+      // Hide Shopify main content (prevents builder from running)
+      const main = document.querySelector('main#MainContent') || document.body;
+      if (main) main.style.display = 'none';
+
+      // Show desktop-only message
+      if (!document.getElementById('mobile-only-message')) {
+        const msg = document.createElement('div');
+        msg.id = 'mobile-only-message';
+        msg.innerHTML = `
+          <div class="mobile-message__inner">
+            <h2>This page is only available on desktop</h2>
+            <p>Please visit us on a computer to use this builder.</p>
+            <a class="mobile-message__btn" href="/">Back to home</a>
+          </div>
+        `;
+        document.body.prepend(msg);
+      }
+    } else {
+      // Desktop view → restore content
+      const main = document.querySelector('main#MainContent') || document.body;
+      if (main) main.style.display = '';
+      const msg = document.getElementById('mobile-only-message');
+      if (msg) msg.remove();
+    }
+  }
+
+  blockMobileIfNeeded();
+  let t;
+  window.addEventListener('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(blockMobileIfNeeded, 150);
+  });
+})();

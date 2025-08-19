@@ -5560,3 +5560,41 @@ body > .os-scrollbar {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 }
+
+#mobile-only-message {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0,0,0,.04);
+  z-index: 9999;
+}
+
+.mobile-message__inner {
+  max-width: 520px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.mobile-message__inner h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.mobile-message__inner p {
+  margin: 0 0 16px;
+}
+
+.mobile-message__btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #111;
+  color: #fff;
+}
