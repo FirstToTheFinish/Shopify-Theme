@@ -796,7 +796,7 @@ function applyReverseVerticalArchEffect(div) {
     const font = div.style.fontFamily;
     let letterSpacing = fontSize / 4;
     const textColor = div.style.color || "black"; // Get the div's text color
-    let widthPadding = Math.max((parseFloat(div.style.paddingLeft) + parseFloat(div.style.paddingRight)) || 15, 15);
+    let widthPadding = Math.max((parseFloat(div.style.paddingLeft) + parseFloat(div.style.paddingRight)) || 25, 25);
     if(fontSize > 70){
         widthPadding = 30;
     }
