@@ -126,7 +126,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout('imgs/Tent Images/fttf white logo for valnce TENT.svg', 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -663,7 +663,7 @@ async function createPage(pdfDoc, frontSectionData, backSectionData, imageLogoUr
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout('imgs/Tent Images/fttf white logo for valnce TENT.svg', 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -1088,7 +1088,7 @@ async function createContactPage(pdfDoc, imageLogoUrl, contactInformation, dateC
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout('imgs/Tent Images/fttf white logo for valnce TENT.svg', 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
@@ -1317,7 +1317,7 @@ async function createSizingPage(pdfDoc, imageLogoUrl, sizingData, dateCreated, d
   // Load and embed the logo image
   let pngFTTFLogoImage;
   try {
-    const svgImageBytes2 = await fetchWithTimeout('imgs/Tent Images/fttf white logo for valnce TENT.svg', 10000).then(res => res.text());
+    const svgImageBytes2 = await fetchWithTimeout(window.shopifyAssetPaths.logos.whiteValance, 10000).then(res => res.text());
 
     // Convert the SVG to a PNG
     const pngDataUrl2 = await convertSvgToPng(svgImageBytes2);
