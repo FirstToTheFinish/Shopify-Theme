@@ -1049,15 +1049,14 @@ function generateSections(sectionsConfig) {
             <div class="shorts-toggle">
                 <input type="checkbox" id="includeShortsCheckbox">
                 <label for="includeShortsCheckbox">
-                Would you like to include shorts in your quote? 
-                <p class="note">*Additional charges may vary depending on style of short.</p>
+                Would you like to include shorts in your quote for an additional charge per short? 
+                <p class="note">*Charges may vary depending on style of short.</p>
                 </label>
                 <div class="settings-group" style="display: none; margin-top: 10px;" id="short-setting">
-                    <label class="font-style-label" >Price Per:</label>
                     <label class="font-style-label" >Short Style:</label>
                     <div class="button-radio-group" id="short-style-options">
                         <label class="square-radio">
-                            <input type="radio" name="short-style" value="loosefit" checked>
+                            <input type="radio" name="short-style" value="loosefit">
                             <span id="price-loosefit">Loosefit</span>
                         </label>
                         <label class="square-radio">
