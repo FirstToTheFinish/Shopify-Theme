@@ -1103,14 +1103,17 @@ function generateSections(sectionsConfig) {
         });
 
         shortLabels.forEach(label => {
+            label.style.paddingLeft = '10px';
             label.style.opacity = isChecked ? "1" : "0.5";
         });
         
         if(isChecked){
             document.getElementById("shortDesignNotes").style.display = "block";
+            document.getElementById("short-setting").style.display = "block";
         }
         else{
             document.getElementById("shortDesignNotes").style.display = "none";
+            document.getElementById("short-setting").style.display = "none";
         }
     });
 
