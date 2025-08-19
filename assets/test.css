@@ -2118,3 +2118,26 @@ h2 {
   border: 1px solid #e5e7eb;
   border-radius: 5px;
 }
+
+.shorts-toggle {
+  margin-top: 20px;
+}
+
+.shorts-toggle .note {
+  font-size: 10px;
+  margin: 2px 0 0;
+  color: #555;
+}
+
+.notes-container {
+  margin-top: 20px;
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #838383;
+  resize: none;
+  font-size: 16px;
+  padding: 8px;
+}
