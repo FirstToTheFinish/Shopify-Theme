@@ -982,101 +982,7 @@ function generateSections(sectionsConfig) {
 
     const sizingTab = document.getElementById('sizing');
     sizingTab.innerHTML = '';
-    if(itDescript.toUpperCase().includes("TANK")){
-        sizingTab.innerHTML = `
-        <div class="sizing-container">
-            <!-- Section Titles -->
-            <div class="sizing-steps">
-                <div class="step">
-                    <h5>1. Singlet Sizing:</h5>
-                </div>
-                <div class="step">
-                    <h5>2. Short Sizing:</h5>
-                </div>
-            </div>
-
-            <!-- Sizing Grid -->
-            <div id="sizingContainer" class="sizing-grid">
-                <div class="sizing-row">
-                <label class="font-style-label" for="smallSingletInput">Total Small:</label>
-                <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1">
-
-                <label class="font-style-label short-label" for="smallShortInput">Total Small:</label>
-                <input type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" class="short-input">
-                </div>
-
-                <div class="sizing-row">
-                <label class="font-style-label" for="mediumSingletInput">Total Medium:</label>
-                <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1">
-
-                <label class="font-style-label short-label" for="mediumShortInput">Total Medium:</label>
-                <input type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" class="short-input">
-                </div>
-
-                <div class="sizing-row">
-                <label class="font-style-label" for="largeSingletInput">Total Large:</label>
-                <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1">
-
-                <label class="font-style-label short-label" for="largeShortInput" >Total Large:</label>
-                <input type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" class="short-input">
-                </div>
-
-                <div class="sizing-row">
-                <label class="font-style-label" for="xlSingletInput">Total X-Large:</label>
-                <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1">
-
-                <label class="font-style-label short-label" for="xlShortInput">Total X-Large:</label>
-                <input type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" class="short-input">
-                </div>
-
-                <div class="sizing-row">
-                <label class="font-style-label" for="2xlSingletInput">Total 2X-Large:</label>
-                <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1">
-
-                <label class="font-style-label short-label" for="2xlShortInput" >Total 2X-Large:</label>
-                <input type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" class="short-input">
-                </div>
-
-                <div class="sizing-row">
-                <label class="font-style-label" for="3xlSingletInput">Total 3X-Large:</label>
-                <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1">
-
-                <label class="font-style-label short-label" for="3xlShortInput">Total 3X-Large:</label>
-                <input type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" class="short-input">
-                </div>
-            </div>
-
-            <!-- Shorts Checkbox -->
-            <div class="shorts-toggle">
-                <input type="checkbox" id="includeShortsCheckbox">
-                <label for="includeShortsCheckbox">
-                Would you like to include shorts in your quote for an additional charge per short? 
-                <p class="note">*Charges may vary depending on style of short.</p>
-                </label>
-            </div>
-
-            <!-- Notes -->
-            <div id="shortDesignNotes" class="notes-container" style="display:none;">
-                <h5>3. Short Design Notes:</h5>
-                <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" placeholder="Enter any notes here..."></textarea>
-                <div><span id="char-count-notes">200 characters remaining</span></div>
-            </div>
-
-            <!-- Navigation Arrows -->
-            <div class="arrow-container">
-                <button id="prevSizingButton" class="arrow-button2" onclick="prevSection()">
-                <div class="arrow"></div> Back
-                </button>
-                <button id="nextSizingButton" class="arrow-button" onclick="nextSection()">
-                Next <div class="arrow"></div>
-                </button>
-            </div>
-        </div>
-
-        `;
-    }
-    else{
-        sizingTab.innerHTML = `
+     sizingTab.innerHTML = `
         <div class="sizing-container">
             <!-- Section Titles -->
             <div class="sizing-steps">
@@ -1095,7 +1001,7 @@ function generateSections(sectionsConfig) {
                 <input class="input-field" type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1">
 
                 <label class="font-style-label short-label" for="smallShortInput">Total Small:</label>
-                <input class="input-field" type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" class="short-input">
+                <input class="input-field short-input" type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1">
                 </div>
 
                 <div class="sizing-row">
@@ -1103,7 +1009,7 @@ function generateSections(sectionsConfig) {
                 <input class="input-field" type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1">
 
                 <label class="font-style-label short-label" for="mediumShortInput">Total Medium:</label>
-                <input class="input-field" type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" class="short-input">
+                <input class="input-field short-input" type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1">
                 </div>
 
                 <div class="sizing-row">
@@ -1111,7 +1017,7 @@ function generateSections(sectionsConfig) {
                 <input class="input-field" type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1">
 
                 <label class="font-style-label short-label" for="largeShortInput" >Total Large:</label>
-                <input class="input-field" type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" class="short-input">
+                <input class="input-field short-input" type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1">
                 </div>
 
                 <div class="sizing-row">
@@ -1119,7 +1025,7 @@ function generateSections(sectionsConfig) {
                 <input class="input-field" type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1">
 
                 <label class="font-style-label short-label" for="xlShortInput">Total X-Large:</label>
-                <input class="input-field" type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" class="short-input">
+                <input class="input-field short-input" type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1">
                 </div>
 
                 <div class="sizing-row">
@@ -1127,7 +1033,7 @@ function generateSections(sectionsConfig) {
                 <input class="input-field" type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1">
 
                 <label class="font-style-label short-label" for="2xlShortInput" >Total 2X-Large:</label>
-                <input class="input-field" type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" class="short-input">
+                <input class="input-field short-input" type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1">
                 </div>
 
                 <div class="sizing-row">
@@ -1135,7 +1041,7 @@ function generateSections(sectionsConfig) {
                 <input class="input-field" type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1">
 
                 <label class="font-style-label short-label" for="3xlShortInput">Total 3X-Large:</label>
-                <input class="input-field" type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" class="short-input">
+                <input class="input-field short-input" type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" >
                 </div>
             </div>
 
@@ -1143,22 +1049,23 @@ function generateSections(sectionsConfig) {
             <div class="shorts-toggle">
                 <input type="checkbox" id="includeShortsCheckbox">
                 <label for="includeShortsCheckbox">
-                Would you like to include shorts in your quote for an additional charge per short? 
-                <p class="note">*Charges may vary depending on style of short.</p>
+                Would you like to include shorts in your quote? 
+                <p class="note">*Additional charges may vary depending on style of short.</p>
                 </label>
                 <div class="settings-group" style="display: none; margin-top: 10px;" id="short-setting">
+                    <label class="font-style-label" id="short-pricing" >Price Per: $34.99</label>
                     <label class="font-style-label" >Short Style:</label>
                     <div class="button-radio-group" id="short-style-options">
                         <label class="square-radio">
-                            <input type="radio" name="short-style" value="loosefit">
+                            <input type="radio" name="short-style" value="Loosefit" checked onchange="updateShortPricing()">
                             <span id="price-loosefit">Loosefit</span>
                         </label>
                         <label class="square-radio">
-                            <input type="radio" name="short-style" value="compression">
+                            <input type="radio" name="short-style" value="Compression" onchange="updateShortPricing()">
                             <span id="price-compression">Compression</span>
                         </label>
                         <label class="square-radio">
-                                <input type="radio" name="short-style" value="split">
+                                <input type="radio" name="short-style" value="Split" onchange="updateShortPricing()">
                                 <span id="price-split">Split Short</span>
                         </label>
                     </div>
@@ -1183,7 +1090,6 @@ function generateSections(sectionsConfig) {
             </div>
         </div>
         `;
-    }
     document.getElementById("includeShortsCheckbox").addEventListener("change", function() {
         let isChecked = this.checked;
         let shortInputs = document.querySelectorAll("#sizingContainer input");

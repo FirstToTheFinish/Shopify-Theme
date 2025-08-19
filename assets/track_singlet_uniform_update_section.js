@@ -729,3 +729,37 @@ function populateEffectDropdown(){
         }
     }
 }
+
+function updateShortPricing() {
+    const selectedStyle = document.querySelector('input[name="short-style"]:checked').value;
+  
+    const basePrice = shortPrices[selectedStyle];
+  
+    for (const style in shortPrices) {
+        const label = document.getElementById(`price-${style}`);
+        if (!label) continue;
+      
+        const labelText = `${style}`; // e.g., 10x10 => 10'x10'
+        if (style === selectedStyle) {
+          label.textContent = `${labelText}`;
+        } else {
+          const diff = shortPrices[style] - shortPrices[selectedStyle];
+          label.textContent = `${labelText} ${formatPriceDiff(diff)}`;
+        }
+    }
+  
+    // Update Total
+    document.getElementById('short-pricing').textContent = `Price Per: $${total.toFixed(2)}`;
+  }
+  
+  function formatPriceDiff(diff) {
+    if (diff === 0) return '';
+    const sign = diff > 0 ? '+' : '–';
+    return `(${sign}$${Math.abs(diff).toFixed(2)})`;
+  }
+
+  const shortPrices = {
+    "Loosefit": 34.99,
+    "Compression": 34.99,
+    "Split": 37.99
+  };
