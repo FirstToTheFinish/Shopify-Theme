@@ -1,1 +1,32 @@
-{"sections":{"main":{"type":"tent_builder","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "tent_builder",
+      "settings": {}
+    },
+    "custom_liquid_arTGrK": {
+      "type": "custom-liquid",
+      "name": "Custom HTML/Liquid",
+      "settings": {
+        "custom_liquid": "Add HTML or Liquid code to create advanced customizations.",
+        "section_height": "default",
+        "full_width": false,
+        "dividers": "none",
+        "prevent_animation": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_arTGrK"
+  ]
+}
