@@ -1056,7 +1056,7 @@ function generateSections(sectionsConfig) {
                 </div>
                 <div id="shortDesignNotes" style="min-height:35px; padding-top:15px; display: none;">
                     <h5>
-                        3. Short Design Notes:
+                        3. Short Notes:
                     </h5>
                     <div>
                         <textarea id="shortDesign-notes" maxlength="200" class="notes-textarea placeholder-grey" style="width:100%; height:auto; border: 1px solid #838383; overflow: auto; resize: none; font-size: 18px;" placeholder="Enter any notes here..."></textarea>
