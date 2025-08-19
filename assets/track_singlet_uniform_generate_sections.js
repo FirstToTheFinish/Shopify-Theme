@@ -1001,7 +1001,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="smallSingletInput">Total Small:</label>
                 <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="smallShortInput" class="short-label">Total Small:</label>
+                <label class="font-style-label short-label" for="smallShortInput">Total Small:</label>
                 <input type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1009,7 +1009,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="mediumSingletInput">Total Medium:</label>
                 <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="mediumShortInput" class="short-label">Total Medium:</label>
+                <label class="font-style-label short-label" for="mediumShortInput">Total Medium:</label>
                 <input type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1017,7 +1017,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="largeSingletInput">Total Large:</label>
                 <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="largeShortInput" class="short-label">Total Large:</label>
+                <label class="font-style-label short-label" for="largeShortInput" >Total Large:</label>
                 <input type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1025,7 +1025,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="xlSingletInput">Total X-Large:</label>
                 <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="xlShortInput" class="short-label">Total X-Large:</label>
+                <label class="font-style-label short-label" for="xlShortInput">Total X-Large:</label>
                 <input type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1033,7 +1033,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="2xlSingletInput">Total 2X-Large:</label>
                 <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="2xlShortInput" class="short-label">Total 2X-Large:</label>
+                <label class="font-style-label short-label" for="2xlShortInput" >Total 2X-Large:</label>
                 <input type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1041,7 +1041,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="3xlSingletInput">Total 3X-Large:</label>
                 <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="3xlShortInput" class="short-label">Total 3X-Large:</label>
+                <label class="font-style-label short-label" for="3xlShortInput">Total 3X-Large:</label>
                 <input type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
             </div>
@@ -1094,7 +1094,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="smallSingletInput">Total Small:</label>
                 <input type="number" id="smallSingletInput" name="smallSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="smallShortInput" class="short-label">Total Small:</label>
+                <label class="font-style-label short-label" for="smallShortInput">Total Small:</label>
                 <input type="number" id="smallShortInput" name="smallShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1102,7 +1102,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="mediumSingletInput">Total Medium:</label>
                 <input type="number" id="mediumSingletInput" name="mediumSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="mediumShortInput" class="short-label">Total Medium:</label>
+                <label class="font-style-label short-label" for="mediumShortInput">Total Medium:</label>
                 <input type="number" id="mediumShortInput" name="mediumShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1110,7 +1110,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="largeSingletInput">Total Large:</label>
                 <input type="number" id="largeSingletInput" name="largeSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="largeShortInput" class="short-label">Total Large:</label>
+                <label class="font-style-label short-label" for="largeShortInput" >Total Large:</label>
                 <input type="number" id="largeShortInput" name="largeShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1118,7 +1118,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="xlSingletInput">Total X-Large:</label>
                 <input type="number" id="xlSingletInput" name="xlSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="xlShortInput" class="short-label">Total X-Large:</label>
+                <label class="font-style-label short-label" for="xlShortInput">Total X-Large:</label>
                 <input type="number" id="xlShortInput" name="xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1126,7 +1126,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="2xlSingletInput">Total 2X-Large:</label>
                 <input type="number" id="2xlSingletInput" name="2xlSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="2xlShortInput" class="short-label">Total 2X-Large:</label>
+                <label class="font-style-label short-label" for="2xlShortInput" >Total 2X-Large:</label>
                 <input type="number" id="2xlShortInput" name="2xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
 
@@ -1134,7 +1134,7 @@ function generateSections(sectionsConfig) {
                 <label class="font-style-label" for="3xlSingletInput">Total 3X-Large:</label>
                 <input type="number" id="3xlSingletInput" name="3xlSingletInput" value="0" min="0" step="1">
 
-                <label class="font-style-label" for="3xlShortInput" class="short-label">Total 3X-Large:</label>
+                <label class="font-style-label short-label" for="3xlShortInput">Total 3X-Large:</label>
                 <input type="number" id="3xlShortInput" name="3xlShortInput" value="0" min="0" step="1" class="short-input">
                 </div>
             </div>
