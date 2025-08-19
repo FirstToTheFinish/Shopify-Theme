@@ -863,7 +863,7 @@ function generateSections(sectionsConfig) {
                             </div>
                         </div>
                     </div>
-                    <div style="display: none;">
+                    <div style="padding-top: 10px; display: none;">
                         <label for="rotationSlider-${section.id}" class="font-style-label">
                         Text Rotation: <span style="font-weight: 100;" id="sliderValue-${section.id}">0°</span>
                         </label>

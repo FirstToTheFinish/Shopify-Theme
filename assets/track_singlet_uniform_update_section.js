@@ -721,10 +721,10 @@ function populateEffectDropdown(){
         }
         else{
             fontEffectDropdown.innerHTML = `<div onclick="selectDropdownOption('font-effect-${section.id}', 'Straight', '${section.id}')">
-            <img src="${window.shopifyAssetPaths.straightText}" alt="Straight Effect" style="object-fit: contain; width: 150px; height: auto;" />
+            <img src="${window.shopifyAssetPaths.tools.straightText}" alt="Straight Effect" style="object-fit: contain; width: 150px; height: auto;" />
         </div>
         <div onclick="selectDropdownOption('font-effect-${section.id}', 'Stacked', '${section.id}')">
-            <img src="${window.shopifyAssetPaths.verticalText}" style="object-fit: contain; width: 150px; height: auto;" />
+            <img src="${window.shopifyAssetPaths.tools.verticalText}" style="object-fit: contain; width: 150px; height: auto;" />
         </div>`
         }
     }
