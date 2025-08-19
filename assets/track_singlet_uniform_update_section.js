@@ -733,8 +733,6 @@ function populateEffectDropdown(){
 function updateShortPricing() {
     const selectedStyle = document.querySelector('input[name="short-style"]:checked').value;
   
-    const basePrice = shortPrices[selectedStyle];
-  
     for (const style in shortPrices) {
         const label = document.getElementById(`price-${style}`);
         if (!label) continue;
@@ -749,7 +747,7 @@ function updateShortPricing() {
     }
   
     // Update Total
-    document.getElementById('short-pricing').textContent = `Price Per: $${total.toFixed(2)}`;
+    document.getElementById('short-pricing').textContent = `Price Per: $${shortPrices[selectedStyle].toFixed(2)}`;
   }
   
   function formatPriceDiff(diff) {
