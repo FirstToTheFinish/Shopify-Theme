@@ -881,7 +881,7 @@ function generateSections(sectionsConfig) {
                     
                         <!-- slider -->
                         <input type="range" min="-90" max="90" value="0" step="1"
-                            class="slider" id="rotationSlider-${section.id}" />
+                            class="rotation-slider" id="rotationSlider-${section.id}" />
                     
                         <!-- right button -->
                         <button id="rotateRightBtn-${section.id}" class="rotation-btn rotate-right" title="Rotate right">
