@@ -988,16 +988,10 @@ function generateSections(sectionsConfig) {
             <!-- Section Titles -->
             <div class="sizing-steps">
                 <div class="step">
-                <span class="itemStep"><span>1</span></span>
-                <label class="fws_ftaquiB ftcolG2 fs18">
-                    Singlet Sizes <span class="optional">(optional)</span>
-                </label>
+                    <h5>1. Singlet Sizing:</h5>
                 </div>
                 <div class="step">
-                <span class="itemStep"><span>2</span></span>
-                <label class="fws_ftaquiB ftcolG2 fs18">
-                    Short Sizes <span class="optional">(optional)</span>
-                </label>
+                    <h5>2. Short Sizing:</h5>
                 </div>
             </div>
 
