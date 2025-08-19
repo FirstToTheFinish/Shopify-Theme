@@ -475,8 +475,8 @@ const salesRep = document.getElementById('salesRep');
     const city = document.getElementById('city');
         city.addEventListener('input', () => cleanInput(city, blockedCharsRegex));
 
-    const tentName = document.getElementById('Tent-Name');
-    tentName.addEventListener('input', () => cleanInput(tentName, blockedCharsRegex));
+    const designName = document.getElementById('design-Name');
+    designName.addEventListener('input', () => cleanInput(designName, blockedCharsRegex));
 
     // Add event listener to form submission
     const contactForm = document.getElementById('contactForm');
