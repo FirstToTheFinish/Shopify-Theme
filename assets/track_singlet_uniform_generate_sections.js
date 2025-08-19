@@ -866,8 +866,8 @@ function generateSections(sectionsConfig) {
                     <br>
                     </div>
                 </div>
-                <div style="padding-top: 10px; display: none;">
-                    <label for="rotationSlider-${section.id}" style="padding-left:10px;">
+                <div style="display: none;">
+                    <label for="rotationSlider-${section.id}" class="font-style-label">
                     Text Rotation: <span id="sliderValue-${section.id}">0°</span>
                     </label>
                 
@@ -894,9 +894,9 @@ function generateSections(sectionsConfig) {
                         <div class="track" id="rotationTrack">
                         <div class="notches" id="notches">
                             <span class="notch" style="left:0%;"></span>
-                            <span class="notch" style="left:25%;"></span>
+                            <span class="notch" style="left:26%;"></span>
                             <span class="notch" style="left:50%;"></span>
-                            <span class="notch" style="left:75%;"></span>
+                            <span class="notch" style="left:74%;"></span>
                             <span class="notch" style="left:100%;"></span>
                         </div>
                         </div>
@@ -904,10 +904,10 @@ function generateSections(sectionsConfig) {
                         <!-- degree labels -->
                         <div class="labels">
                         <span class="label">90&deg;</span>
-                        <span class="label">45&deg;</span>
-                        <span class="label">0&deg;</span>
-                        <span class="label">45&deg;</span>
-                        <span class="label">90&deg;</span>
+                        <span class="label" style="margin-left: 7px;">45&deg;</span>
+                        <span class="label" style="margin-left: 16px;">0&deg;</span>
+                        <span class="label" style="margin-left: 17px;">45&deg;</span>
+                        <span class="label" style="margin-left: 22px;">90&deg;</span>
                         </div>
                     </div>              
                 </div>                       

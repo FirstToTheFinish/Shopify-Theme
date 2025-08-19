@@ -1625,6 +1625,7 @@ h2 {
   border-radius: 999px;
   position: relative;
   z-index: 1;
+  margin-left: 3px;
 }
 
 /* Notches: place with inline left:% if you want, but container fills rail */
@@ -1649,12 +1650,12 @@ h2 {
   color: #6b7280;
   font-size: 12px;
   pointer-events: none;
+  width: 110%;
 }
 .labels .label{
   /* override any inline absolute/left from old markup */
   position: static !important;
   transform: none !important;
-  text-align: center;
 }
 
 .tab-container {
