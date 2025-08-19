@@ -57,12 +57,9 @@ function addArt(sectionId, sectionTitle) {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                 </svg>
                             </button>
-                        <div class="custom-dropdown-content" id="image-size-${imageId}" style="">
-                                <div onclick="selectImageSizeOption('${imageId}', 'valance-3-4', '3/4 Valance Image')">3/4 Valance Image</div>
-                                <div onclick="selectImageSizeOption('${imageId}', 'valance-full', 'Full Valance Image')">Full Valance Image</div>
-                                <div onclick="selectImageSizeOption('${imageId}', 'peak-partial', 'Partial Peak Image')">Partial Peak Image</div>
-                                <div onclick="selectImageSizeOption('${imageId}', 'peak-full', 'Full Peak Image')">Full Peak Image</div>
-                        <div onclick="selectImageSizeOption('${imageId}', 'wall', 'Wall Image')">Wall Image</div>
+                            <div class="custom-dropdown-content" id="image-size-${imageId}" style="">
+                                <div onclick="selectImageSizeOption('${imageId}', 'chest-full', 'Full Chest')">Full Chest Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'lr-chest', 'Right Chest')">Right Chest Image</div>
                             </div>
                         </div>
                     </div>`;
@@ -170,7 +167,7 @@ let draggedElement = null;
 let dropIndicator = null;
 
 function syncOverlayOrder(previewContainer) {
-    const overlay = document.getElementById(`${sectionsConfig[currentSection - 1].title.replace(' ', '')}TextOverlay`);
+    const overlay = document.getElementById(`${sectionsConfig[currentSection - 1].title.replace(' ', '')}OverlayCanvas`);
     if (!overlay) return;
 
     // Step 1: Cache all overlay art elements by data-id
@@ -577,11 +574,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </svg>
                             </button>
                             <div class="custom-dropdown-content" id="image-size-${imageId}" style="">
-                                <div onclick="selectImageSizeOption('${imageId}', 'valance-3-4', '3/4 Valance Image')">3/4 Valance Image</div>
-                                <div onclick="selectImageSizeOption('${imageId}', 'valance-full', 'Full Valance Image')">Full Valance Image</div>
-                                <div onclick="selectImageSizeOption('${imageId}', 'peak-partial', 'Partial Peak Image')">Partial Peak Image</div>
-                                <div onclick="selectImageSizeOption('${imageId}', 'peak-full', 'Full Peak Image')">Full Peak Image</div>
-                            <div onclick="selectImageSizeOption('${imageId}', 'wall', 'Wall Image')">Wall Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'chest-full', 'Full Chest')">Full Chest Image</div>
+                                <div onclick="selectImageSizeOption('${imageId}', 'lr-chest', 'Right Chest')">Right Chest Image</div>
                             </div>
                         </div>
                         </div>`;
