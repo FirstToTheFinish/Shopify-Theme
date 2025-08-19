@@ -1053,19 +1053,19 @@ function generateSections(sectionsConfig) {
                 <p class="note">*Additional charges may vary depending on style of short.</p>
                 </label>
                 <div class="settings-group" style="display: none; margin-top: 10px;" id="short-setting">
-                    <label class="font-style-label" id="short-pricing" >Price Per: $34.99</label>
+                    <label class="font-style-label" >Price Per:</label>
                     <label class="font-style-label" >Short Style:</label>
                     <div class="button-radio-group" id="short-style-options">
                         <label class="square-radio">
-                            <input type="radio" name="short-style" value="Loosefit" checked onchange="updateShortPricing()">
+                            <input type="radio" name="short-style" value="loosefit" checked>
                             <span id="price-loosefit">Loosefit</span>
                         </label>
                         <label class="square-radio">
-                            <input type="radio" name="short-style" value="Compression" onchange="updateShortPricing()">
+                            <input type="radio" name="short-style" value="compression">
                             <span id="price-compression">Compression</span>
                         </label>
                         <label class="square-radio">
-                                <input type="radio" name="short-style" value="Split" onchange="updateShortPricing()">
+                                <input type="radio" name="short-style" value="split">
                                 <span id="price-split">Split Short</span>
                         </label>
                     </div>
