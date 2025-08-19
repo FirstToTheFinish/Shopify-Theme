@@ -1146,6 +1146,23 @@ function generateSections(sectionsConfig) {
                 Would you like to include shorts in your quote for an additional charge per short? 
                 <p class="note">*Charges may vary depending on style of short.</p>
                 </label>
+                <div class="settings-group" style="display: none;" id="short-setting">
+                    <label class="font-style-label" >Short Style:</label>
+                    <div class="button-radio-group" id="short-style-options">
+                        <label class="square-radio">
+                            <input type="radio" name="short-style" value="loosefit">
+                            <span id="price-loosefit">Loosefit</span>
+                        </label>
+                        <label class="square-radio">
+                            <input type="radio" name="short-style" value="compression">
+                            <span id="price-compression">Compression</span>
+                        </label>
+                        <label class="square-radio">
+                                <input type="radio" name="short-style" value="split">
+                                <span id="price-split">Split Short</span>
+                        </label>
+                    </div>
+                </div>
             </div>
 
             <!-- Notes -->
@@ -1186,9 +1203,11 @@ function generateSections(sectionsConfig) {
         
         if(isChecked){
             document.getElementById("shortDesignNotes").style.display = "block";
+            document.getElementById("short-setting").style.display = "block";
         }
         else{
             document.getElementById("shortDesignNotes").style.display = "none";
+            document.getElementById("short-setting").style.display = "none";
         }
     });
 
