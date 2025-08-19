@@ -340,11 +340,8 @@ function makeElementResizable(element, container) {
 
         let newWidth, newHeight;
 
-        if (animationFrame) cancelAnimationFrame(animationFrame);
-
         // Allow the mouse jump to influence the size without restricting it too much
-        animationFrame = requestAnimationFrame(() => {
-            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
                 newWidth = rect.width + deltaX;
                 newHeight = newWidth / aspectRatio;
             } else {
@@ -360,8 +357,7 @@ function makeElementResizable(element, container) {
                 lastX = event.clientX;
                 lastY = event.clientY;
             }
-        });
-    }
+            }
 
     function onMouseUp() {
         isResizing = false;
@@ -376,8 +372,7 @@ function makeElementResizable(element, container) {
             element.style.width = `${newWidth}px`;
             element.style.height = `${newHeight}px`;
         }
-        if (animationFrame) cancelAnimationFrame(animationFrame);
-    }
+            }
 }
 
 function makeElementDraggable(element, container) {

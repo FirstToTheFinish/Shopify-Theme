@@ -913,7 +913,7 @@ function generateSections(sectionsConfig) {
                 <div style="min-height:35px; padding-top:15px;">
                     <div style="display: flex; align-items: center;">
                         <h5 style="padding-right: 20px;">
-                           4. Add Your Art:
+                           3. Add Art:
                         </h5>
                         <!-- Drag and Drop Area -->
                         <div class="drop-zone-inline" id="drop-zone-${section.id}"
