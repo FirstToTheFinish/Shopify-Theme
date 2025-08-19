@@ -1180,6 +1180,7 @@ function generateSections(sectionsConfig) {
         });
 
         shortLabels.forEach(label => {
+            label.style.paddingLeft = '10px';
             label.style.opacity = isChecked ? "1" : "0.5";
         });
         
