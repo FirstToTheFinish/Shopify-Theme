@@ -3424,7 +3424,7 @@ function buildCanvases(){
           backOverlayPath += `Z`;
         }
         else{
-          showHiddenCanvases();
+          hideCanvases();
 
           document.getElementById("uniformCanvases").style.marginLeft = '0px';
           document.getElementById("FrontOverlayCanvas").style.marginLeft = '250px';
@@ -3484,6 +3484,7 @@ function buildCanvases(){
           context5.fill();
 
           if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+            showHiddenCanvases();
             canvas6 = document.getElementById("TankTopInternalBackCanvas");
             context6 = canvas6.getContext("2d");
 
