@@ -3587,7 +3587,7 @@ function buildCanvases(){
   svgBack.appendChild(defsBack);
 
   // Append the SVG to the uniformCanvases div
-  let oldsvg = document.getElementById("svgBack");
+  oldsvg = document.getElementById("svgBack");
   if(oldsvg){
     oldsvg.remove();
   }
