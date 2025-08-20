@@ -387,7 +387,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
     color: rgb(1, 1, 1),
   });
 
-  if(contactInformation.salesRep != ''){
+  if(customerInformation.salesRep != ''){
     page.drawText('Sales Rep:', {
       x: 145,
       y: page.getHeight() - 75,
@@ -395,7 +395,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
       font: helveticaBoldFont,
       color: rgb(1, 1, 1),
     });
-    page.drawText(contactInformation.salesRep, {
+    page.drawText(customerInformation.salesRep, {
       x: 227,
       y: page.getHeight() - 60,
       size: 14,
