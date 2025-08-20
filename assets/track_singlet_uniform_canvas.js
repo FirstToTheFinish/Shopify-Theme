@@ -3064,12 +3064,12 @@ function saveChanges(){
     document.getElementById('builderTitle').textContent = itDescript;
     clearCanvases();
     buildCanvases();
-    selectColor(document.getElementById('selectedColor1').style.backgroundColor, 'selectedColor1', 'colorDropdown1');
-    selectColor(document.getElementById('selectedColor2').style.backgroundColor, 'selectedColor2', 'colorDropdown2');
-    selectColor(document.getElementById('selectedColor3').style.backgroundColor, 'selectedColor3', 'colorDropdown3');
-    selectColor(document.getElementById('selectedColor4').style.backgroundColor, 'selectedColor4', 'colorDropdown4');
-    selectColor(document.getElementById('selectedColor5').style.backgroundColor, 'selectedColor5', 'colorDropdown5');
-    selectColor(document.getElementById('selectedColor6').style.backgroundColor, 'selectedColor6', 'colorDropdown6');
+    reapplySelectedColor('selectedColor1', 'colorDropdown1');
+    reapplySelectedColor('selectedColor2', 'colorDropdown2');
+    reapplySelectedColor('selectedColor3', 'colorDropdown3');
+    reapplySelectedColor('selectedColor4', 'colorDropdown4');
+    reapplySelectedColor('selectedColor5', 'colorDropdown5');
+    reapplySelectedColor('selectedColor6', 'colorDropdown6');
     populateTemplateDropdown();
     populateEffectDropdown();
     
@@ -3081,6 +3081,38 @@ function saveChanges(){
     generateThumbnail(noDesignTemplate, templatePreviewImage);
     toggleSingletSettingsMenu();
 }
+
+function reapplySelectedColor(selectedId, dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+  if (!dropdown) return;
+
+  // 1. Look inside the color grid for a selected swatch
+  const selectedOption = dropdown.querySelector('.color-option-grid .color-option.selected');
+  if (selectedOption) {
+    // Trigger its existing onclick
+    if (typeof selectedOption.onclick === 'function') {
+      selectedOption.onclick();
+    } else {
+      // If inline onclick is a string attribute
+      const handler = selectedOption.getAttribute('onclick');
+      if (handler) eval(handler);
+    }
+    return;
+  }
+
+  // 2. Fallback to custom color box
+  const idx = selectedId.match(/\d+$/)?.[0] || '';
+  const customBox = document.getElementById(`colorDisplayBox${idx}`);
+  if (customBox) {
+    if (typeof customBox.onclick === 'function') {
+      customBox.onclick();
+    } else {
+      const handler = customBox.getAttribute('onclick');
+      if (handler) eval(handler);
+    }
+  }
+}
+
 
 function clearCanvases() {
   // Select ALL <canvas> elements inside uniformCanvases and the hidden div
