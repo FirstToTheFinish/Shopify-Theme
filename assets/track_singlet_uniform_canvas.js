@@ -3064,6 +3064,21 @@ function saveChanges(){
     document.getElementById('builderTitle').textContent = itDescript;
     clearCanvases();
     buildCanvases();
+    selectColor(document.getElementById('selectedColor1').style.backgroundColor, 'selectedColor1', 'colorDropdown1');
+    selectColor(document.getElementById('selectedColor2').style.backgroundColor, 'selectedColor2', 'colorDropdown2');
+    selectColor(document.getElementById('selectedColor3').style.backgroundColor, 'selectedColor3', 'colorDropdown3');
+    selectColor(document.getElementById('selectedColor4').style.backgroundColor, 'selectedColor4', 'colorDropdown4');
+    selectColor(document.getElementById('selectedColor5').style.backgroundColor, 'selectedColor5', 'colorDropdown5');
+    selectColor(document.getElementById('selectedColor6').style.backgroundColor, 'selectedColor6', 'colorDropdown6');
+    populateTemplateDropdown();
+    populateEffectDropdown();
+    
+    // Create a "No Design" template object to generate the initial default thumbnail
+    const noDesignTemplate = { name: "No Design" };
+    const templatePreviewImage = document.getElementById("templatePreviewImage");
+    
+    // Generate and set the "No Design" thumbnail as the default preview image
+    generateThumbnail(noDesignTemplate, templatePreviewImage);
     toggleSingletSettingsMenu();
 }
 
