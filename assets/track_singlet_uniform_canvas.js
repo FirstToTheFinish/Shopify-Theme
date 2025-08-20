@@ -3119,22 +3119,16 @@ function buildCanvases(){
 
           // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
           drawMCompressTankTop(context, 200, 100);
-          context.fillStyle = "darkgray";
-          context.fill();
 
           canvas2 = document.getElementById("TankTopCuffCanvas");
           context2 = canvas2.getContext("2d");
 
           drawMCompressCuffs(context2, 200, 100);
-          context2.fillStyle = "lightgray";
-          context2.fill();
 
           canvas3 = document.getElementById("TankTopInternalFrontCanvas");
           context3 = canvas3.getContext("2d");
 
           drawMCompressInternal(context3, 200, 100);
-          context3.fillStyle = "lightgray";
-          context3.fill();
 
           // Initialize the canvas and context
           canvas4 = document.getElementById("TankTopBackCanvas");
@@ -3142,19 +3136,13 @@ function buildCanvases(){
 
           // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
           drawMCompressBackTankTop(context4, 700, 100);
-          context4.fillStyle = "darkgray";
-          context4.fill();
 
           canvas5 = document.getElementById("TankTopBackCuffCanvas");
           context5 = canvas5.getContext("2d");
 
           drawMCompressBackCuffs(context5, 700, 100);
-          context5.fillStyle = "lightgray";
-          context5.fill();
-
           canvas6 = document.getElementById("TankTopInternalBackCanvas");
           context6 = canvas6.getContext("2d");
-          context6.fillStyle = "lightgray";
 
           templateCanvas1 = document.getElementById("TankTopTemplateColor1Canvas");
           templateContext1 = templateCanvas1.getContext("2d");
@@ -3172,22 +3160,16 @@ function buildCanvases(){
 
           // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
           drawMCompressTankTop(hiddenContext1, 200, 100);
-          hiddenContext1.fillStyle = "darkgray";
-          hiddenContext1.fill();
 
           hiddenCanvas2 = document.getElementById("hiddenTankTopCuffCanvas");
           hiddenContext2 = hiddenCanvas2.getContext("2d");
 
           drawMCompressCuffs(hiddenContext2, 200, 100);
-          hiddenContext2.fillStyle = "lightgray";
-          hiddenContext2.fill();
 
           hiddencanvas3 = document.getElementById("hiddenTankTopInternalFrontCanvas");
           hiddencontext3 = hiddencanvas3.getContext("2d"); 
 
           drawMCompressInternal(hiddencontext3, 200, 100);
-          hiddencontext3.fillStyle = "lightgray";
-          hiddencontext3.fill();
 
           // Initialize the canvas and context
           hiddencanvas4 = document.getElementById("hiddenTankTopBackCanvas");
@@ -3195,19 +3177,14 @@ function buildCanvases(){
 
           // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
           drawMCompressBackTankTop(hiddencontext4, 700, 100);
-          hiddencontext4.fillStyle = "darkgray";
-          hiddencontext4.fill();
 
           hiddencanvas5 = document.getElementById("hiddenTankTopBackCuffCanvas");
           hiddencontext5 = hiddencanvas5.getContext("2d");
 
           drawMCompressBackCuffs(hiddencontext5, 700, 100);
-          hiddencontext5.fillStyle = "lightgray";
-          hiddencontext5.fill();
 
           hiddencanvas6 = document.getElementById("hiddenTankTopInternalBackCanvas");
           hiddencontext6 = hiddencanvas6.getContext("2d");
-          hiddencontext6.fillStyle = "lightgray";
 
           hiddentemplateCanvas1 = document.getElementById("hiddenTankTopTemplateColor1Canvas");
           hiddentemplateContext1 = hiddentemplateCanvas1.getContext("2d");
