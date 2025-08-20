@@ -2646,6 +2646,7 @@ if (!uniformCanvases) {
 const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 svgElement.setAttribute("width", "0");
 svgElement.setAttribute("height", "0");
+svgElement.setAttribute("id", "svgFront");
 
 // Create <defs> and <clipPath>
 const defsElement = document.createElementNS("http://www.w3.org/2000/svg", "defs");
@@ -2668,6 +2669,7 @@ uniformCanvases.appendChild(svgElement);
 const svgBack = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 svgBack.setAttribute("width", "0");
 svgBack.setAttribute("height", "0");
+svgBack.setAttribute("id", "svgBack");
 
 // Create <defs> and <clipPath> for the back overlay
 const defsBack = document.createElementNS("http://www.w3.org/2000/svg", "defs");
