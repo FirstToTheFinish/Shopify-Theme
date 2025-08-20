@@ -450,7 +450,8 @@ async function gatherSectionInformation(sectionsConfig) {
         state: document.getElementById('state').value.trim(),
         zip: document.getElementById('zip').value.trim(),
         priority: document.getElementById('priority').value.trim(),
-        designName: document.getElementById('design-Name').value.trim()
+        designName: document.getElementById('design-Name').value.trim(),
+        salesRep: document.getElementById('salesRep').value.trim()
     };
 
     const previewURL = await generatePreviewURL(getTemplateName());
@@ -461,11 +462,11 @@ async function gatherSectionInformation(sectionsConfig) {
 async function submitForm() {
     let pdfFinished = false;
     if (validateForm()) {
-        const { designData, sectionData, contactInformation, previewURL, sizingData } = await gatherSectionInformation(sectionsConfig);
         document.getElementById('loadingOverlay2').style.display = 'flex';
         document.body.style.cursor = 'progress';
-
-        await delay(100);
+        const { designData, sectionData, contactInformation, previewURL, sizingData } = await gatherSectionInformation(sectionsConfig);
+        
+        await delay(200);
 
         pdfFinished = await createPdf(designData, sectionData, contactInformation, previewURL, sizingData);
         if(pdfFinished){
