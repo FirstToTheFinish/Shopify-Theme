@@ -3038,3 +3038,532 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('singlet-type-options').addEventListener('change', applyRules);
   document.getElementById('gender-type-options').addEventListener('change', applyRules);
 });
+
+function buildCanvases(){
+        let canvas, context, canvas2, context2, canvas3, context3;
+        let canvas4, context4, canvas5, context5, canvas6, context6;
+        let canvas7, context7, canvas8, context8, canvas9, context9;
+        let templateCanvas1, templateContext1, templateCanvas2, templateContext2, templateCanvas3, templateContext3;
+        let hiddenCanvas1, hiddenContext1, hiddenCanvas2, hiddenContext2, hiddencanvas3, hiddencontext3;
+        let hiddencanvas4, hiddencontext4, hiddencanvas5, hiddencontext5, hiddencanvas6, hiddencontext6;
+        let hiddencanvas7, hiddencontext7, hiddencanvas8, hiddencontext8, hiddencanvas9, hiddencontext9;
+        let hiddentemplateCanvas1, hiddentemplateContext1, hiddentemplateCanvas2, hiddentemplateContext2, hiddentemplateCanvas3, hiddentemplateContext3;
+        let frontOverlayPath, backOverlayPath;
+
+        if(itDescript.toUpperCase().includes("TANK")){
+
+          document.getElementById("uniformCanvases").style.marginLeft = '100px';
+          document.getElementById("FrontOverlayCanvas").style.marginLeft = '300px';
+          document.getElementById("BackOverlayCanvas").style.marginLeft = '300px';
+
+          document.getElementById("NordLogo").style.left = '205px';
+          document.getElementById("NordLogo").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo").style.left = '0px';
+          document.getElementById("hiddenNordLogo").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo2").style.left = '0px';
+          document.getElementById("hiddenNordLogo2").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo3").style.left = '0px';
+          document.getElementById("hiddenNordLogo3").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo4").style.left = '0px';
+          document.getElementById("hiddenNordLogo4").style.top = '150px';
+          
+
+          // Initialize the canvas and context
+          canvas = document.getElementById("TankTopCanvas");
+          context = canvas.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawMCompressTankTop(context, 200, 100);
+          context.fillStyle = "darkgray";
+          context.fill();
+
+          canvas2 = document.getElementById("TankTopCuffCanvas");
+          context2 = canvas2.getContext("2d");
+
+          drawMCompressCuffs(context2, 200, 100);
+          context2.fillStyle = "lightgray";
+          context2.fill();
+
+          canvas3 = document.getElementById("TankTopInternalFrontCanvas");
+          context3 = canvas3.getContext("2d");
+
+          drawMCompressInternal(context3, 200, 100);
+          context3.fillStyle = "lightgray";
+          context3.fill();
+
+          // Initialize the canvas and context
+          canvas4 = document.getElementById("TankTopBackCanvas");
+          context4 = canvas4.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawMCompressBackTankTop(context4, 700, 100);
+          context4.fillStyle = "darkgray";
+          context4.fill();
+
+          canvas5 = document.getElementById("TankTopBackCuffCanvas");
+          context5 = canvas5.getContext("2d");
+
+          drawMCompressBackCuffs(context5, 700, 100);
+          context5.fillStyle = "lightgray";
+          context5.fill();
+
+          canvas6 = document.getElementById("TankTopInternalBackCanvas");
+          context6 = canvas6.getContext("2d");
+          context6.fillStyle = "lightgray";
+
+          templateCanvas1 = document.getElementById("TankTopTemplateColor1Canvas");
+          templateContext1 = templateCanvas1.getContext("2d");
+
+          templateCanvas2 = document.getElementById("TankTopTemplateColor2Canvas");
+          templateContext2 = templateCanvas2.getContext("2d");
+
+          templateCanvas3 = document.getElementById("TankTopTemplateColor3Canvas");
+          templateContext3 = templateCanvas3.getContext("2d");
+
+
+          // Initialize all hidden canvases and contexts
+          hiddenCanvas1 = document.getElementById("hiddenTankTopCanvas");
+          hiddenContext1 = hiddenCanvas1.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawMCompressTankTop(hiddenContext1, 200, 100);
+          hiddenContext1.fillStyle = "darkgray";
+          hiddenContext1.fill();
+
+          hiddenCanvas2 = document.getElementById("hiddenTankTopCuffCanvas");
+          hiddenContext2 = hiddenCanvas2.getContext("2d");
+
+          drawMCompressCuffs(hiddenContext2, 200, 100);
+          hiddenContext2.fillStyle = "lightgray";
+          hiddenContext2.fill();
+
+          hiddencanvas3 = document.getElementById("hiddenTankTopInternalFrontCanvas");
+          hiddencontext3 = hiddencanvas3.getContext("2d"); 
+
+          drawMCompressInternal(hiddencontext3, 200, 100);
+          hiddencontext3.fillStyle = "lightgray";
+          hiddencontext3.fill();
+
+          // Initialize the canvas and context
+          hiddencanvas4 = document.getElementById("hiddenTankTopBackCanvas");
+          hiddencontext4 = hiddencanvas4.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawMCompressBackTankTop(hiddencontext4, 700, 100);
+          hiddencontext4.fillStyle = "darkgray";
+          hiddencontext4.fill();
+
+          hiddencanvas5 = document.getElementById("hiddenTankTopBackCuffCanvas");
+          hiddencontext5 = hiddencanvas5.getContext("2d");
+
+          drawMCompressBackCuffs(hiddencontext5, 700, 100);
+          hiddencontext5.fillStyle = "lightgray";
+          hiddencontext5.fill();
+
+          hiddencanvas6 = document.getElementById("hiddenTankTopInternalBackCanvas");
+          hiddencontext6 = hiddencanvas6.getContext("2d");
+          hiddencontext6.fillStyle = "lightgray";
+
+          hiddentemplateCanvas1 = document.getElementById("hiddenTankTopTemplateColor1Canvas");
+          hiddentemplateContext1 = hiddentemplateCanvas1.getContext("2d");
+
+          hiddentemplateCanvas2 = document.getElementById("hiddenTankTopTemplateColor2Canvas");
+          hiddentemplateContext2 = hiddentemplateCanvas2.getContext("2d");
+
+          hiddentemplateCanvas3 = document.getElementById("hiddenTankTopTemplateColor3Canvas");
+          hiddentemplateContext3 = hiddentemplateCanvas3.getContext("2d");
+
+          frontOverlayPath = frontMCompressOverlay(200, 100);
+          frontOverlayPath += `Z`;
+          backOverlayPath = backMCompressOverlay(200, 100);
+          backOverlayPath += `Z`;
+        }
+        else if(itDescript.toUpperCase().includes("COMPRESSION")){
+
+          document.getElementById("uniformCanvases").style.marginLeft = '20px';
+          document.getElementById("FrontOverlayCanvas").style.marginLeft = '260px';
+          document.getElementById("BackOverlayCanvas").style.marginLeft = '260px';
+
+          document.getElementById("NordLogo").style.left = '225px';
+          document.getElementById("NordLogo").style.top = '225px';
+
+          document.getElementById("hiddenNordLogo").style.left = '-20px';
+          document.getElementById("hiddenNordLogo").style.top = '225px';
+
+          document.getElementById("hiddenNordLogo2").style.left = '-20px';
+          document.getElementById("hiddenNordLogo2").style.top = '225px';
+
+          document.getElementById("hiddenNordLogo3").style.left = '-20px';
+          document.getElementById("hiddenNordLogo3").style.top = '225px';
+
+          document.getElementById("hiddenNordLogo4").style.left = '-20px';
+          document.getElementById("hiddenNordLogo4").style.top = '225px';
+          
+
+          // Initialize the canvas and context
+          canvas = document.getElementById("TankTopCanvas");
+          context = canvas.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawWCompressTankTop(context, 200, 100);
+          context.fillStyle = "darkgray";
+          context.fill();
+
+          canvas2 = document.getElementById("TankTopCuffCanvas");
+          context2 = canvas2.getContext("2d");
+
+          drawWCompressCuffs(context2, 200, 100);
+          context2.fillStyle = "lightgray";
+          context2.fill();
+
+          canvas3 = document.getElementById("TankTopInternalFrontCanvas");
+          context3 = canvas3.getContext("2d");
+
+          drawWCompressInternal(context3, 200, 100);
+          context3.fillStyle = "lightgray";
+          context3.fill();
+
+          // Initialize the canvas and context
+          canvas4 = document.getElementById("TankTopBackCanvas");
+          context4 = canvas4.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawWCompressBackTankTop(context4, 700, 100);
+          context4.fillStyle = "darkgray";
+          context4.fill();
+
+          canvas5 = document.getElementById("TankTopBackCuffCanvas");
+          context5 = canvas5.getContext("2d");
+
+          drawWCompressBackCuffs(context5, 700, 100);
+          context5.fillStyle = "lightgray";
+          context5.fill();
+
+          canvas6 = document.getElementById("TankTopInternalBackCanvas");
+          context6 = canvas6.getContext("2d");
+
+          drawWCompressBackInternal(context6, 700, 100);
+          context6.fillStyle = "lightgray";
+          context6.fill();
+
+          templateCanvas1 = document.getElementById("TankTopTemplateColor1Canvas");
+          templateContext1 = templateCanvas1.getContext("2d");
+
+          templateCanvas2 = document.getElementById("TankTopTemplateColor2Canvas");
+          templateContext2 = templateCanvas2.getContext("2d");
+
+          templateCanvas3 = document.getElementById("TankTopTemplateColor3Canvas");
+          templateContext3 = templateCanvas3.getContext("2d");
+
+
+          // Initialize all hidden canvases and contexts
+          hiddenCanvas1 = document.getElementById("hiddenTankTopCanvas");
+          hiddenContext1 = hiddenCanvas1.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawWCompressTankTop(hiddenContext1, 200, 100);
+          hiddenContext1.fillStyle = "darkgray";
+          hiddenContext1.fill();
+
+          hiddenCanvas2 = document.getElementById("hiddenTankTopCuffCanvas");
+          hiddenContext2 = hiddenCanvas2.getContext("2d");
+
+          drawWCompressCuffs(hiddenContext2, 200, 100);
+          hiddenContext2.fillStyle = "lightgray";
+          hiddenContext2.fill();
+
+          hiddencanvas3 = document.getElementById("hiddenTankTopInternalFrontCanvas");
+          hiddencontext3 = hiddencanvas3.getContext("2d"); 
+
+          drawWCompressInternal(hiddencontext3, 200, 100);
+          hiddencontext3.fillStyle = "lightgray";
+          hiddencontext3.fill();
+
+          // Initialize the canvas and context
+          hiddencanvas4 = document.getElementById("hiddenTankTopBackCanvas");
+          hiddencontext4 = hiddencanvas4.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawWCompressBackTankTop(hiddencontext4, 700, 100);
+          hiddencontext4.fillStyle = "darkgray";
+          hiddencontext4.fill();
+
+          hiddencanvas5 = document.getElementById("hiddenTankTopBackCuffCanvas");
+          hiddencontext5 = hiddencanvas5.getContext("2d");
+
+          drawWCompressBackCuffs(hiddencontext5, 700, 100);
+          hiddencontext5.fillStyle = "lightgray";
+          hiddencontext5.fill();
+
+          hiddencanvas6 = document.getElementById("hiddenTankTopInternalBackCanvas");
+          hiddencontext6 = hiddencanvas6.getContext("2d");
+
+          drawWCompressBackInternal(hiddencontext6, 700, 100);
+          hiddencontext6.fillStyle = "lightgray";
+          hiddencontext6.fill();
+
+          hiddentemplateCanvas1 = document.getElementById("hiddenTankTopTemplateColor1Canvas");
+          hiddentemplateContext1 = hiddentemplateCanvas1.getContext("2d");
+
+          hiddentemplateCanvas2 = document.getElementById("hiddenTankTopTemplateColor2Canvas");
+          hiddentemplateContext2 = hiddentemplateCanvas2.getContext("2d");
+
+          hiddentemplateCanvas3 = document.getElementById("hiddenTankTopTemplateColor3Canvas");
+          hiddentemplateContext3 = hiddentemplateCanvas3.getContext("2d");
+
+          frontOverlayPath = frontWCompressOverlay(200, 100);
+          frontOverlayPath += `Z`;
+          backOverlayPath = backWCompressOverlay(200, 100);
+          backOverlayPath += `Z`;
+        }
+        else{
+          // Initialize the canvas and context
+          canvas = document.getElementById("TankTopCanvas");
+          context = canvas.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawTankTop(context, 200, 100);
+          context.fillStyle = "darkgray";
+          context.fill();
+
+          canvas2 = document.getElementById("TankTopCuffCanvas");
+          context2 = canvas2.getContext("2d");
+
+          drawCuffs(context2, 200, 100);
+          context2.fillStyle = "lightgray";
+          context2.fill();
+
+          canvas3 = document.getElementById("TankTopInternalFrontCanvas");
+          context3 = canvas3.getContext("2d");
+
+          drawInternal(context3, 200, 100);
+          context3.fillStyle = "gray";
+          context3.fill();
+
+          // Initialize the canvas and context
+          canvas4 = document.getElementById("TankTopBackCanvas");
+          context4 = canvas4.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawTankTop(context4, 700, 100);
+          context4.fillStyle = "darkgray";
+          context4.fill();
+
+          canvas5 = document.getElementById("TankTopBackCuffCanvas");
+          context5 = canvas5.getContext("2d");
+
+          drawBackCuffs(context5, 700, 100);
+          context5.fillStyle = "lightgray";
+          context5.fill();
+
+          if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+            canvas6 = document.getElementById("TankTopInternalBackCanvas");
+            context6 = canvas6.getContext("2d");
+
+            drawBackInternal(context6, 700, 100);
+            context6.fillStyle = "gray";
+            context6.fill();
+          }
+
+          canvas7 = document.getElementById("TankTopBackHolesCanvas");
+          context7 = canvas7.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND")){
+            // Restrict pinholes to the tank top shape
+            applyPinHoleMask(context7, 700, 100);
+
+            // Draw pinholes
+            drawPinholes(context7, canvas7.width, canvas7.height);
+          }
+
+
+          canvas8 = document.getElementById("TankTopBackRacerCuffCanvas");
+          context8 = canvas8.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+            drawBackRacerCuffs(context8, 700, 100);
+            context8.fillStyle = "lightgray";
+            context8.fill();
+          }
+
+          canvas9 = document.getElementById("TankTopFrontOutlineCanvas");
+          context9 = canvas9.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND")){
+            applyPinHoleMask(context9, 200, 100);
+          }
+
+          templateCanvas1 = document.getElementById("TankTopTemplateColor1Canvas");
+          templateContext1 = templateCanvas1.getContext("2d");
+
+          templateCanvas2 = document.getElementById("TankTopTemplateColor2Canvas");
+          templateContext2 = templateCanvas2.getContext("2d");
+
+          templateCanvas3 = document.getElementById("TankTopTemplateColor3Canvas");
+          templateContext3 = templateCanvas3.getContext("2d");
+
+
+          // Initialize all hidden canvases and contexts
+          hiddenCanvas1 = document.getElementById("hiddenTankTopCanvas");
+          hiddenContext1 = hiddenCanvas1.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawTankTop(hiddenContext1, 200, 100);
+          hiddenContext1.fillStyle = "darkgray";
+          hiddenContext1.fill();
+
+          hiddenCanvas2 = document.getElementById("hiddenTankTopCuffCanvas");
+          hiddenContext2 = hiddenCanvas2.getContext("2d");
+
+          drawCuffs(hiddenContext2, 200, 100);
+          hiddenContext2.fillStyle = "lightgray";
+          hiddenContext2.fill();
+
+          hiddencanvas3 = document.getElementById("hiddenTankTopInternalFrontCanvas");
+          hiddencontext3 = hiddencanvas3.getContext("2d"); 
+
+          drawInternal(hiddencontext3, 200, 100);
+          hiddencontext3.fillStyle = "gray";
+          hiddencontext3.fill();
+
+          // Initialize the canvas and context
+          hiddencanvas4 = document.getElementById("hiddenTankTopBackCanvas");
+          hiddencontext4 = hiddencanvas4.getContext("2d");
+
+          // Draw the entire tank top with shoulder, neckline, armhole, torso, and bottom
+          drawTankTop(hiddencontext4, 700, 100);
+          hiddencontext4.fillStyle = "darkgray";
+          hiddencontext4.fill();
+
+          hiddencanvas5 = document.getElementById("hiddenTankTopBackCuffCanvas");
+          hiddencontext5 = hiddencanvas5.getContext("2d");
+
+          drawBackCuffs(hiddencontext5, 700, 100);
+          hiddencontext5.fillStyle = "lightgray";
+          hiddencontext5.fill();
+
+          hiddencanvas6 = document.getElementById("hiddenTankTopInternalBackCanvas");
+          hiddencontext6 = hiddencanvas6.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+            drawBackInternal(hiddencontext6, 700, 100);
+            hiddencontext6.fillStyle = "gray";
+            hiddencontext6.fill();
+          }
+
+          hiddencanvas7 = document.getElementById("hiddenTankTopBackHolesCanvas");
+          hiddencontext7 = hiddencanvas7.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND")){
+            // Restrict pinholes to the tank top shape
+            applyPinHoleMask(hiddencontext7, 700, 100);
+
+            // Draw pinholes
+            drawPinholes(hiddencontext7, hiddencanvas7.width, hiddencanvas7.height);
+          }
+
+          hiddencanvas8 = document.getElementById("hiddenTankTopBackRacerCuffCanvas");
+          hiddencontext8 = hiddencanvas8.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+            drawBackRacerCuffs(hiddencontext8, 700, 100);
+            hiddencontext8.fillStyle = "lightgray";
+            hiddencontext8.fill();
+          }
+
+          hiddencanvas9 = document.getElementById("hiddenTankTopFrontOutlineCanvas");
+          hiddencontext9 = hiddencanvas9.getContext("2d");
+
+          if(itDescript.toUpperCase().includes("LEGEND")){
+            applyPinHoleMask(hiddencontext9, 200, 100);
+          }
+
+          hiddentemplateCanvas1 = document.getElementById("hiddenTankTopTemplateColor1Canvas");
+          hiddentemplateContext1 = hiddentemplateCanvas1.getContext("2d");
+
+          hiddentemplateCanvas2 = document.getElementById("hiddenTankTopTemplateColor2Canvas");
+          hiddentemplateContext2 = hiddentemplateCanvas2.getContext("2d");
+
+          hiddentemplateCanvas3 = document.getElementById("hiddenTankTopTemplateColor3Canvas");
+          hiddentemplateContext3 = hiddentemplateCanvas3.getContext("2d");
+
+          frontOverlayPath = frontOverlay(200, 100);
+          frontOverlayPath += `Z`;
+          backOverlayPath;
+
+          if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+            backOverlayPath = backOverlay(200, 100);
+          }
+          else{
+            backOverlayPath = backOverlay1(200, 100);
+          }
+          backOverlayPath += `Z`;
+
+        }
+
+      
+
+  // Find the uniformCanvases div
+  const uniformCanvases = document.getElementById("uniformCanvases");
+  if (!uniformCanvases) {
+    console.error("uniformCanvases element not found");
+  }
+
+  // Create the <svg> element for the clip path
+  const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svgElement.setAttribute("width", "0");
+  svgElement.setAttribute("height", "0");
+  svgElement.setAttribute("id", "svgFront");
+
+  // Create <defs> and <clipPath>
+  const defsElement = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const clipPathElement = document.createElementNS("http://www.w3.org/2000/svg", "clipPath");
+  clipPathElement.setAttribute("id", "tankTopClipPath");
+
+  // Create the <path> element and set the 'd' attribute with svgPath1
+  const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  pathElement.setAttribute("d", frontOverlayPath); // Ensure svgPath1 is valid
+
+  // Build the SVG structure
+  clipPathElement.appendChild(pathElement);
+  defsElement.appendChild(clipPathElement);
+  svgElement.appendChild(defsElement);
+  // Append the SVG to the uniformCanvases div
+
+  let oldsvg = document.getElementById("svgFront");
+  if(oldsvg){
+    oldsvg.remove();
+  }
+  uniformCanvases.appendChild(svgElement);
+
+  // Create <svg> element for the back overlay clip path
+  const svgBack = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svgBack.setAttribute("width", "0");
+  svgBack.setAttribute("height", "0");
+  svgBack.setAttribute("id", "svgBack");
+
+  // Create <defs> and <clipPath> for the back overlay
+  const defsBack = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const clipPathBack = document.createElementNS("http://www.w3.org/2000/svg", "clipPath");
+  clipPathBack.setAttribute("id", "tankTopBackClipPath");
+
+  // Create the <path> element and set the 'd' attribute with backOverlayPath for the back overlay
+  const pathBack = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  pathBack.setAttribute("d", backOverlayPath); // Assuming backOverlayPath contains the correct path data for the back
+
+  // Build the SVG structure for the back overlay
+  clipPathBack.appendChild(pathBack);
+  defsBack.appendChild(clipPathBack);
+  svgBack.appendChild(defsBack);
+
+  // Append the SVG to the uniformCanvases div
+  let oldsvg = document.getElementById("svgBack");
+  if(oldsvg){
+    oldsvg.remove();
+  }
+  uniformCanvases.appendChild(svgBack);
+}
