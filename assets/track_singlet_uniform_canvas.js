@@ -3081,15 +3081,6 @@ function clearCanvases() {
 
 
 function buildCanvases(){
-        let canvas, context, canvas2, context2, canvas3, context3;
-        let canvas4, context4, canvas5, context5, canvas6, context6;
-        let canvas7, context7, canvas8, context8, canvas9, context9;
-        let templateCanvas1, templateContext1, templateCanvas2, templateContext2, templateCanvas3, templateContext3;
-        let hiddenCanvas1, hiddenContext1, hiddenCanvas2, hiddenContext2, hiddencanvas3, hiddencontext3;
-        let hiddencanvas4, hiddencontext4, hiddencanvas5, hiddencontext5, hiddencanvas6, hiddencontext6;
-        let hiddencanvas7, hiddencontext7, hiddencanvas8, hiddencontext8, hiddencanvas9, hiddencontext9;
-        let hiddentemplateCanvas1, hiddentemplateContext1, hiddentemplateCanvas2, hiddentemplateContext2, hiddentemplateCanvas3, hiddentemplateContext3;
-        let frontOverlayPath, backOverlayPath;
 
         if(itDescript.toUpperCase().includes("TANK")){
 
