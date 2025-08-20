@@ -3041,6 +3041,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function saveChanges(){
     document.getElementById("pricing").textContent = `Total Price: $${singletPrices[getSelected('singlet-type')].toFixed(2)}/each`;
+    document.body.style.cursor = 'progress';
     let title;
     const singlet = getSelected('singlet-type');
     const gender = getSelected('gender-type');
