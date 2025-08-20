@@ -3039,7 +3039,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('gender-type-options').addEventListener('change', applyRules);
 });
 
-function saveChanges(){
+async function saveChanges(){
     document.getElementById("pricing").textContent = `Total Price: $${singletPrices[getSelected('singlet-type')].toFixed(2)}/each`;
     document.body.style.cursor = 'progress';
     await delay(100);
