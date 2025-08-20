@@ -2660,6 +2660,9 @@ pathElement.setAttribute("d", frontOverlayPath); // Ensure svgPath1 is valid
 clipPathElement.appendChild(pathElement);
 defsElement.appendChild(clipPathElement);
 svgElement.appendChild(defsElement);
+// Append the SVG to the uniformCanvases div
+
+uniformCanvases.appendChild(svgElement);
 
 // Create <svg> element for the back overlay clip path
 const svgBack = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -2679,6 +2682,9 @@ pathBack.setAttribute("d", backOverlayPath); // Assuming backOverlayPath contain
 clipPathBack.appendChild(pathBack);
 defsBack.appendChild(clipPathBack);
 svgBack.appendChild(defsBack);
+
+// Append the SVG to the uniformCanvases div
+uniformCanvases.appendChild(svgBack);
 
 function showCanvases(){
   document.getElementById("uniformCanvases").style.visibility = "visible";
