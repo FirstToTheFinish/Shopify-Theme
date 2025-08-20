@@ -2181,11 +2181,11 @@ function drawTankTop(context, startX, startY) {
 
       if(itDescript.toUpperCase().includes("TANK")){
 
-        document.getElementById("uniformCanvases").style.marginLeft = '20px';
-        document.getElementById("FrontOverlayCanvas").style.marginLeft = '20px';
-        document.getElementById("BackOverlayCanvas").style.marginLeft = '20px';
+        document.getElementById("uniformCanvases").style.marginLeft = '100px';
+        document.getElementById("FrontOverlayCanvas").style.marginLeft = '300px';
+        document.getElementById("BackOverlayCanvas").style.marginLeft = '300px';
 
-        document.getElementById("NordLogo").style.left = '0px';
+        document.getElementById("NordLogo").style.left = '205px';
         document.getElementById("NordLogo").style.top = '150px';
 
         document.getElementById("hiddenNordLogo").style.left = '0px';
