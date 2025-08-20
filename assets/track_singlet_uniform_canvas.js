@@ -2958,7 +2958,7 @@ function formatPriceDiff(diff) {
 
 const singletPrices = {
   "Legend": 44.99,
-  "LooseFit": 32.99,
+  "Loose Fit": 32.99,
   "Compression": 44.99,
   "Fitted": 44.99
 };
@@ -3026,7 +3026,6 @@ function applyRules() {
   }
   setEnabled('gender-type-options', genderAllowed);
 
-  console.log(getSelected('singlet-type'));
   document.getElementById('total-price').textContent = `$${singletPrices[getSelected('singlet-type')].toFixed(2)}`;
 }
 
