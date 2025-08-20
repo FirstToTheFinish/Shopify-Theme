@@ -3026,6 +3026,7 @@ function applyRules() {
   }
   setEnabled('gender-type-options', genderAllowed);
 
+  console.log(getSelected('singlet-type'));
   document.getElementById('total-price').textContent = `$${singletPrices[getSelected('singlet-type')].toFixed(2)}`;
 }
 
