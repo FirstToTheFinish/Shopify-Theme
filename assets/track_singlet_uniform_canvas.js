@@ -3079,6 +3079,7 @@ function saveChanges(){
     
     // Generate and set the "No Design" thumbnail as the default preview image
     generateThumbnail(noDesignTemplate, templatePreviewImage);
+    selectTemplate(noDesignTemplate, templatePreviewImage);
     toggleSingletSettingsMenu();
 }
 
