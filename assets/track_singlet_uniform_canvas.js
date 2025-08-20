@@ -3061,6 +3061,7 @@ function saveChanges(){
     else{
       itDescript = `${gender} ${singlet} Singlet`;
     }
+    document.getElementById('builderTitle').textContent = itDescript;
     clearCanvases();
     buildCanvases();
     toggleSingletSettingsMenu();
