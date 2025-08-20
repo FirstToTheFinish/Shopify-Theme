@@ -396,8 +396,8 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
       color: rgb(1, 1, 1),
     });
     page.drawText(customerInformation.salesRep, {
-      x: 227,
-      y: page.getHeight() - 60,
+      x: 220,
+      y: page.getHeight() - 75,
       size: 14,
       font: helveticaFont,
       color: rgb(1, 1, 1),
@@ -406,7 +406,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, designData, imag
 
   page.drawText(dateCreated, {
     x: 227,
-    y: page.getHeight() - 75,
+    y: page.getHeight() - 60,
     size: 14,
     font: helveticaFont,
     color: rgb(1, 1, 1),
@@ -1595,17 +1595,17 @@ async function createSizingPage(pdfDoc, imageLogoUrl, sizingData, dateCreated, d
 
     const shortStyle = document.querySelector('input[name="short-style"]:checked').value;
     const pricePer = shortPrices[shortStyle];
-    const styleTitle = `${shortStyle} (${pricePer})`;
+    const styleTitle = `${shortStyle} ($${pricePer}/each)`;
 
     page.drawText(styleTitle, {
       x: 400 + styleWidth + 10,
       y: yPos - 30,
-      size: 24,
+      size: 18,
       font: helveticaFont,
       color: rgb(0, 0, 0),
     });
 
-    yPos =- 30;
+    yPos -= 30;
 
     page.drawText(`Short Design:`, {
       x: 400,
