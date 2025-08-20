@@ -3046,10 +3046,10 @@ function saveChanges(){
     const gender = getSelected('gender-type');
     const style = getSelected('style-type');
 
-    if(singlet == "Compression" && (gender == "Men's" || gender == "Boy's")){
+    if(singlet == "Compression" && (gender == "Mens" || gender == "Boys")){
       itDescript = `${gender} ${singlet} Tank`;
     }
-    else if(singlet == "Compression" && (gender == "Women's" || gender == "Girl's")){
+    else if(singlet == "Compression" && (gender == "Womens" || gender == "Girls")){
       itDescript = `${gender} ${singlet} ${style}`;
     }
     else if (singlet == "Legend"){
