@@ -2050,7 +2050,7 @@ function drawTankTop(context, startX, startY) {
     const rightTorsoControlX = rightTorsoStartX + 10;
     const rightTorsoControlY = rightTorsoStartY + 275;
     svgPath += `Q ${rightTorsoControlX} ${rightTorsoControlY} ${rightArmholeEndX} ${rightArmholeEndY + 70}`;
-    svgPath += `Q ${rightArmholeControlX} ${rightArmholeControlY} ${rightArmholeEndX} ${rightShoulderEndY}`;
+    svgPath += `Q ${rightArmholeControlX} ${rightArmholeControlY} ${rightShoulderEndX} ${rightShoulderEndY}`;
 
     return svgPath;
   }
@@ -2182,10 +2182,10 @@ function drawTankTop(context, startX, startY) {
       if(itDescript.toUpperCase().includes("TANK")){
 
         document.getElementById("uniformCanvases").style.marginLeft = '20px';
-        document.getElementById("FrontOverlayCanvas").style.marginLeft = '260px';
-        document.getElementById("BackOverlayCanvas").style.marginLeft = '260px';
+        document.getElementById("FrontOverlayCanvas").style.marginLeft = '20px';
+        document.getElementById("BackOverlayCanvas").style.marginLeft = '20px';
 
-        document.getElementById("NordLogo").style.left = '235px';
+        document.getElementById("NordLogo").style.left = '0px';
         document.getElementById("NordLogo").style.top = '150px';
 
         document.getElementById("hiddenNordLogo").style.left = '0px';
