@@ -1583,12 +1583,12 @@ async function createSizingPage(pdfDoc, imageLogoUrl, sizingData, dateCreated, d
         yPos -= 30; // Adjust spacing
     });
 
-    const styleWidth = helveticaBoldFont.widthOfTextAtSize('Short Style:', 24);
+    const styleWidth = helveticaBoldFont.widthOfTextAtSize('Short Style:', 20);
 
     page.drawText(`Short Style:`, {
       x: 400,
-      y: yPos - 30,
-      size: 24,
+      y: yPos - 15,
+      size: 20,
       font: helveticaBoldFont,
       color: rgb(0, 0, 0),
     });
