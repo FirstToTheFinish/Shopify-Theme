@@ -2970,3 +2970,98 @@ function backOverlay1(startX, startY){
 
   return svgPath;
 }
+
+function toggleSingletSettingsMenu() {
+  const menu = document.getElementById('singlet-settings-menu');
+  menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+}
+
+function formatPriceDiff(diff) {
+  if (diff === 0) return '';
+  const sign = diff > 0 ? '+' : '–';
+  return `(${sign}$${Math.abs(diff).toFixed(2)})`;
+}
+
+
+const singletPrices = {
+  "Legend": 44.99,
+  "LooseFit": 32.99,
+  "Compression": 44.99,
+  "Fitted": 44.99
+};
+
+function getSelected(name) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : null;
+}
+
+function setEnabled(groupId, allowedValues) {
+  const group = document.getElementById(groupId);
+  const inputs = group.querySelectorAll('input[type="radio"]');
+  let firstEnabled = null;
+
+  inputs.forEach(input => {
+    const enabled = allowedValues.includes(input.value);
+    input.disabled = !enabled;
+
+    // style feedback via data-disabled class on label
+    const label = input.closest('label.square-radio');
+    if (label) label.classList.toggle('is-disabled', !enabled);
+
+    if (enabled && !firstEnabled) firstEnabled = input;
+  });
+
+  // if the current selection is now disabled, pick the first enabled
+  const current = group.querySelector('input[type="radio"]:checked');
+  if (current && current.disabled && firstEnabled) {
+    firstEnabled.checked = true;
+  }
+}
+
+function applyRules() {
+  const singlet = getSelected('singlet-type');   // Legend | LooseFit | Compression | Fitted
+  const gender  = getSelected('gender-type');    // Mens | Womens | Youth | Boys | Girls
+
+  /* ----- STYLE rules ----- */
+  // defaults: both styles allowed
+  let styleAllowed = ['Normal', 'Racerback'];
+
+  if (singlet === 'Legend') {
+    styleAllowed = ['Racerback'];                // Legend => only Racerback
+  } else if (singlet === 'Fitted') {
+    styleAllowed = ['Normal'];                   // Fitted => only Normal
+  } else if (singlet === 'Compression') {
+    // Compression + Men's/Boys => Normal only
+    if (gender === 'Mens' || gender === 'Boys') {
+      styleAllowed = ['Normal'];
+    }
+    // Compression + Women's/Girls => Racerback only
+    if (gender === 'Womens' || gender === 'Girls') {
+      styleAllowed = ['Racerback'];
+    }
+  }
+  setEnabled('style-type-options', styleAllowed);
+
+  /* ----- GENDER rules ----- */
+  // Compression => Youth NOT available, Boys & Girls ARE available
+  // Non-Compression => Boys & Girls NOT available, Youth IS available
+  let genderAllowed;
+  if (singlet === 'Compression') {
+    genderAllowed = ['Mens', 'Womens', 'Boys', 'Girls']; // no Youth
+  } else {
+    genderAllowed = ['Mens', 'Womens', 'Youth'];         // no Boys/Girls
+  }
+  setEnabled('gender-type-options', genderAllowed);
+
+  document.getElementById('total-price').textContent = `$${singletPrices[getSelected('singlet-type')].toFixed(2)}`;
+}
+
+/* === Hook up events & initial state === */
+document.addEventListener('DOMContentLoaded', () => {
+  // run once on load
+  applyRules();
+
+  // re-apply when singlet or gender changes
+  document.getElementById('singlet-type-options').addEventListener('change', applyRules);
+  document.getElementById('gender-type-options').addEventListener('change', applyRules);
+});

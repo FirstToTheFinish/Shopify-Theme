@@ -155,6 +155,85 @@
                                 <h4 id="builderTitle"></h4>
                                 <span id="infoTitle" style="display: none"></span>
                                 <p id ="pricing" style="font-size: 20px; margin-top:-15px;"></p>
+                                <button type="button" id="singlet-setup-button" class="btn btn--primary w-full" style="margin-bottom: 20px;" onclick="toggleSingletSettingsMenu()">
+                                    ⚙️ Singlet Setup Options
+                                </button>
+                                <div id="singlet-settings-menu" class="tent-settings-panel" style="display: none;">
+                                    <button class="close-button" onclick="toggleSingletSettingsMenu()" aria-label="Close">
+                                        &times;
+                                    </button>
+                                    <div class="settings-group">
+                                        <label class="font-style-label">Singlet:</label>
+                                        <div class="button-radio-group" id="singlet-type-options">
+                                          <label class="square-radio">
+                                            <input type="radio" name="singlet-type" value="Legend" checked>
+                                            <span id="singlet-legend-label">Legend</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="singlet-type" value="LooseFit">
+                                            <span id="singlet-looseFit-label">Loose Fit</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="singlet-type" value="Compression">
+                                            <span id="singlet-compression-label">Compression</span>
+                                          </label>
+                                          <label class="square-radio" style="display: none;">
+                                            <input type="radio" name="singlet-type" value="Fitted">
+                                            <span id="singlet-fitted-label">Fitted</span>
+                                          </label>
+                                        </div>
+                                    </div>
+                                                                  
+                                    <div class="settings-group">
+                                        <label class="font-style-label">Gender:</label>
+                                        <div class="button-radio-group" id="gender-type-options">
+                                          <label class="square-radio">
+                                            <input type="radio" name="gender-type" value="Mens" checked>
+                                            <span id="gender-mens-label">Men's</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="gender-type" value="Womens">
+                                            <span id="gender-womens-label">Men's</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="gender-type" value="Youth">
+                                            <span id="gender-youth-label">Men's</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="gender-type" value="Boys">
+                                            <span id="gender-boys-label">Boy's</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="gender-type" value="Girls">
+                                            <span id="gender-girls-label">Girl's</span>
+                                          </label>
+                                        </div>
+                                    </div>                                  
+                                  
+                                    <div class="settings-group">
+                                        <label class="font-style-label">Style:</label>
+                                        <div class="button-radio-group" id="style-type-options">
+                                          <label class="square-radio">
+                                            <input type="radio" name="style-type" value="Normal">
+                                            <span id="style-normal-label">Normal</span>
+                                          </label>
+                                          <label class="square-radio">
+                                            <input type="radio" name="style-type" value="Racerback" checked>
+                                            <span id="style-racerback-label">Racerback</span>
+                                          </label>
+                                        </div>
+                                    </div>
+    
+                                    <div class="settings-group">
+                                        <label class="font-style-label">Total Price:</label>
+                                        <div id="total-price" style="font-weight: bold; font-size: 16px;">$44.99</div>
+                                    </div>
+                                                                       
+                                    <button id="save-button" class="btn btn--primary w-half" style="margin-top: 15px;">
+                                        Save Changes
+                                    </button>
+                                    
+                                </div>
 
                                 <div id="file-upload-modal" class="modal">
                                     <div class="modal-content">
