@@ -2314,10 +2314,10 @@ function drawTankTop(context, startX, startY) {
       else if(itDescript.toUpperCase().includes("COMPRESSION")){
 
         document.getElementById("uniformCanvases").style.marginLeft = '20px';
-        document.getElementById("FrontOverlayCanvas").style.marginLeft = '20px';
-        document.getElementById("BackOverlayCanvas").style.marginLeft = '20px';
+        document.getElementById("FrontOverlayCanvas").style.marginLeft = '260px';
+        document.getElementById("BackOverlayCanvas").style.marginLeft = '260px';
 
-        document.getElementById("NordLogo").style.left = '-20px';
+        document.getElementById("NordLogo").style.left = '225px';
         document.getElementById("NordLogo").style.top = '225px';
 
         document.getElementById("hiddenNordLogo").style.left = '-20px';
