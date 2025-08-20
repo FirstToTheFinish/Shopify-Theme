@@ -3042,6 +3042,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function saveChanges(){
     document.getElementById("pricing").textContent = `Total Price: $${singletPrices[getSelected('singlet-type')].toFixed(2)}/each`;
     document.body.style.cursor = 'progress';
+    await delay(100);
     let title;
     const singlet = getSelected('singlet-type');
     const gender = getSelected('gender-type');
@@ -3081,6 +3082,7 @@ function saveChanges(){
     // Generate and set the "No Design" thumbnail as the default preview image
     generateThumbnail(noDesignTemplate, templatePreviewImage);
     selectTemplate(noDesignTemplate, templatePreviewImage);
+    document.body.style.cursor = 'default';
     toggleSingletSettingsMenu();
 }
 
