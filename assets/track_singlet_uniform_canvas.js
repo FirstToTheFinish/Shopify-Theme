@@ -3074,7 +3074,6 @@ function clearCanvases() {
   );
 
   canvases.forEach(canvas => {
-    console.log(canvas);
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
@@ -3379,6 +3378,25 @@ function buildCanvases(){
         }
         else{
           showHiddenCanvases();
+
+          document.getElementById("uniformCanvases").style.marginLeft = '0px';
+          document.getElementById("FrontOverlayCanvas").style.marginLeft = '250px';
+          document.getElementById("BackOverlayCanvas").style.marginLeft = '250px';
+
+          document.getElementById("NordLogo").style.left = '265px';
+          document.getElementById("NordLogo").style.top = '190px';
+
+          document.getElementById("hiddenNordLogo").style.left = '0px';
+          document.getElementById("hiddenNordLogo").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo2").style.left = '0px';
+          document.getElementById("hiddenNordLogo2").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo3").style.left = '0px';
+          document.getElementById("hiddenNordLogo3").style.top = '150px';
+
+          document.getElementById("hiddenNordLogo4").style.left = '0px';
+          document.getElementById("hiddenNordLogo4").style.top = '150px';
           // Initialize the canvas and context
           canvas = document.getElementById("TankTopCanvas");
           context = canvas.getContext("2d");
