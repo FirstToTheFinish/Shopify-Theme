@@ -3083,6 +3083,7 @@ async function saveChanges(){
     generateThumbnail(noDesignTemplate, templatePreviewImage);
     selectTemplate(noDesignTemplate, templatePreviewImage);
     document.body.style.cursor = 'default';
+    toggleTemplateDropdown();
     toggleSingletSettingsMenu();
 }
 

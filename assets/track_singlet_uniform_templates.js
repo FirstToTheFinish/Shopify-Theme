@@ -5480,8 +5480,20 @@ function templateMCompressDesign7(context1, context2, fStartX, fStartY, bStartX,
         compositeCanvas.width = hiddentemplateCanvas1.width;
         compositeCanvas.height = hiddentemplateCanvas1.height;
         const compositeContext = compositeCanvas.getContext("2d");
-        
-        if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
+
+        if(itDescript.toUpperCase().includes('COMPRESSION')){
+            compositeContext.drawImage(hiddenTankTopCanvas, 0, 0);                  // z-index 1
+            compositeContext.drawImage(hiddenTankTopBackCanvas, 0, 0);              // z-index 1
+            compositeContext.drawImage(hiddenTankTopTemplateColor1Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopTemplateColor2Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopTemplateColor3Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopInternalFrontCanvas, 0, 0);     // z-index 4
+            compositeContext.drawImage(hiddenTankTopInternalBackCanvas, 0, 0);      // z-index 4
+            compositeContext.drawImage(hiddenTankTopCuffCanvas, 0, 0);              // z-index 5
+            compositeContext.drawImage(hiddenTankTopBackCuffCanvas, 0, 0);          // z-index 5
+            embedImageInCanvas(compositeCanvas);
+        }
+        else if((itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")) && itDescript.toUpperCase().includes('COMPRESSION')){
         
             // Draw each hidden canvas onto the composite canvas following z-index order
             compositeContext.drawImage(hiddenTankTopCanvas, 0, 0);                  // z-index 1
