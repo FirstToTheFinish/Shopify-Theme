@@ -3041,6 +3041,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function saveChanges(){
     document.getElementById("pricing").textContent = `Total Price: $${singletPrices[getSelected('singlet-type')].toFixed(2)}/each`;
+    let title;
+    const singlet = getSelected('singlet-type');
+    const gender = getSelected('gender-type');
+    const style = getSelected('style-type');
+
+    if(singlet == "Compression" && (gender == "Men's" || gender == "Boy's")){
+      itDescript = `${gender} ${singlet} Tank`;
+    }
+    else if(singlet == "Compression" && (gender == "Women's" || gender == "Girl's")){
+      itDescript = `${gender} ${singlet} ${style}`;
+    }
+    else if (singlet == "Legend"){
+      itDescript = `${gender} ${singlet} Singlet`;
+    }
+    else if (singlet == "Loose Fit" && style == "Racerback"){
+      itDescript = `${gender} ${singlet} ${style}`;
+    }
+    else{
+      itDescript = `${gender} ${singlet} Singlet`;
+    }
     buildCanvases();
     toggleSingletSettingsMenu();
 }
