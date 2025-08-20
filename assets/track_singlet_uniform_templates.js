@@ -5493,7 +5493,7 @@ function templateMCompressDesign7(context1, context2, fStartX, fStartY, bStartX,
             compositeContext.drawImage(hiddenTankTopBackCuffCanvas, 0, 0);          // z-index 5
             embedImageInCanvas(compositeCanvas);
         }
-        else if((itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")) && itDescript.toUpperCase().includes('COMPRESSION')){
+        else if((itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK"))){
         
             // Draw each hidden canvas onto the composite canvas following z-index order
             compositeContext.drawImage(hiddenTankTopCanvas, 0, 0);                  // z-index 1
