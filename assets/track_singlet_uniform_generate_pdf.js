@@ -1599,7 +1599,7 @@ async function createSizingPage(pdfDoc, imageLogoUrl, sizingData, dateCreated, d
 
     page.drawText(styleTitle, {
       x: 400 + styleWidth + 10,
-      y: yPos - 30,
+      y: yPos - 15,
       size: 18,
       font: helveticaFont,
       color: rgb(0, 0, 0),
