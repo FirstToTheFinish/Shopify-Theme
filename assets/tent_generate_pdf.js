@@ -282,6 +282,7 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, imagePreviewURL,
     { label: 'State:', value: 'N/A', start: 76, end: 780 },
     { label: 'Zip Code:', value: 'N/A', start: 112, end: 780 },
     { label: 'Ready to Order:', value: 'N/A', start: 170, end: 780 },
+    { label: 'Sales Rep:', value: 'N/A', start: 143, end: 780 }
   ];
 
   if (customerInformation) {
@@ -295,7 +296,8 @@ async function createFrontPage(pdfDoc, pageTitle, imageLogoUrl, imagePreviewURL,
             'City:': 'city',
             'State:': 'state',
             'Zip Code:': 'zip',
-            'Ready to Order:': 'priority'
+            'Ready to Order:': 'priority',
+            'Sales Rep:': 'salesRep'
         };
         const infoKey = mapping[detail.label];
         if (infoKey && customerInformation[infoKey]) {

@@ -285,7 +285,8 @@ function gatherSectionInformation(sectionsConfig) {
         state: document.getElementById('state').value.trim(),
         zip: document.getElementById('zip').value.trim(),
         priority: document.getElementById('priority').value.trim(),
-        tentName: document.getElementById('Tent-Name').value.trim()
+        tentName: document.getElementById('Tent-Name').value.trim(),
+        salesRep: document.getElementById('salesRep').value.trim()
     };
 
     const previewURL = document.getElementById('tentPreviewImage').src;
