@@ -3090,7 +3090,7 @@ function hideCanvases(){
   hiddenCanvas9.style.visibility = "hidden";
 }
 
-function showCanvases(){
+function showHiddenCanvases(){
   canvas7.style.visibility = "visible";
   canvas8.style.visibility = "visible";
   canvas9.style.visibility = "visible";
@@ -3239,6 +3239,8 @@ function buildCanvases(){
         }
         else if(itDescript.toUpperCase().includes("COMPRESSION")){
 
+          hideCanvases();
+
           document.getElementById("uniformCanvases").style.marginLeft = '20px';
           document.getElementById("FrontOverlayCanvas").style.marginLeft = '260px';
           document.getElementById("BackOverlayCanvas").style.marginLeft = '260px';
@@ -3376,6 +3378,7 @@ function buildCanvases(){
           backOverlayPath += `Z`;
         }
         else{
+          showHiddenCanvases();
           // Initialize the canvas and context
           canvas = document.getElementById("TankTopCanvas");
           context = canvas.getContext("2d");
