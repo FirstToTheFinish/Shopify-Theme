@@ -5481,21 +5481,35 @@ function templateMCompressDesign7(context1, context2, fStartX, fStartY, bStartX,
         compositeCanvas.height = hiddentemplateCanvas1.height;
         const compositeContext = compositeCanvas.getContext("2d");
         
+        if(itDescript.toUpperCase().includes("LEGEND") || itDescript.toUpperCase().includes("RACERBACK")){
         
-        // Draw each hidden canvas onto the composite canvas following z-index order
-        compositeContext.drawImage(hiddenTankTopCanvas, 0, 0);                  // z-index 1
-        compositeContext.drawImage(hiddenTankTopBackCanvas, 0, 0);              // z-index 1
-        compositeContext.drawImage(hiddenTankTopTemplateColor1Canvas, 0, 0);    // z-index 2
-        compositeContext.drawImage(hiddenTankTopTemplateColor2Canvas, 0, 0);    // z-index 2
-        compositeContext.drawImage(hiddenTankTopTemplateColor3Canvas, 0, 0);    // z-index 2
-        compositeContext.drawImage(hiddenTankTopInternalFrontCanvas, 0, 0);     // z-index 4
-        compositeContext.drawImage(hiddenTankTopBackHolesCanvas, 0, 0);         // z-index 4
-        compositeContext.drawImage(hiddenTankTopFrontOutlineCanvas, 0, 0);      // z-index 4
-        compositeContext.drawImage(hiddenTankTopInternalBackCanvas, 0, 0);      // z-index 4
-        compositeContext.drawImage(hiddenTankTopCuffCanvas, 0, 0);              // z-index 5
-        compositeContext.drawImage(hiddenTankTopBackCuffCanvas, 0, 0);          // z-index 5
-        compositeContext.drawImage(hiddenTankTopBackRacerCuffCanvas, 0, 0);     // z-index 5
-        embedImageInCanvas(compositeCanvas);
+            // Draw each hidden canvas onto the composite canvas following z-index order
+            compositeContext.drawImage(hiddenTankTopCanvas, 0, 0);                  // z-index 1
+            compositeContext.drawImage(hiddenTankTopBackCanvas, 0, 0);              // z-index 1
+            compositeContext.drawImage(hiddenTankTopTemplateColor1Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopTemplateColor2Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopTemplateColor3Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopInternalFrontCanvas, 0, 0);     // z-index 4
+            compositeContext.drawImage(hiddenTankTopBackHolesCanvas, 0, 0);         // z-index 4
+            compositeContext.drawImage(hiddenTankTopFrontOutlineCanvas, 0, 0);      // z-index 4
+            compositeContext.drawImage(hiddenTankTopInternalBackCanvas, 0, 0);      // z-index 4
+            compositeContext.drawImage(hiddenTankTopCuffCanvas, 0, 0);              // z-index 5
+            compositeContext.drawImage(hiddenTankTopBackCuffCanvas, 0, 0);          // z-index 5
+            compositeContext.drawImage(hiddenTankTopBackRacerCuffCanvas, 0, 0);     // z-index 5
+            embedImageInCanvas(compositeCanvas);
+        }
+        else{
+            compositeContext.drawImage(hiddenTankTopCanvas, 0, 0);                  // z-index 1
+            compositeContext.drawImage(hiddenTankTopBackCanvas, 0, 0);              // z-index 1
+            compositeContext.drawImage(hiddenTankTopTemplateColor1Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopTemplateColor2Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopTemplateColor3Canvas, 0, 0);    // z-index 2
+            compositeContext.drawImage(hiddenTankTopInternalFrontCanvas, 0, 0);     // z-index 4
+            compositeContext.drawImage(hiddenTankTopInternalBackCanvas, 0, 0);      // z-index 4
+            compositeContext.drawImage(hiddenTankTopCuffCanvas, 0, 0);              // z-index 5
+            compositeContext.drawImage(hiddenTankTopBackCuffCanvas, 0, 0);          // z-index 5
+            embedImageInCanvas(compositeCanvas);
+        }
 
         
         // Define crop coordinates and dimensions
