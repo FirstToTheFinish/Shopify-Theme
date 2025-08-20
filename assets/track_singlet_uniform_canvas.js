@@ -3080,10 +3080,32 @@ function clearCanvases() {
   });
 }
 
+function hideCanvases(){
+  canvas7.style.visibility = "hidden";
+  canvas8.style.visibility = "hidden";
+  canvas9.style.visibility = "hidden";
+
+  hiddenCanvas7.style.visibility = "hidden";
+  hiddenCanvas8.style.visibility = "hidden";
+  hiddenCanvas9.style.visibility = "hidden";
+}
+
+function showCanvases(){
+  canvas7.style.visibility = "visible";
+  canvas8.style.visibility = "visible";
+  canvas9.style.visibility = "visible";
+
+  hiddenCanvas7.style.visibility = "visible";
+  hiddenCanvas8.style.visibility = "visible";
+  hiddenCanvas9.style.visibility = "visible";
+}
+
 
 function buildCanvases(){
 
         if(itDescript.toUpperCase().includes("TANK")){
+
+          hideCanvases();
 
           document.getElementById("uniformCanvases").style.marginLeft = '100px';
           document.getElementById("FrontOverlayCanvas").style.marginLeft = '300px';
