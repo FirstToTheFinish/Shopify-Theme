@@ -3039,6 +3039,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('gender-type-options').addEventListener('change', applyRules);
 });
 
+function saveChanges(){
+    document.getElementById("pricing").textContent = `Total Price: $${singletPrices[getSelected('singlet-type')].toFixed(2)}/each`;
+    buildCanvases();
+    toggleSingletSettingsMenu();
+}
+
 function buildCanvases(){
         let canvas, context, canvas2, context2, canvas3, context3;
         let canvas4, context4, canvas5, context5, canvas6, context6;
