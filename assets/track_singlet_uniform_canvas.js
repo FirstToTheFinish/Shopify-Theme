@@ -3085,9 +3085,9 @@ function hideCanvases(){
   canvas8.style.visibility = "hidden";
   canvas9.style.visibility = "hidden";
 
-  hiddenCanvas7.style.visibility = "hidden";
-  hiddenCanvas8.style.visibility = "hidden";
-  hiddenCanvas9.style.visibility = "hidden";
+  hiddencanvas7.style.visibility = "hidden";
+  hiddencanvas8.style.visibility = "hidden";
+  hiddencanvas9.style.visibility = "hidden";
 }
 
 function showHiddenCanvases(){
@@ -3095,9 +3095,9 @@ function showHiddenCanvases(){
   canvas8.style.visibility = "visible";
   canvas9.style.visibility = "visible";
 
-  hiddenCanvas7.style.visibility = "visible";
-  hiddenCanvas8.style.visibility = "visible";
-  hiddenCanvas9.style.visibility = "visible";
+  hiddencanvas7.style.visibility = "visible";
+  hiddencanvas8.style.visibility = "visible";
+  hiddencanvas9.style.visibility = "visible";
 }
 
 
