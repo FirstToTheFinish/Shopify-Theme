@@ -3061,9 +3061,23 @@ function saveChanges(){
     else{
       itDescript = `${gender} ${singlet} Singlet`;
     }
+    clearCanvases();
     buildCanvases();
     toggleSingletSettingsMenu();
 }
+
+function clearCanvases() {
+  // Select ALL <canvas> elements inside uniformCanvases and the hidden div
+  const canvases = document.querySelectorAll(
+    '#uniformCanvases canvas, [style*="display: none"] canvas'
+  );
+
+  canvases.forEach(canvas => {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+}
+
 
 function buildCanvases(){
         let canvas, context, canvas2, context2, canvas3, context3;
